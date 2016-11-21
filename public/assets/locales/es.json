@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "INSPINIA 2.4"
+  },
+  "nav": {
+    "dashboard": "Salpicadero",
+    "graphs": "Gráficos",
+    "mailbox": "El correo",
+    "widgets": "Widgets",
+    "metrics": "Métrica",
+    "forms": "Formas",
+    "appviews": "Vistas app",
+    "otherpages": "Otras páginas",
+    "uielements": "UI elements",
+    "miscellaneous": "Misceláneo",
+    "gridoptions": "Cuadrícula",
+    "tables": "Tablas",
+    "commerce": "E-comercio",
+    "gallery": "Galería",
+    "menulevels": "Niveles de menú",
+    "animations": "Animaciones",
+    "landing": "Página de destino",
+    "layouts": "Esquemas",
+    "package": "Paquetes"
+  },
+  "body": {
+    "welcome": "Bienvenido Amelia"
+
+  },
+  "topnav":
+  {
+    "messageinfo": "Usted tiene 42 mensajes y 6 notificaciones.",
+    "search": "Buscar algo...",
+    "logout": "Cerrar sesión",
+    "welcometext": "Bienvenido a INSPINIA + administración Tema.",
+    "language": "Lenguaje"
+  },
+  "demo": {
+    "text1": "Internacionalización (a veces abreviado como \"I18N, que significa\" I - dieciocho letras N \") es el proceso de planificación e implementación de productos y servicios de manera que se pueden adaptar fácilmente a las lenguas y culturas locales específicas, un proceso llamado localización El proceso de internacionalización. a veces se llama la traducción o la habilitación de localización."
+  }
+
+
+}
