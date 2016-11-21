@@ -2,7 +2,9 @@
 
 ## Database
 
-![Screenshot 1](http://i.imgur.com/QxHDVvk.png)
+27 tables
+
+![Screenshot 1](http://i.imgur.com/zdrEkkf.png)
 
 
 ## Screnshots
