@@ -28,8 +28,8 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        //$github = new Github;
-        //$github->organizations();
+        $github = new Github;
+        $github->repositories();
 
         return view('users.dashboard')
                 ->with('user', $user);

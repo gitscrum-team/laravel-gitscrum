@@ -13,58 +13,18 @@ use GitScrum\Models\ProductBacklog;
 use GitScrum\Classes\Helper;
 use Carbon\Carbon;
 
+
 class Github {
 
-    public function organizations()
+    public function repositories()
     {
-        $orgs = $this->request('https://api.github.com/user/orgs');
-        foreach ($orgs as $org) {
-            $orgData = $this->request('https://api.github.com/orgs/'.$org->login);
-            $data = [
-                'github_id'=>$orgData->id,
-                'username'=>$orgData->login,
-                'url'=>$orgData->url,
-                'repos_url'=>$orgData->repos_url,
-                'events_url'=>$orgData->events_url,
-                'hooks_url'=>$orgData->hooks_url,
-                'issues_url'=>$orgData->issues_url,
-                'members_url'=>$orgData->members_url,
-                'public_members_url'=>$orgData->public_members_url,
-                'avatar_url'=>$orgData->avatar_url,
-                'description'=>$orgData->description,
-                'title'=>$orgData->name,
-                'blog'=>$orgData->blog,
-                'location'=>$orgData->location,
-                'email'=>$orgData->email,
-                'public_repos'=>$orgData->public_repos,
-                'html_url'=>$orgData->html_url,
-                'total_private_repos'=>$orgData->total_private_repos,
-                'since'=>Carbon::parse($orgData->created_at)->toDateTimeString(),
-                'disk_usage'=>$orgData->disk_usage
-            ];
-
-            try{
-                $organization = Organization::create($data);
-                Auth::user()->organizations()->attach($organization->id);
-            } catch( \Illuminate\Database\QueryException $e ) {}
-
-            $this->members($orgData->login);
-            $this->repositories($orgData->login);
-
-            //$OrganizationRepository->add($data);
-            //
-
-        }
-    }
-
-    public function repositories($org){
-        $repos = $this->request('https://api.github.com/orgs/'.$org.'/repos');
-        $organization = Organization::where('username', $org)->first();
+        $repos = $this->request('https://api.github.com/user/repos');
 
         foreach ($repos as $repo) {
+
             $data = [
                 'github_id' => $repo->id,
-                'organization_id' => $organization->id,
+                'organization_id' => $this->organization($repo->owner->login),
                 'slug' => Helper::slug($repo->name),
                 'title' => $repo->name,
                 'fullname' => $repo->full_name,
@@ -81,47 +41,96 @@ class Github {
                 'default_branch' => $repo->default_branch
             ];
 
-            try {
-                ProductBacklog::updateOrCreate($data);
-            } catch ( \Exception $e) { }
-
-            //$this->setBranches($org,$repo->name);
-            //$this->setIssues($org,$repo->name);
+            try{
+                ProductBacklog::create($data);
+            } catch( \Illuminate\Database\QueryException $e ) {}
         }
+    }
+
+
+    public function organization($login)
+    {
+        $orgData = $this->request('https://api.github.com/orgs/'.$login);
+
+        if( !isset($orgData->id) ){
+            $orgData = $this->request('https://api.github.com/users/'.$login);
+        }
+
+        $data = [
+            'github_id'=>@$orgData->id,
+            'username'=>@$orgData->login,
+            'url'=>@$orgData->url,
+            'repos_url'=>@$orgData->repos_url,
+            'events_url'=>@$orgData->events_url,
+            'hooks_url'=>@$orgData->hooks_url,
+            'issues_url'=>@$orgData->issues_url,
+            'members_url'=>@$orgData->members_url,
+            'public_members_url'=>@$orgData->public_members_url,
+            'avatar_url'=>@$orgData->avatar_url,
+            'description'=>@$orgData->description,
+            'title'=>@$orgData->name,
+            'blog'=>@$orgData->blog,
+            'location'=>@$orgData->location,
+            'email'=>@$orgData->email,
+            'public_repos'=>@$orgData->public_repos,
+            'html_url'=>@$orgData->html_url,
+            'total_private_repos'=>@$orgData->total_private_repos,
+            'since'=>@Carbon::parse($orgData->created_at)->toDateTimeString(),
+            'disk_usage'=>@$orgData->disk_usage
+        ];
+
+        try{
+            $organization = Organization::create($data);
+        } catch( \Illuminate\Database\QueryException $e ) {
+            $organization = Organization::where('username', $orgData->login)->first();
+        }
+
+        if( !isset(Auth::user()->organizations()->where('organization_id',
+            $organization->id)->first()->id ) )
+        {
+            Auth::user()->organizations()->attach($organization->id);
+        }
+
+        $this->members($orgData->login);
+        return $organization->id;
     }
 
     public function members($org)
     {
         $members = $this->request('https://api.github.com/orgs/'.$org.'/members');
         $organization = Organization::where('username',$org)->first()->users();
-        $organization->detach();
-        foreach ($members as $member) {
 
-            $data = [
-                'github_id' => $member->id,
-                'username' => $member->login,
-                'name' => $member->login,
-                'avatar' => $member->avatar_url,
-                'html_url' => $member->html_url,
-                'email' => null,
-                'remember_token' => null,
-                'bio' => null,
-                'location' => null,
-                'blog' => null,
-                'since' => null,
-                'token' => null,
-                'position_held' => null
-            ];
+        foreach ($members as $member)
+        {
+            if(isset($member->id))
+            {
+                $data = [
+                    'github_id' => $member->id,
+                    'username' => $member->login,
+                    'name' => $member->login,
+                    'avatar' => $member->avatar_url,
+                    'html_url' => $member->html_url,
+                    'email' => null,
+                    'remember_token' => null,
+                    'bio' => null,
+                    'location' => null,
+                    'blog' => null,
+                    'since' => null,
+                    'token' => null,
+                    'position_held' => null
+                ];
 
-            try {
-                $user = User::create($data);
-            } catch ( \Exception $e) {
-                $user = User::where('username', $member->login)->first();
+                try {
+                    $user = User::create($data);
+                } catch ( \Exception $e) {
+                    $user = User::where('username', $member->login)->first();
+                }
+
+                if ( !isset( $organization->where('user_id', Auth::user()->id )->first()->id ) )
+                {
+                    $organization->attach($user->id);
+                }
             }
-
-            //if ( Auth::user()->id != $user->id ) {
-                $organization->attach($user->id);
-            //}
         }
     }
 
