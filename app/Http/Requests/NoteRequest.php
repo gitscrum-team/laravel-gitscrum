@@ -29,7 +29,7 @@ class NoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'required',
+            'title' => 'required',
         ];
     }
 }
