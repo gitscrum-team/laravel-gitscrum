@@ -13,7 +13,8 @@
         "phploc/phploc": "*",
         "cviebrock/eloquent-sluggable": "^4.0",
         "barryvdh/laravel-debugbar": "^2.2",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "orangehill/iseed": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
