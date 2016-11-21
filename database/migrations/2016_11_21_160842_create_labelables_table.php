@@ -15,8 +15,8 @@ class CreateLabelablesTable extends Migration {
 		Schema::create('labelables', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->nullable();
-			$table->integer('label_id')->unsigned()->nullable();
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_labelables_user_id_idx');
+			$table->integer('label_id')->unsigned()->nullable()->index('fk_labelables_label_id_idx');
 			$table->integer('labelable_id')->unsigned()->nullable();
 			$table->string('labelable_type', 45)->nullable();
 		});

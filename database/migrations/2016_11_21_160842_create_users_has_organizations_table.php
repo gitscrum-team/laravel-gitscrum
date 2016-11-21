@@ -16,7 +16,7 @@ class CreateUsersHasOrganizationsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->nullable();
-			$table->integer('organization_id')->unsigned()->nullable();
+			$table->integer('organization_id')->unsigned()->nullable()->index('fk_users_has_organizations_organization_id_idx');
 			$table->timestamps();
 			$table->softDeletes();
 			$table->unique(['user_id','organization_id'], 'user_id_and_organization_id_unique');

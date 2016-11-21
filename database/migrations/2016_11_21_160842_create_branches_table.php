@@ -15,7 +15,7 @@ class CreateBranchesTable extends Migration {
 		Schema::create('branches', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->nullable();
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_branches_user_id_idx');
 			$table->integer('product_backlog_id')->unsigned()->nullable();
 			$table->integer('sprint_id')->unsigned()->nullable();
 			$table->string('sha')->nullable();

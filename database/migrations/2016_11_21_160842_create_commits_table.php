@@ -15,10 +15,10 @@ class CreateCommitsTable extends Migration {
 		Schema::create('commits', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('product_backlog_id')->unsigned()->nullable();
-			$table->integer('branch_id')->unsigned()->nullable();
-			$table->integer('user_id')->unsigned()->nullable();
-			$table->integer('issue_id')->unsigned()->nullable();
+			$table->integer('product_backlog_id')->unsigned()->nullable()->index('fk_commits_product_backlog_id_idx');
+			$table->integer('branch_id')->unsigned()->nullable()->index('fk_commits_branch_id_idx');
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_commits_user_id_idx');
+			$table->integer('issue_id')->unsigned()->nullable()->index('fk_commits_issue_id_idx');
 			$table->string('sha')->nullable();
 			$table->string('url')->nullable();
 			$table->text('message', 65535)->nullable();

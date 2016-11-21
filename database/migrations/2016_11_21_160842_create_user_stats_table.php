@@ -15,7 +15,7 @@ class CreateUserStatsTable extends Migration {
 		Schema::create('user_stats', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->nullable();
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_user_stats_user_id_idx');
 			$table->integer('code_lines')->unsigned()->nullable();
 			$table->timestamps();
 		});

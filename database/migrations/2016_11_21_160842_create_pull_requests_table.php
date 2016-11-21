@@ -16,8 +16,8 @@ class CreatePullRequestsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('github_id')->unsigned()->nullable()->unique('github_id_UNIQUE');
-			$table->integer('head_branch_id')->unsigned()->nullable();
-			$table->integer('base_branch_id')->unsigned()->nullable();
+			$table->integer('head_branch_id')->unsigned()->nullable()->index('fk_pull_requests_head_branch_id_idx');
+			$table->integer('base_branch_id')->unsigned()->nullable()->index('fk_pull_requests_base_branch_id_idx');
 			$table->integer('user_id')->nullable();
 			$table->integer('product_backlog_id')->unsigned()->nullable();
 			$table->integer('number')->unsigned()->nullable();

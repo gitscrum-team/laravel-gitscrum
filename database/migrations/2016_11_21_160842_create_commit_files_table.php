@@ -15,7 +15,7 @@ class CreateCommitFilesTable extends Migration {
 		Schema::create('commit_files', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('commit_id')->unsigned()->nullable();
+			$table->integer('commit_id')->unsigned()->nullable()->index('fk_commit_files_commit_id_idx');
 			$table->string('sha')->nullable();
 			$table->string('filename')->nullable();
 			$table->string('status')->nullable();

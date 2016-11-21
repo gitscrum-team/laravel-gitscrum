@@ -15,8 +15,8 @@ class CreatePullRequestsHasCommitsTable extends Migration {
 		Schema::create('pull_requests_has_commits', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('pull_request_id')->unsigned()->nullable();
-			$table->integer('commit_id')->unsigned()->nullable();
+			$table->integer('pull_request_id')->unsigned()->nullable()->index('fk_pull_requests_has_commits_pull_request_id_idx');
+			$table->integer('commit_id')->unsigned()->nullable()->index('fk_pull_requests_has_commits_commit_id_idx');
 			$table->timestamps();
 			$table->softDeletes();
 		});

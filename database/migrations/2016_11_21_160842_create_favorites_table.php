@@ -17,7 +17,7 @@ class CreateFavoritesTable extends Migration {
 			$table->increments('id');
 			$table->string('favoriteable_type', 45)->nullable();
 			$table->integer('favoriteable_id')->unsigned()->nullable();
-			$table->integer('user_id')->unsigned()->nullable();
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_favorites_user_id_idx');
 			$table->timestamps();
 		});
 	}

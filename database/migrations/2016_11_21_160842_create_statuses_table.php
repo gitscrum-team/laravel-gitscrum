@@ -18,7 +18,7 @@ class CreateStatusesTable extends Migration {
 			$table->string('statusesable_type', 45)->nullable();
 			$table->integer('statusesable_id')->unsigned()->nullable();
 			$table->smallInteger('config_status_id')->unsigned()->nullable();
-			$table->integer('user_id')->unsigned()->nullable();
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_statuses_1_idx');
 			$table->timestamps();
 			$table->softDeletes();
 			$table->index(['statusesable_type','statusesable_id'], 'statususes_type_id');

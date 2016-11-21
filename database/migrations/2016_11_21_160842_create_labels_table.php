@@ -15,7 +15,7 @@ class CreateLabelsTable extends Migration {
 		Schema::create('labels', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->nullable();
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_labels_user_id_idx');
 			$table->string('slug', 60)->nullable()->unique('labels_slug');
 			$table->string('title', 45)->nullable()->unique('labels_title');
 			$table->integer('position')->unsigned()->nullable()->default(0);

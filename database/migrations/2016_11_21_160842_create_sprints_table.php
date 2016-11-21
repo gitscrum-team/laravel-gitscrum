@@ -15,9 +15,9 @@ class CreateSprintsTable extends Migration {
 		Schema::create('sprints', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->nullable();
-			$table->integer('product_backlog_id')->unsigned()->nullable();
-			$table->integer('config_status_id')->unsigned()->nullable();
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_sprints_user_id_idx');
+			$table->integer('product_backlog_id')->unsigned()->nullable()->index('fk_sprints_product_backlog_id_idx');
+			$table->integer('config_status_id')->unsigned()->nullable()->index('fk_sprints_config_status_id_idx');
 			$table->string('slug', 60)->nullable()->index('sprints_slug');
 			$table->string('title')->nullable();
 			$table->text('description', 65535)->nullable();

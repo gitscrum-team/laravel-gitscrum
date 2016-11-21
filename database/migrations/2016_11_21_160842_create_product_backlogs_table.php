@@ -15,9 +15,9 @@ class CreateProductBacklogsTable extends Migration {
 		Schema::create('product_backlogs', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->nullable();
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_product_backlogs_user_id_idx');
 			$table->bigInteger('github_id')->unsigned()->nullable()->unique('github_id');
-			$table->integer('organization_id')->unsigned()->nullable();
+			$table->integer('organization_id')->unsigned()->nullable()->index('fk_product_backlogs_organization_id_idx');
 			$table->string('slug', 60)->nullable()->index('repositories_slug');
 			$table->string('title')->nullable();
 			$table->text('description', 65535)->nullable();
