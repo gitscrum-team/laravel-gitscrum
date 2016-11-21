@@ -4,21 +4,15 @@ use Illuminate\Database\Seeder;
 
 class ConfigPrioritiesTableSeeder extends Seeder
 {
-
     /**
-     * Auto generated seed file
-     *
-     * @return void
+     * Auto generated seed file.
      */
     public function run()
     {
-        
-
         \DB::table('config_priorities')->delete();
-        
-        \DB::table('config_priorities')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('config_priorities')->insert(array(
+            0 => array(
                 'id' => 1,
                 'slug' => 'must-have',
                 'type' => 'user_story',
@@ -28,8 +22,7 @@ class ConfigPrioritiesTableSeeder extends Seeder
                 'position' => 0,
                 'enabled' => 1,
             ),
-            1 => 
-            array (
+            1 => array(
                 'id' => 2,
                 'slug' => 'should-have',
                 'type' => 'user_story',
@@ -39,8 +32,7 @@ class ConfigPrioritiesTableSeeder extends Seeder
                 'position' => 1,
                 'enabled' => 1,
             ),
-            2 => 
-            array (
+            2 => array(
                 'id' => 3,
                 'slug' => 'could-have',
                 'type' => 'user_story',
@@ -50,8 +42,7 @@ class ConfigPrioritiesTableSeeder extends Seeder
                 'position' => 2,
                 'enabled' => 1,
             ),
-            3 => 
-            array (
+            3 => array(
                 'id' => 4,
                 'slug' => 'wont-have',
                 'type' => 'user_story',
@@ -62,7 +53,5 @@ class ConfigPrioritiesTableSeeder extends Seeder
                 'enabled' => 1,
             ),
         ));
-        
-        
     }
 }

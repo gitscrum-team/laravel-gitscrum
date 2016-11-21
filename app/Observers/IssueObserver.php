@@ -1,12 +1,10 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Observers;
 
 use GitScrum\Models\Issue;
@@ -19,13 +17,11 @@ use Auth;
 
 class IssueObserver
 {
-
     public function creating(Issue $issue)
     {
-
-        try{
+        try {
             $product_backlog_id = UserStory::find($issue->user_story_id)->product_backlog_id;
-        } catch( \Exception $e ){
+        } catch (\Exception $e) {
             $product_backlog_id = $issue->sprint()->first()->product_backlog_id;
         }
 
@@ -39,12 +35,12 @@ class IssueObserver
 
     public function created($issue)
     {
-        (new Status)->track( 'issue', $issue );
+        (new Status())->track('issue', $issue);
     }
 
     public function updating($issue)
     {
-        (new Status)->track( 'issue', $issue );
+        (new Status())->track('issue', $issue);
     }
 
     public function deleting(Issue $issue)
@@ -55,5 +51,4 @@ class IssueObserver
         $issue->statuses()->delete();
         $issue->favorite()->delete();
     }
-
 }

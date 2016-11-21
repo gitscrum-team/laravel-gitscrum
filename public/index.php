@@ -1,8 +1,7 @@
 <?php
 /**
- * Laravel - A PHP Framework For Web Artisans
+ * Laravel - A PHP Framework For Web Artisans.
  *
- * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
@@ -46,16 +45,16 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 |
 */
 
-try{
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+try {
+    $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
-$response = $kernel->handle(
+    $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
 
-$response->send();
+    $response->send();
 
-$kernel->terminate($request, $response);
-} catch( \Exception $e){
+    $kernel->terminate($request, $response);
+} catch (\Exception $e) {
     dd($e);
 }

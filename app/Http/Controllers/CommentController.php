@@ -1,15 +1,11 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Controllers;
-
-use Illuminate\Http\Request;
 
 use GitScrum\Http\Requests\CommentRequest;
 use GitScrum\Models\Comment;
@@ -17,12 +13,12 @@ use Auth;
 
 class CommentController extends Controller
 {
-    public function store( CommentRequest $request )
+    public function store(CommentRequest $request)
     {
         $data = [
             'commentable_id' => $request->commentable_id,
             'commentable_type' => $request->commentable_type,
-            'comment' => $request->comment
+            'comment' => $request->comment,
         ];
         Comment::create($data);
 

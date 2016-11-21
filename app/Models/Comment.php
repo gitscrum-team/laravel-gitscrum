@@ -1,22 +1,18 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use GitScrum\Models\Status;
 use Carbon\Carbon;
-use Auth;
 
-class Comment extends Model {
-
+class Comment extends Model
+{
     use SoftDeletes;
 
     /**
@@ -63,5 +59,4 @@ class Comment extends Model {
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->diffForHumans();
     }
-
 }

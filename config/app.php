@@ -1,8 +1,7 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
@@ -174,8 +173,6 @@ return [
          * Package Service Providers...
          */
 
-        //
-
         /*
          * Application Service Providers...
          */
@@ -193,7 +190,7 @@ return [
 
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
-        Orangehill\Iseed\IseedServiceProvider::class
+        Orangehill\Iseed\IseedServiceProvider::class,
 
     ],
 

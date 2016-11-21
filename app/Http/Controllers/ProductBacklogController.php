@@ -1,16 +1,13 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use GitScrum\Http\Requests\ProductBacklogRequest;
 use GitScrum\Models\ProductBacklog;
 use Auth;
@@ -42,12 +39,14 @@ class ProductBacklogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(ProductBacklogRequest $request)
     {
         $productBacklog = ProductBacklog::create($request->all());
+
         return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
             ->with('success', _('Congratulations! The Product Backlog has been created with successfully'));
     }
@@ -55,7 +54,8 @@ class ProductBacklogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $slug)
@@ -74,7 +74,7 @@ class ProductBacklogController extends Controller
 
         $userStories = $productBacklog->userStories();
 
-        if ( $request->user_story ){
+        if ($request->user_story) {
             $userStories->where('title', 'like', '%'.$request->user_story.'%');
             $search = $request->user_story;
         }
@@ -86,18 +86,19 @@ class ProductBacklogController extends Controller
             ->with('productBacklog', $productBacklog)
             ->with('sprints', $sprints)
             ->with('userStories', $userStories)
-            ->with('search', (!isset($search))?null:$search);
+            ->with('search', (!isset($search)) ? null : $search);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($slug)
     {
-        $productBacklog = ProductBacklog::where('slug','=',$slug)->first();
+        $productBacklog = ProductBacklog::where('slug', '=', $slug)->first();
 
         return view('product_backlogs.edit')
             ->with('productBacklog', $productBacklog)
@@ -107,13 +108,14 @@ class ProductBacklogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(ProductBacklogRequest $request, $slug)
     {
-        $productBacklog = ProductBacklog::where('slug','=',$slug)->first();
+        $productBacklog = ProductBacklog::where('slug', '=', $slug)->first();
         $productBacklog->update($request->all());
 
         return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
@@ -123,11 +125,11 @@ class ProductBacklogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
     }
 }

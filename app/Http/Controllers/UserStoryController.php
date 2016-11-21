@@ -1,19 +1,14 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use GitScrum\Http\Requests;
 use GitScrum\Models\UserStory;
-
 use GitScrum\Models\ConfigPriority;
 use GitScrum\Models\ProductBacklog;
 use Auth;
@@ -27,7 +22,6 @@ class UserStoryController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -39,8 +33,9 @@ class UserStoryController extends Controller
     {
         $productBacklog_id = null;
 
-        if ( !is_null($slug_product_backlog) )
+        if (!is_null($slug_product_backlog)) {
             $productBacklog_id = ProductBacklog::where('slug', $slug_product_backlog)->first()->id;
+        }
 
         $priorities = ConfigPriority::where('enabled', 1)
             ->orderby('position', 'ASC')->get();
@@ -55,12 +50,14 @@ class UserStoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $userStory = UserStory::create($request->all());
+
         return redirect()->route('user_stories.show', ['slug' => $userStory->slug])
             ->with('success', _('Congratulations! The User Story has been created with successfully'));
     }
@@ -68,7 +65,8 @@ class UserStoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
@@ -84,12 +82,13 @@ class UserStoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($slug)
     {
-        $userStory = UserStory::where('slug','=',$slug)->first();
+        $userStory = UserStory::where('slug', '=', $slug)->first();
 
         $priorities = ConfigPriority::where('enabled', 1)
             ->orderby('position', 'ASC')->get();
@@ -105,13 +104,14 @@ class UserStoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $slug)
     {
-        $userStory = UserStory::where('slug','=',$slug)->first();
+        $userStory = UserStory::where('slug', '=', $slug)->first();
         $userStory->update($request->all());
 
         return redirect()->route('user_stories.show', ['slug' => $userStory->slug])
@@ -121,11 +121,11 @@ class UserStoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
     }
 }

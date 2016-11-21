@@ -1,17 +1,13 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use GitScrum\Http\Requests;
 use GitScrum\Http\Requests\NoteRequest;
 use GitScrum\Models\Note;
 use Carbon\Carbon;
@@ -19,12 +15,12 @@ use Auth;
 
 class NoteController extends Controller
 {
-    public function store( NoteRequest $request )
+    public function store(NoteRequest $request)
     {
         $data = [
             'noteable_id' => $request->noteable_id,
             'noteable_type' => $request->noteable_type,
-            'title' => $request->title
+            'title' => $request->title,
         ];
 
         Note::create($data);
@@ -36,8 +32,8 @@ class NoteController extends Controller
     {
         $note = Note::where('slug', $slug)->first();
 
-        $closed_at = is_null($note->closed_at)?Carbon::now():null;
-        $closed_user_id = is_null($note->closed_at)?Auth::user()->id:null;
+        $closed_at = is_null($note->closed_at) ? Carbon::now() : null;
+        $closed_user_id = is_null($note->closed_at) ? Auth::user()->id : null;
 
         $note->closed_user_id = $closed_user_id;
         $note->closed_at = $closed_at;
@@ -55,5 +51,4 @@ class NoteController extends Controller
 
         return back()->with('success', _('Note deleted successfully'));
     }
-
 }

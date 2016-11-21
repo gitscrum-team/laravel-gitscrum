@@ -1,12 +1,7 @@
-<?php namespace GitScrum\Classes;
+<?php
 
-use Storage;
-use GitScrum\CommitFile;
-use GitScrum\CommitFilePhpcs;
+namespace GitScrum\Classes;
 
 class Phploc
 {
-
-
-
 }

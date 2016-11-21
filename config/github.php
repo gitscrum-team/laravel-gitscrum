@@ -39,9 +39,9 @@ return [
     'connections' => [
 
         'main' => [
-            'token'   => 'your-token',
-            'method'  => 'token',
-            'cache'   => true,
+            'token' => 'your-token',
+            'method' => 'token',
+            'cache' => true,
             // 'backoff' => false,
             // 'logging' => Guzzle\Log\MessageFormatter::DEBUG_FORMAT,
             // 'baseUrl' => 'https://api.github.com/',
@@ -49,10 +49,10 @@ return [
         ],
 
         'alternative' => [
-            'clientId'     => 'your-client-id',
+            'clientId' => 'your-client-id',
             'clientSecret' => 'your-client-secret',
-            'method'       => 'application',
-            'cache'        => true,
+            'method' => 'application',
+            'cache' => true,
             // 'backoff'      => false,
             // 'logging'      => Guzzle\Log\MessageFormatter::DEBUG_FORMAT,
             // 'baseUrl'      => 'https://api.github.com/',
@@ -62,8 +62,8 @@ return [
         'other' => [
             'username' => 'your-username',
             'password' => 'your-password',
-            'method'   => 'password',
-            'cache'    => true,
+            'method' => 'password',
+            'cache' => true,
             // 'backoff'  => false,
             // 'logging'  => Guzzle\Log\MessageFormatter::DEBUG_FORMAT,
             // 'baseUrl'  => 'https://api.github.com/',

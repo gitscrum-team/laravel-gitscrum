@@ -1,17 +1,13 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
 use GitScrum\Http\Requests\SprintRequest;
-
 use GitScrum\Models\ProductBacklog;
 use GitScrum\Models\Sprint;
 use Auth;
@@ -25,13 +21,13 @@ class SprintController extends Controller
      */
     public function index($mode = 'default', $slug_product_backlog = null)
     {
-
         $sprints = Sprint::orderby('date_start', 'DESC')
             ->orderby('date_finish', 'ASC');
 
-        if ( !is_null($slug_product_backlog) )
+        if (!is_null($slug_product_backlog)) {
             $sprints = $sprints->join('product_backlogs', 'product_backlogs.id', 'sprints.product_backlog_id')
                 ->where('product_backlogs.slug', $slug_product_backlog);
+        }
 
         $sprints = $sprints->with('issues.users')
             ->with('issues')
@@ -41,7 +37,6 @@ class SprintController extends Controller
 
         return view('sprints.index-'.$mode)
             ->with('sprints', $sprints);
-
     }
 
     /**
@@ -53,8 +48,9 @@ class SprintController extends Controller
     {
         $productBacklog_id = null;
 
-        if ( !is_null($slug_product_backlog) )
+        if (!is_null($slug_product_backlog)) {
             $productBacklog_id = ProductBacklog::where('slug', $slug_product_backlog)->first()->id;
+        }
 
         return view('sprints.create')
             ->with('productBacklogs', Auth::user()->productBacklogs())
@@ -65,12 +61,14 @@ class SprintController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  GitScrum\Http\Requests\SprintRequest $request
+     * @param GitScrum\Http\Requests\SprintRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(SprintRequest $request)
     {
         $sprint = Sprint::create($request->all());
+
         return redirect()->route('sprints.show', ['slug' => $sprint->slug])
             ->with('success', _('Congratulations! The Sprint has been created with successfully'));
     }
@@ -78,12 +76,12 @@ class SprintController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  str  $slug
+     * @param str $slug
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
     {
-
         $sprint = Sprint::where('slug', $slug)
             ->with('issues.user')
             ->with('issues.users')
@@ -112,13 +110,14 @@ class SprintController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($slug)
     {
         $sprint = Sprint::where('product_backlog_id', Auth::user()->main_repository)
-            ->where('slug','=',$slug)->first();
+            ->where('slug', '=', $slug)->first();
 
         return view('sprints.edit')
             ->with('action', 'Edit')
@@ -128,14 +127,15 @@ class SprintController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(SprintRequest $request, $slug)
     {
         $sprint = Sprint::where('product_backlog_id', Auth::user()->main_repository)
-            ->where('slug','=',$slug)->first();
+            ->where('slug', '=', $slug)->first();
         $sprint->update($request->all());
 
         return redirect()->route('sprints.show', ['slug' => $sprint->slug])
@@ -145,11 +145,11 @@ class SprintController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
     }
 }

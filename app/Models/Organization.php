@@ -1,19 +1,17 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Organization extends Model {
-
+class Organization extends Model
+{
     use SoftDeletes;
 
     /**
@@ -31,7 +29,7 @@ class Organization extends Model {
     protected $fillable = ['github_id', 'username', 'url', 'repos_url', 'events_url', 'hooks_url',
         'issues_url', 'members_url', 'public_members_url', 'avatar_url', 'title', 'description',
         'blog', 'location', 'email', 'public_repos', 'html_url', 'total_private_repos', 'since',
-        'disk_usage', 'deleted_at'];
+        'disk_usage', 'deleted_at', ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -57,5 +55,4 @@ class Organization extends Model {
     {
         return $this->hasMany(\GitScrum\Models\ProductBacklog::class, 'organization_id', 'id');
     }
-
 }

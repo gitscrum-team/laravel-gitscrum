@@ -1,15 +1,14 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
 
 return [
 
-    /**
+    /*
      * What attributes do we use to build the slug?
      * This can be a single field, like "name" which will build a slug from:
      *
@@ -27,7 +26,7 @@ return [
 
     'source' => null,
 
-    /**
+    /*
      * The maximum length of a generated slug.  Defaults to "null", which means
      * no length restrictions are enforced.  Set it to a positive integer if you
      * want to make sure your slugs aren't too long.
@@ -35,7 +34,7 @@ return [
 
     'maxLength' => 60,
 
-    /**
+    /*
      * If left to "null", then use the cocur/slugify package to generate the slug
      * (with the separator defined below).
      *
@@ -53,13 +52,13 @@ return [
 
     'method' => null,
 
-    /**
+    /*
      * Separator to use when generating slugs.  Defaults to a hyphen.
      */
 
     'separator' => '-',
 
-    /**
+    /*
      * Enforce uniqueness of slugs?  Defaults to true.
      * If a generated slug already exists, an incremental numeric
      * value will be appended to the end until a unique slug is found.  e.g.:
@@ -71,7 +70,7 @@ return [
 
     'unique' => true,
 
-    /**
+    /*
      * If you are enforcing unique slugs, the default is to add an
      * incremental value to the end of the base slug.  Alternatively, you
      * can change this value to a closure that accepts three parameters:
@@ -82,10 +81,11 @@ return [
 
     'uniqueSuffix' => function ($slug, $separator, Collection $list) {
         $size = count($list);
+
         return chr($size + 96);
     },
 
-    /**
+    /*
      * Should we include the trashed items when generating a unique slug?
      * This only applies if the softDelete property is set for the Eloquent model.
      * If set to "false", then a new slug could duplicate one that exists on a trashed model.
@@ -94,7 +94,7 @@ return [
 
     'includeTrashed' => false,
 
-    /**
+    /*
      * An array of slug names that can never be used for this model,
      * e.g. to prevent collisions with existing routes or controller methods, etc..
      * Defaults to null (i.e. no reserved names).
@@ -120,7 +120,7 @@ return [
 
     'reserved' => null,
 
-    /**
+    /*
      * Whether to update the slug value when a model is being
      * re-saved (i.e. already exists).  Defaults to false, which
      * means slugs are not updated.

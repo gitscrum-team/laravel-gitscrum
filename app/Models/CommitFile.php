@@ -1,18 +1,16 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CommitFile extends Model {
-
+class CommitFile extends Model
+{
     /**
      * The database table used by the model.
      *
@@ -54,6 +52,7 @@ class CommitFile extends Model {
     public function totalLines()
     {
         $total = preg_split('/\R/', $this->raw);
+
         return count($total);
     }
 
@@ -81,5 +80,4 @@ class CommitFile extends Model {
     {
         return $this->morphMany('GitScrum\Comment', 'commentable');
     }
-
 }

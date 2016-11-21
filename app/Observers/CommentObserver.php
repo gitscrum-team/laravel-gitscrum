@@ -1,12 +1,10 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Observers;
 
 use GitScrum\Models\Status;
@@ -15,7 +13,6 @@ use Auth;
 
 class CommentObserver
 {
-
     public function creating(Comment $comment)
     {
         $comment->user_id = Auth::user()->id;
@@ -23,7 +20,6 @@ class CommentObserver
 
     public function created(Comment $comment)
     {
-        (new Status)->track( 'comment', $comment );
+        (new Status())->track('comment', $comment);
     }
-
 }

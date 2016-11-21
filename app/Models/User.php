@@ -1,24 +1,20 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-
 use GitScrum\Classes\Helper;
 use Carbon\Carbon;
 use Auth;
 
-class User extends Authenticatable{
-
+class User extends Authenticatable
+{
     /**
      * The database table used by the model.
      *
@@ -32,13 +28,13 @@ class User extends Authenticatable{
      * @var array
      */
     protected $fillable = ['github_id', 'username', 'name', 'avatar', 'html_url', 'email',
-        'bio', 'location', 'blog', 'since', 'token', 'main_repository', 'position_held'];
+        'bio', 'location', 'blog', 'since', 'token', 'main_repository', 'position_held', ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
+     /**
+      * The attributes excluded from the model's JSON form.
+      *
+      * @var array
+      */
      protected $hidden = ['password', 'remember_token'];
 
     /**
@@ -63,7 +59,6 @@ class User extends Authenticatable{
         return $this->belongsToMany(\GitScrum\Models\Organization::class, 'users_has_organizations')
             ->withTimestamps();
     }
-
 
     public function organizationActive()
     {
@@ -98,25 +93,25 @@ class User extends Authenticatable{
 
     public function labels($feature)
     {
-        return $this->{$feature}->map(function($obj){
+        return $this->{$feature}->map(function ($obj) {
             return $obj->labels;
         })->flatten(1)->unique('id');
     }
 
     public function productBacklogs($product_backlog_id = null)
     {
-        return $this->organizations->map(function($organization) use ($product_backlog_id){
+        return $this->organizations->map(function ($organization) use ($product_backlog_id) {
             $obj = $organization->productBacklog()
                 ->with('sprints')
                 ->with('favorite')
                 ->with('organization')
                 ->with('issues')->get();
 
-            if ( !is_null($product_backlog_id) )
+            if (!is_null($product_backlog_id)) {
                 $obj = $obj->where('id', '=', $product_backlog_id);
+            }
 
             return $obj;
-
         })->flatten(1);
     }
 
@@ -138,10 +133,9 @@ class User extends Authenticatable{
         $arr = [];
         $arr[$previous] = $total;
 
-        foreach ($dates as $date => $value)
-        {
+        foreach ($dates as $date => $value) {
             $closed = $issues()->whereDate('closed_at', '=', $date)->count();
-            $totalPrevious =  $total - $arr[$previous];
+            $totalPrevious = $total - $arr[$previous];
             $arr[$date] = $total - ($closed + $totalPrevious);
             $previous = $date;
         }
@@ -151,7 +145,7 @@ class User extends Authenticatable{
 
     public function team()
     {
-        return $this->organizations->map(function($obj){
+        return $this->organizations->map(function ($obj) {
             return $obj->users;
         })->flatten(1)->unique('id');
         //->where('id', '!=', Auth::user()->id);
@@ -159,9 +153,8 @@ class User extends Authenticatable{
 
     public function activities()
     {
-        return $this->team()->map(function($obj){
+        return $this->team()->map(function ($obj) {
             return $obj->statuses;
         })->flatten(1)->sortByDesc('id')->take(6);
     }
-
 }

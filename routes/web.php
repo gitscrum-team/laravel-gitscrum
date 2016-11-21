@@ -16,10 +16,10 @@ Route::get('/dashboard', 'UserController@dashboard')->name('user.dashboard');
 Route::get('/profile/{username}', 'UserController@show')->name('user.profile');
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::get('/register','Auth\AuthController@register')->name('auth.register');
-    Route::get('/login','Auth\AuthController@login')->name('auth.login');
-    Route::get('/dologin','Auth\AuthController@dologin')->name('auth.dologin');
-    Route::get('/github','Auth\AuthController@redirectToProvider')->name('auth.github');
+    Route::get('/register', 'Auth\AuthController@register')->name('auth.register');
+    Route::get('/login', 'Auth\AuthController@login')->name('auth.login');
+    Route::get('/dologin', 'Auth\AuthController@dologin')->name('auth.dologin');
+    Route::get('/github', 'Auth\AuthController@redirectToProvider')->name('auth.github');
     Route::get('/github/callback', 'Auth\AuthController@handleProviderCallback');
 });
 
@@ -93,12 +93,12 @@ Route::group(['prefix' => 'label'], function () {
 });
 
 Route::group(['prefix' => 'favorite'], function () {
-    Route::get('/store/{type}/{id}', ['uses' => 'FavoriteController@store','as'=>'favorite.store']);
-    Route::get('/destroy/{type}/{id}', ['uses' => 'FavoriteController@destroy','as'=>'favorite.destroy']);
+    Route::get('/store/{type}/{id}', ['uses' => 'FavoriteController@store', 'as' => 'favorite.store']);
+    Route::get('/destroy/{type}/{id}', ['uses' => 'FavoriteController@destroy', 'as' => 'favorite.destroy']);
 });
 
 Route::group(['prefix' => 'team'], function () {
-    Route::get('/list', ['uses' => 'TeamController@index','as'=>'team.index']);
+    Route::get('/list', ['uses' => 'TeamController@index', 'as' => 'team.index']);
 });
 
 Auth::routes();

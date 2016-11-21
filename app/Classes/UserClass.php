@@ -1,21 +1,19 @@
-<?php namespace GitScrum\Classes;
+<?php
 
-use Auth;
+namespace GitScrum\Classes;
+
 use GitScrum\Models\User;
 
-class UserClass {
-
+class UserClass
+{
     public function save($data)
     {
+        $userReturn = $user = User::where('github_id', '=', $data['github_id'])->first();
 
-        $userReturn= $user = User::where('github_id','=', $data['github_id'])->first();
-        
-        if($user === null){
+        if ($user === null) {
             return User::create($data);
         } else {
             return $userReturn;
         }
-
     }
-
 }

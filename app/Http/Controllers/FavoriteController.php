@@ -1,15 +1,11 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Controllers;
-
-use Illuminate\Http\Request;
 
 use GitScrum\Models\Favorite;
 use Auth;
@@ -29,7 +25,6 @@ class FavoriteController extends Controller
 
     public function destroy($type, $id)
     {
-
         $favorite = Favorite::where('favoriteable_id', $id)
             ->where('favoriteable_type', $type)
             ->where('user_id', Auth::user()->id)->first();

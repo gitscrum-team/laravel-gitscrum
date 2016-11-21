@@ -1,22 +1,19 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use GitScrum\Classes\Helper;
-use Auth;
 
-class Sprint extends Model{
-
+class Sprint extends Model
+{
     use SoftDeletes;
 
     /**
@@ -31,8 +28,8 @@ class Sprint extends Model{
      *
      * @var array
      */
-    protected $fillable = [ 'user_id', 'product_backlog_id', 'slug', 'title', 'description', 'version',
-        'is_private', 'date_start', 'date_finish', 'state', 'color', 'position', 'closed_at'];
+    protected $fillable = ['user_id', 'product_backlog_id', 'slug', 'title', 'description', 'version',
+        'is_private', 'date_start', 'date_finish', 'state', 'color', 'position', 'closed_at', ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -72,7 +69,7 @@ class Sprint extends Model{
     public function issuesHasUsers()
     {
         $users = $this->issues->map(function ($issue) {
-                return $issue->users;
+            return $issue->users;
         })->reject(function ($value) {
             return $value == null;
         })->flatten(1)->unique('id')->splice(0, 3);
@@ -110,8 +107,9 @@ class Sprint extends Model{
     public function pullrequests()
     {
         $prs = $this->branches->map(function ($branch) {
-            if($branch->pullrequests->count())
+            if ($branch->pullrequests->count()) {
                 return $branch->pullrequests;
+            }
         })->reject(function ($value) {
             return $value == null;
         });
@@ -122,7 +120,7 @@ class Sprint extends Model{
     public function getPercentComplete()
     {
         $total = $this->issues->count();
-        $totalClosed = $total-$this->issues->where('closed_at', NULL)->count();
+        $totalClosed = $total - $this->issues->where('closed_at', null)->count();
 
         return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
     }
@@ -130,16 +128,16 @@ class Sprint extends Model{
     public function notesPercentComplete()
     {
         $total = $this->notes->count();
-        $totalClosed = $total-$this->notes->where('completed_at', NULL)->count();
+        $totalClosed = $total - $this->notes->where('completed_at', null)->count();
 
         return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
     }
 
     public function totalAdditions()
     {
-        $additions = $this->branches->map(function($branch) {
+        $additions = $this->branches->map(function ($branch) {
             return $branch->commits;
-        })->flatten(1)->map(function($commit){
+        })->flatten(1)->map(function ($commit) {
             return $commit->files;
         })->flatten(1)->sum('additions');
 
@@ -183,8 +181,7 @@ class Sprint extends Model{
         $begin = Carbon::parse(is_null($start) ? $this->attributes['date_start'] : $start);
         $end = Carbon::parse($this->attributes['date_finish']);
 
-        return round($begin->diffInDays($end)/7);
-
+        return round($begin->diffInDays($end) / 7);
     }
 
     public function getPSR2Errors()
@@ -205,12 +202,14 @@ class Sprint extends Model{
     public function getEffort()
     {
         $effort = $this->issues->sum('effort');
+
         return $effort;
     }
 
     public function avgEffort()
     {
-        $effort = round($this->issues->avg('effort'),2);
+        $effort = round($this->issues->avg('effort'), 2);
+
         return $effort;
     }
 
@@ -218,8 +217,8 @@ class Sprint extends Model{
     {
         $helper = new Helper();
         $total = $this->issues->count();
-        $finished = (Carbon::now()>$this->attributes['date_finish'])?Carbon::now():$this->attributes['date_finish'];
-        $finished = (is_null($this->attributes['closed_at']))?$finished:$this->attributes['closed_at'];
+        $finished = (Carbon::now() > $this->attributes['date_finish']) ? Carbon::now() : $this->attributes['date_finish'];
+        $finished = (is_null($this->attributes['closed_at'])) ? $finished : $this->attributes['closed_at'];
 
         $dates = $helper->arrayDateRange([$this->attributes['date_start'], $finished], $total);
 
@@ -227,10 +226,9 @@ class Sprint extends Model{
         $arr = [];
         $arr[$previous] = $total;
 
-        foreach ($dates as $date => $value)
-        {
+        foreach ($dates as $date => $value) {
             $closed = $this->issues()->whereDate('closed_at', '=', $date)->count();
-            $totalPrevious =  $total - $arr[$previous];
+            $totalPrevious = $total - $arr[$previous];
             $arr[$date] = $total - ($closed + $totalPrevious);
             $previous = $date;
         }
@@ -241,11 +239,11 @@ class Sprint extends Model{
     public function activities()
     {
         $activities = $this->issues()
-            ->with('statuses')->get()->map(function($issue){
+            ->with('statuses')->get()->map(function ($issue) {
                 return $issue->statuses;
-        })->flatten(1)->map(function($statuses){
-            return $statuses;
-        })->sortByDesc('created_at');
+            })->flatten(1)->map(function ($statuses) {
+                return $statuses;
+            })->sortByDesc('created_at');
 
         $activities->splice(15);
 
@@ -254,15 +252,15 @@ class Sprint extends Model{
 
     public function issueTypes()
     {
-        $types = $this->issues->map(function($issue){
+        $types = $this->issues->map(function ($issue) {
             return $issue->type;
-        })->groupBy('slug')->map(function($type) {
+        })->groupBy('slug')->map(function ($type) {
             return [
                 'sprint' => $this->slug,
                 'slug' => $type->first()->slug,
                 'title' => $type->first()->title,
                 'color' => $type->first()->color,
-                'total' => $type->count()];
+                'total' => $type->count(), ];
         })->sortByDesc('total')->all();
 
         return $types;
@@ -270,7 +268,7 @@ class Sprint extends Model{
 
     public function issueStatus()
     {
-        $status = $this->issues->map(function($issue){
+        $status = $this->issues->map(function ($issue) {
             return $issue->status;
         })->groupBy('slug')->all();
 
@@ -279,7 +277,6 @@ class Sprint extends Model{
 
     public function getVisibilityAttribute()
     {
-        return $this->attributes['is_private']?_('Private'):_('Public');
+        return $this->attributes['is_private'] ? _('Private') : _('Public');
     }
-
 }

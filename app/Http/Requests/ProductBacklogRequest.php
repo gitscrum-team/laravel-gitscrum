@@ -1,12 +1,10 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -47,7 +45,7 @@ class ProductBacklogRequest extends FormRequest
             'title.required' => 'A title is required',
             'title.min' => 'A title - min',
             'title.max' => 'A title - max',
-            'description.required'  => 'A message is required',
+            'description.required' => 'A message is required',
         ];
     }
 }

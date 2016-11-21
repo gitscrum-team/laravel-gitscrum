@@ -1,21 +1,17 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use GitScrum\Classes\Helper;
-use Auth;
 
-class ProductBacklog extends Model {
-
+class ProductBacklog extends Model
+{
     use SoftDeletes;
 
     /**
@@ -32,7 +28,7 @@ class ProductBacklog extends Model {
      */
     protected $fillable = ['github_id', 'organization_id', 'slug', 'title', 'description',
         'fullname', 'private', 'html_url', 'description', 'fork', 'url', 'since', 'pushed_at',
-        'git_url', 'ssh_url', 'clone_url', 'homepage', 'default_branch'];
+        'git_url', 'ssh_url', 'clone_url', 'homepage', 'default_branch', ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -63,7 +59,8 @@ class ProductBacklog extends Model {
         return $this->hasMany(\GitScrum\Models\Sprint::class, 'product_backlog_id', 'id');
     }
 
-    public function issues() {
+    public function issues()
+    {
         return $this->hasMany(\GitScrum\Models\Issue::class, 'product_backlog_id', 'id')
             ->orderby('position', 'ASC');
     }
@@ -98,14 +95,13 @@ class ProductBacklog extends Model {
     public function notesPercentComplete()
     {
         $total = $this->notes->count();
-        $totalClosed = $total-$this->notes->where('closed_at', NULL)->count();
+        $totalClosed = $total - $this->notes->where('closed_at', null)->count();
 
         return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
     }
 
     public function getVisibilityAttribute()
     {
-        return $this->attributes['is_private']?_('Private'):_('Public');
+        return $this->attributes['is_private'] ? _('Private') : _('Public');
     }
-
 }

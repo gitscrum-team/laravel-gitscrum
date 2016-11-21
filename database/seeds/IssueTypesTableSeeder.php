@@ -4,23 +4,17 @@ use Illuminate\Database\Seeder;
 
 class IssueTypesTableSeeder extends Seeder
 {
-
     /**
-     * Auto generated seed file
-     *
-     * @return void
+     * Auto generated seed file.
      */
     public function run()
     {
-        
-
         \DB::table('issue_types')->delete();
-        
-        \DB::table('issue_types')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('issue_types')->insert(array(
+            0 => array(
                 'id' => 1,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'new-feature',
                 'code' => 'NFEA',
                 'title' => 'New Feature ',
@@ -29,10 +23,9 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 4,
                 'enabled' => 1,
             ),
-            1 => 
-            array (
+            1 => array(
                 'id' => 2,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'bug',
                 'code' => 'BUG',
                 'title' => 'Bug',
@@ -41,10 +34,9 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 1,
                 'enabled' => 1,
             ),
-            2 => 
-            array (
+            2 => array(
                 'id' => 3,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'task',
                 'code' => 'TASK',
                 'title' => 'Task',
@@ -53,10 +45,9 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 2,
                 'enabled' => 1,
             ),
-            3 => 
-            array (
+            3 => array(
                 'id' => 4,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'improvement',
                 'code' => 'IMPR',
                 'title' => 'Improvement',
@@ -65,10 +56,9 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 0,
                 'enabled' => 1,
             ),
-            4 => 
-            array (
+            4 => array(
                 'id' => 5,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'support-request ',
                 'code' => 'SRES',
                 'title' => 'Support Request',
@@ -77,10 +67,9 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 0,
                 'enabled' => 1,
             ),
-            5 => 
-            array (
+            5 => array(
                 'id' => 6,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'third-party-issue ',
                 'code' => 'TPAR',
                 'title' => 'Third-party issue ',
@@ -89,10 +78,9 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 0,
                 'enabled' => 1,
             ),
-            6 => 
-            array (
+            6 => array(
                 'id' => 7,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'request ',
                 'code' => 'REQU',
                 'title' => 'Request ',
@@ -101,22 +89,20 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 0,
                 'enabled' => 1,
             ),
-            7 => 
-            array (
+            7 => array(
                 'id' => 8,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'feedback',
                 'code' => 'FBAC',
                 'title' => 'Feedback',
-                'description' => NULL,
+                'description' => null,
                 'color' => '8A65AE',
                 'position' => 0,
                 'enabled' => 1,
             ),
-            8 => 
-            array (
+            8 => array(
                 'id' => 9,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'customer-problem',
                 'code' => 'CUST',
                 'title' => 'Customer Problem ',
@@ -125,22 +111,20 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 0,
                 'enabled' => 1,
             ),
-            9 => 
-            array (
+            9 => array(
                 'id' => 10,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'infrastructure',
                 'code' => 'INFR',
                 'title' => 'Infrastructure',
-                'description' => NULL,
+                'description' => null,
                 'color' => 'CD6AA9',
                 'position' => 0,
                 'enabled' => 1,
             ),
-            10 => 
-            array (
+            10 => array(
                 'id' => 11,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'marketing-request',
                 'code' => 'MARK',
                 'title' => 'Marketing Request',
@@ -149,34 +133,31 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 0,
                 'enabled' => 1,
             ),
-            11 => 
-            array (
+            11 => array(
                 'id' => 12,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'documentation',
                 'code' => 'DOCU',
                 'title' => 'Documentation',
-                'description' => NULL,
+                'description' => null,
                 'color' => '008AD5',
                 'position' => 0,
                 'enabled' => 1,
             ),
-            12 => 
-            array (
+            12 => array(
                 'id' => 13,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'experiment',
                 'code' => 'EXPE',
                 'title' => 'Experiment',
-                'description' => NULL,
+                'description' => null,
                 'color' => 'E66524',
                 'position' => 0,
                 'enabled' => 1,
             ),
-            13 => 
-            array (
+            13 => array(
                 'id' => 14,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'ux',
                 'code' => 'UX',
                 'title' => 'UX',
@@ -185,22 +166,20 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 0,
                 'enabled' => 1,
             ),
-            14 => 
-            array (
+            14 => array(
                 'id' => 15,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'testing-task',
                 'code' => 'TEST',
                 'title' => 'Testing Task',
-                'description' => NULL,
+                'description' => null,
                 'color' => 'B32929',
                 'position' => 0,
                 'enabled' => 1,
             ),
-            15 => 
-            array (
+            15 => array(
                 'id' => 16,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'event',
                 'code' => 'EVEN',
                 'title' => 'Event',
@@ -209,10 +188,9 @@ class IssueTypesTableSeeder extends Seeder
                 'position' => 0,
                 'enabled' => 1,
             ),
-            16 => 
-            array (
+            16 => array(
                 'id' => 17,
-                'parent_id' => NULL,
+                'parent_id' => null,
                 'slug' => 'qa-task ',
                 'code' => 'QATA',
                 'title' => 'QA Task',
@@ -222,7 +200,5 @@ class IssueTypesTableSeeder extends Seeder
                 'enabled' => 1,
             ),
         ));
-        
-        
     }
 }

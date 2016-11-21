@@ -1,22 +1,17 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use GitScrum\Models\ConfigStatus;
-use GitScrum\Classes\Helper;
-use Auth;
 
-class Note extends Model{
-
+class Note extends Model
+{
     use SoftDeletes;
 
     /**
@@ -32,7 +27,7 @@ class Note extends Model{
      * @var array
      */
     protected $fillable = ['noteable_type', 'noteable_id', 'user_id',
-        'slug', 'title', 'position', 'closed_at'];
+        'slug', 'title', 'position', 'closed_at', ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -81,5 +76,4 @@ class Note extends Model{
         return ConfigStatus::where('type', '=', 'note')
             ->where('default', '=', 1)->first()->id;
     }
-
 }

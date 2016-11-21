@@ -1,17 +1,13 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use GitScrum\Classes\Helper;
-use Auth;
 
 class UserStory extends Model
 {
@@ -89,7 +85,7 @@ class UserStory extends Model
     public function getPercentComplete()
     {
         $total = $this->issues->count();
-        $totalClosed = $total-$this->issues->where('closed_at', NULL)->count();
+        $totalClosed = $total - $this->issues->where('closed_at', null)->count();
 
         return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
     }
@@ -97,11 +93,11 @@ class UserStory extends Model
     public function activities()
     {
         $activities = $this->issues()
-            ->with('statuses')->get()->map(function($issue){
+            ->with('statuses')->get()->map(function ($issue) {
                 return $issue->statuses;
-        })->flatten(1)->map(function($statuses){
-            return $statuses;
-        })->sortByDesc('created_at');
+            })->flatten(1)->map(function ($statuses) {
+                return $statuses;
+            })->sortByDesc('created_at');
 
         $activities->splice(15);
 
@@ -111,7 +107,7 @@ class UserStory extends Model
     public function issuesHasUsers($total = 3)
     {
         $users = $this->issues->map(function ($issue) {
-                return $issue->users;
+            return $issue->users;
         })->reject(function ($value) {
             return $value == null;
         })->flatten(1)->unique('id')->splice(0, $total);
@@ -121,7 +117,7 @@ class UserStory extends Model
 
     public function issueStatus()
     {
-        $status = $this->issues->map(function($issue){
+        $status = $this->issues->map(function ($issue) {
             return $issue->status;
         })->groupBy('slug')->all();
 
@@ -131,9 +127,8 @@ class UserStory extends Model
     public function notesPercentComplete()
     {
         $total = $this->notes->count();
-        $totalClosed = $total-$this->notes->where('closed_at', NULL)->count();
+        $totalClosed = $total - $this->notes->where('closed_at', null)->count();
 
         return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
     }
-
 }

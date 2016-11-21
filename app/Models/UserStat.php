@@ -1,18 +1,16 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserStat extends Model {
-
+class UserStat extends Model
+{
     /**
      * The database table used by the model.
      *
@@ -40,5 +38,4 @@ class UserStat extends Model {
      * @var array
      */
     protected $casts = [];
-
 }

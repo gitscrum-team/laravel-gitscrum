@@ -1,24 +1,19 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use GitScrum\Http\Requests;
 use GitScrum\Classes\Github;
 use GitScrum\Models\User;
 use Auth;
 
 class UserController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +23,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $github = new Github;
+        $github = new Github();
         $github->repositories();
 
         return view('users.dashboard')
@@ -38,6 +33,7 @@ class UserController extends Controller
     public function issues()
     {
         $user = Auth::user();
+
         return view('users.dashboard')
                 ->with('user', $user);
     }
@@ -49,8 +45,6 @@ class UserController extends Controller
      */
     public function index()
     {
-
-
     }
 
     /**
@@ -60,24 +54,24 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($username)
@@ -92,34 +86,34 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
     }
 }

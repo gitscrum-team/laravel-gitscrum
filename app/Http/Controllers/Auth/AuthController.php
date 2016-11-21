@@ -1,12 +1,10 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Controllers\Auth;
 
 use GitScrum\Http\Requests\AuthRequest;
@@ -19,7 +17,6 @@ use Auth;
 
 class AuthController extends Controller
 {
-
     protected $redirectTo = '/home';
 
     public function login()
@@ -29,17 +26,14 @@ class AuthController extends Controller
 
     public function doLogin(AuthRequest $request)
     {
-
     }
 
     public function register()
     {
-
     }
 
     public function doRegister()
     {
-
     }
 
     public function redirectToProvider()
@@ -63,9 +57,9 @@ class AuthController extends Controller
             'blog' => $user->user['blog'],
             'email' => $user->email,
         ];
-        $UserClass = new UserClass;
+        $UserClass = new UserClass();
         Auth::loginUsingId($UserClass->save($data)->id);
-        return redirect()->route('user.dashboard');
 
+        return redirect()->route('user.dashboard');
     }
 }

@@ -1,25 +1,18 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use GitScrum\Models\ConfigStatus;
-use GitScrum\Models\Sprint;
-use GitScrum\Models\Status;
 use Carbon\Carbon;
-use GitScrum\Classes\Helper;
-use Auth;
 
-class Issue extends Model {
-
+class Issue extends Model
+{
     use SoftDeletes;
 
     /**
@@ -36,7 +29,7 @@ class Issue extends Model {
      */
     protected $fillable = ['issue_effort_id', 'issue_type_id', 'github_id', 'user_id', 'product_backlog_id',
         'branch_id', 'sprint_id', 'user_story_id', 'number', 'effort', 'slug', 'code', 'title', 'description', 'state',
-        'config_status_id', 'position', 'is_planning_poker', 'closed_user_id', 'closed_at'];
+        'config_status_id', 'position', 'is_planning_poker', 'closed_user_id', 'closed_at', ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -150,7 +143,7 @@ class Issue extends Model {
     public function notesPercentComplete()
     {
         $total = $this->notes->count();
-        $totalClosed = $total-$this->notes->where('closed_at', NULL)->count();
+        $totalClosed = $total - $this->notes->where('closed_at', null)->count();
 
         return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
     }
@@ -159,5 +152,4 @@ class Issue extends Model {
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$dateField])->diffForHumans();
     }
-
 }

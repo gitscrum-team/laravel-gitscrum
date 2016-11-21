@@ -1,12 +1,10 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -35,7 +33,7 @@ class SprintRequest extends FormRequest
             'title' => 'required|min:5|max:255',
             'description' => 'required',
             'date_start' => 'required',
-            'date_finish' => 'required'
+            'date_finish' => 'required',
         ];
     }
 
@@ -50,7 +48,7 @@ class SprintRequest extends FormRequest
             'title.required' => 'A title is required',
             'title.min' => 'A title - min',
             'title.max' => 'A title - max',
-            'description.required'  => 'A message is required',
+            'description.required' => 'A message is required',
         ];
     }
 
@@ -59,8 +57,8 @@ class SprintRequest extends FormRequest
         $data = $this->all();
 
         $date = explode(' - ', $data['daterange']);
-        $data['date_start'] = !empty($date[0])?Carbon::createFromFormat('Y-m-d', trim($date[0]))->toDateString():null;
-        $data['date_finish'] = !empty($date[1])?Carbon::createFromFormat('Y-m-d', trim($date[1]))->toDateString():null;
+        $data['date_start'] = !empty($date[0]) ? Carbon::createFromFormat('Y-m-d', trim($date[0]))->toDateString() : null;
+        $data['date_finish'] = !empty($date[1]) ? Carbon::createFromFormat('Y-m-d', trim($date[1]))->toDateString() : null;
         unset($data['daterange']);
         $this->getInputSource()->replace($data);
 

@@ -1,23 +1,18 @@
 <?php
 /**
- * GitScrum v0.1
+ * GitScrum v0.1.
  *
- * @package  GitScrum
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
-
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use GitScrum\Models\ConfigStatus;
-use Auth;
 use Carbon\Carbon;
 
-
-class Status extends Model {
-
+class Status extends Model
+{
     use SoftDeletes;
     /**
      * The database table used by the model.
@@ -54,7 +49,9 @@ class Status extends Model {
         parent::boot();
     }
 
-    public function setUpdatedAtAttribute($value){}
+    public function setUpdatedAtAttribute($value)
+    {
+    }
 
     public function user()
     {
@@ -77,23 +74,22 @@ class Status extends Model {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->diffForHumans();
     }
 
-    public function track( $alias, $model ){
-
-        if (!isset($model->config_status_id)){
+    public function track($alias, $model)
+    {
+        if (!isset($model->config_status_id)) {
             $model->config_status_id = ConfigStatus::where('type', '=', $alias)
                 ->where('default', '=', 1)->first()->id;
         }
 
         $this->create([
-            'statusesable_type'=> $alias,
+            'statusesable_type' => $alias,
             'statusesable_id' => $model->id,
             'config_status_id' => $model->config_status_id,
-            'user_id' => $model->user_id ]);
+            'user_id' => $model->user_id, ]);
     }
 
     public function statusesable()
     {
         return $this->morphTo();
     }
-
 }
