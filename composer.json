@@ -20,7 +20,9 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*"
+        "symfony/dom-crawler": "3.1.*",
+        "way/generators": "dev-feature/laravel-five-stable",
+        "xethron/migrations-generator": "^2.0"
     },
     "autoload": {
         "classmap": [
@@ -57,8 +59,8 @@
     },
     "repositories": {
         "repo-name": {
-            "type": "git",
-            "url": "git@github.com:jamisonvalenta/Laravel-4-Generators.git"
+            "type": "vcs",
+            "url": "https://github.com/jamisonvalenta/Laravel-4-Generators.git"
         }
     }
 }
