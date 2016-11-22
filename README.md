@@ -66,17 +66,21 @@ php artisan migrate --seed
 
 ## Screnshots
 
-![Screenshot 1](http://i.imgur.com/pMZuwH0.png)
+![Screenshot 0](http://i.imgur.com/ilTVf38.png)
 
-![Screenshot 2](http://i.imgur.com/pRByX5K.png)
+![Screenshot 1](http://i.imgur.com/FI30wl5.png)
 
-![Screenshot 3](http://i.imgur.com/mgJGNlA.png)
+![Screenshot 2](http://i.imgur.com/pMZuwH0.png)
 
-![Screenshot 4](http://i.imgur.com/isbTvHr.png)
+![Screenshot 3](http://i.imgur.com/pRByX5K.png)
 
-![Screenshot 5](http://i.imgur.com/BIZtoq4.png)
+![Screenshot 4](http://i.imgur.com/mgJGNlA.png)
 
-![Screenshot 6](http://i.imgur.com/xnJeaIq.png)
+![Screenshot 5](http://i.imgur.com/isbTvHr.png)
+
+![Screenshot 6](http://i.imgur.com/BIZtoq4.png)
+
+![Screenshot 7](http://i.imgur.com/xnJeaIq.png)
 
 ## License
 
