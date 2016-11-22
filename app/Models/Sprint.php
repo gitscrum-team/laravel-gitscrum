@@ -279,4 +279,9 @@ class Sprint extends Model
     {
         return $this->attributes['is_private'] ? _('Private') : _('Public');
     }
+
+    public function getSlugAttribute()
+    {
+        return isset($this->attributes['slug']) ? $this->attributes['slug'] : '';    
+    }
 }
