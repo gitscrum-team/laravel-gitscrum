@@ -116,8 +116,7 @@ class SprintController extends Controller
      */
     public function edit($slug)
     {
-        $sprint = Sprint::where('product_backlog_id', Auth::user()->main_repository)
-            ->where('slug', '=', $slug)->first();
+        $sprint = Sprint::where('slug', '=', $slug)->first();
 
         return view('sprints.edit')
             ->with('action', 'Edit')
@@ -134,8 +133,7 @@ class SprintController extends Controller
      */
     public function update(SprintRequest $request, $slug)
     {
-        $sprint = Sprint::where('product_backlog_id', Auth::user()->main_repository)
-            ->where('slug', '=', $slug)->first();
+        $sprint = Sprint::where('slug', '=', $slug)->first();
         $sprint->update($request->all());
 
         return redirect()->route('sprints.show', ['slug' => $sprint->slug])

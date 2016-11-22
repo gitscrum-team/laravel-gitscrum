@@ -15,8 +15,8 @@
         <div class="btn-group">
             <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-outline btn-primary font-bold"
-                data-toggle="modal" data-target="#gs-modal">
-                <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Sprint')}}</a>
+                data-toggle="modal" data-target="#modalLarge">
+                <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Sprint Backlog')}}</a>
             <a href="{{route('user_stories.edit', ['slug' => $sprint->slug])}}"
                 class="btn btn-sm btn-outline btn-primary font-bold">
                 <i class="fa fa-trash" aria-hidden="true"></i></a>
@@ -40,7 +40,7 @@
 
                 <a href="{{route('issues.create', ['slug'=>$sprint->slug])}}"
                     class="font-bold btn btn-w-m btn-block btn-primary btn-outline"
-                    data-toggle="modal" data-target="#gs-modal"><strong>{{_('Create Issue')}}</strong></a>
+                    data-toggle="modal" data-target="#modalLarge"><strong>{{_('Create Issue')}}</strong></a>
             </div>
 
             @include('partials.boxes.chart-donut', ['list' => $sprint->issueStatus()])

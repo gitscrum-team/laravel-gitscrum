@@ -14,7 +14,7 @@
                 {{_('Mode Calendar')}}</a>
             <a href="{{route('sprints.create')}}"
                 class="btn btn-sm btn-outline btn-primary font-bold"
-                data-toggle="modal" data-target="#gs-modal">{{_('Create Sprint Backlog')}}</a>
+                data-toggle="modal" data-target="#modalLarge">{{_('Create Sprint Backlog')}}</a>
         </div>
     </div>
 </div>

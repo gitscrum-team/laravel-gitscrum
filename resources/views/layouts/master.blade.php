@@ -168,8 +168,10 @@
         </div>
     </div>
 
-    <div class="modal" id="gs-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content"></div>
+    <div class="modal" id="modalLarge" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content"></div>
+        </div>
     </div>
 
     @include('partials.boxes.bug-report')

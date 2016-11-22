@@ -15,7 +15,7 @@
         <div class="btn-group">
             <a href="{{route('product_backlogs.edit', ['slug' => $productBacklog->slug])}}"
                 class="btn btn-sm btn-outline btn-primary font-bold"
-                data-toggle="modal" data-target="#gs-modal">
+                data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Product Backlog')}}</a>
         </div>
     </div>
@@ -32,10 +32,10 @@
         <div class="ibox-content">
             <a href="{{route('user_stories.create', ['slug_user_story' => $productBacklog->slug])}}"
                 class="btn btn-block btn-outline btn-primary font-bold m-t-sm"
-                data-toggle="modal" data-target="#gs-modal">{{_('Create User Story')}}</a>
+                data-toggle="modal" data-target="#modalLarge">{{_('Create User Story')}}</a>
             <a href="{{route('sprints.create', ['slug_product_backlog' => $productBacklog->slug])}}"
                 class="btn  btn-block btn-outline btn-primary font-bold"
-                data-toggle="modal" data-target="#gs-modal">
+                data-toggle="modal" data-target="#modalLarge">
                 {{_('Create Sprint')}}</a>
         </div>
 

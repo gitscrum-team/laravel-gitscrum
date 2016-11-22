@@ -14,7 +14,8 @@
         &nbsp;&nbsp;
         <div class="btn-group">
             <a href="{{route('issues.edit', ['slug' => $issue->slug])}}"
-                class="btn btn-sm btn-outline btn-primary font-bold">
+                class="btn btn-sm btn-outline btn-primary font-bold" 
+                data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Issue')}}</a>
             <a href="{{route('issues.destroy', ['slug' => $issue->slug])}}"
                 class="btn btn-sm btn-outline btn-primary font-bold">

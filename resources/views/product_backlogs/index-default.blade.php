@@ -11,7 +11,7 @@
     <div class="col-lg-6 text-right">
         <a href="{{route('product_backlogs.create')}}" class="btn btn-sm btn-outline
             btn-primary font-bold"
-            data-toggle="modal" data-target="#gs-modal">{{_('Create Product Backlog')}}</a>
+            data-toggle="modal" data-target="#modalLarge">{{_('Create Product Backlog')}}</a>
     </div>
 </div>
 

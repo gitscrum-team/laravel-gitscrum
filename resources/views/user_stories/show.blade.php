@@ -15,7 +15,7 @@
         <div class="btn-group">
             <a href="{{route('user_stories.edit', ['slug' => $userStory->slug])}}"
                 class="btn btn-sm btn-outline btn-primary font-bold"
-                data-toggle="modal" data-target="#gs-modal">
+                data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit User Story')}}</a>
             <a href="{{route('user_stories.edit', ['slug' => $userStory->slug])}}"
                 class="btn btn-sm btn-outline btn-primary font-bold">
@@ -35,7 +35,7 @@
         <div class="ibox-content">
             <a href="{{route('issues.create', ['slug_sprint' => '-', 'slug_user_story' => $userStory->slug])}}"
                 class="btn btn-block btn-outline btn-primary m-t-sm font-bold"
-                data-toggle="modal" data-target="#gs-modal">
+                data-toggle="modal" data-target="#modalLarge">
                 {{_('Create Issue')}}</a>
         </div>
 
