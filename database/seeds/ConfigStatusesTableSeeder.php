@@ -4,43 +4,35 @@ use Illuminate\Database\Seeder;
 
 class ConfigStatusesTableSeeder extends Seeder
 {
-
     /**
-     * Auto generated seed file
-     *
-     * @return void
+     * Auto generated seed file.
      */
     public function run()
     {
-        
-
         \DB::table('config_statuses')->delete();
-        
-        \DB::table('config_statuses')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('config_statuses')->insert(array(
+            0 => array(
                 'id' => 1,
                 'slug' => 'todo',
                 'type' => 'issue',
                 'title' => 'Todo',
                 'position' => 1,
                 'color' => 'daa724',
-                'is_closed' => NULL,
+                'is_closed' => null,
                 'default' => 1,
             ),
-            1 => 
-            array (
+            1 => array(
                 'id' => 2,
                 'slug' => 'in-progress',
                 'type' => 'issue',
                 'title' => 'In Progress',
                 'position' => 2,
                 'color' => '079a0d',
-                'is_closed' => NULL,
-                'default' => NULL,
+                'is_closed' => null,
+                'default' => null,
             ),
-            2 => 
-            array (
+            2 => array(
                 'id' => 3,
                 'slug' => 'done',
                 'type' => 'issue',
@@ -48,10 +40,9 @@ class ConfigStatusesTableSeeder extends Seeder
                 'position' => 3,
                 'color' => '3745be',
                 'is_closed' => 1,
-                'default' => NULL,
+                'default' => null,
             ),
-            3 => 
-            array (
+            3 => array(
                 'id' => 4,
                 'slug' => 'archived',
                 'type' => 'issue',
@@ -59,32 +50,29 @@ class ConfigStatusesTableSeeder extends Seeder
                 'position' => 4,
                 'color' => '8c023f',
                 'is_closed' => 1,
-                'default' => NULL,
+                'default' => null,
             ),
-            4 => 
-            array (
+            4 => array(
                 'id' => 5,
                 'slug' => 'updated',
                 'type' => 'note',
                 'title' => 'Updated',
                 'position' => 0,
                 'color' => 'f0f0f0',
-                'is_closed' => NULL,
+                'is_closed' => null,
                 'default' => 1,
             ),
-            5 => 
-            array (
+            5 => array(
                 'id' => 6,
                 'slug' => 'open',
                 'type' => 'sprint',
                 'title' => 'Open',
                 'position' => 1,
                 'color' => '079a0d',
-                'is_closed' => NULL,
+                'is_closed' => null,
                 'default' => 1,
             ),
-            6 => 
-            array (
+            6 => array(
                 'id' => 7,
                 'slug' => 'closed',
                 'type' => 'sprint',
@@ -92,21 +80,18 @@ class ConfigStatusesTableSeeder extends Seeder
                 'position' => 3,
                 'color' => '3745be',
                 'is_closed' => 1,
-                'default' => NULL,
+                'default' => null,
             ),
-            7 => 
-            array (
+            7 => array(
                 'id' => 8,
                 'slug' => 'standby',
                 'type' => 'sprint',
                 'title' => 'Standby',
                 'position' => 2,
                 'color' => '8c023f',
-                'is_closed' => NULL,
-                'default' => NULL,
+                'is_closed' => null,
+                'default' => null,
             ),
         ));
-        
-        
     }
 }

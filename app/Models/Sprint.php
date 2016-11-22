@@ -282,6 +282,6 @@ class Sprint extends Model
 
     public function getSlugAttribute()
     {
-        return isset($this->attributes['slug']) ? $this->attributes['slug'] : '';    
+        return isset($this->attributes['slug']) ? $this->attributes['slug'] : '';
     }
 }

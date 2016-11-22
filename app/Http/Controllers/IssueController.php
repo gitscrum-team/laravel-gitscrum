@@ -161,7 +161,7 @@ class IssueController extends Controller
 
         return view('issues.edit')
             ->with('userStory', $issue->userStory)
-            ->with('slug', isset($issue->sprint->slug)?$issue->sprint->slug:null)
+            ->with('slug', isset($issue->sprint->slug) ? $issue->sprint->slug : null)
             ->with('issue_types', $issue_types)
             ->with('issue_efforts', $issue_efforts)
             ->with('usersByOrganization', $usersByOrganization)
