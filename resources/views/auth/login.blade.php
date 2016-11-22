@@ -12,10 +12,13 @@
                 <br />
 
                 <div class="row">
-                    <a href="{{route('auth.github')}}" class="btn btn-default btn-block">
+                    <a href="{{route('auth.github')}}" class="btn btn-lg btn-success btn-block">
                         <i class="fa fa-github" aria-hidden="true"></i>&nbsp;&nbsp;Login with <strong>Github</strong></a>
                 </div>
 
+                <br />
+
+                <!--
                 <div class="hr-line-dashed"></div>
 
                 <form class="form-horizontal m-t" role="form" method="POST" action="{{route('auth.dologin')}}">
@@ -49,6 +52,7 @@
                     </div>
 
                 </form>
+                -->
                 <p class="m-t"> <small>The GitScrum is licensed under the <a href="http://opensource.org/licenses/GPL-3.0" target="_blank">GPL v3 license</a>.</small> </p>
             </div>
         </div>
