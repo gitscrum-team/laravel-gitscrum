@@ -1,6 +1,31 @@
-# GitScrum
+# Laravel GitScrum
 
-## GitHub Setup
+GitScrum is a Laravel 5.3 application to helps teams use Git version control and the Scrum framework in the support for day-to-day task management.
+
+## Instalation
+
+#### Fork the GitScrum
+
+Make a fork and after clone the git repository
+
+```
+git clone git@github.com/xxxxxxx/xxx.git
+```
+
+Go to the project folder
+
+```
+cd GitScrum
+```
+
+Update composer 
+
+```
+composer update
+```
+
+
+#### GitHub
 
 First, create a new github app, visit [GitHub's New OAuth Application page](https://github.com/settings/applications/new), fill out the form, and grab your client ID, secret and callback URL.
 
@@ -17,9 +42,10 @@ GITHUB_CLIENT_ID=XXXXX
 GITHUB_CLIENT_SECRET=XXXXXXXXXXXXXXXXXX
 ```
 
-## Database Setup
+#### Database
 
 Fill the information in the .env file
+
 ```
 DB_CONNECTION=mysql
 DB_HOST=XXXXXX
@@ -55,3 +81,10 @@ php artisan migrate --seed
 ## License
 
 The GitScrum is licensed under the [GPL v3 license](http://opensource.org/licenses/GPL-3.0).
+
+## Do you need help?
+Renato Marinho: 
+Facebook: https://www.facebook.com/renato.marinho / 
+LinkedIn: https://pt.linkedin.com/in/renatomarinho13 / 
+Skype: renatomarinho13
+
