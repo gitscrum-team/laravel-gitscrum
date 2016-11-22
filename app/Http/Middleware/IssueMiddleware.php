@@ -15,17 +15,18 @@ class IssueMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-
-        try{
-            if( isset($request->slug) )
+        try {
+            if (isset($request->slug)) {
                 Issue::where('slug', $request->slug)->firstOrFail();
-        } catch(\Exception $e){
+            }
+        } catch (\Exception $e) {
             return redirect()->route('user.dashboard');
         }
 
