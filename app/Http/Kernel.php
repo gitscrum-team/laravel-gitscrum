@@ -60,5 +60,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'sprint.expired' => \GitScrum\Http\Middleware\SprintExpired::class,
         'global.activities' => \GitScrum\Http\Middleware\GlobalActivities::class,
+
+        'issue' => \GitScrum\Http\Middleware\IssueMiddleware::class,
     ];
 }

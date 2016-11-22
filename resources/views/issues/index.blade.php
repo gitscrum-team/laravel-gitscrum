@@ -14,7 +14,8 @@
         &nbsp;&nbsp;
         <div class="btn-group">
             <a href="{{route('issues.create', ['slug'=>$sprint->slug])}}"
-                class="btn btn-sm btn-outline btn-primary font-bold">
+                class="btn btn-sm btn-outline btn-primary font-bold" 
+                data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-plus" aria-hidden="true"></i> {{_('Create Issue')}}</a>
             <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-outline btn-primary font-bold">

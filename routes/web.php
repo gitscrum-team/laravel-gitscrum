@@ -36,6 +36,7 @@ Route::group(['prefix' => 'product_backlogs'], function () {
 });
 
 Route::group(['prefix' => 'sprints', 'middleware' => ['sprint.expired', 'global.activities']], function () {
+    Route::get('/planning/{slug}/issues', 'IssueController@index')->name('issues.index');
     Route::get('/list/{mode?}/{slug_product_backlog?}', 'SprintController@index')->name('sprints.index');
     Route::get('/show/{slug}', 'SprintController@show')->name('sprints.show');
     Route::get('/create/{slug_product_backlog?}', 'SprintController@create')->name('sprints.create');
@@ -53,8 +54,7 @@ Route::group(['prefix' => 'user-stories'], function () {
     Route::post('/update/{slug}', 'UserStoryController@update')->name('user_stories.update');
 });
 
-Route::group(['prefix' => 'issues'], function () {
-    Route::get('/sprint-planning/{slug}', 'IssueController@index')->name('issues.index');
+Route::group(['prefix' => 'issues', 'middleware' => ['issue']], function () {
     Route::get('/show/{slug}', 'IssueController@show')->name('issues.show');
     Route::get('/create/{slug_sprint?}/{slug_user_story?}', 'IssueController@create')->name('issues.create');
     Route::post('/store', 'IssueController@store')->name('issues.store');
