@@ -38,7 +38,7 @@ class IssueRequest extends FormRequest
     {
         $data = $this->all();
 
-        if (isset($data['slug_sprint'])) {
+        if (isset($data['slug_sprint']) && !empty($data['slug_sprint'])) {
             $data['sprint_id'] = Sprint::where('slug', '=', $data['slug_sprint'])->first()->id;
             unset($data['slug_sprint']);
         }
