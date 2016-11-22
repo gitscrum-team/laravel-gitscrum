@@ -10,8 +10,10 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get('/', function () {
+    return redirect()->route('auth.login');
+});
 
-Route::resource('users', 'UserController');
 Route::get('/dashboard', 'UserController@dashboard')->name('user.dashboard');
 Route::get('/profile/{username}', 'UserController@show')->name('user.profile');
 
