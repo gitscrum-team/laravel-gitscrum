@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ConfigIssueEffortsTableSeeder::class);
         $this->call(ConfigPrioritiesTableSeeder::class);
         $this->call(IssueTypesTableSeeder::class);
+        $this->call('ConfigStatusesTableSeeder');
     }
 }
