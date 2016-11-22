@@ -17,7 +17,7 @@ use Auth;
 
 class AuthController extends Controller
 {
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     public function login()
     {
