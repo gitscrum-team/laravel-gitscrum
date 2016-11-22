@@ -22,7 +22,7 @@ class GlobalActivities
      */
     public function handle($request, Closure $next)
     {
-        $sprint = Sprint::where('slug', 'credits-and-debits')
+        $sprint = Sprint::where('slug', $request->slug)
             ->with('issues.statuses')
             ->first();
 
