@@ -106,14 +106,14 @@
                                     <span class="font-extra-bold">{{Auth::user()->username}}</span>
                                 </a>
                             </li>
-                            <li><a href="login.html"><i class="fa fa-sign-out"></i></a></li>
+                            <li><a href="{{route('auth.logout')}}"><i class="fa fa-sign-out"></i></a></li>
                         </ul>
                     </div>
                 </nav>
             </div>
 
             <div class="sidebard-panel hidden-md hidden-sm hidden-xs" style="left:0;" >
-                
+
             </div>
 
             <div class="sidebard-panel hidden-md hidden-sm hidden-xs">
