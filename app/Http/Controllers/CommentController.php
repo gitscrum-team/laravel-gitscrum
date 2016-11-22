@@ -29,6 +29,7 @@ class CommentController extends Controller
     {
         $comment = Comment::where('id', $id)
             ->where('user_id', Auth::user()->id)->firstOrFail();
+
         $comment->delete();
 
         return back()->with('success', _('Comment deleted successfully'));

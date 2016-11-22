@@ -55,6 +55,12 @@ class Comment extends Model
         return $this->belongsTo(\GitScrum\Models\User::class, 'user_id', 'id');
     }
 
+    public function statuses()
+    {
+        return $this->morphMany(\GitScrum\Models\Status::class, 'statusesable')
+            ->orderby('created_at', 'DESC');
+    }
+
     public function getDateforhumansAttribute()
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->diffForHumans();

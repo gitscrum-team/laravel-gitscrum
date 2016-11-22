@@ -58,7 +58,7 @@
     <div class="form-group">
         <label class="col-sm-12">{{_('Description')}}</label>
         <div class="col-sm-12">
-            <textarea name="description" type="text" class="form-control" required>{{ $issue->description or '' }}</textarea>
+            <textarea name="description" type="text" class="form-control">{{ $issue->description or '' }}</textarea>
         </div>
     </div>
     <div class="form-group">

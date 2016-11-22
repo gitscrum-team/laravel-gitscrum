@@ -22,4 +22,10 @@ class CommentObserver
     {
         (new Status())->track('comment', $comment);
     }
+
+    public function deleted(Comment $comment)
+    {
+        $statuses = $comment->statuses->first();
+        Status::destroy($statuses->id);
+    }
 }
