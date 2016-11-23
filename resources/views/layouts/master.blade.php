@@ -72,7 +72,7 @@
 
 <body class="top-navigation">
     <div id="wrapper">
-        <div id="page-wrapper">
+        <div id="page-wrapper" class="sidebar-content">
 
             @if ( Auth::check() )
 
@@ -112,10 +112,6 @@
                 </nav>
             </div>
 
-            <div class="sidebard-panel hidden-md hidden-sm hidden-xs" style="left:0;" >
-
-            </div>
-
             <div class="sidebard-panel hidden-md hidden-sm hidden-xs">
 
                 <div class="m-b-md">
@@ -151,8 +147,7 @@
             @endif
 
             <div class="wrapper wrapper-content">
-                <div class="container">
-
+                <div class="row">
                     @yield('breadcrumb')
 
                     <div class="clearfix"></div>
@@ -161,7 +156,6 @@
                     @include('errors.notification-message')
 
                     @yield('content')
-
                 </div>
             </div>
 
