@@ -11,6 +11,7 @@ use GitScrum\Http\Requests\SprintRequest;
 use GitScrum\Models\ProductBacklog;
 use GitScrum\Models\Sprint;
 use Auth;
+use Illuminate\Http\Request;
 
 class SprintController extends Controller
 {
@@ -147,7 +148,17 @@ class SprintController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $sprint = Sprint::where('slug', '=', $request->input('slug'))->first();
+
+        if (!count($sprint)) {
+            return redirect()->route('sprints.index');
+        }
+
+        $sprint->delete();
+
+        return redirect()->route('sprints.index')
+            ->with('success', _('Congratulations! The Sprint has been deleted successfully'));
     }
 }

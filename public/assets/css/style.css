@@ -8393,3 +8393,12 @@ body.md-skin {
 .sidebard-panel .feed-element .media-body  small{
   float:left !important;
 }
+
+.btn-group .form-delete {
+  display: inline;
+}
+
+.btn-group .form-delete button{
+  border-radius: 0;
+  margin-left: -1px;
+}

@@ -43,6 +43,7 @@ Route::group(['prefix' => 'sprints', 'middleware' => ['sprint.expired', 'global.
     Route::post('/store', 'SprintController@store')->name('sprints.store');
     Route::get('/edit/{slug}', 'SprintController@edit')->name('sprints.edit');
     Route::post('/update/{slug}', 'SprintController@update')->name('sprints.update');
+    Route::delete('/destroy', 'SprintController@destroy')->name('sprints.delete');
 });
 
 Route::group(['prefix' => 'user-stories'], function () {
