@@ -64,6 +64,9 @@ php artisan migrate --seed
 ![Screenshot 1](http://i.imgur.com/zdrEkkf.png)
 27 tables
 
+## Use Docker
+Containers to run GitScrum : [php7, nginx and mysql57](https://github.com/renatomarinho/Docker-GitScrum)
+
 ## Screnshots
 
 ![Screenshot 0](http://i.imgur.com/ilTVf38.png)
