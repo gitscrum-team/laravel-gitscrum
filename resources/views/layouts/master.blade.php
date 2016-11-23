@@ -68,11 +68,13 @@
     <script src="/assets/js/plugins/chartJs/Chart.min.js"></script>
     <script src="/assets/js/plugins/sparkline/jquery.sparkline.min.js"></script>
 
+    <link rel="stylesheet" href="{{ asset('/assets/css/plugins/sweetalert/sweetalert.css') }}" />
+
 </head>
 
 <body class="top-navigation">
     <div id="wrapper">
-        <div id="page-wrapper" class="sidebar-content">
+        <div id="page-wrapper" @if ( Auth::check() ) class="sidebar-content" @endif>
 
             @if ( Auth::check() )
 
@@ -174,6 +176,8 @@
         $('.sparkpie').sparkline('html', { type: 'pie', height: '1.0em' });
     </script>
 
+    <script src="{{ asset('/assets/js/plugins/sweetalert/sweetalert.min.js')}}"></script>
+    <script src="{{ asset('/assets/js/gitscrum.js')}}"></script>
 </body>
 
 </html>

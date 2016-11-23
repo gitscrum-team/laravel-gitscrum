@@ -21,7 +21,7 @@
                 <input type="hidden" name="_token" value="{{csrf_token()}}" />
                 <input type="hidden" name="_method" value="DELETE" />
                 <input type="hidden" name="slug" value="{{$sprint->slug}}" />
-                <button class="btn btn-sm btn-outline btn-primary font-bold" type="submit">
+                <button class="btn btn-sm btn-outline btn-primary font-bold btn-submit-form" type="submit">
                     <i class="fa fa-trash" aria-hidden="true"></i></a>
                 </button>
             </form>
