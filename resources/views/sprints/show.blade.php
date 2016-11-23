@@ -17,9 +17,14 @@
                 class="btn btn-sm btn-outline btn-primary font-bold"
                 data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Sprint Backlog')}}</a>
-            <a href="{{route('user_stories.edit', ['slug' => $sprint->slug])}}"
-                class="btn btn-sm btn-outline btn-primary font-bold">
-                <i class="fa fa-trash" aria-hidden="true"></i></a>
+            <form action="{{route('sprints.delete')}}" method="POST" class="form-delete">
+                <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="hidden" name="slug" value="{{$sprint->slug}}" />
+                <button class="btn btn-sm btn-outline btn-primary font-bold" type="submit">
+                    <i class="fa fa-trash" aria-hidden="true"></i></a>
+                </button>
+            </form>
         </div>
     </div>
 </div>
