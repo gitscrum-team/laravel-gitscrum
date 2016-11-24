@@ -31,7 +31,7 @@ First, create a new github app, visit [GitHub's New OAuth Application page](http
 
 ```
 Application name: gitscrum
-Homepage URL: URL
+Homepage URL: URL (Same as APP_URL at .env)
 Application description: gitscrum
 Authorization callback URL: http://URL/auth/github/callback
 ```
