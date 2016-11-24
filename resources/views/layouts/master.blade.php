@@ -68,11 +68,13 @@
     <script src="/assets/js/plugins/chartJs/Chart.min.js"></script>
     <script src="/assets/js/plugins/sparkline/jquery.sparkline.min.js"></script>
 
+    <link rel="stylesheet" href="{{ asset('/assets/css/plugins/sweetalert/sweetalert.css') }}" />
+
 </head>
 
 <body class="top-navigation">
     <div id="wrapper">
-        <div id="page-wrapper">
+        <div id="page-wrapper" @if ( Auth::check() ) class="sidebar-content" @endif>
 
             @if ( Auth::check() )
 
@@ -112,10 +114,6 @@
                 </nav>
             </div>
 
-            <div class="sidebard-panel hidden-md hidden-sm hidden-xs" style="left:0;" >
-
-            </div>
-
             <div class="sidebard-panel hidden-md hidden-sm hidden-xs">
 
                 <div class="m-b-md">
@@ -151,8 +149,7 @@
             @endif
 
             <div class="wrapper wrapper-content">
-                <div class="container">
-
+                <div class="row">
                     @yield('breadcrumb')
 
                     <div class="clearfix"></div>
@@ -161,7 +158,6 @@
                     @include('errors.notification-message')
 
                     @yield('content')
-
                 </div>
             </div>
 
@@ -180,6 +176,8 @@
         $('.sparkpie').sparkline('html', { type: 'pie', height: '1.0em' });
     </script>
 
+    <script src="{{ asset('/assets/js/plugins/sweetalert/sweetalert.min.js')}}"></script>
+    <script src="{{ asset('/assets/js/gitscrum.js')}}"></script>
 </body>
 
 </html>
