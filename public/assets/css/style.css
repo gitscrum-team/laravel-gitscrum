@@ -4483,6 +4483,9 @@ body.mini-navbar.fixed-sidebar .logo-element {
 .loginscreen.middle-box {
   width: 300px;
 }
+.loginscreen .row {
+  margin: 30px auto;
+}
 .loginColumns {
   max-width: 800px;
   margin: 0 auto;

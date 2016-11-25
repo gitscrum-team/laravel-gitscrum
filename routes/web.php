@@ -19,9 +19,7 @@ Route::get('/profile/{username}', 'UserController@show')->name('user.profile');
 
 Route::get('/logout', 'Auth\AuthController@logout')->name('auth.logout');
 Route::group(['prefix' => 'auth', 'middleware' => ['guest']], function () {
-    Route::get('/register', 'Auth\AuthController@register')->name('auth.register');
     Route::get('/login', 'Auth\AuthController@login')->name('auth.login');
-    Route::get('/dologin', 'Auth\AuthController@dologin')->name('auth.dologin');
     Route::get('/github', 'Auth\AuthController@redirectToProvider')->name('auth.github');
     Route::get('/github/callback', 'Auth\AuthController@handleProviderCallback');
 });
@@ -104,5 +102,3 @@ Route::group(['prefix' => 'favorite'], function () {
 Route::group(['prefix' => 'team'], function () {
     Route::get('/list', ['uses' => 'TeamController@index', 'as' => 'team.index']);
 });
-
-Auth::routes();
