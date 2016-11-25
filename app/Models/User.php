@@ -44,6 +44,15 @@ class User extends Authenticatable
      */
     protected $casts = [];
 
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+
+        if (empty($value)) {
+            $this->attributes['name'] = $this->attributes['username'];
+        }
+    }
+
     public function configStatuses()
     {
         return $this->belongsToMany(\GitScrum\Models\ConfigStatus::class, 'statuses', 'user_id', 'id');
