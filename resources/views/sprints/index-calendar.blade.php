@@ -3,38 +3,29 @@
 @extends('layouts.master')
 
 @section('breadcrumb')
-
-
-<div class="page-heading">
-    <div class="col-lg-6">
-        <h2>{{_('Sprint Backlog - Calendar')}}</h2>
-    </div>
-    <div class="col-lg-6 text-right">
-        <div class="btn-group">
-            <a href="{{route('sprints.index', ['mode'=>'default'])}}"
-                class="btn btn-sm btn-outline btn-primary font-bold">
-                {{_('Mode List')}}</a>
-            <a href="{{route('sprints.create')}}"
-                class="btn btn-sm btn-outline btn-primary font-bold"
-                data-toggle="modal" data-target="#modalLarge">{{_('Create Sprint Backlog')}}</a>
-        </div>
+<div class="col-lg-6">
+    <h3 class="ptn mtn mbn pbn">{{_('Sprint Backlog - Calendar')}}</h3>
+</div>
+<div class="col-lg-6 text-right">
+    <div class="btn-group">
+        <a href="{{route('sprints.index', ['mode'=>'default'])}}"
+            class="btn btn-sm btn-primary">
+            {{_('Mode List')}}</a>
+        <a href="{{route('sprints.create')}}"
+            class="btn btn-sm btn-primary"
+            data-toggle="modal" data-target="#modalLarge">{{_('Create Sprint Backlog')}}</a>
     </div>
 </div>
-
 @endsection
 
 @section('content')
 
-<div class="row">
+<div class="col-lg-12">
 
-    <div class="col-lg-12">
-
-        <div class="ibox">
-            <div class="ibox-content">
-                <div id="calendar"></div>
-            </div>
+    <div class="ibox">
+        <div class="ibox-content">
+            <div id="calendar"></div>
         </div>
-
     </div>
 
 </div>

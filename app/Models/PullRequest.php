@@ -41,8 +41,12 @@ class PullRequest extends Model
 
     public function commits()
     {
-        return $this->belongsToMany(\GitScrum\Models\Commit::class, 'pull_requests_has_commits',
-          'pull_request_id', 'commit_id')->withTimestamps();
+        return $this->belongsToMany(
+            \GitScrum\Models\Commit::class,
+            'pull_requests_has_commits',
+            'pull_request_id',
+            'commit_id'
+        )->withTimestamps();
     }
 
     public function baseBranch()

@@ -1,22 +1,24 @@
-<div class="m-b-md">
-    <div class="btn-group pull-right">
-        <form method="get" action="" class="pull-right mail-search">
-            <div class="input-group">
-                <input type="text" class="form-control input-sm" name="{{@$query}}" value="{{@$search}}"
-                    autocomplete="off" placeholder="{{ $txtSearch or 'Search' }}">
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-sm btn-primary">{{_('Search')}}</button>
-                </div>
-            </div>
-        </form>
-    </div>
+<div class="">
 
-    <a href="{{@$route}}" class="btn btn-white btn-sm pull-left"><i class="fa fa-refresh"></i> {{_('Refresh')}}</a>
+    <form method="get" action="" class="pull-right mail-search">
+    <div class="form-group">
+        <div class="input-group">
+            <input class="form-control" type="text" name="{{@$query}}" value="{{@$search}}"
+                autocomplete="off" placeholder="{{ $txtSearch or 'Search' }}">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">{{_('Search')}}!</button>
+            </span>
+        </div>
+    </div>
+    </form>
+
+
+    <a href="{{@$route}}" class="btn btn-default pull-left"><i class="fa fa-refresh"></i> {{_('Refresh')}}</a>
 
     <div class="clearfix"></div>
 
 </div>
 
 @if ( @$search )
-<p class="font-bold  alert alert-success m-b-sm">{{_('Search by')}} <strong>{{$search}}</strong></p>
+<p class="alert alert-success">{{_('Search by')}} <strong>{{$search}}</strong></p>
 @endif

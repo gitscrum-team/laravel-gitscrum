@@ -49,3 +49,9 @@
     <div class="hr-line-dashed"></div>
     @include('partials.includes.form-btn-submit', ['action' => @$action])
 </form>
+
+<script type="text/javascript">
+$(function() {
+    $('input[name="daterange"]').daterangepicker();
+});
+</script>

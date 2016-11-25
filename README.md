@@ -18,7 +18,7 @@ Go to the project folder
 cd GitScrum
 ```
 
-Update composer 
+Update composer
 
 ```
 composer update
@@ -69,29 +69,39 @@ Containers to run GitScrum : [php7, nginx and mysql57](https://github.com/renato
 
 ## Screnshots
 
-![Screenshot 0](http://i.imgur.com/ilTVf38.png)
+![Screenshot 0](http://i.imgur.com/RcYFFCp.png)
 
-![Screenshot 1](http://i.imgur.com/FI30wl5.png)
 
-![Screenshot 2](http://i.imgur.com/pMZuwH0.png)
 
-![Screenshot 3](http://i.imgur.com/pRByX5K.png)
+![Screenshot 1](http://i.imgur.com/URnC74b.png)
 
-![Screenshot 4](http://i.imgur.com/mgJGNlA.png)
 
-![Screenshot 5](http://i.imgur.com/isbTvHr.png)
 
-![Screenshot 6](http://i.imgur.com/BIZtoq4.png)
+![Screenshot 2](http://i.imgur.com/IDHeay1.png)
 
-![Screenshot 7](http://i.imgur.com/xnJeaIq.png)
+
+
+![Screenshot 3](http://i.imgur.com/p6j1pKK.png)
 
 ## License
 
 The GitScrum is licensed under the [GPL v3 license](http://opensource.org/licenses/GPL-3.0).
 
 ## Do you need help?
-Renato Marinho: 
-Facebook: https://www.facebook.com/renato.marinho / 
-LinkedIn: https://pt.linkedin.com/in/renatomarinho13 / 
+
+Renato Marinho:
+Facebook: https://www.facebook.com/renato.marinho /
+LinkedIn: https://pt.linkedin.com/in/renatomarinho13 /
 Skype: renatomarinho13
 
+## Thanks
+
+[Laravel PHP Framework](https://github.com/laravel/laravel)
+
+[Flat-UI](https://github.com/designmodo/Flat-UI)
+
+[Chart.js](https://github.com/chartjs/Chart.js)
+
+[Date Range Picker for Bootstrap](https://github.com/dangrossman/bootstrap-daterangepicker)
+
+**and :) We love GitHub**

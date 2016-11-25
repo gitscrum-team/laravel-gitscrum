@@ -1,12 +1,12 @@
-<table class="table table-striped">
+<table class="table table-striped table-sprint">
     <thead>
     <tr>
-        <th></th>
-        <th> </th>
+        <th width="10"></th>
+        <th width="140"></th>
         <th>Name </th>
-        <th>Phone </th>
-        <th>Company </th>
-        <th>Completed </th>
+        <th width="220">Timebox </th>
+        <th>Progress </th>
+        <th align="right">Team </th>
     </tr>
     </thead>
     <tbody>

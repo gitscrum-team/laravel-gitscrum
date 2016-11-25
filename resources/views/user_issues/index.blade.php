@@ -4,28 +4,20 @@
 
 @section('breadcrumb')
 
-    <div class="row page-heading">
-        <div class="col-sm-10">
-            <h2>{{$user->username}}</h2>
-            <ol class="breadcrumb">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="{{route('user.profile', ['username' => $user->username])}}">{{_('Profile')}}</a></li>
-                <li class="active"><strong>{{_('Issues')}}</strong></li>
-            </ol>
-        </div>
-    </div>
+<div class="col-sm-10">
+    <h2>{{$user->username}}</h2>
+    <ol class="breadcrumb">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="{{route('user.profile', ['username' => $user->username])}}">{{_('Profile')}}</a></li>
+        <li class="active"><strong>{{_('Issues')}}</strong></li>
+    </ol>
+</div>
 
 @endsection
 
 @section('content')
 
-<div class="row">
-
     @include('partials.header-user', ['user' => $user])
-
-</div>
-
-<div class="row">
 
     <div class="col-lg-9">
         <div class="ibox float-e-margins">
@@ -98,8 +90,6 @@
 
         </div>
     </div>
-
-</div>
 
 <script>
 $(function(){

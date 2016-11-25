@@ -19,8 +19,11 @@ class IssueTypeController extends Controller
     public function index($slug_sprint, $slug_type = null)
     {
         $issues = Issue::join('sprints', 'issues.sprint_id', 'sprints.id')
-            ->join('issue_types', 'issues.issue_type_id', 'issue_types.id')
-            ->where('sprints.slug', $slug_sprint);
+            ->join('issue_types', 'issues.issue_type_id', 'issue_types.id');
+
+        if (!is_null($slug_sprint) && !empty($slug_sprint)) {
+            $issues->where('sprints.slug', $slug_sprint);
+        }
 
         if (!is_null($slug_type)) {
             $issues->where('issue_types.slug', $slug_type);

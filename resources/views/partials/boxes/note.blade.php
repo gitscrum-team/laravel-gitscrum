@@ -1,14 +1,14 @@
-<div class="ibox-content">
-    <h3>{{ $title or _('Small Notes')}}</h3>
+<div class="">
+    <h6>{{ $title or _('Small Notes')}}</h6>
 
     @if(isset($percentage))
-    <div class="m-t-none">
+    <div class="">
         @include('partials.boxes.progress-bar', [ 'percentage' => $percentage, 'title' => 'Completed'])
     </div>
     @endif
 
-    <div class="dd m-b-md" id="nestable">
-        <ol class="dd-list m-t-md small-list">
+    <div class="dd" id="nestable">
+        <ol class="ol-list">
             @each('partials.lists.notes-min', $list->notes, 'note')
         </ol>
     </div>

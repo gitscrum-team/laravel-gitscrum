@@ -3,51 +3,35 @@
 @extends('layouts.master')
 
 @section('breadcrumb')
-
-<div class="page-heading">
-    <div class="col-lg-6">
-        <h2>{{_('Issue Type')}}: <span class="font-bold">{{$issues->first()->type->title}}</span></h2>
-    </div>
-    <div class="col-lg-6 text-right">
-
-    </div>
+<div class="col-lg-8">
+    <h3 class="ptn mtn mbn pbn">{{_('Issue Type')}}: <span class="">{{$issues->first()->type->title}}</span></h3>
 </div>
+<div class="col-lg-4 text-right">
 
+</div>
 @endsection
 
 @section('content')
+<div class="col-lg-12">
 
-<div class="row">
-
-    <div class="col-lg-12">
-        <div class="ibox">
-            <div class="ibox-content">
-
-                <div class="m-b-lg">
-
-                    <div class="input-group">
-                        <input type="text" placeholder="Search issue by name..." class=" form-control">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-white"> Search</button>
-                        </span>
-                    </div>
-
-                </div>
-
-                <div class="table-responsive">
-                    <table class="table table-hover issue-tracker">
-                        <tbody>
-                        @each('partials.lists.issues', $issues, 'list', 'partials.lists.no-items')
-                        </tbody>
-                    </table>
-                </div>
-
-                {{ $issues->links() }}
-
-            </div>
-
+    <div class="form-group">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="{{_('Search issue type by name...')}}">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
         </div>
     </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover issue-tracker">
+            <tbody>
+            @each('partials.lists.issues', $issues, 'list', 'partials.lists.no-items')
+            </tbody>
+        </table>
+    </div>
+
+    {{ $issues->links() }}
 
 </div>
 @endsection

@@ -30,12 +30,12 @@ class User extends Authenticatable
     protected $fillable = ['github_id', 'username', 'name', 'avatar', 'html_url', 'email',
         'bio', 'location', 'blog', 'since', 'token', 'main_repository', 'position_held', ];
 
-     /**
-      * The attributes excluded from the model's JSON form.
-      *
-      * @var array
-      */
-     protected $hidden = ['password', 'remember_token'];
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = ['password', 'remember_token'];
 
     /**
      * The attributes that should be casted to native types.

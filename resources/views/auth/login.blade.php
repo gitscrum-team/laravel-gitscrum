@@ -12,7 +12,7 @@
                 <br />
 
                 <div class="row">
-                    <a href="{{route('auth.github')}}" class="btn btn-lg btn-success btn-block">
+                    <a href="{{route('auth.github')}}" class="btn btn-hg btn-info">
                         <i class="fa fa-github" aria-hidden="true"></i>&nbsp;&nbsp;Login with <strong>Github</strong></a>
                 </div>
 

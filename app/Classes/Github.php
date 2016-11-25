@@ -82,8 +82,10 @@ class Github
             $organization = Organization::where('username', $orgData->login)->first();
         }
 
-        if (!isset(Auth::user()->organizations()->where('organization_id',
-            $organization->id)->first()->id)) {
+        if (!isset(Auth::user()->organizations()->where(
+            'organization_id',
+            $organization->id
+        )->first()->id)) {
             Auth::user()->organizations()->attach($organization->id);
         }
 

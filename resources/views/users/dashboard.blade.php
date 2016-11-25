@@ -6,7 +6,7 @@
 
 <div class="page-heading">
     <div class="col-lg-6">
-        <h2>{{_('Dashboard')}}</h2>
+        <h3 class="ptn mtn mbn pbn">{{_('Dashboard')}}</h3>
     </div>
     <div class="col-lg-6 text-right"></div>
 </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
-                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                        <button type="button" class="btn btn-sm btn-sm btn-primary"> Go!</button> </span></div>
                     </div>
                 </div>
                 <div class="table-responsive">

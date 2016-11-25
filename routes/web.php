@@ -104,5 +104,3 @@ Route::group(['prefix' => 'favorite'], function () {
 Route::group(['prefix' => 'team'], function () {
     Route::get('/list', ['uses' => 'TeamController@index', 'as' => 'team.index']);
 });
-
-Auth::routes();

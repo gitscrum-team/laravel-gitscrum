@@ -23,7 +23,8 @@
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
         "way/generators": "dev-feature/laravel-five-stable",
-        "xethron/migrations-generator": "^2.0"
+        "xethron/migrations-generator": "^2.0",
+        "squizlabs/php_codesniffer": "^2.7"
     },
     "autoload": {
         "classmap": [

@@ -7,7 +7,7 @@
                 @foreach ($productBacklogs as $productBacklog)
                 <option value="{{$productBacklog->id}}"
                     @if ( @$productBacklog_id == $productBacklog->id ) selected="selected" @endif >
-                        {{$productBacklog->title}}</option>
+                        {{$productBacklog->title}} ({{$productBacklog->organization->title}})</option>
                 @endforeach
             </select>
         </div>
