@@ -76,12 +76,12 @@ Containers to run GitScrum : [php7, nginx and mysql57](https://github.com/renato
 ![Screenshot 1](http://i.imgur.com/URnC74b.png)
 
 
-
-![Screenshot 2](http://i.imgur.com/IDHeay1.png)
-
+![Screenshot 2](http://i.imgur.com/p6j1pKK.png)
 
 
-![Screenshot 3](http://i.imgur.com/p6j1pKK.png)
+![Screenshot 3](http://i.imgur.com/IDHeay1.png)
+
+
 
 ## License
 
