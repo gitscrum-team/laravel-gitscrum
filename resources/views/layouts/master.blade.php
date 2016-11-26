@@ -46,7 +46,7 @@
                         <a aria-expanded="false" role="button" href="#"> {{_('Documentation')}} </a>
                     </li>
                     <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="#"> {{_('Team')}} </a>
+                        <a aria-expanded="false" role="button" href="{{route('team.index')}}"> {{_('Team')}} </a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -88,7 +88,9 @@
         </div>
     </div>
 
-    @include('partials.boxes.bug-report')
+    @if ( Auth::check() )
+        @include('partials.boxes.bug-report')
+    @endif
 
     <script type="text/javascript">
         $('.sparkpie').sparkline('html', { type: 'pie', height: '1.0em' });
