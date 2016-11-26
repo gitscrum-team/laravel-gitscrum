@@ -31,18 +31,6 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 
-    public function doLogin(AuthRequest $request)
-    {
-    }
-
-    public function register()
-    {
-    }
-
-    public function doRegister()
-    {
-    }
-
     public function redirectToProvider()
     {
         return Socialite::driver('github')->scopes(['repo', 'notifications', 'read:org'])->redirect();
@@ -51,6 +39,7 @@ class AuthController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('github')->user();
+
         $data = [
             'github_id' => $user->id,
             'username' => $user->nickname,
@@ -64,7 +53,9 @@ class AuthController extends Controller
             'blog' => $user->user['blog'],
             'email' => $user->email,
         ];
+
         $UserClass = new UserClass();
+
         Auth::loginUsingId($UserClass->save($data)->id);
 
         return redirect()->route('user.dashboard');
