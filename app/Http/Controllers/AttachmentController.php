@@ -9,7 +9,7 @@ class AttachmentController extends Controller
 {
     public function store(AttachmentRequest $request)
     {
-        $imageName = time() . '.'.$request->attachment->getClientOriginalExtension();
+        $imageName = time().'.'.$request->attachment->getClientOriginalExtension();
 
         $data = [
             'attachmentable_id' => $request->attachmentable_id,
@@ -17,7 +17,7 @@ class AttachmentController extends Controller
             'filename_original' => $request->attachment->getClientOriginalName(),
             'filename_new' => $imageName,
             'mimetype' => $request->attachment->getMimeType(),
-            'size' => $request->attachment->getSize()
+            'size' => $request->attachment->getSize(),
         ];
 
         $request->attachment->move(public_path('attachments'), $imageName);
