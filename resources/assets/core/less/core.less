@@ -175,8 +175,60 @@ h3{
 	position: absolute;
 	.report{
 		width:400px;
+		box-shadow: 10px 10px 5px #888888;
+		.col-lg-12{
+			box-shadow: 0px 0px 8px #888;
+			border-radius: 4px;
+			padding: 4px 10px 10px;
+		}
 	}
 	.btn{
 		font-size:10pt;
 	}
+}
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+	input[type=file] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		min-width: 100%;
+		min-height: 100%;
+		font-size: 100px;
+		text-align: right;
+		filter: alpha(opacity=0);
+		opacity: 0;
+		outline: none;
+		background: white;
+		cursor: inherit;
+		display: block;
+	}
+}
+
+.contact-box {
+  background-color: #ffffff;
+  border: 1px solid #e7eaec;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.contact-box > a {
+  color: inherit;
+}
+.contact-box.center-version {
+  border: 1px solid #e7eaec;
+  padding: 0;
+}
+.contact-box.center-version > a {
+  display: block;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+.contact-box.center-version > a img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

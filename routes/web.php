@@ -26,7 +26,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['guest']], function () {
     Route::get('/github/callback', 'Auth\AuthController@handleProviderCallback');
 });
 
-Route::group(['prefix' => 'product_backlogs'], function () {
+Route::group(['prefix' => 'product-backlogs'], function () {
     Route::get('/list/{mode?}', 'ProductBacklogController@index')->name('product_backlogs.index');
     Route::get('/show/{slug}', 'ProductBacklogController@show')->name('product_backlogs.show');
     Route::get('/create', 'ProductBacklogController@create')->name('product_backlogs.create');
@@ -85,22 +85,27 @@ Route::group(['prefix' => 'notes'], function () {
     Route::get('/destroy/{id}', 'NoteController@destroy')->name('notes.destroy');
 });
 
-Route::group(['prefix' => 'comment'], function () {
+Route::group(['prefix' => 'comments'], function () {
     Route::get('/--------', 'CommentController@store')->name('comments.show');
     Route::post('/store', 'CommentController@store')->name('comments.store');
     Route::get('/destroy/{id}', 'CommentController@destroy')->name('comments.destroy');
 });
 
-Route::group(['prefix' => 'label'], function () {
+Route::group(['prefix' => 'labels'], function () {
     Route::get('/{model}/{slug_label?}', 'LabelController@index')->name('labels.index');
     Route::post('/store', 'LabelController@store')->name('labels.store');
 });
 
-Route::group(['prefix' => 'favorite'], function () {
-    Route::get('/store/{type}/{id}', ['uses' => 'FavoriteController@store', 'as' => 'favorite.store']);
-    Route::get('/destroy/{type}/{id}', ['uses' => 'FavoriteController@destroy', 'as' => 'favorite.destroy']);
+Route::group(['prefix' => 'favorites'], function () {
+    Route::get('/store/{type}/{id}', 'FavoriteController@store')->name('favorites.store');
+    Route::get('/destroy/{type}/{id}', 'FavoriteController@destroy')->name('favorites.destroy');
 });
 
-Route::group(['prefix' => 'team'], function () {
-    Route::get('/list', ['uses' => 'TeamController@index', 'as' => 'team.index']);
+Route::group(['prefix' => 'attachments'], function () {
+    Route::get('/--------', 'AttachmentController@store')->name('attachments.show');
+    Route::post('/store', 'AttachmentController@store')->name('attachments.store');
+});
+
+Route::group(['prefix' => 'teams'], function () {
+    Route::get('/members', 'TeamController@index')->name('team.index');
 });

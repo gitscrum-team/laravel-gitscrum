@@ -92,6 +92,16 @@ class ConfigStatusesTableSeeder extends Seeder
                 'is_closed' => null,
                 'default' => null,
             ),
+            8 => array(
+                'id' => 8,
+                'slug' => 'attachment-added',
+                'type' => 'attachment',
+                'title' => 'Added',
+                'position' => 1,
+                'color' => '6272a4',
+                'is_closed' => null,
+                'default' => null,
+            ),
         ));
     }
 }

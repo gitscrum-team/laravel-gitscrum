@@ -1,5 +1,7 @@
 $(function () {
 
+    attachment.init();
+
     $('.form-delete .btn-submit-form').on('click', function (event) {
 
         event.preventDefault();
@@ -24,3 +26,16 @@ $(function () {
     });
 
 });
+
+var attachment = {
+
+    init:function() {
+
+        $('.btn-file-attachment').on('change', function(){
+            $("#file-attachment").html($(this).val());
+            $("#btn-file-attachment-upload").removeClass("hidden");
+        })
+
+    }
+
+}; 

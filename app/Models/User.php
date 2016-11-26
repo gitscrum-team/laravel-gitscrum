@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use GitScrum\Classes\Helper;
 use Carbon\Carbon;
-use Auth;
 
 class User extends Authenticatable
 {
@@ -157,7 +156,6 @@ class User extends Authenticatable
         return $this->organizations->map(function ($obj) {
             return $obj->users;
         })->flatten(1)->unique('id');
-        //->where('id', '!=', Auth::user()->id);
     }
 
     public function activities()

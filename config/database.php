@@ -9,6 +9,7 @@
 return [
 
     'relation' => [
+        'attachment' => \GitScrum\Models\Attachment::class,
         'label' => \GitScrum\Models\Label::class,
         'comment' => \GitScrum\Models\Comment::class,
         'note' => \GitScrum\Models\Note::class,
