@@ -12,13 +12,13 @@ class CreateStatusesTable extends Migration
     {
         Schema::create('statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('statusesable_type', 45)->nullable();
-            $table->integer('statusesable_id')->unsigned()->nullable();
-            $table->smallInteger('config_status_id')->unsigned()->nullable();
-            $table->integer('user_id')->unsigned()->nullable()->index('fk_statuses_1_idx');
-            $table->timestamps();
-            $table->softDeletes();
-            $table->index(['statusesable_type', 'statusesable_id'], 'statususes_type_id');
+			$table->string('statusesable_type', 45)->nullable();
+			$table->integer('statusesable_id')->unsigned()->nullable();
+			$table->integer('config_status_id')->unsigned()->nullable()->index('fk_statuses_config_status_id_idx');
+			$table->integer('user_id')->unsigned()->nullable()->index('fk_statuses_user_id_idx');
+			$table->timestamps();
+			$table->softDeletes();
+			$table->index(['statusesable_type','statusesable_id'], 'statususes_type_id');
         });
     }
 
