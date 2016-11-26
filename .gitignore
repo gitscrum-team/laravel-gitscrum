@@ -1,5 +1,6 @@
 /node_modules
 /public/storage
+/public/attachments
 /vendor
 .idea
 .DS_STORE
