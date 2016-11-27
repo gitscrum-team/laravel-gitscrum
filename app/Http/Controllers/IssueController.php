@@ -12,7 +12,6 @@ use GitScrum\Http\Requests\IssueRequest;
 use GitScrum\Models\Sprint;
 use GitScrum\Models\UserStory;
 use GitScrum\Models\Issue;
-use GitScrum\Models\ConfigStatus;
 use GitScrum\Models\Organization;
 use GitScrum\Models\IssueType;
 use GitScrum\Models\ConfigIssueEffort;
@@ -192,16 +191,12 @@ class IssueController extends Controller
 
     public function statusUpdate(Request $request, $slug, int $status)
     {
-        $configStatus = ConfigStatus::findOrFail($status);
-
-        $closed_at = $configStatus->is_closed ? Carbon::now() : null;
-        $closed_user_id = $configStatus->is_closed ? Auth::user()->id : null;
-
         $issue = Issue::where('slug', $slug)
             ->firstOrFail();
+
         $issue->config_status_id = $status;
-        $issue->closed_at = $closed_at;
-        $issue->closed_user_id = $closed_user_id;
+        $issue->closed_user_id   = Auth::id();
+        $issue->closed_at        = Carbon::now();
         $issue->save();
 
         if (!$request->ajax()) {
