@@ -7,9 +7,9 @@
  */
 namespace GitScrum\Observers;
 
-use GitScrum\Models\Label;
-use GitScrum\Classes\Helper;
 use Auth;
+use GitScrum\Classes\Helper;
+use GitScrum\Models\Label;
 
 class LabelObserver
 {

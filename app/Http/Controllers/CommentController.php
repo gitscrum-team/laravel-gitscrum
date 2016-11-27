@@ -7,18 +7,18 @@
  */
 namespace GitScrum\Http\Controllers;
 
+use Auth;
 use GitScrum\Http\Requests\CommentRequest;
 use GitScrum\Models\Comment;
-use Auth;
 
 class CommentController extends Controller
 {
     public function store(CommentRequest $request)
     {
         $data = [
-            'commentable_id' => $request->commentable_id,
+            'commentable_id'   => $request->commentable_id,
             'commentable_type' => $request->commentable_type,
-            'comment' => $request->comment,
+            'comment'          => $request->comment,
         ];
         Comment::create($data);
 

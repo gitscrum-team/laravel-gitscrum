@@ -7,9 +7,9 @@
  */
 namespace GitScrum\Observers;
 
-use GitScrum\Models\Status;
-use GitScrum\Models\Attachment;
 use Auth;
+use GitScrum\Models\Attachment;
+use GitScrum\Models\Status;
 
 class AttachmentObserver
 {

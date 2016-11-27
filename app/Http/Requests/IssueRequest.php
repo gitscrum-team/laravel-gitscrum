@@ -7,8 +7,8 @@
  */
 namespace GitScrum\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use GitScrum\Models\Sprint;
+use Illuminate\Foundation\Http\FormRequest;
 
 class IssueRequest extends FormRequest
 {

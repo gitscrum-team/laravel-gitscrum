@@ -7,13 +7,13 @@
  */
 namespace GitScrum\Http\Controllers\Auth;
 
-use GitScrum\Http\Requests\AuthRequest;
-use GitScrum\Models\User;
+use Auth;
+use Carbon\Carbon;
 use GitScrum\Classes\UserClass;
 use GitScrum\Http\Controllers\Controller;
-use Carbon\Carbon;
+use GitScrum\Http\Requests\AuthRequest;
+use GitScrum\Models\User;
 use Socialite;
-use Auth;
 
 class AuthController extends Controller
 {
@@ -53,16 +53,16 @@ class AuthController extends Controller
         $user = Socialite::driver('github')->user();
         $data = [
             'github_id' => $user->id,
-            'username' => $user->nickname,
-            'name' => $user->name,
-            'token' => $user->token,
-            'avatar' => $user->user['avatar_url'],
-            'html_url' => $user->user['html_url'],
-            'bio' => $user->user['bio'],
-            'since' => Carbon::parse($user->user['created_at'])->toDateTimeString(),
-            'location' => $user->user['location'],
-            'blog' => $user->user['blog'],
-            'email' => $user->email,
+            'username'  => $user->nickname,
+            'name'      => $user->name,
+            'token'     => $user->token,
+            'avatar'    => $user->user['avatar_url'],
+            'html_url'  => $user->user['html_url'],
+            'bio'       => $user->user['bio'],
+            'since'     => Carbon::parse($user->user['created_at'])->toDateTimeString(),
+            'location'  => $user->user['location'],
+            'blog'      => $user->user['blog'],
+            'email'     => $user->email,
         ];
         $UserClass = new UserClass();
         Auth::loginUsingId($UserClass->save($data)->id);

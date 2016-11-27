@@ -7,11 +7,11 @@
  */
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
-use GitScrum\Models\UserStory;
+use Auth;
 use GitScrum\Models\ConfigPriority;
 use GitScrum\Models\ProductBacklog;
-use Auth;
+use GitScrum\Models\UserStory;
+use Illuminate\Http\Request;
 
 class UserStoryController extends Controller
 {

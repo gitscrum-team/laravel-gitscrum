@@ -29,7 +29,7 @@ class ProductBacklogRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:2|max:255',
+            'title'       => 'required|min:2|max:255',
             'description' => 'required',
         ];
     }
@@ -42,9 +42,9 @@ class ProductBacklogRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'A title is required',
-            'title.min' => 'A title - min',
-            'title.max' => 'A title - max',
+            'title.required'       => 'A title is required',
+            'title.min'            => 'A title - min',
+            'title.max'            => 'A title - max',
             'description.required' => 'A message is required',
         ];
     }

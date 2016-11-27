@@ -7,9 +7,9 @@
  */
 namespace GitScrum\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
 
 class Status extends Model
 {
@@ -83,9 +83,9 @@ class Status extends Model
 
         $this->create([
             'statusesable_type' => $alias,
-            'statusesable_id' => $model->id,
-            'config_status_id' => $model->config_status_id,
-            'user_id' => $model->user_id, ]);
+            'statusesable_id'   => $model->id,
+            'config_status_id'  => $model->config_status_id,
+            'user_id'           => $model->user_id, ]);
     }
 
     public function statusesable()

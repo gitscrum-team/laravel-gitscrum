@@ -30,7 +30,7 @@ class AuthRequest extends FormRequest
     {
         return [
             'username' => 'required',
-            'passwd' => 'required',
+            'passwd'   => 'required',
         ];
     }
 }

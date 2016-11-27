@@ -7,10 +7,10 @@
  */
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Auth;
 use GitScrum\Http\Requests\ProductBacklogRequest;
 use GitScrum\Models\ProductBacklog;
-use Auth;
+use Illuminate\Http\Request;
 
 class ProductBacklogController extends Controller
 {

@@ -7,20 +7,20 @@
  */
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Auth;
+use Carbon\Carbon;
 use GitScrum\Http\Requests\NoteRequest;
 use GitScrum\Models\Note;
-use Carbon\Carbon;
-use Auth;
+use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
     public function store(NoteRequest $request)
     {
         $data = [
-            'noteable_id' => $request->noteable_id,
+            'noteable_id'   => $request->noteable_id,
             'noteable_type' => $request->noteable_type,
-            'title' => $request->title,
+            'title'         => $request->title,
         ];
 
         Note::create($data);

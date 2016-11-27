@@ -7,9 +7,9 @@
  */
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
 use GitScrum\Http\Requests\LabelRequest;
 use GitScrum\Models\Label;
+use Illuminate\Http\Request;
 
 class LabelController extends Controller
 {
@@ -25,9 +25,9 @@ class LabelController extends Controller
     public function store(LabelRequest $request)
     {
         $data = [
-            'labelable_id' => $request->labelable_id,
+            'labelable_id'   => $request->labelable_id,
             'labelable_type' => $request->labelable_type,
-            'title' => $request->title,
+            'title'          => $request->title,
         ];
 
         try {

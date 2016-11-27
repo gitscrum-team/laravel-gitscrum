@@ -7,10 +7,10 @@
  */
 namespace GitScrum\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use GitScrum\Classes\Helper;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sprint extends Model
 {
@@ -257,10 +257,10 @@ class Sprint extends Model
         })->groupBy('slug')->map(function ($type) {
             return [
                 'sprint' => $this->slug,
-                'slug' => $type->first()->slug,
-                'title' => $type->first()->title,
-                'color' => $type->first()->color,
-                'total' => $type->count(), ];
+                'slug'   => $type->first()->slug,
+                'title'  => $type->first()->title,
+                'color'  => $type->first()->color,
+                'total'  => $type->count(), ];
         })->sortByDesc('total')->all();
 
         return $types;

@@ -2,9 +2,9 @@
 
 namespace GitScrum\Classes;
 
-use Storage;
 use GitScrum\CommitFile;
 use GitScrum\CommitFilePhpcs;
+use Storage;
 
 class Phpcs
 {

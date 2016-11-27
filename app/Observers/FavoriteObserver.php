@@ -7,8 +7,8 @@
  */
 namespace GitScrum\Observers;
 
-use GitScrum\Models\Favorite;
 use Auth;
+use GitScrum\Models\Favorite;
 
 class FavoriteObserver
 {

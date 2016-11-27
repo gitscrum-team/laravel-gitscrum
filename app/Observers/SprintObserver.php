@@ -7,10 +7,10 @@
  */
 namespace GitScrum\Observers;
 
-use GitScrum\Models\Sprint;
-use GitScrum\Models\ConfigStatus;
-use GitScrum\Classes\Helper;
 use Auth;
+use GitScrum\Classes\Helper;
+use GitScrum\Models\ConfigStatus;
+use GitScrum\Models\Sprint;
 
 class SprintObserver
 {
