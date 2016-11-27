@@ -8,7 +8,13 @@
     <div class="col-lg-6">
         <h3 class="ptn mtn mbn pbn">{{_('Dashboard')}}</h3>
     </div>
-    <div class="col-lg-6 text-right"></div>
+
+    <div class="col-lg-6 text-right">
+        <div class="btn-group">
+            <a href="{{route('repositories.update')}}" class="btn btn-sm btn-primary">
+                {{_('Update Repositories')}}</a>
+        </div>
+    </div>
 </div>
 
 @endsection
