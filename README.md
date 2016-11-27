@@ -7,6 +7,17 @@ GitScrum is a Laravel 5.3 application to helps teams use Git version control and
 
 ## Instalation
 
+### Create a project using Composer
+
+It is very simple, run the command and enjoy
+
+```
+composer create-project renatomarinho/laravel-gitscrum --stability=dev --keep-vcs
+```
+
+Jump to GitHub Application and Database connection
+
+
 #### Fork the GitScrum
 
 Make a fork and after clone the git repository
@@ -28,7 +39,7 @@ composer update
 ```
 
 
-#### GitHub
+#### GitHub Application
 
 First, create a new github app, visit [GitHub's New OAuth Application page](https://github.com/settings/applications/new), fill out the form, and grab your client ID, secret and callback URL.
 
@@ -45,7 +56,7 @@ GITHUB_CLIENT_ID=XXXXX
 GITHUB_CLIENT_SECRET=XXXXXXXXXXXXXXXXXX
 ```
 
-#### Database
+#### Database connection
 
 Fill the information in the .env file
 
