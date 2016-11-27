@@ -17,6 +17,8 @@ Route::get('/', function () {
 Route::get('/dashboard', 'UserController@dashboard')->name('user.dashboard');
 Route::get('/profile/{username}', 'UserController@show')->name('user.profile');
 
+Route::get('/repositories/update', 'RepositoriesController@update')->name('repositories.update');
+
 Route::get('/logout', 'Auth\AuthController@logout')->name('auth.logout');
 Route::group(['prefix' => 'auth', 'middleware' => ['guest']], function () {
     Route::get('/register', 'Auth\AuthController@register')->name('auth.register');

@@ -8,7 +8,6 @@
 namespace GitScrum\Http\Controllers;
 
 use Illuminate\Http\Request;
-use GitScrum\Classes\Github;
 use GitScrum\Models\User;
 use Auth;
 
@@ -22,9 +21,6 @@ class UserController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
-
-        $github = new Github();
-        $github->repositories();
 
         return view('users.dashboard')
                 ->with('user', $user);
