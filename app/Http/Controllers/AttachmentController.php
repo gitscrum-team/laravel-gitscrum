@@ -12,12 +12,12 @@ class AttachmentController extends Controller
         $imageName = time().'.'.$request->attachment->getClientOriginalExtension();
 
         $data = [
-            'attachmentable_id' => $request->attachmentable_id,
+            'attachmentable_id'   => $request->attachmentable_id,
             'attachmentable_type' => $request->attachmentable_type,
-            'filename_original' => $request->attachment->getClientOriginalName(),
-            'filename_new' => $imageName,
-            'mimetype' => $request->attachment->getMimeType(),
-            'size' => $request->attachment->getSize(),
+            'filename_original'   => $request->attachment->getClientOriginalName(),
+            'filename_new'        => $imageName,
+            'mimetype'            => $request->attachment->getMimeType(),
+            'size'                => $request->attachment->getSize(),
         ];
 
         $request->attachment->move(public_path('attachments'), $imageName);

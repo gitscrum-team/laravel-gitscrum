@@ -7,10 +7,10 @@
  */
 namespace GitScrum\Observers;
 
+use Auth;
+use GitScrum\Classes\Helper;
 use GitScrum\Models\Note;
 use GitScrum\Models\Status;
-use GitScrum\Classes\Helper;
-use Auth;
 
 class NoteObserver
 {

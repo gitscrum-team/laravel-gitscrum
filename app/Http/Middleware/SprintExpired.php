@@ -7,9 +7,9 @@
  */
 namespace GitScrum\Http\Middleware;
 
+use Carbon\Carbon;
 use Closure;
 use GitScrum\Models\Sprint;
-use Carbon\Carbon;
 
 class SprintExpired
 {

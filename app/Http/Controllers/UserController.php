@@ -7,10 +7,10 @@
  */
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Auth;
 use GitScrum\Classes\Github;
 use GitScrum\Models\User;
-use Auth;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {

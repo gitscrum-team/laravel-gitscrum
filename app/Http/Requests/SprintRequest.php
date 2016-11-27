@@ -7,8 +7,8 @@
  */
 namespace GitScrum\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Carbon\Carbon;
+use Illuminate\Foundation\Http\FormRequest;
 
 class SprintRequest extends FormRequest
 {
@@ -30,9 +30,9 @@ class SprintRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5|max:255',
+            'title'       => 'required|min:5|max:255',
             'description' => 'required',
-            'date_start' => 'required',
+            'date_start'  => 'required',
             'date_finish' => 'required',
         ];
     }
@@ -45,9 +45,9 @@ class SprintRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'A title is required',
-            'title.min' => 'A title - min',
-            'title.max' => 'A title - max',
+            'title.required'       => 'A title is required',
+            'title.min'            => 'A title - min',
+            'title.max'            => 'A title - max',
             'description.required' => 'A message is required',
         ];
     }

@@ -7,7 +7,6 @@
  */
 namespace GitScrum\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use GitScrum\Models\Attachment;
 use GitScrum\Models\Comment;
 use GitScrum\Models\Favorite;
@@ -28,6 +27,7 @@ use GitScrum\Observers\ProductBacklogObserver;
 use GitScrum\Observers\SprintObserver;
 use GitScrum\Observers\StatusObserver;
 use GitScrum\Observers\UserStoryObserver;
+use Illuminate\Support\ServiceProvider;
 
 class ModelObserverProvider extends ServiceProvider
 {

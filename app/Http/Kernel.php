@@ -52,13 +52,13 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \GitScrum\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'sprint.expired' => \GitScrum\Http\Middleware\SprintExpired::class,
+        'auth'              => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic'        => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'          => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'               => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'             => \GitScrum\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'          => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'sprint.expired'    => \GitScrum\Http\Middleware\SprintExpired::class,
         'global.activities' => \GitScrum\Http\Middleware\GlobalActivities::class,
 
         'issue' => \GitScrum\Http\Middleware\IssueMiddleware::class,

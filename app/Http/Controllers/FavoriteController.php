@@ -7,15 +7,15 @@
  */
 namespace GitScrum\Http\Controllers;
 
-use GitScrum\Models\Favorite;
 use Auth;
+use GitScrum\Models\Favorite;
 
 class FavoriteController extends Controller
 {
     public function store($type, $id)
     {
         $data = [
-            'favoriteable_id' => $id,
+            'favoriteable_id'   => $id,
             'favoriteable_type' => $type,
         ];
         Favorite::create($data);

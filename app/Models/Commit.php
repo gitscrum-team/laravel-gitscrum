@@ -7,8 +7,8 @@
  */
 namespace GitScrum\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Commit extends Model
 {

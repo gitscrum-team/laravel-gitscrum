@@ -7,8 +7,8 @@
  */
 namespace GitScrum\Observers;
 
-use GitScrum\Models\Status;
 use Auth;
+use GitScrum\Models\Status;
 
 class StatusObserver
 {

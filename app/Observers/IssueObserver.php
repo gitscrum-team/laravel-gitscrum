@@ -7,13 +7,13 @@
  */
 namespace GitScrum\Observers;
 
-use GitScrum\Models\Issue;
-use GitScrum\Models\UserStory;
+use Auth;
+use GitScrum\Classes\Helper;
 use GitScrum\Models\ConfigStatus;
+use GitScrum\Models\Issue;
 use GitScrum\Models\Sprint;
 use GitScrum\Models\Status;
-use GitScrum\Classes\Helper;
-use Auth;
+use GitScrum\Models\UserStory;
 
 class IssueObserver
 {

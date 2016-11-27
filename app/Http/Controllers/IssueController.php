@@ -7,17 +7,17 @@
  */
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Auth;
+use Carbon\Carbon;
 use GitScrum\Http\Requests\IssueRequest;
+use GitScrum\Models\ConfigIssueEffort;
+use GitScrum\Models\ConfigStatus;
+use GitScrum\Models\Issue;
+use GitScrum\Models\IssueType;
+use GitScrum\Models\Organization;
 use GitScrum\Models\Sprint;
 use GitScrum\Models\UserStory;
-use GitScrum\Models\Issue;
-use GitScrum\Models\ConfigStatus;
-use GitScrum\Models\Organization;
-use GitScrum\Models\IssueType;
-use GitScrum\Models\ConfigIssueEffort;
-use Carbon\Carbon;
-use Auth;
+use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {

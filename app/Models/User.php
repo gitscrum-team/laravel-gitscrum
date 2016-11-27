@@ -7,10 +7,10 @@
  */
 namespace GitScrum\Models;
 
+use Carbon\Carbon;
+use GitScrum\Classes\Helper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use GitScrum\Classes\Helper;
-use Carbon\Carbon;
 
 class User extends Authenticatable
 {

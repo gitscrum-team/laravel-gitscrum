@@ -7,9 +7,9 @@
  */
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
 use GitScrum\Models\Issue;
 use GitScrum\Models\User;
+use Illuminate\Http\Request;
 
 class UserIssueController extends Controller
 {

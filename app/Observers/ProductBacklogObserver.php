@@ -7,9 +7,9 @@
  */
 namespace GitScrum\Observers;
 
-use GitScrum\Models\ProductBacklog;
-use GitScrum\Classes\Helper;
 use Auth;
+use GitScrum\Classes\Helper;
+use GitScrum\Models\ProductBacklog;
 
 class ProductBacklogObserver
 {

@@ -7,9 +7,9 @@
  */
 namespace GitScrum\Observers;
 
-use GitScrum\Models\Status;
-use GitScrum\Models\Comment;
 use Auth;
+use GitScrum\Models\Comment;
+use GitScrum\Models\Status;
 
 class CommentObserver
 {

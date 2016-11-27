@@ -7,10 +7,10 @@
  */
 namespace GitScrum\Http\Controllers;
 
+use Auth;
 use GitScrum\Http\Requests\SprintRequest;
 use GitScrum\Models\ProductBacklog;
 use GitScrum\Models\Sprint;
-use Auth;
 use Illuminate\Http\Request;
 
 class SprintController extends Controller
@@ -77,7 +77,7 @@ class SprintController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param str $slug
+     * @param string $slug
      *
      * @return \Illuminate\Http\Response
      */

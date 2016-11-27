@@ -3,14 +3,14 @@
 namespace GitScrum\Classes;
 
 use Auth;
-use GitScrum\Repository;
+use Carbon\Carbon;
 use GitScrum\Branch;
 use GitScrum\Commit;
 use GitScrum\Libraries\Phpcs;
-use GitScrum\Models\User;
 use GitScrum\Models\Organization;
 use GitScrum\Models\ProductBacklog;
-use Carbon\Carbon;
+use GitScrum\Models\User;
+use GitScrum\Repository;
 
 class Github
 {
@@ -20,22 +20,22 @@ class Github
 
         foreach ($repos as $repo) {
             $data = [
-                'github_id' => $repo->id,
+                'github_id'       => $repo->id,
                 'organization_id' => $this->organization($repo->owner->login),
-                'slug' => Helper::slug($repo->name),
-                'title' => $repo->name,
-                'fullname' => $repo->full_name,
-                'is_private' => $repo->private,
-                'html_url' => $repo->html_url,
-                'description' => $repo->description,
-                'fork' => $repo->fork,
-                'url' => $repo->url,
-                'since' => Carbon::parse($repo->created_at)->toDateTimeString(),
-                'pushed_at' => Carbon::parse($repo->pushed_at)->toDateTimeString(),
-                'ssh_url' => $repo->ssh_url,
-                'clone_url' => $repo->clone_url,
-                'homepage' => $repo->homepage,
-                'default_branch' => $repo->default_branch,
+                'slug'            => Helper::slug($repo->name),
+                'title'           => $repo->name,
+                'fullname'        => $repo->full_name,
+                'is_private'      => $repo->private,
+                'html_url'        => $repo->html_url,
+                'description'     => $repo->description,
+                'fork'            => $repo->fork,
+                'url'             => $repo->url,
+                'since'           => Carbon::parse($repo->created_at)->toDateTimeString(),
+                'pushed_at'       => Carbon::parse($repo->pushed_at)->toDateTimeString(),
+                'ssh_url'         => $repo->ssh_url,
+                'clone_url'       => $repo->clone_url,
+                'homepage'        => $repo->homepage,
+                'default_branch'  => $repo->default_branch,
             ];
 
             try {
@@ -54,26 +54,26 @@ class Github
         }
 
         $data = [
-            'github_id' => @$orgData->id,
-            'username' => @$orgData->login,
-            'url' => @$orgData->url,
-            'repos_url' => @$orgData->repos_url,
-            'events_url' => @$orgData->events_url,
-            'hooks_url' => @$orgData->hooks_url,
-            'issues_url' => @$orgData->issues_url,
-            'members_url' => @$orgData->members_url,
-            'public_members_url' => @$orgData->public_members_url,
-            'avatar_url' => @$orgData->avatar_url,
-            'description' => @$orgData->description,
-            'title' => @$orgData->name,
-            'blog' => @$orgData->blog,
-            'location' => @$orgData->location,
-            'email' => @$orgData->email,
-            'public_repos' => @$orgData->public_repos,
-            'html_url' => @$orgData->html_url,
+            'github_id'           => @$orgData->id,
+            'username'            => @$orgData->login,
+            'url'                 => @$orgData->url,
+            'repos_url'           => @$orgData->repos_url,
+            'events_url'          => @$orgData->events_url,
+            'hooks_url'           => @$orgData->hooks_url,
+            'issues_url'          => @$orgData->issues_url,
+            'members_url'         => @$orgData->members_url,
+            'public_members_url'  => @$orgData->public_members_url,
+            'avatar_url'          => @$orgData->avatar_url,
+            'description'         => @$orgData->description,
+            'title'               => @$orgData->name,
+            'blog'                => @$orgData->blog,
+            'location'            => @$orgData->location,
+            'email'               => @$orgData->email,
+            'public_repos'        => @$orgData->public_repos,
+            'html_url'            => @$orgData->html_url,
             'total_private_repos' => @$orgData->total_private_repos,
-            'since' => @Carbon::parse($orgData->created_at)->toDateTimeString(),
-            'disk_usage' => @$orgData->disk_usage,
+            'since'               => @Carbon::parse($orgData->created_at)->toDateTimeString(),
+            'disk_usage'          => @$orgData->disk_usage,
         ];
 
         try {
@@ -102,19 +102,19 @@ class Github
         foreach ($members as $member) {
             if (isset($member->id)) {
                 $data = [
-                    'github_id' => $member->id,
-                    'username' => $member->login,
-                    'name' => $member->login,
-                    'avatar' => $member->avatar_url,
-                    'html_url' => $member->html_url,
-                    'email' => null,
+                    'github_id'      => $member->id,
+                    'username'       => $member->login,
+                    'name'           => $member->login,
+                    'avatar'         => $member->avatar_url,
+                    'html_url'       => $member->html_url,
+                    'email'          => null,
                     'remember_token' => null,
-                    'bio' => null,
-                    'location' => null,
-                    'blog' => null,
-                    'since' => null,
-                    'token' => null,
-                    'position_held' => null,
+                    'bio'            => null,
+                    'location'       => null,
+                    'blog'           => null,
+                    'since'          => null,
+                    'token'          => null,
+                    'position_held'  => null,
                 ];
 
                 try {
@@ -169,14 +169,14 @@ class Github
         $IssueRepository = new IssueRepository();
         foreach ($issues as $issue) {
             $data = [
-                'github_id' => $issue->id,
+                'github_id'          => $issue->id,
                 'product_backlog_id' => $repository->id,
-                'number' => $issue->number,
-                'title' => $issue->title,
-                'body' => $issue->body,
-                'state' => $issue->state,
-                'html_url' => $issue->html_url,
-                'date' => $issue->created_at,
+                'number'             => $issue->number,
+                'title'              => $issue->title,
+                'body'               => $issue->body,
+                'state'              => $issue->state,
+                'html_url'           => $issue->html_url,
+                'date'               => $issue->created_at,
             ];
             $issueId = $IssueRepository->add($data)->id;
             foreach ($issue->assignees as $assign) {
@@ -201,8 +201,8 @@ class Github
             foreach ($branches as $branch) {
                 $data = [
                     'product_backlog_id' => $repository->id,
-                    'name' => $branch->name,
-                    'sha' => $branch->commit->sha,
+                    'name'               => $branch->name,
+                    'sha'                => $branch->commit->sha,
                 ];
                 $BranchRepository->add($data);
                 $this->setCommits($owner, $repo, $branch->name);
@@ -236,15 +236,15 @@ class Github
                     if (isset($commit->sha)) {
                         $data = [
                             'product_backlog_id' => $branch->product_backlog_id,
-                            'branch_id' => $branch->branch_id,
-                            'user_id' => $userId,
-                            'sha' => $commit->sha,
-                            'url' => $commit->url,
-                            'message' => $commit->commit->message,
-                            'html_url' => $commit->html_url,
-                            'date' => $commit->commit->author->date,
-                            'tree_sha' => $commit->commit->tree->sha,
-                            'tree_url' => $commit->commit->tree->url,
+                            'branch_id'          => $branch->branch_id,
+                            'user_id'            => $userId,
+                            'sha'                => $commit->sha,
+                            'url'                => $commit->url,
+                            'message'            => $commit->commit->message,
+                            'html_url'           => $commit->html_url,
+                            'date'               => $commit->commit->author->date,
+                            'tree_sha'           => $commit->commit->tree->sha,
+                            'tree_url'           => $commit->commit->tree->url,
                         ];
                         $commitData = $CommitRepository->add($data);
                         $this->setCommitFiles($owner, $repo, $commitData->sha, $commitData);
@@ -271,15 +271,15 @@ class Github
                 $fileRaw = file_get_contents($contents->download_url);
                 $data = [
                     'commit_id' => $objCommit->id,
-                    'sha' => $commit->sha,
-                    'filename' => $commit->filename,
-                    'status' => $commit->status,
+                    'sha'       => $commit->sha,
+                    'filename'  => $commit->filename,
+                    'status'    => $commit->status,
                     'additions' => $commit->additions,
                     'deletions' => $commit->deletions,
-                    'changes' => $commit->changes,
-                    'raw_url' => $commit->raw_url,
-                    'raw' => $fileRaw,
-                    'patch' => (isset($commit->patch) ? $commit->patch : ''),
+                    'changes'   => $commit->changes,
+                    'raw_url'   => $commit->raw_url,
+                    'raw'       => $fileRaw,
+                    'patch'     => (isset($commit->patch) ? $commit->patch : ''),
                 ];
                 $commitData = $CommitRepository->addFile($data);
                 //$Phpcs->init($fileRaw, $commitData->id);
@@ -339,21 +339,21 @@ class Github
             }
 
             $data = [
-                'github_id' => $pull->id,
-                'number' => $pull->number,
-                'user_id' => $userId,
+                'github_id'          => $pull->id,
+                'number'             => $pull->number,
+                'user_id'            => $userId,
                 'product_backlog_id' => $repository->id,
-                'url' => $pull->url,
-                'html_url' => $pull->html_url,
-                'issue_url' => $pull->issue_url,
-                'commits_url' => $pull->commits_url,
-                'state' => $pull->state,
-                'title' => $pull->title,
-                'body' => $pull->body,
-                'github_created_at' => $pull->created_at,
-                'github_updated_at' => $pull->updated_at,
-                'head_branch_id' => $headBranchId,
-                'base_branch_id' => $baseBranchId,
+                'url'                => $pull->url,
+                'html_url'           => $pull->html_url,
+                'issue_url'          => $pull->issue_url,
+                'commits_url'        => $pull->commits_url,
+                'state'              => $pull->state,
+                'title'              => $pull->title,
+                'body'               => $pull->body,
+                'github_created_at'  => $pull->created_at,
+                'github_updated_at'  => $pull->updated_at,
+                'head_branch_id'     => $headBranchId,
+                'base_branch_id'     => $baseBranchId,
             ];
 
             $pull = $PullRequestRepository->add($data);
