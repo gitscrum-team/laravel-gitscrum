@@ -93,7 +93,7 @@ class ConfigStatusesTableSeeder extends Seeder
                 'default' => null,
             ),
             8 => array(
-                'id' => 8,
+                'id' => 9,
                 'slug' => 'attachment-added',
                 'type' => 'attachment',
                 'title' => 'Added',

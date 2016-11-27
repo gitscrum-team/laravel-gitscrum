@@ -1,0 +1,27 @@
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - hhvm
+
+addons:
+  hosts:
+    - app.gitscrum.dev
+
+install:
+  - travis_retry composer self-update
+  - travis_retry composer clear-cache
+  - travis_retry composer install
+  - mysql -e 'create database develop;' -uroot
+  - mysql -e "grant all privileges on *.* to 'travis'@'localhost' with grant option;" -uroot
+
+before_script:
+
+script:
+
+after_script:
+  - php artisan migrate --seed
+
+matrix:
+ fast_finish: true
