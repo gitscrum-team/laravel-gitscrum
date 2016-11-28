@@ -123,6 +123,21 @@ class User extends Authenticatable
         })->flatten(1);
     }
 
+    public function sprints($sprint_id = null)
+    {
+        return $this->issues->map(function ($issue) use ($sprint_id) {
+            $obj = $issue->sprint()
+                ->get();
+
+            if (!is_null($sprint_id)) {
+                $obj = $obj->where('id', '=', $sprint_id);
+            }
+
+            return $obj;
+        })->flatten(1);
+
+    }
+
     public function burdown()
     {
         $helper = new Helper();

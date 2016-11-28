@@ -121,11 +121,9 @@ class IssueController extends Controller
         $issue = Issue::where('slug', '=', $slug)
             ->with('sprint')
             ->with('type')
+            ->with('configEffort')
             ->with('labels')
             ->first();
-
-        //$label = $issue->labels()->create(['title'=>'testeewewew']);
-        //$issue->labels()->sync([$label->id]);
 
         $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
 

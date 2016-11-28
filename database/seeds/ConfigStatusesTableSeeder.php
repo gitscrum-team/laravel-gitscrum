@@ -100,7 +100,7 @@ class ConfigStatusesTableSeeder extends Seeder
                 'position' => 1,
                 'color' => '6272a4',
                 'is_closed' => null,
-                'default' => null,
+                'default' => 1,
             ),
         ));
     }

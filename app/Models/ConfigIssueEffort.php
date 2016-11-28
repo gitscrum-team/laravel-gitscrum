@@ -41,6 +41,6 @@ class ConfigIssueEffort extends Model
 
     public function issues()
     {
-        return $this->hasMany(\GitScrum\Models\Issue::class, 'issue_effort_id', 'id');
+        return $this->hasMany(\GitScrum\Models\Issue::class, 'config_issue_effort_id', 'id');
     }
 }

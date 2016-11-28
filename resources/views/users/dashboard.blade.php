@@ -21,41 +21,52 @@
 
 @section('content')
 
-<div class="row">
+<div class="dashboard-tile">
 
-    <div class="col-lg-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-content">
-                <div class="row">
-                    <div class="col-sm-9 m-b-xs">
-                        <div data-toggle="buttons" class="btn-group">
-                            <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> Day </label>
-                            <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> Week </label>
-                            <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> Month </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
-                        <button type="button" class="btn btn-sm btn-sm btn-primary"> Go!</button> </span></div>
-                    </div>
-                </div>
-                <div class="table-responsive">
-
-                    <div class="project-list">
-
-                        <table class="table table-hover issue-tracker">
-                            <tbody>
-                            @each('partials.lists.issues', $user->issues, 'list', 'partials.lists.no-items')
-                            </tbody>
-                        </table>
-
-                    </div>
-
-                </div>
-
-            </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="tile">
+            <i class="fa fa-trophy fa-4x" aria-hidden="true"></i>
+            <h3 class="tile-title mtm">62</h3>
+            <p>Effort</p>
+            <a class="btn btn-primary btn-large btn-block" href="#">My Activities</a>
         </div>
     </div>
+
+    <div class="col-lg-3 col-sm-6">
+        <div class="tile">
+            <i class="fa fa-th fa-4x" aria-hidden="true"></i>
+            <h3 class="tile-title mtm">{{$user->issues()->count()}}</h3>
+            <p>{{_('Issues')}}</p>
+            <a class="btn btn-primary btn-large btn-block" href="#">{{_('My Planning')}}</a>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-12">
+        <div class="tile tile-sprint">
+            <h3 class="tile-title mtm">{{_('Sprints')}}</h3>
+            @foreach ($user->sprints()->take(2) as $key => $sprint)
+            <div class="">
+                <a href="{{route('sprints.show', ['slug'=>$sprint->slug])}}">
+                    <strong>{{$sprint->title}}</strong>
+                    <span>{{$sprint->timebox}}
+                    ({{$sprint->getPercentComplete()}}% {{_('completed')}})</span></a>
+                <div class="progress">
+                    <div class="progress-bar" style="width: {{$sprint->getPercentComplete()}}%;"></div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
+</div>
+
+<div class="col-lg-12">
+
+    <table class="table table-hover issue-tracker">
+        <tbody>
+        @each('partials.lists.issues', $user->issues, 'list', 'partials.lists.no-items')
+        </tbody>
+    </table>
 
 </div>
 

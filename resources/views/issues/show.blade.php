@@ -94,6 +94,10 @@
                     style="font-size:16px;margin-top:3px;background-color:#{{$issue->type->color}}">
                     {{$issue->type->title}}</span></a>
 
+                    <span class="label label-warning pull-right mrm"
+                        style="font-size:16px;margin-top:3px;">
+                        Effort: {{$issue->configEffort->title}}</span>
+
                 <span @if ( $issue->closed_at ) style="text-decoration: line-through;" @endif>
                 {{$issue->title}}</span>
         </h3>

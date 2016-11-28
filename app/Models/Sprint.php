@@ -284,4 +284,13 @@ class Sprint extends Model
     {
         return isset($this->attributes['slug']) ? $this->attributes['slug'] : '';
     }
+
+    public function getTimeboxAttribute()
+    {
+        $date_start = isset($this->attributes['date_start']) ?
+            Carbon::parse($this->attributes['date_start'])->toDateString() : '';
+        $date_finish = isset($this->attributes['date_finish']) ?
+            Carbon::parse($this->attributes['date_finish'])->toDateString() : '';
+        return $date_start . ' ' . _('to') . ' ' . $date_finish;
+    }
 }

@@ -64,7 +64,7 @@
     <div class="form-group">
         <label class="col-sm-12">{{_('Avg Effort')}}</label>
         <div class="col-sm-12">
-            <select name="issue_effort_id" class="form-control m-b">
+            <select name="config_issue_effort_id" class="form-control m-b">
                 @foreach ($issue_efforts as $effort)
                 <option value="{{$effort->id}}">{{$effort->title}}</option>
                 @endforeach
