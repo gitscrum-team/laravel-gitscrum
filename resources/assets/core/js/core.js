@@ -25,6 +25,10 @@ $(function () {
 
     });
 
+    $('body').on('hidden.bs.modal', '.modal', function () {
+      $(this).removeData('bs.modal'); 
+    });
+
 });
 
 var attachment = {
@@ -38,4 +42,4 @@ var attachment = {
 
     }
 
-}; 
+};
