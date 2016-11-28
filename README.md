@@ -4,7 +4,7 @@ GitScrum is a Laravel 5.3 application to helps teams use Git version control and
 
 [![Build Status](https://travis-ci.org/renatomarinho/Laravel-GitScrum.svg?branch=master)](https://travis-ci.org/renatomarinho/Laravel-GitScrum)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/?branch=master)
-
+[![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-gitscrum/downloads)](https://packagist.org/packages/renatomarinho/laravel-gitscrum)
 
 ## Instalation
 
