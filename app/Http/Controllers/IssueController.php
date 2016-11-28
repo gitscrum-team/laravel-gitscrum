@@ -14,6 +14,7 @@ use GitScrum\Models\UserStory;
 use GitScrum\Models\Issue;
 use GitScrum\Models\Organization;
 use GitScrum\Models\IssueType;
+use GitScrum\Models\ConfigStatus;
 use GitScrum\Models\ConfigIssueEffort;
 use Carbon\Carbon;
 use Auth;
