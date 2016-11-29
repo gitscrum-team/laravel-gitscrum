@@ -3,7 +3,7 @@
         @include('partials.lnk-favorite', ['favorite' => $list->favorite, 'type' => 'issue',
             'id' => $list->id, 'btnSize' => 'btn-xs' ])</td>
     <td width="200">
-        <a href="{{route('issue_types.index', ['sprint_slug' => $list->sprint->slug, 'type_slug' => $list->type->slug])}}">
+        <a href="{{route('issue_types.index', ['sprint_slug' => @$list->sprint->slug, 'type_slug' => $list->type->slug])}}">
             <span class="label label-primary" style="background-color:#{{$list->type->color}}">
         {{$list->type->title}}</span></a>
         <span class="label label-primary" style="background-color:#{{$list->status->color}}">{{$list->status->title}}</span>
