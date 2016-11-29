@@ -42,7 +42,7 @@ class IssueController extends Controller
 
             $issues = $sprint->issues;
         } else {
-            $sprint = 1;
+            $sprint = null;
             $issues = Auth::user()->issues;
         }
 
@@ -215,7 +215,7 @@ class IssueController extends Controller
                 $issue->closed_at = Carbon::now();
                 $issue->save();
             }
-            return true;    
+            return true;
         }
     }
 

@@ -7,7 +7,7 @@
     <h3 class="ptn mtn mbn pbn">{{_('Sprint Planning')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
-    @if( is_null($sprint) && isset($sprint) )
+    @if( !is_null($sprint) )
         @include('partials.lnk-favorite', ['favorite' => $sprint->favorite, 'type' => 'sprint',
             'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => _('Favorite')])
         &nbsp;&nbsp;
@@ -19,9 +19,14 @@
             <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Sprint')}}</a>
-            <a href="{{route('user_stories.edit', ['slug' => $sprint->slug])}}"
-                class="btn btn-sm btn-default">
-                <i class="fa fa-trash" aria-hidden="true"></i></a>
+            <form action="{{route('sprints.delete')}}" method="POST" class="form-delete pull-right">
+                {{ csrf_field() }}
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="hidden" name="slug" value="{{$sprint->slug}}" />
+                <button class="btn btn-sm btn-default btn-submit-form" type="submit">
+                    <i class="fa fa-trash" aria-hidden="true"></i></a>
+                </button>
+            </form>
         </div>
     @endif
 </div>
