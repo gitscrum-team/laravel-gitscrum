@@ -11,7 +11,7 @@
         @include('partials.boxes.issue-icons', ['issue' => $card])
     </div>
 
-    <a href="{{route('issue_types.index', ['sprint_slug' => $card->sprint->slug,
+    <a href="{{route('issue_types.index', ['sprint_slug' => @$card->sprint->slug,
         'type_slug' => $card->type->slug])}}">
         <span class="label label-primary" style="background-color:#{{$card->type->color}}">
     {{$card->type->title}}</span></a>
