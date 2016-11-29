@@ -16,7 +16,7 @@
             data-toggle="modal" data-target="#modalLarge">
             <i class="fa fa-plus" aria-hidden="true"></i> {{_('Create Issue')}}</a>
         <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
-            class="btn btn-sm btn-primary">
+            class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalLarge">
             <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Sprint')}}</a>
         <a href="{{route('user_stories.edit', ['slug' => $sprint->slug])}}"
             class="btn btn-sm btn-default">
