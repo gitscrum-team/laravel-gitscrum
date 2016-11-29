@@ -194,8 +194,8 @@ class IssueController extends Controller
             ->firstOrFail();
 
         $issue->config_status_id = $status;
-        $issue->closed_user_id   = Auth::id();
-        $issue->closed_at        = Carbon::now();
+        $issue->closed_user_id = Auth::id();
+        $issue->closed_at = Carbon::now();
         $issue->save();
 
         if (!$request->ajax()) {

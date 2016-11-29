@@ -291,6 +291,7 @@ class Sprint extends Model
             Carbon::parse($this->attributes['date_start'])->toDateString() : '';
         $date_finish = isset($this->attributes['date_finish']) ?
             Carbon::parse($this->attributes['date_finish'])->toDateString() : '';
-        return $date_start . ' ' . _('to') . ' ' . $date_finish;
+
+        return $date_start.' '._('to').' '.$date_finish;
     }
 }

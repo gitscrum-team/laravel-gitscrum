@@ -1,4 +1,4 @@
-<div class="col-md-3">
+<div class="col-lg-3 col-sm-4">
     <div class="contact-box center-version">
         <a href="{{route('user.profile', ['username' => $list->username])}}">
             <img alt="image" class="img-rounded" src="{{$list->avatar}}">

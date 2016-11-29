@@ -1,9 +1,15 @@
-@media only screen and (max-width : 1580px)
+@media only screen and (max-width : 1600px)
 {
 	.sidebar
 	{
 		display: none !important;
 	}
+}
+
+ul{
+	list-style-type: none;
+	padding:0;
+	margin:0;
 }
 
 h3.lead{
@@ -263,7 +269,7 @@ h3{
   background-color: #ffffff;
   border: 1px solid #e7eaec;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .contact-box > a {
   color: inherit;
@@ -271,6 +277,10 @@ h3{
 .contact-box.center-version {
   border: 1px solid #e7eaec;
   padding: 0;
+  p{
+	  padding:0;
+	  margin:0;
+  }
 }
 .contact-box.center-version > a {
   display: block;
@@ -283,4 +293,53 @@ h3{
   height: 80px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+
+.user-profile{
+
+	.information{
+		.col-lg-3{
+			width:100%;
+			padding:0;
+			margin:0;
+		}
+	}
+
+	.feed-element{
+		padding:0 8px 5px;
+		a img{
+			display:none;
+		}
+	}
+
+	.contact-box.center-version > a img {
+	  width: 210px;
+	  height: 210px;
+	  margin-top: 5px;
+	  margin-bottom: 10px;
+	}
+}
+
+.card-detail {
+	background:#fff;
+	margin:0 0 15px;
+	padding:10px;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+	.team-members{
+		margin:0 0 10px;
+	}
+	.icons{
+		font-size:12px;
+	}
+	h4{
+		margin:0 0 5px;
+		padding:0;
+		font-size:16px;
+	}
+	p{
+		margin:0;
+		padding:0;
+		font-size:13px;
+	}
 }

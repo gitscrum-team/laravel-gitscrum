@@ -135,7 +135,6 @@ class User extends Authenticatable
 
             return $obj;
         })->flatten(1);
-
     }
 
     public function burdown()

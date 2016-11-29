@@ -18,9 +18,9 @@ class NoteController extends Controller
     public function store(NoteRequest $request)
     {
         $data = [
-            'noteable_id'   => $request->noteable_id,
+            'noteable_id' => $request->noteable_id,
             'noteable_type' => $request->noteable_type,
-            'title'         => $request->title,
+            'title' => $request->title,
         ];
 
         Note::create($data);
@@ -33,7 +33,7 @@ class NoteController extends Controller
         $note = Note::where('slug', $slug)->first();
 
         $note->closed_user_id = Auth::id();
-        $note->closed_at      = Carbon::now();
+        $note->closed_at = Carbon::now();
         $note->save();
 
         return back()->with('success', _('Updated successfully'));

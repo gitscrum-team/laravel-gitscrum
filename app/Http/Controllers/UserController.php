@@ -23,15 +23,7 @@ class UserController extends Controller
         $user = Auth::user();
 
         return view('users.dashboard')
-                ->with('user', $user);
-    }
-
-    public function issues()
-    {
-        $user = Auth::user();
-
-        return view('users.dashboard')
-                ->with('user', $user);
+            ->with('user', $user);
     }
 
     /**
@@ -75,8 +67,11 @@ class UserController extends Controller
         $user = User::where('username', $username)
             ->first();
 
+        $activities = $user->activities($user->id);
+
         return view('users.show')
-                ->with('user', $user);
+                ->with('user', $user)
+                ->with('activities', $activities);
     }
 
     /**
