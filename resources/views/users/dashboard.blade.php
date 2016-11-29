@@ -44,7 +44,7 @@
     <div class="col-lg-6 col-sm-12">
         <div class="tile tile-sprint">
             <h3 class="tile-title mtm">{{_('Sprints')}}</h3>
-            @foreach ($user->sprints()->take(2) as $key => $sprint)
+            @foreach ($sprints as $key => $sprint)
             <div class="">
                 <a href="{{route('sprints.show', ['slug'=>$sprint->slug])}}">
                     <strong>{{$sprint->title}}</strong>

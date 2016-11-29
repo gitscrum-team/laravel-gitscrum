@@ -21,8 +21,10 @@ class UserController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
-
+        $sprints = $user->sprints()->take(2);
+        
         return view('users.dashboard')
+            ->with('sprints', $sprints)
             ->with('user', $user);
     }
 
