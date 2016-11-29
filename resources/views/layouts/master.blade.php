@@ -5,7 +5,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>@yield('title') / {{ env('APP_TITLE') }}</title>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -91,10 +92,6 @@
     @if ( Auth::check() )
         @include('partials.boxes.bug-report')
     @endif
-
-    <script type="text/javascript">
-        $('.sparkpie').sparkline('html', { type: 'pie', height: '1.0em' });
-    </script>
 
 </body>
 

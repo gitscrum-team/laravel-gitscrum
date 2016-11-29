@@ -12,7 +12,6 @@
         <a href="{{route('issues.show', ['slug'=>$list->slug])}}">
             <span class="text-success" @if ( $list->closed_at ) style="text-decoration: line-through;" @endif>
                 {{$list->title}}</span></a>
-        <br />
         @include('partials.boxes.issue-icons', ['issue' => $list])
     </td>
     <td>{{@$list->sprint->name}}</td>

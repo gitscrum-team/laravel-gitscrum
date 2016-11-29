@@ -35,7 +35,9 @@
             <i class="fa fa-th fa-4x" aria-hidden="true"></i>
             <h3 class="tile-title mtm">{{$user->issues()->count()}}</h3>
             <p>{{_('Issues')}}</p>
-            <a class="btn btn-primary btn-large btn-block" href="#">{{_('My Planning')}}</a>
+            <a class="btn btn-primary btn-large btn-block"
+                href="{{route('issues.index',['slug' => 0])}}">
+                {{_('My Planning')}}</a>
         </div>
     </div>
 

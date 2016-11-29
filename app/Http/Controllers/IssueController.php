@@ -28,23 +28,30 @@ class IssueController extends Controller
      */
     public function index($slug)
     {
-        $sprint = Sprint::where('slug', $slug)
-            ->with('issues.user')
-            ->with('issues.users')
-            ->with('issues.commits')
-            ->with('issues.statuses')
-            ->with('issues.status')
-            ->with('issues.comments')
-            ->with('issues.attachments')
-            ->with('issues.type')
-            ->first();
+        if ($slug) {
+            $sprint = Sprint::where('slug', $slug)
+                ->with('issues.user')
+                ->with('issues.users')
+                ->with('issues.commits')
+                ->with('issues.statuses')
+                ->with('issues.status')
+                ->with('issues.comments')
+                ->with('issues.attachments')
+                ->with('issues.type')
+                ->first();
 
-        $issues = $sprint->issues->groupBy('config_status_id');
+            $issues = $sprint->issues;
+        } else {
+            $sprint = 1;
+            $issues = Auth::user()->issues;
+        }
+
+        $issues = $issues->groupBy('config_status_id');
 
         $configStatus = configStatus::where('type', 'issue')
             ->orderby('position', 'ASC')->get();
 
-        if (!count($sprint)) {
+        if (!is_null($sprint) && !count($sprint)) {
             return redirect()->route('sprints.index');
         }
 
@@ -188,18 +195,27 @@ class IssueController extends Controller
             ->with('success', _('Congratulations! The Issue has been edited with successfully'));
     }
 
-    public function statusUpdate(Request $request, $slug, int $status)
+    public function statusUpdate(Request $request, $slug=null, int $status=0)
     {
-        $issue = Issue::where('slug', $slug)
-            ->firstOrFail();
-
-        $issue->config_status_id = $status;
-        $issue->closed_user_id = Auth::id();
-        $issue->closed_at = Carbon::now();
-        $issue->save();
-
         if (!$request->ajax()) {
+            $issue = Issue::where('slug', $slug)
+                ->firstOrFail();
+
+            $issue->config_status_id = $status;
+            $issue->closed_user_id = Auth::id();
+            $issue->closed_at = Carbon::now();
+            $issue->save();
+
             return redirect()->back()->with('success', _('Updated successfully'));
+        } else {
+            foreach(json_decode($request->json) as $id){
+                $issue = Issue::find($id);
+                $issue->config_status_id = $request->status_id;
+                $issue->closed_user_id = Auth::id();
+                $issue->closed_at = Carbon::now();
+                $issue->save();
+            }
+            return true;    
         }
     }
 

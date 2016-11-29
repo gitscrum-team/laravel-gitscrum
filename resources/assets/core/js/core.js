@@ -1,6 +1,13 @@
 $(function () {
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     attachment.init();
+    agile.init();
 
     $('.form-delete .btn-submit-form').on('click', function (event) {
 
@@ -26,10 +33,39 @@ $(function () {
     });
 
     $('body').on('hidden.bs.modal', '.modal', function () {
-      $(this).removeData('bs.modal'); 
+      $(this).removeData('bs.modal');
     });
 
 });
+
+var agile = {
+
+    init:function(){
+        if( $(".agile-list").length )
+        {
+            $(".agile-list").sortable({
+                connectWith: ".connectList",
+                placeholder: "ui-state-highlight",
+                start: function(e, ui){
+                    ui.placeholder.height(ui.item.height());
+                },
+                stop: function( event, ui ) {
+
+                    $.each($('.agile-list'), function(k,v){
+                        if($(v).sortable( "toArray" ).length)
+                        {
+
+                            $.post( $(v).data('endpoint'), { status_id: $(v).data('value'), json: window.JSON.stringify($(v).sortable( "toArray" )) });
+
+                        }
+                    });
+
+                }
+            }).disableSelection();
+        }
+    }
+
+}
 
 var attachment = {
 
