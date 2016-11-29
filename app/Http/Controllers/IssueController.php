@@ -46,7 +46,7 @@ class IssueController extends Controller
             $issues = Auth::user()->issues;
         }
 
-        $issues = $issues->groupBy('config_status_id');
+        $issues = $issues->sortBy('position')->groupBy('config_status_id');
 
         $configStatus = configStatus::where('type', 'issue')
             ->orderby('position', 'ASC')->get();
@@ -208,11 +208,15 @@ class IssueController extends Controller
 
             return redirect()->back()->with('success', _('Updated successfully'));
         } else {
+
+            $position = 0;
+
             foreach(json_decode($request->json) as $id){
                 $issue = Issue::find($id);
                 $issue->config_status_id = $request->status_id;
                 $issue->closed_user_id = Auth::id();
                 $issue->closed_at = Carbon::now();
+                $issue->position = $position++;
                 $issue->save();
             }
             return true;
