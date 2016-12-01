@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'global.activities' => \GitScrum\Http\Middleware\GlobalActivities::class,
 
         'issue' => \GitScrum\Http\Middleware\IssueMiddleware::class,
+        'product-backlog' => \GitScrum\Http\Middleware\ProductbacklogMiddleware::class,
     ];
 }
