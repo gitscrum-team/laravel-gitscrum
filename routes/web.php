@@ -14,18 +14,18 @@ Route::get('/', function () {
     return redirect()->route('auth.login');
 })->name('home');
 
-Route::get('/dashboard', 'UserController@dashboard')->name('user.dashboard');
+Route::get('/dashboard', 'UserController@dashboard')->name('user.dashboard')->middleware('product-backlog');
 Route::get('/profile/{username}', 'UserController@show')->name('user.profile');
 
 Route::get('/repositories/update', 'RepositoriesController@update')->name('repositories.update');
 
-Route::get('/logout', 'Auth\AuthController@logout')->name('auth.logout');
-Route::group(['prefix' => 'auth', 'middleware' => ['guest']], function () {
+Route::group(['prefix' => 'auth'], function () {
     Route::get('/register', 'Auth\AuthController@register')->name('auth.register');
     Route::get('/login', 'Auth\AuthController@login')->name('auth.login');
     Route::get('/dologin', 'Auth\AuthController@dologin')->name('auth.dologin');
     Route::get('/github', 'Auth\AuthController@redirectToProvider')->name('auth.github');
     Route::get('/github/callback', 'Auth\AuthController@handleProviderCallback');
+    Route::get('/logout', 'Auth\AuthController@logout')->name('auth.logout');
 });
 
 Route::group(['prefix' => 'product-backlogs'], function () {
@@ -110,4 +110,8 @@ Route::group(['prefix' => 'attachments'], function () {
 
 Route::group(['prefix' => 'teams'], function () {
     Route::get('/members', 'TeamController@index')->name('team.index');
+});
+
+Route::group(['prefix' => 'wizard'], function () {
+    Route::get('/step1', 'WizardController@step1')->name('wizard.step1');
 });
