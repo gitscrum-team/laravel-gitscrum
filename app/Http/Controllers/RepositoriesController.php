@@ -11,12 +11,5 @@ use GitScrum\Classes\Github;
 
 class RepositoriesController extends Controller
 {
-    public function update()
-    {
-        $github = new Github();
-        $github->repositories();
 
-        return redirect()->route('user.dashboard')
-            ->with('success', _('Updated successfully'));
-    }
 }

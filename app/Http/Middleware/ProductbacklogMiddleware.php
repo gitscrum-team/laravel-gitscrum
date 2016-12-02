@@ -19,7 +19,7 @@ class ProductbacklogMiddleware
     {
         if ( !ProductBacklog::count() )
         {
-            //return redirect()->route('wizard.step1');
+            return redirect()->route('wizard.step1');
         }
 
         return $next($request);

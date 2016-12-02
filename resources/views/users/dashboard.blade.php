@@ -10,7 +10,7 @@
 
 <div class="col-lg-6 text-right">
     <div class="btn-group">
-        <a href="{{route('repositories.update')}}" class="btn btn-sm btn-primary">
+        <a href="{{route('wizard.step1')}}" class="btn btn-sm btn-primary">
             {{_('Update Repositories')}}</a>
     </div>
 </div>

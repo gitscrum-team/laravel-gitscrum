@@ -17,8 +17,6 @@ Route::get('/', function () {
 Route::get('/dashboard', 'UserController@dashboard')->name('user.dashboard')->middleware('product-backlog');
 Route::get('/profile/{username}', 'UserController@show')->name('user.profile');
 
-Route::get('/repositories/update', 'RepositoriesController@update')->name('repositories.update');
-
 Route::group(['prefix' => 'auth'], function () {
     Route::get('/register', 'Auth\AuthController@register')->name('auth.register');
     Route::get('/login', 'Auth\AuthController@login')->name('auth.login');
@@ -114,4 +112,5 @@ Route::group(['prefix' => 'teams'], function () {
 
 Route::group(['prefix' => 'wizard'], function () {
     Route::get('/step1', 'WizardController@step1')->name('wizard.step1');
+    Route::post('/step2', 'WizardController@step2')->name('wizard.step2');
 });

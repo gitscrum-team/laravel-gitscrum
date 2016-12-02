@@ -14,6 +14,36 @@ use Carbon\Carbon;
 
 class Github
 {
+
+    public function getRepositories()
+    {
+        $repos = $this->request('https://api.github.com/user/repos');
+
+        foreach ($repos as $repo) {
+            $data[] = (object) [
+                'github_id' => $repo->id,
+                'organization_id' => $this->organization($repo->owner->login),
+                'organization_title' => $repo->owner->login,
+                'slug' => Helper::slug($repo->name),
+                'title' => $repo->name,
+                'fullname' => $repo->full_name,
+                'is_private' => $repo->private,
+                'html_url' => $repo->html_url,
+                'description' => $repo->description,
+                'fork' => $repo->fork,
+                'url' => $repo->url,
+                'since' => Carbon::parse($repo->created_at)->toDateTimeString(),
+                'pushed_at' => Carbon::parse($repo->pushed_at)->toDateTimeString(),
+                'ssh_url' => $repo->ssh_url,
+                'clone_url' => $repo->clone_url,
+                'homepage' => $repo->homepage,
+                'default_branch' => $repo->default_branch,
+            ];
+        }
+
+        return collect($data);
+    }
+
     public function repositories()
     {
         $repos = $this->request('https://api.github.com/user/repos');
