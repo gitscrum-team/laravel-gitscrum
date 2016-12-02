@@ -5,7 +5,19 @@
 @section('breadcrumb')
 <div class="nav-wizard">
     <div class="col-lg-12">
-        <h3 class="ptn mtn mbn pbn">{{_('Congratulations.')}} <p class="small">{{_('You have successfully imported repositories for')}} {{_('GitScrum')}}</p></h3>
+        <h3 class="ptn mtn mbn pbn">
+
+            @if($repositories->count())
+                {{_('Congratulations.')}}
+                <p class="small">
+                {{_('You have successfully added repositories for')}} {{_('GitScrum')}}
+                </p>
+            @else
+                {{_(':( Choose at least one repository')}}
+                <p class="small">{{_('You can click')}} <a href="{{route('wizard.step1')}}">{{_('here')}}</a> {{_('and try again')}}</p>
+            @endif
+
+        </h3>
     </div>
 </div>
 @endsection

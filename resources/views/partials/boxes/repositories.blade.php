@@ -6,7 +6,8 @@
             @if(in_array('checkbox', $columns))
             <td width="80px">
                 <div class="bootstrap-switch-square mts">
-                  <input type="checkbox" data-toggle="switch" name="repos[]" value="{{$value->github_id}}" id="{{$value->github_id}}" />
+                  <input type="checkbox" data-toggle="switch" name="repos[]" value="{{$value->github_id}}" id="{{$value->github_id}}"
+                    @if( $currentRepositories->where('github_id', $value->github_id)->first() ) checked disabled @endif />
                 </div>
             </td>
             @endif

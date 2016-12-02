@@ -11,11 +11,13 @@ class WizardController extends Controller
     public function step1()
     {
         $repositories = app('GithubClass')->getRepositories();
+        $currentRepositories = ProductBacklog::all();
 
         \Session::put('GithubRepositories', $repositories);
 
         return view('wizard.step1')
             ->with('repositories', $repositories)
+            ->with('currentRepositories', $currentRepositories)
             ->with('columns', ['checkbox', 'repository', 'organization']);
     }
 
