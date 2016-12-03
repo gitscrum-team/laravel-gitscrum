@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
 <div class="col-lg-8">
-    <h3 class="ptn mtn mbn pbn">{{_('Label')}}: <span class="">{{$label->title}}</span></h3>
+    <h3>{{_('Label')}}: <span class="">{{$label->title}}</span></h3>
 </div>
 <div class="col-lg-4 text-right">
 

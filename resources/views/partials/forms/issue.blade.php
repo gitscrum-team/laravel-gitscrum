@@ -23,7 +23,7 @@
                     @endif
 
                     @foreach ($backlog->sprints as $productBacklog_sprint)
-                    <option value="{{$backlog->id}}">{{$productBacklog_sprint->title}}</option>
+                    <option value="{{$productBacklog_sprint->id}}">{{$productBacklog_sprint->title}}</option>
                     @endforeach
 
                     @if ($backlog->sprints->count())

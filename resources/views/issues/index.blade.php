@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3 class="ptn mtn mbn pbn">{{_('Sprint Planning')}}</h3>
+    <h3>{{_('Sprint Planning')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     @if( !is_null($sprint) )
@@ -37,14 +37,23 @@
     <div class="row">
 
             @foreach ($configStatus as $status)
-            <div class="col-lg-3">
-                <h5>{{$status->title}}</h5>
+            <div class="col-lg-3 agile">
+                <h5 data-spy="affix" data-offset-top="90">{{$status->title}}
+                    (
+                    @if(isset($issues[$status->id]))
+                        <span>{{count($issues[$status->id])}}</span>
+                    @else
+                        <span>0</span>
+                    @endif
+                    )
+                </h5>
                 <ul class="sortable-list connectList agile-list"
                     data-value="{{$status->id}}" data-endpoint="{{route('issues.status.update')}}">
                     @if(isset($issues[$status->id]))
                         @each('partials.lists.agile-cards', $issues[$status->id], 'card', 'partials.lists.no-items')
                     @endif
                 </ul>
+                <div class="clearfix"></div>
             </div>
             @endforeach
         </div>

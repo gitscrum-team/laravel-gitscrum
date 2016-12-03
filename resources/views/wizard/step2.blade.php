@@ -5,7 +5,7 @@
 @section('breadcrumb')
 <div class="nav-wizard">
     <div class="col-lg-12">
-        <h3 class="ptn mtn mbn pbn">
+        <h3>
 
             @if($repositories->count())
                 {{_('Congratulations.')}}

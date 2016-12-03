@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3 class="ptn mtn mbn pbn">{{_('Issue')}}</h3>
+    <h3>{{_('Issue')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $issue->favorite, 'type' => 'issue',

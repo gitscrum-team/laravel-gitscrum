@@ -5,7 +5,7 @@
 @section('breadcrumb')
 <div class="nav-wizard">
     <div class="col-lg-6">
-        <h3 class="ptn mtn mbn pbn">{{_('Welcome to')}} {{_('GitScrum')}}</h3>
+        <h3>{{_('Welcome to')}} {{_('GitScrum')}}</h3>
     </div>
     <div class="col-lg-6">
         <h3 class="ptn mtn mbn pbn pull-right">{{_('Choose repositories')}}</h3>

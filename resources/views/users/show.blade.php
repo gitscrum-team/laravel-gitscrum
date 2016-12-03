@@ -5,12 +5,12 @@
 @section('breadcrumb')
 
 <div class="col-lg-6">
-    <h3 class="ptn mtn mbn pbn">{{_('Profile')}}</h3>
+    <h3>{{_('Profile')}}</h3>
 </div>
 
 <div class="col-lg-6 text-right">
     <div class="btn-group">
-        
+
     </div>
 </div>
 

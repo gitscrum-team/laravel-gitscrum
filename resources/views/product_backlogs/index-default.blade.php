@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3 class="ptn mtn mbn pbn">{{_('Product Backlog List')}}</h3>
+    <h3>{{_('Product Backlog List')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     <a href="{{route('product_backlogs.create')}}" class="btn btn-sm btn-primary"
