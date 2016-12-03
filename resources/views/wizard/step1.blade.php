@@ -1,6 +1,6 @@
 @section('title',  _('Welcome to GitScrum - Step 1'))
 
-@extends('layouts.master', ['hideNavbar' => true])
+@extends('layouts.master')
 
 @section('breadcrumb')
 <div class="nav-wizard">
@@ -21,7 +21,7 @@
 
         @include('partials.boxes.repositories', ['list'=>$repositories, 'columns'=>$columns])
 
-        <div class="text-center">
+        <div class="text-center mbl">
             <button class="btn btn-lg btn-success">{{_('Confirm to add repositories into the')}} <strong>{{_('GitScrum')}}</strong></button>
         </div>
 

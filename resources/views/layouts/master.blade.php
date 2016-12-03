@@ -39,13 +39,13 @@
 
         @include('partials.boxes.bug-report')
 
-    @endif
-
-    <div class="breadcrumb-area">
-        <div class="container">
-            @yield('breadcrumb')
+        <div class="breadcrumb-area">
+            <div class="container">
+                @yield('breadcrumb')
+            </div>
         </div>
-    </div>
+
+    @endif
 
     <div class="content-area">
         <div class="container">

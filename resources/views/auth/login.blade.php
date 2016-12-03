@@ -1,6 +1,6 @@
 @section('title',  _('GitScrum Login'))
 
-@extends('layouts.master')
+@extends('layouts.master', ['hideNavbar' => true])
 
 @section('content')
 <script async defer src="https://buttons.github.io/buttons.js"></script>

@@ -1,6 +1,6 @@
 @section('title',  _('Welcome to GitScrum - Step 1'))
 
-@extends('layouts.master', ['hideNavbar' => true])
+@extends('layouts.master')
 
 @section('breadcrumb')
 <div class="nav-wizard">
