@@ -81,7 +81,7 @@ h3{
 
 
 
-.feed-element{
+.feed-element, .comment-element{
 	font-size:0.8em;
 	padding-bottom: 5px;
 	margin-bottom: 5px;
@@ -92,10 +92,20 @@ h3{
 			line-height:1.2;
 		}
     }
+	.dateforhumans{
+		position: relative;
+		top:4px;
+	}
 	.avatar-min{
 		height:20px;
 		width:20px;
 		margin:6px 5px 0 0;
+	}
+}
+
+.comment-element{
+	.well{
+		padding:10px 12px;
 	}
 }
 
@@ -110,10 +120,6 @@ h3{
 	}
 }
 
-.comment-dateforhumans{
-	position: relative;
-	top:6px;
-}
 
 .project-list{
 	.progress{
