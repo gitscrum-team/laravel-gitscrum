@@ -26,7 +26,7 @@
 <div class="col-lg-4">
 
     <div class="">
-        <a href="{{route('issues.create', ['slug_sprint' => '-', 'slug_user_story' => $userStory->slug])}}"
+        <a href="{{route('issues.create', ['slug_sprint' => '0', 'slug_user_story' => $userStory->slug])}}"
             class="btn btn-block btn-primary"
             data-toggle="modal" data-target="#modalLarge">
             {{_('Create Issue')}}</a>

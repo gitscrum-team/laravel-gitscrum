@@ -3669,7 +3669,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   min-height: 53px;
   margin-bottom: 24px;
   border: none;
-  border-radius: 6px;
+  border-radius: 0;
 }
 @media (min-width: 768px) {
   .navbar-header {
@@ -4038,10 +4038,10 @@ select[multiple].navbar-form .select2-search input[type="text"] {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 .navbar-default {
-  background-color: #ecf0f1;
+  background-color: #373C47;
 }
 .navbar-default .navbar-brand {
-  color: #34495e;
+  color: #fff;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -4049,7 +4049,7 @@ select[multiple].navbar-form .select2-search input[type="text"] {
   background-color: transparent;
 }
 .navbar-default .navbar-toggle:before {
-  color: #34495e;
+  color: #fff;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
@@ -4061,11 +4061,11 @@ select[multiple].navbar-form .select2-search input[type="text"] {
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #e5e9ea;
+  border-color: #353a45;
   border-width: 2px;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #34495e;
+  color: #fff;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -4085,8 +4085,8 @@ select[multiple].navbar-form .select2-search input[type="text"] {
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .dropdown > a .caret {
-  border-top-color: #34495e;
-  border-bottom-color: #34495e;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
 }
 .navbar-default .navbar-nav > .active > a .caret {
   border-top-color: #1abc9c;
@@ -4111,7 +4111,7 @@ select[multiple].navbar-form .select2-search input[type="text"] {
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #34495e;
+    color: #fff;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -4167,13 +4167,13 @@ select[multiple].navbar-form .select2-search input[type="text"] {
   color: #34495e;
 }
 .navbar-default .navbar-link {
-  color: #34495e;
+  color: #fff;
 }
 .navbar-default .navbar-link:hover {
   color: #1abc9c;
 }
 .navbar-default .btn-link {
-  color: #34495e;
+  color: #fff;
 }
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {

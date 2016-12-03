@@ -4,9 +4,9 @@
     @if ( isset($userStory) )
     <input type="hidden" name="user_story_id" value="{{$userStory->id}}">
     <div class="form-group">
-        <label class="col-sm-3 control-label">{{_('User Story')}}</label>
-        <div class="col-sm-9"><h3><a href="{{route('user_stories.show', ['slug' => $userStory->slug])}}"
-            target="_blank" class="text-success">{{$userStory->title}}</a></h3></div>
+        <label class="col-sm-12 mbn pbn">{{_('User Story')}}</label>
+        <div class="col-sm-12"><a href="{{route('user_stories.show', ['slug' => $userStory->slug])}}"
+            target="_blank" class="text-success">{{$userStory->title}}</a></div>
     </div>
     <div class="hr-line-dashed"></div>
     @endif

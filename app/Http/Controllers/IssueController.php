@@ -78,7 +78,7 @@ class IssueController extends Controller
 
         $userStory = $productBacklogs = null;
 
-        if (is_null($slug_sprint) || $slug_sprint == '-') {
+        if (is_null($slug_sprint) || !$slug_sprint) {
             $userStory = UserStory::where('slug', $slug_user_story)->first();
             $productBacklogs = Auth::user()->productBacklogs($userStory->product_backlog_id);
             $usersByOrganization = Organization::find($userStory->productBacklog->organization_id)->users;

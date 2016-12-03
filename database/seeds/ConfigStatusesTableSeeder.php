@@ -102,6 +102,16 @@ class ConfigStatusesTableSeeder extends Seeder
                 'is_closed' => null,
                 'default' => 1,
             ),
+            9 => array(
+                'id' => 10,
+                'slug' => 'commented',
+                'type' => 'comment',
+                'title' => 'Commented',
+                'position' => 1,
+                'color' => '3745be',
+                'is_closed' => null,
+                'default' => 1,
+            ),
         ));
     }
 }

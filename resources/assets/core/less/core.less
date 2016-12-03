@@ -43,19 +43,11 @@ h3{
 	}
 }
 
-.sidebar
-{
-	width: 240px;
-	position: fixed;
-	height: 100%;
-	right: 0px;
-	top: 54px;
-	padding: 10px 15px;
-	border-left: 1px solid rgba(29, 49, 91, .3);
-
-	h3, h4, h5, h6{
-		font-weight: 700;
-		font-size:14px;
+.tag-list{
+	a{
+		display:block;
+		margin-bottom: 4px;
+		padding:6px 8px 7px;
 	}
 }
 
@@ -193,19 +185,50 @@ h3{
 
 .feedback{
     bottom: 20px;
-    right:20px;
+    left:20px;
 	position: fixed;
+	z-index:999;
 	.report{
 		width:400px;
-		box-shadow: 10px 10px 5px #888888;
-		.col-lg-12{
-			box-shadow: 0px 0px 8px #888;
-			border-radius: 4px;
-			padding: 4px 10px 10px;
+		box-shadow: 0px 0px 8px #888;
+		border-radius: 4px;
+		padding: 4px 10px 10px;
+		h6{
+			font-size:16px;
+			font-weight: 500;
+			i{
+				margin:2px 4px 0 0;
+			}
 		}
 	}
-	.btn{
-		font-size:10pt;
+	.btn.dropdown-toggle{
+		font-size:10px;
+		padding: 10px;
+	}
+}
+
+.dropdown-activities{
+	bottom: 20px;
+    right:20px;
+	position: fixed;
+	z-index:999;
+	.report{
+		width:280px;
+		height:460px;
+		box-shadow: 0px 0px 8px #888;
+		border-radius: 4px;
+		padding: 4px 10px 10px;
+		h4, h5, h6{
+			font-size:16px;
+			font-weight: 500;
+			i{
+				margin-right:4px;
+			}
+		}
+	}
+	.btn.dropdown-toggle{
+		font-size:10px;
+		padding: 10px;
 	}
 }
 
@@ -369,4 +392,11 @@ h3{
 
 .nav-wizard{
     margin-top:30px;
+}
+
+.nav{
+	.avatar{
+		border-left:1px solid rgba(255,255,255,0.2);
+		border-right:1px solid rgba(255,255,255,0.2);
+	}
 }

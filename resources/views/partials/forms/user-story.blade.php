@@ -22,7 +22,7 @@
     <div class="form-group">
         <label class="col-sm-12">{{_('Description')}}</label>
         <div class="col-sm-12">
-            <textarea name="description" type="text" class="form-control" required>{{ @$userStory->description }}</textarea>
+            <textarea name="description" type="text" class="form-control">{{ @$userStory->description }}</textarea>
             <span class="help-block m-b-none">A block of help text that breaks onto a new line and may extend beyond one line.</span>
         </div>
     </div>
@@ -40,7 +40,7 @@
     <div class="form-group">
         <label class="col-sm-12">{{_('Acceptance Criteria')}}</label>
         <div class="col-sm-12">
-            <textarea name="acceptance_criteria" type="text" class="form-control" required>{{ @$userStory->acceptance_criteria }}</textarea>
+            <textarea name="acceptance_criteria" type="text" class="form-control">{{ @$userStory->acceptance_criteria }}</textarea>
             <span class="help-block m-b-none">A block of help text that breaks onto a new line and may extend beyond one line.</span>
         </div>
     </div>

@@ -71,6 +71,8 @@
 
         @include('partials.includes.sidebar')
 
+        @include('partials.boxes.bug-report')
+
     @endif
 
     <div class="container">
@@ -92,10 +94,6 @@
             <div class="modal-content"></div>
         </div>
     </div>
-
-    @if ( Auth::check() )
-        @include('partials.boxes.bug-report')
-    @endif
 
 </body>
 
