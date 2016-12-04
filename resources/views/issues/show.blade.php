@@ -95,16 +95,18 @@
             <a href="{{route('issue_types.index', ['sprint_slug' => '0',
                     'type_slug' => $issue->type->slug])}}">
             @endif
+
+                <span @if ( $issue->closed_at ) style="text-decoration: line-through;" @endif>
+                    {{$issue->title}}</span>
+
+                <span class="label label-warning pull-right mrm"
+                    style="font-size:16px;margin-top:3px;">
+                    Effort: {{$issue->configEffort->title}}</span>
+
                 <span class="label label-danger pull-right"
                     style="font-size:16px;margin-top:3px;background-color:#{{$issue->type->color}}">
                     {{$issue->type->title}}</span></a>
 
-                    <span class="label label-warning pull-right mrm"
-                        style="font-size:16px;margin-top:3px;">
-                        Effort: {{$issue->configEffort->title}}</span>
-
-                <span @if ( $issue->closed_at ) style="text-decoration: line-through;" @endif>
-                {{$issue->title}}</span>
         </h3>
 
         <h6 class="text-muted pbn">{{_('Use this code on commit')}}: <strong>#{{$issue->code}}-{{$issue->id}}</strong></h6>

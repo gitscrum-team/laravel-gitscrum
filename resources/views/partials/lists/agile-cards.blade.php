@@ -16,6 +16,14 @@
         <span class="label label-primary" style="background-color:#{{$card->type->color}}">
     {{$card->type->title}}</span></a>
 
+    <span class="label label-warning"> Effort:{{$card->configEffort->title}}</span>
+
+    <div class="options">
+        <a href="{{route('issues.edit', ['slug' => $card->slug])}}"
+        data-toggle="modal" data-target="#modalLarge">
+        <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Issue')}}</a>
+    <div>
+
     <div class="clearfix"></div>
 
 </li>

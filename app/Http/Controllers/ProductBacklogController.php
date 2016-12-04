@@ -118,7 +118,7 @@ class ProductBacklogController extends Controller
         $productBacklog = ProductBacklog::where('slug', '=', $slug)->first();
         $productBacklog->update($request->all());
 
-        return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
+        return back()
             ->with('success', _('Congratulations! The Product Backlog has been edited with successfully'));
     }
 

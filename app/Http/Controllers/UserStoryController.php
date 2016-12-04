@@ -114,7 +114,7 @@ class UserStoryController extends Controller
         $userStory = UserStory::where('slug', '=', $slug)->first();
         $userStory->update($request->all());
 
-        return redirect()->route('user_stories.show', ['slug' => $userStory->slug])
+        return back()
             ->with('success', _('Congratulations! The User Story has been edited with successfully'));
     }
 

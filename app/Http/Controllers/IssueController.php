@@ -191,7 +191,7 @@ class IssueController extends Controller
             $issue->users()->sync($request->members);
         }
 
-        return redirect()->route('issues.show', ['slug' => $issue->slug])
+        return back()
             ->with('success', _('Congratulations! The Issue has been edited with successfully'));
     }
 
@@ -206,7 +206,7 @@ class IssueController extends Controller
             $issue->closed_at = Carbon::now();
             $issue->save();
 
-            return redirect()->back()->with('success', _('Updated successfully'));
+            return back()->with('success', _('Updated successfully'));
         } else {
 
             $position = 0;

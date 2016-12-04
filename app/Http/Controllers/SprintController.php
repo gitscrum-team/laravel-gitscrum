@@ -137,7 +137,7 @@ class SprintController extends Controller
         $sprint = Sprint::where('slug', '=', $slug)->first();
         $sprint->update($request->all());
 
-        return redirect()->route('sprints.show', ['slug' => $sprint->slug])
+        return back()
             ->with('success', _('Congratulations! The Sprint has been edited with successfully'));
     }
 
