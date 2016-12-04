@@ -185,9 +185,9 @@ return [
 
         Laravel\Socialite\SocialiteServiceProvider::class,
         GrahamCampbell\GitHub\GitHubServiceProvider::class,
-        Cviebrock\EloquentSluggable\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        Talevskiigor\ComposerBump\ComposerBumpServiceProvider::class,
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
 
