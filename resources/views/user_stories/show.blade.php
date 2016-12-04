@@ -4,7 +4,11 @@
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3>{{_('User Story')}}</h3>
+    <h3>
+        @if(isset($userStory->productBacklog->slug))
+        <a href="{{route('product_backlogs.show', ['slug'=>$userStory->productBacklog->slug])}}">{{_('Product Backlog')}}</a> &raquo;
+        @endif
+        {{_('User Story')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $userStory->favorite, 'type' => 'user_story',

@@ -4,7 +4,12 @@
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3>{{_('Issue')}}</h3>
+    <h3>
+        @include('partials.includes.breadcrumb-sprint', ['obj'=>$issue->sprint])
+        @if(isset($issue->userStory->slug))
+        <a href="{{route('user_stories.show', ['slug'=>$issue->userStory->slug])}}">{{_('User Story')}}</a> &raquo;
+        @endif
+        {{_('Issue')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $issue->favorite, 'type' => 'issue',

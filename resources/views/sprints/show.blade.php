@@ -1,10 +1,14 @@
-@section('title',  _('Sprints'))
+@section('title',  _('Sprint Backlog'))
 
 @extends('layouts.master')
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3>{{_('Sprint')}} <span class="label label-default">{{$sprint->visibility}}</span></h3>
+    <h3>
+        @if(isset($sprint->productBacklog->slug))
+        <a href="{{route('product_backlogs.show', ['slug'=>$sprint->productBacklog->slug])}}">{{_('Product Backlog')}}</a> &raquo;
+        @endif
+        {{_('Sprint Backlog')}} <span class="label label-default">{{$sprint->visibility}}</span></h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $sprint->favorite, 'type' => 'sprint',

@@ -4,7 +4,9 @@
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3>{{_('Sprint Planning')}}</h3>
+    <h3>
+        @include('partials.includes.breadcrumb-sprint', ['obj'=>$sprint])
+        {{_('Sprint Planning')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     @if( !is_null($sprint) )
