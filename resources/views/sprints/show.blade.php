@@ -50,32 +50,23 @@
         <table class="table small m-b-xs">
             <tbody>
             <tr>
-                <td>
-                    <strong>{{$sprint->getEffort()}}</strong> {{_('effort')}}
+                <td width="50%">
+                    <h6>{{$sprint->getEffort()}} {{_('effort')}}</h6>
                 </td>
-                <td>
-                    <strong>22</strong> {{_('Team Velocity')}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>{{$sprint->issues->count()}}</strong> {{_('issues')}}
-                </td>
-                <td>
-                    <strong>{{$sprint->issues->count()}}</strong> {{_('commits')}}
+                <td width="50%">
+                    <h6>{{$sprint->getEffortAvg()}} {{_('effort avg.')}}</h6>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <strong>{{count($sprint->issuesHasUsers())}}</strong> {{_('team members')}}
+                <td width="50%">
+                    <h6>{{$sprint->issues->count()}} {{_('issues')}}</h6>
                 </td>
-                <td>
-                    <strong>32</strong> Friends
-                </td>
+                <td width="50%"></td>
             </tr>
             </tbody>
         </table>
 
+        <!--
         <div class="row m-t-sm">
             <div class="col-xs-4">
                 <small class="stats-label">Additions</small>
@@ -90,6 +81,7 @@
                 <h4>76.43%</h4>
             </div>
         </div>
+        -->
 
         @include('partials.boxes.issue-type', ['list' => $sprint->issueTypes()])
 

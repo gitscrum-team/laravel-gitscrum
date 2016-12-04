@@ -201,16 +201,20 @@ class Sprint extends Model
 
     public function getEffort()
     {
-        $effort = $this->issues->sum('effort');
+        $effort = $this->issues->map(function($issue){
+            return $issue->configEffort;
+        })->sum('effort');
 
         return $effort;
     }
 
-    public function avgEffort()
+    public function getEffortAvg()
     {
-        $effort = round($this->issues->avg('effort'), 2);
+        $effort = $this->issues->map(function($issue){
+            return $issue->configEffort;
+        })->avg('effort');
 
-        return $effort;
+        return round($effort, 2);
     }
 
     public function burdown()
