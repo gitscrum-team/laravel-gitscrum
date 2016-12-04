@@ -105,7 +105,7 @@
                 {{$sprint->title}}</span>
             </h4>
 
-            <h5 class="mtn ptn">{{_('Date')}}: {{$sprint->date_start}} {{_('to')}} {{$sprint->date_finish}}</h5>
+            <h6 class="mtn ptn">{{_('Date')}}: {{$sprint->date_start}} {{_('to')}} {{$sprint->date_finish}}</h6>
 
             <p>{{$sprint->workingDays(date('Y-m-d'))}} {{str_plural('missing day', $sprint->workingDays(date('Y-m-d')))}} /
                 {{$sprint->workingDays()}} {{str_plural('workdays', $sprint->workingDays())}}
@@ -119,9 +119,9 @@
             <p class="">{!! nl2br(e($sprint->description)) !!}</p>
 
             <div style="">
-                <h4 class="mbn pbn">{{$sprint->title}} {{_('Burndown')}}</h4>
+                <h4 class="lead mbn pbn">{{$sprint->title}} {{_('Burndown')}}</h4>
                 <div class="row">
-                    <canvas id="sprintBurndown" height="230" class="col-md-12"></canvas>
+                    <canvas id="sprintBurndown" height="320" class="col-md-12"></canvas>
                 </div>
             </div>
 
