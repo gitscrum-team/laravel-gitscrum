@@ -22,13 +22,22 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="avatar">
                     <a aria-expanded="false" role="button"
-                        href="{{route('user.profile', ['username' => Auth::user()->username])}}">
+                        href="#"
+                        data-toggle="dropdown">
                         <img src="{{Auth::user()->avatar}}" class="img-rounded" width="24" />
                         &nbsp;&nbsp;
                         <span class="font-extra-bold">{{Auth::user()->username}}</span>
                     </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{{route('user.profile',['slug' => Auth::user()->username])}}">
+                          <i class="fa fa-user" aria-hidden="true"></i>{{_('Profile')}}</a></li>
+                      <li><a href="{{route('issues.index',['slug' => 0])}}">
+                          <i class="fa fa-th" aria-hidden="true"></i>{{_('Planning')}}</a></li>
+                      <li class="nav-divider"></li>
+                      <li><a href="{{route('auth.logout')}}">
+                          <i class="fa fa-sign-out"></i> {{_('Logout')}}</a></li>
+                    </ul>
                 </li>
-                <li><a href="{{route('auth.logout')}}"><i class="fa fa-sign-out"></i></a></li>
             </ul>
         </div>
     </div>
