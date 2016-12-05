@@ -208,18 +208,20 @@ class IssueController extends Controller
 
             return back()->with('success', _('Updated successfully'));
         } else {
-
             $position = 0;
-
-            foreach(json_decode($request->json) as $id){
-                $issue = Issue::find($id);
-                $issue->config_status_id = $request->status_id;
-                $issue->closed_user_id = Auth::id();
-                $issue->closed_at = Carbon::now();
-                $issue->position = $position++;
-                $issue->save();
+            try{
+                foreach(json_decode($request->json) as $id){
+                    $issue = Issue::find($id);
+                    $issue->config_status_id = $request->status_id;
+                    $issue->closed_user_id = Auth::id();
+                    $issue->closed_at = Carbon::now();
+                    $issue->position = $position++;
+                    $issue->save();
+                }
+                return collect(['response'=>true]);
+            } catch(\Exception $e){
+                return collect(['response'=>false]);
             }
-            return true;
         }
     }
 
