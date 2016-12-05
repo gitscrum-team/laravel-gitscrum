@@ -18,7 +18,7 @@ class Github
             'github_id' => $repo->id,
             'organization_id' => $this->organization($repo->owner->login),
             'organization_title' => $repo->owner->login,
-            'slug' => !$slug?Helper::slug($repo->name):$slug,
+            'slug' => $slug?$slug:Helper::slug($repo->name),
             'title' => $repo->name,
             'fullname' => $repo->full_name,
             'is_private' => $repo->private,
