@@ -49,6 +49,7 @@
             <li class="active"><a data-toggle="tab" href="#tab-userStories">{{_('User Stories')}} ({{$productBacklog->userStories->count()}})</a></li>
             <li class=""><a data-toggle="tab" href="#tab-sprints">{{_('Sprint Backlogs')}} ({{$productBacklog->sprints->count()}})</a></li>
             <li class=""><a data-toggle="tab" href="#tab-comments">{{_('Comments')}} ({{$productBacklog->comments->count()}})</a></li>
+            <li class=""><a data-toggle="tab" href="#tab-branches">{{_('Branches')}} ({{$productBacklog->branches->count()}})</a></li>
         </ul>
         <div class="tab-content">
             <div id="tab-userStories" class="tab-pane active">
@@ -81,6 +82,13 @@
                             @each('partials.lists.comments', $productBacklog->comments, 'comment', 'partials.lists.no-items')
                         </div>
                     </div>
+                </div>
+            </div>
+            <div id="tab-branches" class="tab-pane">
+                <div class="panel-body">
+
+                    @include('partials.boxes.branch', [ 'list' => $productBacklog->branches ])
+
                 </div>
             </div>
         </div>

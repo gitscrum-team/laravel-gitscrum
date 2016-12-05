@@ -46,7 +46,7 @@ class Branch extends Model
      */
     protected $dates = ['deleted_at'];
 
-    public function repository()
+    public function ProductBacklog()
     {
         return $this->belongsTo(\GitScrum\Models\ProductBacklog::class, 'product_backlog_id', 'id');
     }

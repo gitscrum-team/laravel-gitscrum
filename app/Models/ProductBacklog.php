@@ -59,6 +59,11 @@ class ProductBacklog extends Model
         return $this->hasMany(\GitScrum\Models\Sprint::class, 'product_backlog_id', 'id');
     }
 
+    public function branches()
+    {
+        return $this->hasMany(\GitScrum\Models\Branch::class, 'product_backlog_id', 'id');
+    }
+
     public function issues()
     {
         return $this->hasMany(\GitScrum\Models\Issue::class, 'product_backlog_id', 'id')
