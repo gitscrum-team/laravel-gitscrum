@@ -5,6 +5,7 @@
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
+
 namespace GitScrum\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -195,7 +196,7 @@ class IssueController extends Controller
             ->with('success', _('Congratulations! The Issue has been edited with successfully'));
     }
 
-    public function statusUpdate(Request $request, $slug=null, int $status=0)
+    public function statusUpdate(Request $request, $slug = null, int $status = 0)
     {
         if (!$request->ajax()) {
             $issue = Issue::where('slug', $slug)
@@ -209,8 +210,8 @@ class IssueController extends Controller
             return back()->with('success', _('Updated successfully'));
         } else {
             $position = 0;
-            try{
-                foreach(json_decode($request->json) as $id){
+            try {
+                foreach (json_decode($request->json) as $id) {
                     $issue = Issue::find($id);
                     $issue->config_status_id = $request->status_id;
                     $issue->closed_user_id = Auth::id();
@@ -218,9 +219,10 @@ class IssueController extends Controller
                     $issue->position = $position++;
                     $issue->save();
                 }
-                return collect(['response'=>true]);
-            } catch(\Exception $e){
-                return collect(['response'=>false]);
+
+                return collect(['response' => true]);
+            } catch (\Exception $e) {
+                return collect(['response' => false]);
             }
         }
     }

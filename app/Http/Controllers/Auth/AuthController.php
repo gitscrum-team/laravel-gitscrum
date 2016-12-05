@@ -5,6 +5,7 @@
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
+
 namespace GitScrum\Http\Controllers\Auth;
 
 use GitScrum\Http\Requests\AuthRequest;
@@ -19,7 +20,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
 
     public function login()

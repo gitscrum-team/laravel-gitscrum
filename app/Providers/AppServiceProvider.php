@@ -5,6 +5,7 @@
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
+
 namespace GitScrum\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -26,9 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('GithubClass', function()
-        {
-            return new Github;
+        $this->app->bind('GithubClass', function () {
+            return new Github();
         });
     }
 

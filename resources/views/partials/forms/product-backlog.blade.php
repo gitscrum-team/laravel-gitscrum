@@ -3,13 +3,15 @@
     <div class="form-group">
         <label class="col-sm-12">{{_('Organization')}}</label>
         <div class="col-sm-12">
+            @if(isset($productBacklog->organization_id))
+                <strong>{{$productBacklog->organization->title}}</strong>
+            @else
             <select name="organization_id" class="form-control m-b">
-                @foreach ( Auth::user()->organizations as $organization)
-                <option value="{{$organization->id}}"
-                    @if ( @$productBacklog->organization_id == $organization->id ) selected="selected" @endif >
-                        {{$organization->title}}</option>
+                @foreach (Auth::user()->organizations as $organization)
+                <option value="{{$organization->id}}">{{$organization->title}}</option>
                 @endforeach
             </select>
+            @endif
         </div>
     </div>
     <div class="hr-line-dashed"></div>
@@ -22,7 +24,7 @@
     <div class="form-group">
         <label class="col-sm-12">{{_('Description')}}</label>
         <div class="col-sm-12">
-            <textarea name="description" type="text" class="form-control" required>{{ @$productBacklog->description }}</textarea>
+            <textarea name="description" type="text" class="form-control">{{ @$productBacklog->description }}</textarea>
             <span class="help-block m-b-none">A block of help text that breaks onto a new line and may extend beyond one line.</span>
         </div>
     </div>

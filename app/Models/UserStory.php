@@ -5,6 +5,7 @@
  * @author  Renato Marinho <renato.marinho>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
+
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;

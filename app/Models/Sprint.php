@@ -5,6 +5,7 @@
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
+
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -201,7 +202,7 @@ class Sprint extends Model
 
     public function getEffort()
     {
-        $effort = $this->issues->map(function($issue){
+        $effort = $this->issues->map(function ($issue) {
             return $issue->configEffort;
         })->sum('effort');
 
@@ -210,7 +211,7 @@ class Sprint extends Model
 
     public function getEffortAvg()
     {
-        $effort = $this->issues->map(function($issue){
+        $effort = $this->issues->map(function ($issue) {
             return $issue->configEffort;
         })->avg('effort');
 

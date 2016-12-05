@@ -7,41 +7,55 @@ use GitScrum\Models\Branch;
 use GitScrum\Models\Commit;
 use GitScrum\Models\User;
 use GitScrum\Models\Organization;
-use GitScrum\Models\ProductBacklog;
 use Carbon\Carbon;
 use GitScrum\Libraries\Phpcs;
 
 class Github
 {
+    public function getRepositoryTemplate($repo)
+    {
+        return (object) [
+            'github_id' => $repo->id,
+            'organization_id' => $this->organization($repo->owner->login),
+            'organization_title' => $repo->owner->login,
+            'slug' => Helper::slug($repo->name),
+            'title' => $repo->name,
+            'fullname' => $repo->full_name,
+            'is_private' => $repo->private,
+            'html_url' => $repo->html_url,
+            'description' => $repo->description,
+            'fork' => $repo->fork,
+            'url' => $repo->url,
+            'since' => Carbon::parse($repo->created_at)->toDateTimeString(),
+            'pushed_at' => Carbon::parse($repo->pushed_at)->toDateTimeString(),
+            'ssh_url' => $repo->ssh_url,
+            'clone_url' => $repo->clone_url,
+            'homepage' => $repo->homepage,
+            'default_branch' => $repo->default_branch,
+        ];
+    }
 
     public function getRepositories()
     {
         $repos = $this->request('https://api.github.com/user/repos');
 
         foreach ($repos as $repo) {
-            $organization_id = $this->organization($repo->owner->login);
-            $data[] = (object) [
-                'github_id' => $repo->id,
-                'organization_id' => $organization_id,
-                'organization_title' => $repo->owner->login,
-                'slug' => Helper::slug($repo->name),
-                'title' => $repo->name,
-                'fullname' => $repo->full_name,
-                'is_private' => $repo->private,
-                'html_url' => $repo->html_url,
-                'description' => $repo->description,
-                'fork' => $repo->fork,
-                'url' => $repo->url,
-                'since' => Carbon::parse($repo->created_at)->toDateTimeString(),
-                'pushed_at' => Carbon::parse($repo->pushed_at)->toDateTimeString(),
-                'ssh_url' => $repo->ssh_url,
-                'clone_url' => $repo->clone_url,
-                'homepage' => $repo->homepage,
-                'default_branch' => $repo->default_branch,
-            ];
+            $data[] = $this->getRepositoryTemplate($repo);
         }
 
         return collect($data);
+    }
+
+    public function setRepository($owner, $oldRepos, $obj)
+    {
+        $oldRepos = str_slug($oldRepos, '-');
+        $params = [
+            'name' => str_slug($obj->title, '-'),
+            'description' => $obj->description,
+        ];
+        $repo = $this->request('https://api.github.com/repos/'.$owner.'/'.$oldRepos, true, 'POST', $params);
+
+        return collect($repo);
     }
 
     public function organization($login)
@@ -148,20 +162,34 @@ class Github
         }
     }
 
-    private function request($url, $auth = true)
+    private function request($url, $auth = true, $customRequest = null, $postFields = null)
     {
         $user = Auth::user();
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:7.0.1) Gecko/20100101 Firefox/7.0.1');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0');
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_AUTOREFERER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+        if (!is_null($postFields)) {
+            $postFields = json_encode($postFields);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+            curl_setopt($ch, CURLOPT_HTTPHEADER,  ['Content-Type: application/json',
+                'Content-Length: '.strlen($postFields), ]);
+        }
+
+        if (!is_null($customRequest)) {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $customRequest); //'PATCH'
+        }
+
         if ($auth) {
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
             curl_setopt($ch, CURLOPT_USERPWD, $user->username.':'.$user->token);
         }
+
         $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $result = curl_exec($ch);
         curl_close($ch);
@@ -207,8 +235,6 @@ class Github
     {
         return $this->request('https://api.github.com/repos/Doinn/Dracarys/issues/317');
     }
-
-
 
     public function setCommits($owner, $repo, $branch, $since = null)
     {

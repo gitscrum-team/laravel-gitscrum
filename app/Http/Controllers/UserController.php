@@ -5,6 +5,7 @@
  * @author  Renato Marinho <renato.marinho@s2move.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
+
 namespace GitScrum\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $sprints = $user->sprints()->take(2);
-        
+
         return view('users.dashboard')
             ->with('sprints', $sprints)
             ->with('user', $user);

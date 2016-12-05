@@ -41,8 +41,15 @@
 
 <div class="col-lg-8">
 
-    <h3 class="lead mtn ptn">{{$productBacklog->title}}</h3>
-    <p class="mtn ptn">{!! nl2br(e($productBacklog->description)) !!}</p>
+    <h3 class="lead mtn ptn pbl">{{$productBacklog->title}}</h3>
+
+    <div class="well">
+        <h6>{{_('Clone using ssh or https')}}</h6>
+        <p><strong>SSH</strong>: {{$productBacklog->ssh_url}}</p>
+        <p><strong>HTTPS</strong>: {{$productBacklog->clone_url}}</p>
+    </div>
+
+    <p class="mtn ptn pbl">{!! nl2br(e($productBacklog->description)) !!}</p>
 
     <div class="tabs-container">
         <ul class="nav nav-tabs">
