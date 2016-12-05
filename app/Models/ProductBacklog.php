@@ -15,6 +15,8 @@ class ProductBacklog extends Model
 {
     use SoftDeletes;
 
+    public static $tmp = null;
+
     /**
      * The database table used by the model.
      *
@@ -29,7 +31,7 @@ class ProductBacklog extends Model
      */
     protected $fillable = ['github_id', 'organization_id', 'slug', 'title', 'description',
         'fullname', 'private', 'html_url', 'description', 'fork', 'url', 'since', 'pushed_at',
-        'git_url', 'ssh_url', 'clone_url', 'homepage', 'default_branch', ];
+        'git_url', 'ssh_url', 'clone_url', 'homepage', 'default_branch', 'is_api'];
 
     /**
      * The attributes excluded from the model's JSON form.

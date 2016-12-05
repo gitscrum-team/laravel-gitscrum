@@ -33,7 +33,7 @@ class ProductBacklogRequest extends FormRequest
             'title' => 'required|min:2|max:255'
         ];
     }
-
+    
     /**
      * Get the error messages for the defined validation rules.
      *

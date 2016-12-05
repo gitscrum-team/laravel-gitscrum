@@ -12,13 +12,13 @@ use GitScrum\Libraries\Phpcs;
 
 class Github
 {
-    public function getRepositoryTemplate($repo)
+    public function getRepositoryTemplate($repo, $slug = false)
     {
         return (object) [
             'github_id' => $repo->id,
             'organization_id' => $this->organization($repo->owner->login),
             'organization_title' => $repo->owner->login,
-            'slug' => Helper::slug($repo->name),
+            'slug' => !$slug?Helper::slug($repo->name):$slug,
             'title' => $repo->name,
             'fullname' => $repo->full_name,
             'is_private' => $repo->private,
@@ -46,7 +46,18 @@ class Github
         return collect($data);
     }
 
-    public function setRepository($owner, $oldRepos, $obj)
+    public function createRepository($owner, $obj)
+    {
+        $params = [
+            'name' => str_slug($obj->title, '-'),
+            'description' => $obj->description,
+        ];
+        $repo = $this->request('https://api.github.com/orgs/'.$owner.'/repos', true, 'POST', $params);
+
+        return (object) $repo;
+    }
+
+    public function updateRepository($owner, $oldRepos, $obj)
     {
         $oldRepos = str_slug($oldRepos, '-');
         $params = [
@@ -55,7 +66,7 @@ class Github
         ];
         $repo = $this->request('https://api.github.com/repos/'.$owner.'/'.$oldRepos, true, 'POST', $params);
 
-        return collect($repo);
+        return (object) $repo;
     }
 
     public function organization($login)

@@ -1,5 +1,6 @@
 <form action="{{route($route, ['slug'=>@$productBacklog->slug])}}" method="post" class="form-horizontal">
     {{ csrf_field() }}
+    <input type="hidden" name="is_api" value="1" />
     <div class="form-group">
         <label class="col-sm-12">{{_('Organization')}}</label>
         <div class="col-sm-12">

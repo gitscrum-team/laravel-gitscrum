@@ -9,7 +9,7 @@ class WizardController extends Controller
 {
     public function step1()
     {
-        $repositories = app('GithubClass')->getRepositories();
+        $repositories = (object) app('GithubClass')->getRepositories();
         $currentRepositories = ProductBacklog::all();
 
         \Session::put('GithubRepositories', $repositories);
