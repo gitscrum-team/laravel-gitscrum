@@ -32,7 +32,6 @@ class SprintRequest extends FormRequest
     {
         return [
             'title' => 'required|min:5|max:255',
-            'description' => 'required',
             'date_start' => 'required',
             'date_finish' => 'required',
         ];
