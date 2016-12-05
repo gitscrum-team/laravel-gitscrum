@@ -10,6 +10,8 @@ $(function () {
       $('[data-toggle="switch"]').bootstrapSwitch();
     }
 
+    $('[data-toggle="tooltip"]').tooltip(); 
+
     main.init();
     attachment.init();
     agile.init();

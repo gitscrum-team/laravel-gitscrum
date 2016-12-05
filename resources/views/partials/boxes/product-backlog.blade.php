@@ -1,12 +1,11 @@
-<table class="table table-striped">
+<table class="table-product-backlog table table-striped table-hover">
     <thead>
     <tr>
         <th></th>
         <th></th>
         <th>{{_('Product Backlog')}}</th>
         <th>{{_('Organization')}} </th>
-        <th class="text-right">{{_('Sprints')}}</th>
-        <th class="text-right">{{_('Issues')}}</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
