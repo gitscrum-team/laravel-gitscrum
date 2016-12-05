@@ -30,9 +30,9 @@ class SprintController extends Controller
                 ->where('product_backlogs.slug', $slug_product_backlog);
         }
 
-        $sprints = $sprints->with('issues.users')
-            ->with('issues')
+        $sprints = $sprints->with('issues')
             ->with('favorite')
+            ->with('status')
             ->select('sprints.*')
             ->paginate(env('APP_PAGINATE'));
 
