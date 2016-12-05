@@ -30,8 +30,7 @@ class ProductBacklogRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:2|max:255',
-            'description' => 'required',
+            'title' => 'required|min:2|max:255'
         ];
     }
 

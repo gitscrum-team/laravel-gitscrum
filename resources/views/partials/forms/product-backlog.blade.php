@@ -4,6 +4,7 @@
         <label class="col-sm-12">{{_('Organization')}}</label>
         <div class="col-sm-12">
             @if(isset($productBacklog->organization_id))
+                <input type="hidden" name="organization_id" value="{{$productBacklog->organization->id}}" />
                 <strong>{{$productBacklog->organization->title}}</strong>
             @else
             <select name="organization_id" class="form-control m-b">
