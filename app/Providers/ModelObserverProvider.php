@@ -9,6 +9,7 @@ namespace GitScrum\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use GitScrum\Models\Attachment;
+use GitScrum\Models\Branch;
 use GitScrum\Models\Comment;
 use GitScrum\Models\Favorite;
 use GitScrum\Models\Issue;
@@ -19,6 +20,7 @@ use GitScrum\Models\Sprint;
 use GitScrum\Models\Status;
 use GitScrum\Models\UserStory;
 use GitScrum\Observers\AttachmentObserver;
+use GitScrum\Observers\BranchObserver;
 use GitScrum\Observers\CommentObserver;
 use GitScrum\Observers\FavoriteObserver;
 use GitScrum\Observers\IssueObserver;
@@ -34,6 +36,7 @@ class ModelObserverProvider extends ServiceProvider
     public function boot()
     {
         Attachment::observe(AttachmentObserver::class);
+        Branch::observe(BranchObserver::class);
         Comment::observe(CommentObserver::class);
         Favorite::observe(FavoriteObserver::class);
         Issue::observe(IssueObserver::class);

@@ -23,7 +23,7 @@ class Branch extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'sprint_id', 'product_backlog_id', 'sha', 'name', 'deleted_at'];
+    protected $fillable = ['user_id', 'sprint_id', 'product_backlog_id', 'sha', 'title', 'deleted_at'];
 
     /**
      * The attributes excluded from the model's JSON form.

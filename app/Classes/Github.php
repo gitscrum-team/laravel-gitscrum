@@ -3,14 +3,13 @@
 namespace GitScrum\Classes;
 
 use Auth;
-use GitScrum\Repository;
-use GitScrum\Branch;
-use GitScrum\Commit;
-use GitScrum\Libraries\Phpcs;
+use GitScrum\Models\Branch;
+use GitScrum\Models\Commit;
 use GitScrum\Models\User;
 use GitScrum\Models\Organization;
 use GitScrum\Models\ProductBacklog;
 use Carbon\Carbon;
+use GitScrum\Libraries\Phpcs;
 
 class Github
 {
@@ -20,9 +19,10 @@ class Github
         $repos = $this->request('https://api.github.com/user/repos');
 
         foreach ($repos as $repo) {
+            $organization_id = $this->organization($repo->owner->login);
             $data[] = (object) [
                 'github_id' => $repo->id,
-                'organization_id' => $this->organization($repo->owner->login),
+                'organization_id' => $organization_id,
                 'organization_title' => $repo->owner->login,
                 'slug' => Helper::slug($repo->name),
                 'title' => $repo->name,
@@ -42,37 +42,6 @@ class Github
         }
 
         return collect($data);
-    }
-
-    public function repositories()
-    {
-        $repos = $this->request('https://api.github.com/user/repos');
-
-        foreach ($repos as $repo) {
-            $data = [
-                'github_id' => $repo->id,
-                'organization_id' => $this->organization($repo->owner->login),
-                'slug' => Helper::slug($repo->name),
-                'title' => $repo->name,
-                'fullname' => $repo->full_name,
-                'is_private' => $repo->private,
-                'html_url' => $repo->html_url,
-                'description' => $repo->description,
-                'fork' => $repo->fork,
-                'url' => $repo->url,
-                'since' => Carbon::parse($repo->created_at)->toDateTimeString(),
-                'pushed_at' => Carbon::parse($repo->pushed_at)->toDateTimeString(),
-                'ssh_url' => $repo->ssh_url,
-                'clone_url' => $repo->clone_url,
-                'homepage' => $repo->homepage,
-                'default_branch' => $repo->default_branch,
-            ];
-
-            try {
-                ProductBacklog::create($data);
-            } catch (\Illuminate\Database\QueryException $e) {
-            }
-        }
     }
 
     public function organization($login)
@@ -160,6 +129,25 @@ class Github
         }
     }
 
+    public function setBranches($owner, $product_backlog_id, $repo)
+    {
+        $y = 0;
+        for ($i = 1; $i > $y; ++$i) {
+            $branches = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/branches?page='.$i);
+            foreach ($branches as $branch) {
+                $data = [
+                    'product_backlog_id' => $product_backlog_id,
+                    'title' => $branch->name,
+                    'sha' => $branch->commit->sha,
+                ];
+                Branch::create($data);
+            }
+            if (count($branches) < 30) {
+                $y = $i + 2;
+            }
+        }
+    }
+
     private function request($url, $auth = true)
     {
         $user = Auth::user();
@@ -220,29 +208,7 @@ class Github
         return $this->request('https://api.github.com/repos/Doinn/Dracarys/issues/317');
     }
 
-    public function setBranches($owner, $repo)
-    {
-        ///repos/:owner/:repo/branches
-        $y = 0;
-        for ($i = 1; $i > $y; ++$i) {
-            $branches = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/branches?page='.$i);
-            $repository = Repository::where('name', $repo)->first();
-            $BranchRepository = new BranchRepository();
-            foreach ($branches as $branch) {
-                $data = [
-                    'product_backlog_id' => $repository->id,
-                    'name' => $branch->name,
-                    'sha' => $branch->commit->sha,
-                ];
-                $BranchRepository->add($data);
-                $this->setCommits($owner, $repo, $branch->name);
-                $this->setPullRequest($owner, $repo);
-            }
-            if (count($branches) < 30) {
-                $y = $i + 2;
-            }
-        }
-    }
+
 
     public function setCommits($owner, $repo, $branch, $since = null)
     {
