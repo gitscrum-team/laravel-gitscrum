@@ -220,9 +220,13 @@ class IssueController extends Controller
                     $issue->save();
                 }
 
-                return collect(['response' => true]);
+                return response()->json([
+                    'success' => true
+                ]);
             } catch (\Exception $e) {
-                return collect(['response' => false]);
+                return response()->json([
+                    'success' => false
+                ]);
             }
         }
     }
