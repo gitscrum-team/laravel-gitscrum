@@ -26,6 +26,27 @@ class CommentController extends Controller
         return back()->with('success', _('Comment added successfully'));
     }
 
+    public function edit($id)
+    {
+        $comment = Comment::find($id);
+
+        return view('comments.edit')
+            ->with('route', 'comments.update')
+            ->with('id', $comment->commentable_id)
+            ->with('type', $comment->commentable_type)
+            ->with('comment', $comment);
+    }
+
+    public function update(CommentRequest $request, $id)
+    {
+        $comment = Comment::where('id', $id)
+            ->where('user_id', Auth::user()->id)->firstOrFail();
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        return back()->with('success', _('Comment updated successfully'));
+    }
+
     public function destroy($id)
     {
         $comment = Comment::where('id', $id)

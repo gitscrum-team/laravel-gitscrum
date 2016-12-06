@@ -82,7 +82,7 @@ h3{
 
 
 
-.feed-element, .comment-element{
+.feed-element{
 	font-size:0.8em;
 	padding-bottom: 5px;
 	margin-bottom: 5px;
@@ -104,11 +104,6 @@ h3{
 	}
 }
 
-.comment-element{
-	.well{
-		padding:10px 12px;
-	}
-}
 
 .ol-list{
 	padding-left: 20px;
@@ -494,4 +489,39 @@ h3{
 .tab-content{
     border: 1px solid #ddd;
 	margin-top: -1px;
+}
+
+.form-comment{
+	position: relative;
+	top:-15px;
+    padding:18px 15px 12px;
+    background:#eee;
+	background: linear-gradient(#fff, #eee);
+	border-bottom: 1px solid #bdc3c7;
+}
+
+.comment-element{
+	margin-bottom: 20px;
+	.well{
+		margin: 5px 0;
+		padding:8px 12px 10px;
+	}
+	.avatar-min{
+		margin:8px 5px 0 0;
+	}
+	.ic-options{
+		a{
+			font-size:12px;
+			padding-right:12px;
+			i{
+				padding-right:2px;
+			}
+		}
+	}
+}
+
+.comment-edit{
+	.form-comment{
+		margin-bottom: -30px;
+	}
 }

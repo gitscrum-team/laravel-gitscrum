@@ -87,6 +87,8 @@ Route::group(['prefix' => 'notes'], function () {
 
 Route::group(['prefix' => 'comments'], function () {
     Route::get('/--------', 'CommentController@store')->name('comments.show');
+    Route::get('/edit/{id}', 'CommentController@edit')->name('comments.edit');
+    Route::post('/update/{id}', 'CommentController@update')->name('comments.update');
     Route::post('/store', 'CommentController@store')->name('comments.store');
     Route::get('/destroy/{id}', 'CommentController@destroy')->name('comments.destroy');
 });
