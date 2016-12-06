@@ -163,17 +163,8 @@
                     </div>
                     <div id="tab-comments" class="tab-pane">
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="social-footer">
-                                    <div class="social-comment">
-                                        @include('partials.forms.comment', ['id'=>$sprint->id, 'type'=>'sprint'])
-                                    </div>
-                                </div>
-                                <hr />
-                                <div class="m-t-md feed-activity-list">
-                                    @each('partials.lists.comments', $sprint->comments, 'comment', 'partials.lists.no-items')
-                                </div>
-                            </div>
+                            @include('partials.forms.comment', ['id'=>$sprint->id, 'type'=>'sprint'])
+                            @each('partials.lists.comments', $sprint->comments, 'comment', 'partials.lists.no-items')
                         </div>
                     </div>
                     <div id="tab-activities" class="tab-pane ">

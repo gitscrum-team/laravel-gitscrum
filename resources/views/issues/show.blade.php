@@ -161,16 +161,8 @@
             <div class="tab-content">
                 <div id="tab-comments" class="tab-pane active">
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="social-footer">
-                                <div class="social-comment">
-                                    @include('partials.forms.comment', ['id'=>$issue->id, 'type'=>'issue'])
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m-t-md feed-activity-list">
-                            @each('partials.lists.comments', $issue->comments, 'comment', 'partials.lists.no-items')
-                        </div>
+                        @include('partials.forms.comment', ['id'=>$issue->id, 'type'=>'issue'])
+                        @each('partials.lists.comments', $issue->comments, 'comment', 'partials.lists.no-items')
                     </div>
                 </div>
                 <div id="tab-commits" class="tab-pane">
