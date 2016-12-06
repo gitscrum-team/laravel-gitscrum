@@ -3,9 +3,11 @@
         <img alt="image" class="img-rounded avatar-min" src="{{$activity->user->avatar}}">
     </a>
     <div class="media-body">
-        [{{$activity->statusesable_type}}] <a href="{{route($activity->statusesable_type.'s.show', ['slug'=>$activity->statusesable->slug])}}">
-            {{$activity->statusesable->title}}</a>
-        <small class="text-default">{{_('changed status to')}} <strong>{{$activity->configStatus->title}}</strong></small>
+        [{{$activity->statusesable_type}}]
+        <!--<a href="{{route($activity->statusesable_type.'s.show', ['slug'=>$activity->statusesable->slug])}}">-->
+            {{$activity->statusesable->title}}
+        <!--</a>-->
+        <small class="text-default">{{$activity->configStatus->description}}</small>
         <small class="text-muted">{{$activity->dateforhumans}}</small>
     </div>
 </div>

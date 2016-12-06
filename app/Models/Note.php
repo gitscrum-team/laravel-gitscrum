@@ -72,12 +72,6 @@ class Note extends Model
         return $this->belongsTo(\GitScrum\Models\User::class, 'closed_user_id', 'id');
     }
 
-    public function getConfigStatusIdAttribute()
-    {
-        return ConfigStatus::where('type', '=', 'note')
-            ->where('default', '=', 1)->first()->id;
-    }
-
     public function setClosedUserIdAttribute($value)
     {
         $this->attributes['closed_user_id'] = is_null($this->closed_at) ? $value : null;

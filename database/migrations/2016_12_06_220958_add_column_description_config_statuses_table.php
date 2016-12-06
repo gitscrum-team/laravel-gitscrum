@@ -4,15 +4,15 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnIsApiProductBacklogsTable extends Migration
+class AddColumnDescriptionConfigStatusesTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up()
     {
-        Schema::table('product_backlogs', function (Blueprint $table) {
-            $table->boolean('is_api')->nullable()->after('position');
+        Schema::table('config_statuses', function (Blueprint $table) {
+            $table->string('description', 120)->nullable()->after('title');
         });
     }
 
@@ -21,8 +21,8 @@ class AddColumnIsApiProductBacklogsTable extends Migration
      */
     public function down()
     {
-        Schema::table('product_backlogs', function (Blueprint $table) {
-            $table->dropColumn('is_api');
+        Schema::table('config_statuses', function (Blueprint $table) {
+            $table->dropColumn('description');
         });
     }
 }

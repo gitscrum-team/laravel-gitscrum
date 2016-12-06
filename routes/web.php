@@ -94,6 +94,7 @@ Route::group(['prefix' => 'comments'], function () {
 });
 
 Route::group(['prefix' => 'labels'], function () {
+    Route::get('/--------', 'LabelController@store')->name('labels.show');
     Route::get('/{model}/{slug_label?}', 'LabelController@index')->name('labels.index');
     Route::post('/store', 'LabelController@store')->name('labels.store');
 });

@@ -4,7 +4,7 @@
     </a>
     <div class="media-body ">
         <small class="pull-right">{{$activity->dateforhumans}}</small>
-        <strong>{{$activity->user->username}}</strong> {{_('changed status to')}} <strong>{{$activity->configStatus->title}}</strong>
+        <strong>{{$activity->user->username}}</strong> {{$activity->configStatus->description}}
         <br>
         <small class="text-muted"></small>
     </div>

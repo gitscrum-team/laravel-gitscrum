@@ -18,10 +18,10 @@ class NoteObserver
     public function creating(Note $note)
     {
         $note->user_id = Auth::user()->id;
-        $note->slug = Helper::slug($note->description);
+        $note->slug = Helper::slug($note->title);
     }
 
-    public function updating(Note $note)
+    public function created(Note $note)
     {
         (new Status())->track('note', $note);
     }

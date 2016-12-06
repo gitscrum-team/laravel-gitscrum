@@ -75,11 +75,17 @@ class Status extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->diffForHumans();
     }
 
-    public function track($alias, $model)
+    public function track($alias, $model, $id = null)
     {
         if (!isset($model->config_status_id)) {
-            $model->config_status_id = ConfigStatus::where('type', '=', $alias)
-                ->where('default', '=', 1)->first()->id;
+            if (is_null($id)) {
+                $status = ConfigStatus::where('type', $alias)
+                    ->where('default', 1);
+            } else {
+                $status = ConfigStatus::where('id', $id);
+            }
+
+            $model->config_status_id = $status->first()->id;
         }
 
         $this->create([

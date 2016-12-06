@@ -24,7 +24,7 @@ class ConfigStatus extends Model
      *
      * @var array
      */
-    protected $fillable = ['type', 'name', 'position'];
+    protected $fillable = ['type', 'name', 'description', 'position'];
 
     /**
      * The attributes excluded from the model's JSON form.

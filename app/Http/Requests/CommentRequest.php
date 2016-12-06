@@ -46,5 +46,4 @@ class CommentRequest extends FormRequest
             'comment.min' => _('Comment must be at least 2 characters'),
         ];
     }
-
 }

@@ -221,11 +221,11 @@ class IssueController extends Controller
                 }
 
                 return response()->json([
-                    'success' => true
+                    'success' => true,
                 ]);
             } catch (\Exception $e) {
                 return response()->json([
-                    'success' => false
+                    'success' => false,
                 ]);
             }
         }
