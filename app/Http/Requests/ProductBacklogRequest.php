@@ -33,7 +33,7 @@ class ProductBacklogRequest extends FormRequest
             'title' => 'required|min:2|max:255'
         ];
     }
-    
+
     /**
      * Get the error messages for the defined validation rules.
      *
@@ -42,10 +42,9 @@ class ProductBacklogRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'A title is required',
-            'title.min' => 'A title - min',
-            'title.max' => 'A title - max',
-            'description.required' => 'A message is required',
+            'title.required' => _('Title for Backlog Product cannot be blank'),
+            'title.min' => _('Title must be at least 2 characters'),
+            'title.max' => _('Title must be between 2 and 255 characters'),
         ];
     }
 }

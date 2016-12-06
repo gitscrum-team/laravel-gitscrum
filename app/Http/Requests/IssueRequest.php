@@ -31,7 +31,20 @@ class IssueRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|min:2|max:255',
+        ];
+    }
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'title.required' => _('Issue cannot be blank'),
+            'title.min' => _('Issue must be at least 2 characters'),
+            'title.max' => _('Issue must be between 2 and 255 characters'),
         ];
     }
 

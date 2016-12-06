@@ -5,7 +5,7 @@
 
     <div class="form-group mbx pbx">
         <div class="input-group">
-            <input class="form-control" name="title" type="text">
+            <input class="form-control" name="title" type="text" autocomplete="off">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">{{_('Add')}}</button>
             </span>

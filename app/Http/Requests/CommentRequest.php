@@ -30,7 +30,21 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment' => 'required',
+            'comment' => 'required|min:2',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'comment.required' => _('Comment cannot be blank'),
+            'comment.min' => _('Comment must be at least 2 characters'),
+        ];
+    }
+
 }

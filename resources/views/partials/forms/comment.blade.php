@@ -1,4 +1,4 @@
-<form action="{{route('comments.store')}}" method="post">
+<form action="{{route('comments.store', ['#tab-comments'])}}" method="post">
     {{ csrf_field() }}
     <input type="hidden" name="commentable_type" value="{{$type}}">
     <input type="hidden" name="commentable_id" value="{{$id}}">

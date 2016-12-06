@@ -70,25 +70,14 @@
             </div>
             <div id="tab-sprints" class="tab-pane">
                 <div class="panel-body">
-
                     @include('partials.boxes.search-min', ['txtSearch' => 'Search by sprint backlogs'])
                     @include('partials.boxes.sprint', [ 'list' => $sprints ])
-
                 </div>
             </div>
             <div id="tab-comments" class="tab-pane">
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="social-footer">
-                            <div class="social-comment">
-                                @include('partials.forms.comment', ['id'=>$productBacklog->id, 'type'=>'product_backlog'])
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="m-t-md feed-activity-list">
-                            @each('partials.lists.comments', $productBacklog->comments, 'comment', 'partials.lists.no-items')
-                        </div>
-                    </div>
+                    @include('partials.forms.comment', ['id'=>$productBacklog->id, 'type'=>'product_backlog'])
+                    @each('partials.lists.comments', $productBacklog->comments, 'comment', 'partials.lists.no-items')
                 </div>
             </div>
             <div id="tab-branches" class="tab-pane">

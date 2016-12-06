@@ -50,9 +50,11 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Title')}}</label>
+        <label class="col-sm-12">{{_('Issue')}}</label>
         <div class="col-sm-12">
-            <input name="title" type="text" class="form-control" value="{{ $issue->title or '' }}" autocomplete="off" required>
+            <input name="title" type="text" class="form-control" value="{{ $issue->title or '' }}"
+                pattern=".{2,255}" title="{{_('Title must be between 2 and 255 characters')}}"
+                autocomplete="off" maxlength="255" required>
         </div>
     </div>
     <div class="form-group">

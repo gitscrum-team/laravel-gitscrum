@@ -30,7 +30,20 @@ class LabelRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|min:2',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'title.required' => _('Field cannot be blank'),
+            'title.min' => _('Field must be at least 2 characters'),
         ];
     }
 }

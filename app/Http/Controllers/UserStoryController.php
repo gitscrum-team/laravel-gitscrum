@@ -8,7 +8,7 @@
 
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
+use GitScrum\Http\Requests\UserStoryRequest;
 use GitScrum\Models\UserStory;
 use GitScrum\Models\ConfigPriority;
 use GitScrum\Models\ProductBacklog;
@@ -55,7 +55,7 @@ class UserStoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoryRequest $request)
     {
         $userStory = UserStory::create($request->all());
 
@@ -110,7 +110,7 @@ class UserStoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(UserStoryRequest $request, $slug)
     {
         $userStory = UserStory::where('slug', '=', $slug)->first();
         $userStory->update($request->all());

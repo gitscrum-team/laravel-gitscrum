@@ -16,14 +16,14 @@
     <div class="form-group">
         <label class="col-sm-12">{{_('User Story')}}</label>
         <div class="col-sm-12">
-            <textarea name="title" type="text" class="form-control" autocomplete="off" required>{{ @$userStory->title }}</textarea>
+            <textarea name="title" type="text" class="form-control" autocomplete="off"
+                required>{{ @$userStory->title }}</textarea>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Description')}}</label>
+        <label class="col-sm-12">{{_('Additional information')}}</label>
         <div class="col-sm-12">
             <textarea name="description" type="text" class="form-control">{{ @$userStory->description }}</textarea>
-            <span class="help-block m-b-none">A block of help text that breaks onto a new line and may extend beyond one line.</span>
         </div>
     </div>
     <div class="form-group">
@@ -41,7 +41,7 @@
         <label class="col-sm-12">{{_('Acceptance Criteria')}}</label>
         <div class="col-sm-12">
             <textarea name="acceptance_criteria" type="text" class="form-control">{{ @$userStory->acceptance_criteria }}</textarea>
-            <span class="help-block m-b-none">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+            <span class="help-block m-b-none small">{{_('Confirmation of requirement understanding and decide about acceptance of iteration deliverables')}}</span>
         </div>
     </div>
     <div class="hr-line-dashed"></div>

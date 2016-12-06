@@ -1,16 +1,10 @@
 <?php
-/**
- * GitScrum v0.1.
- *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
- */
 
 namespace GitScrum\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NoteRequest extends FormRequest
+class UserStoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +24,7 @@ class NoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:2',
+            'title' => 'required|min:2'
         ];
     }
 
@@ -42,8 +36,8 @@ class NoteRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => _('Field cannot be blank'),
-            'title.min' => _('Field must be at least 2 characters'),
+            'title.required' => _('User Story cannot be blank'),
+            'title.min' => _('User Story must be at least 2 characters'),
         ];
     }
 }

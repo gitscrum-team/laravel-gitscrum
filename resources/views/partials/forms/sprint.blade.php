@@ -1,4 +1,3 @@
-
 <form action="{{route($route, ['slug'=>@$sprint->slug])}}" method="post" class="form-horizontal">
     {{ csrf_field() }}
     <div class="form-group">
@@ -17,19 +16,22 @@
     <div class="form-group">
         <label class="col-sm-12">{{_('Timebox')}}</label>
         <div class="col-sm-12">
-            <input class="form-control" type="text" name="daterange" value="{{ @$sprint->date_start }}@if(@$sprint->date_start) - @endif{{ @$sprint->date_finish }}" required />
+            <input class="form-control" type="text" name="daterange"
+                value="{{ @$sprint->date_start }}@if(@$sprint->date_start) - @endif{{ @$sprint->date_finish }}" required />
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-12">{{_('Title')}}</label>
         <div class="col-sm-12">
-            <input name="title" type="text" class="form-control" value="{{ @$sprint->title }}" autocomplete="off" required>
+            <input name="title" type="text" class="form-control" value="{{ @$sprint->title }}"
+                pattern=".{2,255}" title="{{_('Title must be between 2 and 255 characters')}}"
+                autocomplete="off" maxlength="255" required>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-12">{{_('Description')}}</label>
         <div class="col-sm-12">
-            <textarea name="description" type="text" class="form-control" required>{{ @$sprint->description }}</textarea>
+            <textarea name="description" type="text" class="form-control">{{ @$sprint->description }}</textarea>
             <span class="help-block m-b-none">A block of help text that breaks onto a new line and may extend beyond one line.</span>
         </div>
     </div>

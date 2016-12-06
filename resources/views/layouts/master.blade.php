@@ -50,6 +50,7 @@
     <div class="content-area">
         <div class="container">
 
+            @include('errors.validation-message')
             @include('errors.flash-message')
             @include('errors.notification-message')
 

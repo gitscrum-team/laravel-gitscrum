@@ -27,4 +27,16 @@ class AttachmentRequest extends FormRequest
             'attachment' => 'required',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'attachment.required' => _('Attachment cannot be blank'),
+        ];
+    }
 }
