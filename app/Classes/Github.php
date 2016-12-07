@@ -209,7 +209,7 @@ class Github
                         ->where('is_closed', 1)->first()->id;
                 }
 
-                if ( !isset(Issue::where('github_id', $issue->github_id)->first()) )
+                if ( !Issue::where('github_id', $issue->id)->first() )
                 {
                     Issue::create($data)->users()->sync([$data['user_id']]);
                 }
