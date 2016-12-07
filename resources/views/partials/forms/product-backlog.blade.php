@@ -18,7 +18,7 @@
     </div>
     <div class="hr-line-dashed"></div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Title')}}</label>
+        <label class="col-sm-12">{{_('Name')}}</label>
         <div class="col-sm-12">
             <input name="title" type="text" class="form-control" value="{{ @$productBacklog->title }}"
                 pattern=".{2,255}" title="{{_('Title must be between 2 and 255 characters')}}"
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Description')}}</label>
+        <label class="col-sm-12">{{_('Description')}} ({{_('optional')}})</label>
         <div class="col-sm-12">
             <textarea name="description" type="text" class="form-control">{{ @$productBacklog->description }}</textarea>
             <span class="help-block m-b-none">A block of help text that breaks onto a new line and may extend beyond one line.</span>

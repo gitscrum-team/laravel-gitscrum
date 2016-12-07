@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Title')}}</label>
+        <label class="col-sm-12">{{_('Name')}}</label>
         <div class="col-sm-12">
             <input name="title" type="text" class="form-control" value="{{ @$sprint->title }}"
                 pattern=".{2,255}" title="{{_('Title must be between 2 and 255 characters')}}"
@@ -29,18 +29,18 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Description')}}</label>
+        <label class="col-sm-12">{{_('Description')}} ({{_('optional')}})</label>
         <div class="col-sm-12">
             <textarea name="description" type="text" class="form-control">{{ @$sprint->description }}</textarea>
-            <span class="help-block m-b-none">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+            <span class="help-block m-b-none"></span>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3">{{_('Version')}}</label>
+        <label class="col-sm-3">{{_('Version')}} ({{_('optional')}})</label>
         <div class="col-sm-2">
             <input name="version" type="text" placeholder="1.0.1" class="form-control m-b-none">
         </div>
-        <label class="col-sm-3 control-label">{{_('Public')}}</label>
+        <label class="col-sm-3">{{_('Public')}} ({{_('optional')}})</label>
         <div class="col-sm-4">
             <select name="is_private" class="form-control m-b">
                 <option value="0">{{_('Yes, publish for team')}}</option>

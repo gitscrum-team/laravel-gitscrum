@@ -13,7 +13,7 @@
 
     @if ( isset($productBacklogs) )
     <div class="form-group">
-        <label class="col-sm-12">{{_('Sprint')}}</label>
+        <label class="col-sm-12">{{_('Sprint Backlog')}}</label>
         <div class="col-sm-12">
             <select name="sprint_id" class="form-control">
                 @foreach ($productBacklogs as $backlog)
@@ -58,7 +58,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Description')}}</label>
+        <label class="col-sm-12">{{_('Description')}} ({{_('optional')}})</label>
         <div class="col-sm-12">
             <textarea name="description" type="text" class="form-control">{{ $issue->description or '' }}</textarea>
         </div>
