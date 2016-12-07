@@ -54,6 +54,10 @@
 
 <script type="text/javascript">
 $(function() {
-    $('input[name="daterange"]').daterangepicker();
+    $('input[name="daterange"]').daterangepicker({
+        locale: {
+            format: 'YYYY-MM-DD'
+        }
+    });
 });
 </script>
