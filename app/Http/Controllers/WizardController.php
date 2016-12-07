@@ -9,7 +9,7 @@ class WizardController extends Controller
 {
     public function step1()
     {
-        $repositories = (object) app('GithubClass')->getRepositories();
+        $repositories = (object) app('GithubClass')->readRepositories();
         $currentRepositories = ProductBacklog::all();
 
         \Session::put('GithubRepositories', $repositories);
@@ -26,7 +26,7 @@ class WizardController extends Controller
         foreach ($repositories as $repository) {
             try {
                 $product_backlog = ProductBacklog::create(get_object_vars($repository));
-                app('GithubClass')->setBranches($repository->organization_title, $product_backlog->id, $repository->title);
+                app('GithubClass')->createBranches($repository->organization_title, $product_backlog->id, $repository->title);
             } catch (\Illuminate\Database\QueryException $e) {
             }
         }
@@ -38,7 +38,7 @@ class WizardController extends Controller
 
     public function step3()
     {
-        $result = app('GithubClass')->getIssues();
+        $result = app('GithubClass')->readIssues();
 
         return redirect()->route('issues.index', ['slug' => 0]);
     }

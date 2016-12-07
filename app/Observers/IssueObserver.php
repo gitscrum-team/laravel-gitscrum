@@ -42,6 +42,11 @@ class IssueObserver
 
         $issue->product_backlog_id = $product_backlog_id;
 
+        $tmp = app('GithubClass')->createOrUpdateIssue($issue);
+
+        $issue->github_id = $tmp->id;
+        $issue->number = $tmp->number;
+
         // TODO Create a branch in GitHub
         //$model->branch->sync([['sprint_id' => true]]);
     }
@@ -53,6 +58,7 @@ class IssueObserver
 
     public function updating($issue)
     {
+        app('GithubClass')->createOrUpdateIssue($issue);
         (new Status())->track('issue', $issue);
     }
 

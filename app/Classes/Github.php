@@ -15,7 +15,7 @@ use GitScrum\Libraries\Phpcs;
 
 class Github
 {
-    public function getRepositoryTemplate($repo, $slug = false)
+    public function templateRepository($repo, $slug = false)
     {
         return (object) [
             'github_id' => $repo->id,
@@ -38,12 +38,12 @@ class Github
         ];
     }
 
-    public function getRepositories()
+    public function readRepositories()
     {
         $repos = $this->request('https://api.github.com/user/repos');
 
         foreach ($repos as $repo) {
-            $data[] = $this->getRepositoryTemplate($repo);
+            $data[] = $this->templateRepository($repo);
         }
 
         return collect($data);
@@ -157,7 +157,7 @@ class Github
         }
     }
 
-    public function setBranches($owner, $product_backlog_id, $repo)
+    public function createBranches($owner, $product_backlog_id, $repo)
     {
         $y = 0;
         for ($i = 1; $i > $y; ++$i) {
@@ -176,7 +176,7 @@ class Github
         }
     }
 
-    public function getIssues()
+    public function readIssues()
     {
         $repos = ProductBacklog::all();
 
@@ -217,6 +217,21 @@ class Github
                 //}
             }
         }
+    }
+
+    public function createOrUpdateIssue($obj)
+    {
+        $params = [
+            'title' => $obj->title,
+            'body' => $obj->description,
+        ];
+
+        $repo = $this->request('https://api.github.com/repos/'.
+            $obj->productBacklog->organization->username.'/'.
+            $obj->productBacklog->title.'/issues'.(isset($obj->number) ? '/'.$obj->number : ''),
+            true, 'POST', $params);
+
+        return (object) $repo;
     }
 
     private function request($url, $auth = true, $customRequest = null, $postFields = null)

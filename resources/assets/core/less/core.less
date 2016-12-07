@@ -353,13 +353,29 @@ h3{
 	box-shadow: inset 0 2px 2px #777;
 }
 
-.nav{
-	.nav-divider{
-		margin:0;
-	}
-	.dropdown-menu{
-		i{
-			margin-right:6px;
+header{
+	.nav{
+		li a:hover,
+		li a:focus,
+		li.open a span{
+			color: #B8C6D6 !important;
+		}
+		.nav-divider{
+			margin:4px 0;
+			background-color: rgba(55,60,71,.5);
+		}
+		.dropdown-menu{
+			background: #4C637B;
+		    a{
+	            color: #fff;
+				font-size:13px;
+				&:hover{
+					color:#B8C6D6 !important;
+				}
+			}
+	        i{
+				margin-right:6px;
+			}
 		}
 	}
 }
