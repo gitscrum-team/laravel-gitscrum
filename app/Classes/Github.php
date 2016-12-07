@@ -5,8 +5,11 @@ namespace GitScrum\Classes;
 use Auth;
 use GitScrum\Models\Branch;
 use GitScrum\Models\Commit;
+use GitScrum\Models\ConfigStatus;
 use GitScrum\Models\User;
+use GitScrum\Models\Issue;
 use GitScrum\Models\Organization;
+use GitScrum\Models\ProductBacklog;
 use Carbon\Carbon;
 use GitScrum\Libraries\Phpcs;
 
@@ -173,6 +176,50 @@ class Github
         }
     }
 
+    public function getIssues()
+    {
+        $repos = ProductBacklog::all();
+
+        foreach ($repos as $repo) {
+            $issues = $this->request('https://api.github.com/repos/'.$repo->organization->username.'/'.$repo->title.'/issues?state=all');
+
+            foreach ($issues as $issue) {
+                $user = User::where('username', $issue->user->login)->first();
+
+                $data = [
+                    'github_id' => $issue->id,
+                    'user_id' => isset($user_id) ? $user->id : Auth::user()->id,
+                    'product_backlog_id' => $repo->id,
+                    'effort' => 0,
+                    'config_issue_effort_id' => 1,
+                    'issue_type_id' => 1,
+                    'number' => $issue->number,
+                    'title' => $issue->title,
+                    'description' => $issue->body,
+                    'state' => $issue->state,
+                    'html_url' => $issue->html_url,
+                    'created_at' => $issue->created_at,
+                    'updated_at' => $issue->updated_at,
+                ];
+
+                if (!is_null($issue->closed_at)) {
+                    $data['closed_at'] = Carbon::parse($issue->closed_at)->format('Y-m-d h:m:s');
+                    $data['closed_user_id'] = $data['user_id'];
+                    $data['config_status_id'] = ConfigStatus::where('type', 'issue')
+                        ->where('is_closed', 1)->first()->id;
+                }
+
+                if ( !isset(Issue::where('github_id', $issue->github_id)->first()) )
+                {
+                    Issue::create($data)->users()->sync([$data['user_id']]);
+                }
+                //foreach ($issue->assignees as $assign) {
+                //    User::where('github_id', $assign->id)->first()->issues()->sync([$issueId], false);
+                //}
+            }
+        }
+    }
+
     private function request($url, $auth = true, $customRequest = null, $postFields = null)
     {
         $user = Auth::user();
@@ -218,34 +265,6 @@ class Github
         return $this->request('https://api.github.com/orgs/'.$org.'/repos');
     }
     */
-
-    public function setIssues($owner, $repo)
-    {
-        $issues = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/issues?state=all');
-        $repository = Repository::where('name', $repo)->first();
-        $IssueRepository = new IssueRepository();
-        foreach ($issues as $issue) {
-            $data = [
-                'github_id' => $issue->id,
-                'product_backlog_id' => $repository->id,
-                'number' => $issue->number,
-                'title' => $issue->title,
-                'body' => $issue->body,
-                'state' => $issue->state,
-                'html_url' => $issue->html_url,
-                'date' => $issue->created_at,
-            ];
-            $issueId = $IssueRepository->add($data)->id;
-            foreach ($issue->assignees as $assign) {
-                User::where('github_id', $assign->id)->first()->issues()->sync([$issueId], false);
-            }
-        }
-    }
-
-    public function issues()
-    {
-        return $this->request('https://api.github.com/repos/Doinn/Dracarys/issues/317');
-    }
 
     public function setCommits($owner, $repo, $branch, $since = null)
     {

@@ -198,24 +198,26 @@ class IssueController extends Controller
 
     public function statusUpdate(Request $request, $slug = null, int $status = 0)
     {
-        if (!$request->ajax()) {
-            $issue = Issue::where('slug', $slug)
-                ->firstOrFail();
-
-            $issue->config_status_id = $status;
-            $issue->closed_user_id = Auth::id();
-            $issue->closed_at = Carbon::now();
-            $issue->save();
-
-            return back()->with('success', _('Updated successfully'));
-        } else {
+        // TODO Refactory
+        if ($request->ajax()) {
             $position = 0;
             try {
-                foreach (json_decode($request->json) as $id) {
+                foreach (json_decode($request->json) as $id)
+                {
                     $issue = Issue::find($id);
                     $issue->config_status_id = $request->status_id;
-                    $issue->closed_user_id = Auth::id();
-                    $issue->closed_at = Carbon::now();
+
+                    $status = ConfigStatus::find($request->status_id);
+
+                    $issue->closed_user_id = null;
+                    $issue->closed_at = null;
+
+                    if (!is_null($status->is_closed) && is_null($issue->closed_at))
+                    {
+                        $issue->closed_user_id = Auth::id();
+                        $issue->closed_at = Carbon::now();
+                    }
+
                     $issue->position = $position++;
                     $issue->save();
                 }
@@ -228,6 +230,26 @@ class IssueController extends Controller
                     'success' => false,
                 ]);
             }
+        } else {
+            $issue = Issue::where('slug', $slug)
+                ->firstOrFail();
+
+            $issue->config_status_id = $status;
+
+            $issue->closed_user_id = null;
+            $issue->closed_at = null;
+
+            $status = ConfigStatus::find($status);
+
+            if (!is_null($status->is_closed) && is_null($issue->closed_at))
+            {
+                $issue->closed_user_id = Auth::id();
+                $issue->closed_at = Carbon::now();
+            }
+
+            $issue->save();
+
+            return back()->with('success', _('Updated successfully'));
         }
     }
 

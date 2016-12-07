@@ -35,4 +35,10 @@ class WizardController extends Controller
             ->with('repositories', $repositories)
             ->with('columns', ['repository', 'organization']);
     }
+
+    public function step3()
+    {
+        $result = app('GithubClass')->getIssues();
+        return redirect()->route('issues.index', ['slug'=>0]);
+    }
 }

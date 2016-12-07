@@ -20,16 +20,28 @@ class IssueObserver
 {
     public function creating(Issue $issue)
     {
-        try {
-            $product_backlog_id = UserStory::find($issue->user_story_id)->product_backlog_id;
-        } catch (\Exception $e) {
-            $product_backlog_id = $issue->sprint()->first()->product_backlog_id;
+        if (isset($issue->product_backlog_id)) {
+            $product_backlog_id = $issue->product_backlog_id;
+        } else {
+            try {
+                $product_backlog_id = UserStory::find($issue->user_story_id)->product_backlog_id;
+            } catch (\Exception $e) {
+                $product_backlog_id = $issue->sprint()->first()->product_backlog_id;
+            }
         }
 
         $issue->slug = Helper::slug($issue->title);
-        $issue->user_id = Auth::user()->id;
-        $issue->config_status_id = ConfigStatus::where('default', '=', 1)->first()->id;
+
+        if (!isset($issue->user_id)) {
+            $issue->user_id = Auth::user()->id;
+        }
+
+        if (!isset($issue->config_status_id)) {
+            $issue->config_status_id = ConfigStatus::where('default', '=', 1)->first()->id;
+        }
+
         $issue->product_backlog_id = $product_backlog_id;
+
         // TODO Create a branch in GitHub
         //$model->branch->sync([['sprint_id' => true]]);
     }
