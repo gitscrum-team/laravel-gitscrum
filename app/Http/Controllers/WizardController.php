@@ -39,6 +39,7 @@ class WizardController extends Controller
     public function step3()
     {
         $result = app('GithubClass')->getIssues();
-        return redirect()->route('issues.index', ['slug'=>0]);
+
+        return redirect()->route('issues.index', ['slug' => 0]);
     }
 }

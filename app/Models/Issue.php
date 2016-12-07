@@ -153,14 +153,4 @@ class Issue extends Model
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$dateField])->diffForHumans();
     }
-
-    public function setClosedUserIdAttribute($value)
-    {
-        $this->attributes['closed_user_id'] = isset($this->status->is_closed) || $value ? $value : null;
-    }
-
-    public function setClosedAtAttribute($value)
-    {
-        $this->attributes['closed_at'] = isset($this->status->is_closed) || $value ? $value : null;
-    }
 }

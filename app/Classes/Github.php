@@ -209,8 +209,7 @@ class Github
                         ->where('is_closed', 1)->first()->id;
                 }
 
-                if ( !Issue::where('github_id', $issue->id)->first() )
-                {
+                if (!Issue::where('github_id', $issue->id)->first()) {
                     Issue::create($data)->users()->sync([$data['user_id']]);
                 }
                 //foreach ($issue->assignees as $assign) {

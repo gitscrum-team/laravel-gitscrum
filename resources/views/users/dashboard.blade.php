@@ -64,7 +64,7 @@
 
     <table class="table table-hover issue-tracker">
         <tbody>
-        @each('partials.lists.issues', $user->issues, 'list', 'partials.lists.no-items')
+        @each('partials.lists.issues', $user->issues->where('closed_at', null), 'list', 'partials.lists.no-items')
         </tbody>
     </table>
 
