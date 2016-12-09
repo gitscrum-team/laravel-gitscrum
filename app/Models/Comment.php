@@ -56,6 +56,11 @@ class Comment extends Model
         return $this->belongsTo(\GitScrum\Models\User::class, 'user_id', 'id');
     }
 
+    public function issue()
+    {
+        return $this->belongsTo(\GitScrum\Models\Issue::class, 'commentable_id', 'id');
+    }
+
     public function statuses()
     {
         return $this->morphMany(\GitScrum\Models\Status::class, 'statusesable')

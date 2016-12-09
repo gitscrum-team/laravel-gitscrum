@@ -42,11 +42,12 @@ class Github
     {
         $repos = $this->request('https://api.github.com/user/repos');
 
+        $response = [];
         foreach ($repos as $repo) {
-            $data[] = $this->templateRepository($repo);
+            $response[] = $this->templateRepository($repo);
         }
 
-        return collect($data);
+        return collect($response);
     }
 
     public function createOrUpdateRepository($owner, $obj, $oldTitle = null)
@@ -57,12 +58,12 @@ class Github
         ];
 
         if (is_null($oldTitle)) {
-            $repo = $this->request('https://api.github.com/orgs/'.$owner.'/repos', true, 'POST', $params);
+            $response = $this->request('https://api.github.com/orgs/'.$owner.'/repos', true, 'POST', $params);
         } else {
             $oldTitle = str_slug($oldTitle, '-');
-            $repo = $this->request('https://api.github.com/repos/'.$owner.'/'.$oldTitle, true, 'POST', $params);
+            $response = $this->request('https://api.github.com/repos/'.$owner.'/'.$oldTitle, true, 'POST', $params);
         }
-        return (object) $repo;
+        return (object) $response;
     }
 
     public function organization($login)
@@ -219,12 +220,33 @@ class Github
             'body' => $obj->description,
         ];
 
-        $repo = $this->request('https://api.github.com/repos/'.
+        $response = $this->request('https://api.github.com/repos/'.
             $obj->productBacklog->organization->username.'/'.
             $obj->productBacklog->title.'/issues'.(isset($obj->number) ? '/'.$obj->number : ''),
             true, 'POST', $params);
 
-        return (object) $repo;
+        return (object) $response;
+    }
+
+    public function createOrUpdateIssueComment($obj, $verb='POST')
+    {
+        $params = [
+            'body' => $obj->comment,
+        ];
+
+        $response = $this->request('https://api.github.com/repos/'.
+            $obj->issue->productBacklog->organization->username.'/'.
+            $obj->issue->productBacklog->title.'/issues'.(isset($obj->github_id)?'':'/'.$obj->issue->number).'/comments'.
+            (isset($obj->github_id)?'/'.$obj->github_id:''),
+            true, $verb, $params);
+
+        return (object) $response;
+
+    }
+
+    public function deleteIssueComment($obj)
+    {
+        return $this->createOrUpdateIssueComment($obj, 'DELETE');
     }
 
     private function request($url, $auth = true, $customRequest = null, $postFields = null)
