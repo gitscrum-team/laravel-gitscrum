@@ -1,4 +1,6 @@
-# Laravel GitScrum
+![Laravel GitScrum](http://i.imgur.com/ZIMPy4w.png)
+
+#Laravel GitScrum
 
 GitScrum is a Laravel 5.3 application to helps teams use Git version control and the Scrum framework in the support for day-to-day task management.
 
