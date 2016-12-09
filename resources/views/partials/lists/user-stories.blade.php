@@ -8,7 +8,7 @@
             <span class="label label-danger m-l-xs pull-right" style="background-color:#{{$list->priority->color}}">
                 {{$list->priority->title}}</span> <span class="text-success">{{$list->title}}</span></a>
         <div class="m-b-sm m-t-sm">
-            @include('partials.boxes.progress-bar', [ 'percentage' => $list->getPercentcomplete()])
+            @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($list, 'issues')])
         </div>
         <div class="avatar-xs">
             @each('partials.lists.users-min', $list->issuesHasUsers(12), 'user', 'partials.lists.no-items')

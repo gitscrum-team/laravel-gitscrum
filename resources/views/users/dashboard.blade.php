@@ -49,9 +49,9 @@
                 <a href="{{route('sprints.show', ['slug'=>$sprint->slug])}}">
                     <strong>{{$sprint->title}}</strong>
                     <span>{{$sprint->timebox}}
-                    ({{$sprint->getPercentComplete()}}% {{_('completed')}})</span></a>
+                    ({{Helper::percentage($sprint, 'issues')}}% {{_('completed')}})</span></a>
                 <div class="progress">
-                    <div class="progress-bar" style="width: {{$sprint->getPercentComplete()}}%;"></div>
+                    <div class="progress-bar" style="width: {{Helper::percentage($sprint, 'issues')}}%;"></div>
                 </div>
             </div>
             @endforeach

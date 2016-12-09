@@ -53,7 +53,7 @@
 
             @include('partials.boxes.note', [ 'list' => $issue,
                 'type'=> 'issue', 'title' => _('Definition of Done Checklist'),
-                'percentage' => $issue->notesPercentComplete()])
+                'percentage' => Helper::percentage($issue, 'notes')])
 
             @include('partials.boxes.attachment', ['id'=>$issue->id, 'type'=>'issue', 'list' => $issue->attachments])
 

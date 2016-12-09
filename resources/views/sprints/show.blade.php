@@ -44,7 +44,7 @@
         @include('partials.boxes.chart-donut', ['list' => $sprint->issueStatus()])
 
         <div class="">
-            @include('partials.boxes.progress-bar', [ 'percentage' => $sprint->getPercentcomplete()])
+            @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($sprint, 'issues')])
         </div>
 
         <table class="table small m-b-xs">
@@ -87,7 +87,7 @@
 
         @include('partials.boxes.note', [ 'list' => $sprint,
             'type'=> 'sprint', 'title' => _('Definition of Done Checklist for Sprint'),
-            'percentage' => $sprint->notesPercentComplete()])
+            'percentage' => Helper::percentage($sprint, 'notes')])
 
         @include('partials.boxes.attachment', ['id' => $sprint->id, 'type' => 'sprint', 'list' => $sprint->attachments])
 

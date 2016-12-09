@@ -244,6 +244,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Helper' => GitScrum\Classes\Helper::class,
+
     ],
 
 ];

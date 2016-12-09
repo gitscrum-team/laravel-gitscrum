@@ -141,14 +141,6 @@ class Issue extends Model
             ->orderby('created_at', 'DESC');
     }
 
-    public function notesPercentComplete()
-    {
-        $total = $this->notes->count();
-        $totalClosed = $total - $this->notes->where('closed_at', null)->count();
-
-        return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
-    }
-
     public function dateForHumans($dateField = 'created_at')
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$dateField])->diffForHumans();

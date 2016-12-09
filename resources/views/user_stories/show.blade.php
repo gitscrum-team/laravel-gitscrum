@@ -45,7 +45,7 @@
 
     @include('partials.boxes.note', [ 'list' => $userStory,
         'type'=> 'user_story', 'title' => _('Definition of Done Checklist'),
-        'percentage' => $userStory->notesPercentComplete()])
+        'percentage' => Helper::percentage($userStory, 'notes')])
 
     @include('partials.boxes.team', ['title' => 'Team Members', 'list' => $userStory->issuesHasUsers(12)])
 
@@ -68,7 +68,7 @@
     @endif
 
     <div class="">
-        @include('partials.boxes.progress-bar', [ 'percentage' => $userStory->getPercentcomplete()])
+        @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($userStory, 'issues')])
     </div>
 
 <div class="tabs-container">

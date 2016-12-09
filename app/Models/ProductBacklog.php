@@ -100,14 +100,6 @@ class ProductBacklog extends Model
             ->orderby('created_at', 'DESC');
     }
 
-    public function notesPercentComplete()
-    {
-        $total = $this->notes->count();
-        $totalClosed = $total - $this->notes->where('closed_at', null)->count();
-
-        return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
-    }
-
     public function getVisibilityAttribute()
     {
         return $this->attributes['is_private'] ? _('Private') : _('Public');

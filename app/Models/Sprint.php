@@ -118,22 +118,6 @@ class Sprint extends Model
         return $prs->all();
     }
 
-    public function getPercentComplete()
-    {
-        $total = $this->issues->count();
-        $totalClosed = $total - $this->issues->where('closed_at', null)->count();
-
-        return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
-    }
-
-    public function notesPercentComplete()
-    {
-        $total = $this->notes->count();
-        $totalClosed = $total - $this->notes->where('completed_at', null)->count();
-
-        return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
-    }
-
     public function totalAdditions()
     {
         $additions = $this->branches->map(function ($branch) {

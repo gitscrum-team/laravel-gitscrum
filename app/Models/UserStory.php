@@ -83,14 +83,6 @@ class UserStory extends Model
         return $this->morphToMany(\GitScrum\Models\Label::class, 'labelable');
     }
 
-    public function getPercentComplete()
-    {
-        $total = $this->issues->count();
-        $totalClosed = $total - $this->issues->where('closed_at', null)->count();
-
-        return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
-    }
-
     public function activities()
     {
         $activities = $this->issues()
@@ -123,13 +115,5 @@ class UserStory extends Model
         })->groupBy('slug')->all();
 
         return $status;
-    }
-
-    public function notesPercentComplete()
-    {
-        $total = $this->notes->count();
-        $totalClosed = $total - $this->notes->where('closed_at', null)->count();
-
-        return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
     }
 }

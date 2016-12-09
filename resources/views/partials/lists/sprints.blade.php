@@ -8,7 +8,7 @@
     <td>
         <a href="{{route('sprints.show', ['slug'=>$list->slug])}}">{{$list->title}}</a>
         <div class="info">
-            @include('partials.boxes.progress-bar', [ 'percentage' => $list->getPercentcomplete()])
+            @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($list, 'issues')])
             <span><strong>{{_('Timebox')}}:</strong> {{$list->timebox}} ({{$list->weeks()}} {{str_plural('week', $list->weeks())}})</span>
             <span><strong>{{_('Issues')}}:</strong> {{$list->issues->where('closed_at', NULL)->count()}} {{_('Open')}} /
             {{$list->issues->where('closed_at', '!=', NULL)->count()}} {{_('Closed')}}</span>

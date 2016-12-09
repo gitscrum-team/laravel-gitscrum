@@ -20,4 +20,12 @@ class Helper
     {
         return str_slug(substr($value, 0, 40).'-'.uniqid());
     }
+
+    public static function percentage($model, $feature)
+    {
+        $total = $model->{$feature}->count();
+        $totalClosed = $total - $model->{$feature}->where('closed_at', null)->count();
+        return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
+    }
+
 }
