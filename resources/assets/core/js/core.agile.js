@@ -15,7 +15,12 @@ var agile = {
     columns: function(){
         $('.agile-list').removeAttr("style");
         $.each($('.agile-list'), function(){
-            $('.agile h5').width($(this).width()+30);
+            $('.agile h5').width($(this).width());
+            $(this).css('border-top', '6px solid #'+$(this).data('color'));
+            $(this).find('.small-issue-closed').hide();
+            if($(this).data('closed')){
+                $(this).find('.small-issue-closed').show();
+            }
             if(agile.columnHeight<$(this).height())
             {
                 agile.columnHeight = $(this).height();
@@ -31,7 +36,7 @@ var agile = {
             start: function(e, ui){
                 ui.placeholder.height(ui.item.height());
             },
-            stop: function( event, ui ) {
+            stop: function() {
                 $.each($('.agile-list'), function(k,v){
                     $(v).closest('.agile').find('h5').find('span').text($(v).find('li').length);
                     if($(v).sortable( "toArray" ).length)

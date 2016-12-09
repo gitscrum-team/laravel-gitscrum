@@ -1,4 +1,4 @@
-<li id="{{$card->id}}" class="card-detail" data-value="{{$card->id}}">
+<li id="{{$card->id}}" class="card-detail" data-value="{{$card->id}}" style="border-top:4px solid #{{$card->type->color}}">
 
     <h4><a href="{{route('issues.show', ['slug' => $card->slug])}}">{{$card->title}}</a></h4>
 

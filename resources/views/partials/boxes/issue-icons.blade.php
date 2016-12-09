@@ -18,6 +18,6 @@
 @endif
 
 @if($issue->closed_at)
-<small title="{{_('Closed')}}">{{_('closed')}} {{$issue->dateforhumans('closed_at')}}</small>
+<small title="{{_('Closed')}}" class="small-issue-closed">{{_('closed')}} {{$issue->dateforhumans('closed_at')}}</small>
 &nbsp;&nbsp;
 @endif
