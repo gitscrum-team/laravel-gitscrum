@@ -44,7 +44,8 @@
         <div class="col-sm-12">
             <select name="issue_type_id" class="form-control">
                 @foreach ($issue_types as $type)
-                <option value="{{$type->id}}">{{$type->title}}</option>
+                <option value="{{$type->id}}" @if( isset($issue->type) && $issue->type->id == $type->id )
+                    selected="selected" @endif >{{$type->title}}</option>
                 @endforeach
             </select>
         </div>
