@@ -21,7 +21,7 @@ class ProductBacklogObserver
         $productBacklog->slug = Helper::slug($productBacklog->title);
         if (isset($productBacklog->is_api)) {
             $owner = Organization::find($productBacklog->organization_id);
-            $productBacklog::$tmp = app('GithubClass')->createRepository($owner->username, $productBacklog);
+            $productBacklog::$tmp = app('GithubClass')->createOrUpdateRepository($owner->username, $productBacklog);
         }
     }
 
@@ -39,7 +39,7 @@ class ProductBacklogObserver
     {
         $oldRepos = ProductBacklog::find($productBacklog->id);
         $owner = Organization::find($productBacklog->organization_id);
-        $repos = app('GithubClass')->updateRepository($owner->username, $oldRepos->title, $productBacklog);
+        $repos = app('GithubClass')->createOrUpdateRepository($owner->username, $productBacklog, $oldRepos->title);
         $productBacklog->html_url = $repos->html_url;
         $productBacklog->ssh_url = $repos->ssh_url;
         $productBacklog->clone_url = $repos->clone_url;

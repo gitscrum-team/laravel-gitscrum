@@ -49,26 +49,19 @@ class Github
         return collect($data);
     }
 
-    public function createRepository($owner, $obj)
+    public function createOrUpdateRepository($owner, $obj, $oldTitle = null)
     {
         $params = [
             'name' => str_slug($obj->title, '-'),
             'description' => $obj->description,
         ];
-        $repo = $this->request('https://api.github.com/orgs/'.$owner.'/repos', true, 'POST', $params);
 
-        return (object) $repo;
-    }
-
-    public function updateRepository($owner, $oldRepos, $obj)
-    {
-        $oldRepos = str_slug($oldRepos, '-');
-        $params = [
-            'name' => str_slug($obj->title, '-'),
-            'description' => $obj->description,
-        ];
-        $repo = $this->request('https://api.github.com/repos/'.$owner.'/'.$oldRepos, true, 'POST', $params);
-
+        if (is_null($oldTitle)) {
+            $repo = $this->request('https://api.github.com/orgs/'.$owner.'/repos', true, 'POST', $params);
+        } else {
+            $oldTitle = str_slug($oldTitle, '-');
+            $repo = $this->request('https://api.github.com/repos/'.$owner.'/'.$oldTitle, true, 'POST', $params);
+        }
         return (object) $repo;
     }
 
