@@ -60,7 +60,7 @@ class Github
             $response = $this->request('https://api.github.com/orgs/'.$owner.'/repos', true, 'POST', $params);
         } else {
             $oldTitle = str_slug($oldTitle, '-');
-            $response = $this->request('https://api.github.com/repos/'.$owner.'/'.$oldTitle, true, 'POST', $params);
+            $response = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$oldTitle, true, 'POST', $params);
         }
         return (object) $response;
     }
@@ -154,7 +154,7 @@ class Github
     {
         $y = 0;
         for ($i = 1; $i > $y; ++$i) {
-            $branches = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/branches?page='.$i);
+            $branches = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/branches?page='.$i);
             foreach ($branches as $branch) {
                 $data = [
                     'product_backlog_id' => $product_backlog_id,
@@ -174,7 +174,7 @@ class Github
         $repos = ProductBacklog::all();
 
         foreach ($repos as $repo) {
-            $issues = $this->request('https://api.github.com/repos/'.$repo->organization->username.'/'.$repo->title.'/issues?state=all');
+            $issues = $this->request('https://api.github.com/repos/'.$repo->organization->username.DIRECTORY_SEPARATOR.$repo->title.'/issues?state=all');
 
             foreach ($issues as $issue) {
                 $user = User::where('username', $issue->user->login)->first();
@@ -220,8 +220,8 @@ class Github
         ];
 
         $response = $this->request('https://api.github.com/repos/'.
-            $obj->productBacklog->organization->username.'/'.
-            $obj->productBacklog->title.'/issues'.(isset($obj->number) ? '/'.$obj->number : ''),
+            $obj->productBacklog->organization->username.DIRECTORY_SEPARATOR.
+            $obj->productBacklog->title.'/issues'.(isset($obj->number) ? DIRECTORY_SEPARATOR.$obj->number : ''),
             true, 'POST', $params);
 
         return (object) $response;
@@ -234,9 +234,9 @@ class Github
         ];
 
         $response = $this->request('https://api.github.com/repos/'.
-            $obj->issue->productBacklog->organization->username.'/'.
-            $obj->issue->productBacklog->title.'/issues'.(isset($obj->github_id)?'':'/'.$obj->issue->number).'/comments'.
-            (isset($obj->github_id)?'/'.$obj->github_id:''),
+            $obj->issue->productBacklog->organization->username.DIRECTORY_SEPARATOR.
+            $obj->issue->productBacklog->title.'/issues'.(isset($obj->github_id)?'':DIRECTORY_SEPARATOR.$obj->issue->number).'/comments'.
+            (isset($obj->github_id)?DIRECTORY_SEPARATOR.$obj->github_id:''),
             true, $verb, $params);
 
         return (object) $response;
@@ -299,7 +299,8 @@ class Github
         ////repos/:owner/:repo/commits?sha=branchname
         $y = 0;
         for ($i = 1; $i > $y; ++$i) {
-            $commits = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/commits?page='.$i.'&sha='.$branch.(is_null($since) ? '' : '&since='.$since));
+            $commits = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/commits?page='.$i.
+            '&sha='.$branch.(is_null($since) ? '' : '&since='.$since));
             $branch = Branch::join('product_backlogs', 'branches.product_backlog_id', '=', 'repositories.id')
                             ->where('branches.name', $branch)
                             ->where('product_backlogs.name', $repo)
@@ -342,7 +343,7 @@ class Github
     public function setCommitFiles($owner, $repo, $sha, $objCommit)
     {
         // /repos/:owner/:repo/commits/:sha
-        $commits = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/commits/'.$sha);
+        $commits = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/commits/'.$sha);
         $Phpcs = new Phpcs();
         $CommitRepository = new CommitRepository();
         foreach ($commits->files as $commit) {
@@ -372,7 +373,7 @@ class Github
     public function getCommit($owner, $repo, $sha)
     {
         // /repos/:owner/:repo/commits/:sha
-        $commits = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/commits/'.$sha);
+        $commits = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/commits/'.$sha);
         dd($commits);
         /*
         foreach ($commits as $commit) {
@@ -393,7 +394,7 @@ class Github
     public function setPullRequest($owner, $repo)
     {
         ///repos/:owner/:repo/pulls
-        $pulls = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/pulls');
+        $pulls = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/pulls');
         $repository = Repository::where('name', $repo)->first();
         $PullRequestRepository = new PullRequestRepository();
         foreach ($pulls as $pull) {
@@ -438,7 +439,8 @@ class Github
 
             $pull = $PullRequestRepository->add($data);
 
-            $commits = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/pulls/'.$pull->number.'/commits');
+            $commits = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.
+                $repo.'/pulls/'.$pull->number.'/commits');
             //dd($commits);
             foreach ($commits as $commit) {
                 $c = Commit::where('sha', '=', $commit->sha)->first();
@@ -450,7 +452,8 @@ class Github
     public function getStatsCommitActivity($owner, $repo)
     {
         ///repos/:owner/:repo/stats/contributors
-        $stats = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/stats/commit_activity');
+        $stats = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.
+            $repo.'/stats/commit_activity');
         $arr = [];
         foreach ($stats as $stat) {
             $arr[] = $stat->total;

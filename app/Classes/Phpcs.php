@@ -15,10 +15,10 @@ class Phpcs
         $this->id = $commitFileId;
         $filename = uniqid(strtotime('now'), true);
         Storage::disk('local_tmp')->put($filename.'.php', $fileContents);
-        $result = shell_exec('phpcs --report=diff '.storage_path('tmp').'/'.$filename.'.php 2>&1; echo $?');
+        $result = shell_exec('phpcs --report=diff '.storage_path('tmp').DIRECTORY_SEPARATOR.$filename.'.php 2>&1; echo $?');
         $this->addSuggestionFix($result);
-        $result = shell_exec('phpcs '.storage_path('tmp').'/'.$filename.'.php 2>&1; echo $?');
-        Storage::delete(storage_path('tmp').'/'.$filename.'.php');
+        $result = shell_exec('phpcs '.storage_path('tmp').DIRECTORY_SEPARATOR.$filename.'.php 2>&1; echo $?');
+        Storage::delete(storage_path('tmp').DIRECTORY_SEPARATOR.$filename.'.php');
         $this->convertToLines($result);
     }
 
