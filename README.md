@@ -57,7 +57,7 @@ Application description: gitscrum
 Authorization callback URL: http://URL/auth/github/callback
 ```
 Finally fill the informations in the .env file
-
+APP_URL=xxxxxxxxxxxx.xxx
 ```
 GITHUB_CLIENT_ID=XXXXX
 GITHUB_CLIENT_SECRET=XXXXXXXXXXXXXXXXXX
