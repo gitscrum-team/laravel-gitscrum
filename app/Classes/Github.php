@@ -40,14 +40,13 @@ class Github
 
     public function readRepositories()
     {
-        $repos = $this->request('https://api.github.com/user/repos');
+        $repos = collect($this->request('https://api.github.com/user/repos'));
 
-        $response = [];
-        foreach ($repos as $repo) {
-            $response[] = $this->templateRepository($repo);
-        }
+        $response = $repos->map(function($repo){
+            return $this->templateRepository($repo);
+        });
 
-        return collect($response);
+        return $response;
     }
 
     public function createOrUpdateRepository($owner, $obj, $oldTitle = null)
@@ -272,7 +271,7 @@ class Github
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $customRequest); //'PATCH'
         }
 
-        if ($auth) {
+        if ($auth && isset($user->username)) {
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
             curl_setopt($ch, CURLOPT_USERPWD, $user->username.':'.$user->token);
         }
