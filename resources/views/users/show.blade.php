@@ -1,11 +1,11 @@
-@section('title',  _('Profile') . ' - ' . $user->username)
+@section('title',  trans('Profile') . ' - ' . $user->username)
 
 @extends('layouts.master')
 
 @section('breadcrumb')
 
 <div class="col-lg-6">
-    <h3>{{_('Profile')}}</h3>
+    <h3>{{trans('Profile')}}</h3>
 </div>
 
 <div class="col-lg-6 text-right">
@@ -46,7 +46,7 @@
                     <div class="tile mbn pbn">
                         <i class="fa fa-list fa-4x" aria-hidden="true"></i>
                         <h3 class="tile-title mtm">{{$user->sprints()->count()}}</h3>
-                        <p class="pbm">{{_('Cooperation')}}</p>
+                        <p class="pbm">{{trans('Cooperation')}}</p>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                     <div class="tile mbn pbn">
                         <i class="fa fa-th fa-4x" aria-hidden="true"></i>
                         <h3 class="tile-title mtm">{{$user->issues()->count()}}</h3>
-                        <p class="pbm">{{_('Issues Done')}}</p>
+                        <p class="pbm">{{trans('Issues Done')}}</p>
                     </div>
                 </div>
 
@@ -62,7 +62,7 @@
                     <div class="tile mbn pbn">
                         <i class="fa fa-list fa-4x" aria-hidden="true"></i>
                         <h3 class="tile-title mtm">{{$user->sprints()->count()}}</h3>
-                        <p class="pbm">{{_('Commits')}}</p>
+                        <p class="pbm">{{trans('Commits')}}</p>
                     </div>
                 </div>
 

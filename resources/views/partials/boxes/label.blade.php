@@ -1,5 +1,5 @@
 <div class="">
-    <h6>{{ $title or _('Tags')}}</h6>
+    <h6>{{ $title or trans('Tags')}}</h6>
     @include('partials.forms.label', ['type' => $type, 'id' => $id])
 
     <ul class="tag-list list-inline" style="padding: 0">

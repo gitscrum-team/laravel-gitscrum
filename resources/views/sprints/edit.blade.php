@@ -1,4 +1,4 @@
-@section('title',  _('Edit Sprint'))
+@section('title',  trans('Edit Sprint'))
 
 @extends('layouts.modal')
 

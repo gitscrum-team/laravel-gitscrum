@@ -1,17 +1,17 @@
-@section('title',  _('Dashboard'))
+@section('title',  trans('Dashboard'))
 
 @extends('layouts.master')
 
 @section('breadcrumb')
 
 <div class="col-lg-6">
-    <h3>{{_('Dashboard')}}</h3>
+    <h3>{{trans('Dashboard')}}</h3>
 </div>
 
 <div class="col-lg-6 text-right">
     <div class="btn-group">
         <a href="{{route('wizard.step1')}}" class="btn btn-sm btn-primary">
-            {{_('Update Repositories')}}</a>
+            {{trans('Update Repositories')}}</a>
     </div>
 </div>
 
@@ -34,22 +34,22 @@
         <div class="tile">
             <i class="fa fa-th fa-4x" aria-hidden="true"></i>
             <h3 class="tile-title mtm">{{$user->issues()->count()}}</h3>
-            <p>{{_('Issues')}}</p>
+            <p>{{trans('Issues')}}</p>
             <a class="btn btn-primary btn-large btn-block"
                 href="{{route('issues.index',['slug' => 0])}}">
-                {{_('My Planning')}}</a>
+                {{trans('My Planning')}}</a>
         </div>
     </div>
 
     <div class="col-lg-6 col-sm-12">
         <div class="tile tile-sprint">
-            <h3 class="tile-title mtm">{{_('Sprints')}}</h3>
+            <h3 class="tile-title mtm">{{trans('Sprints')}}</h3>
             @foreach ($sprints as $key => $sprint)
             <div class="">
                 <a href="{{route('sprints.show', ['slug'=>$sprint->slug])}}">
                     <strong>{{$sprint->title}}</strong>
                     <span>{{$sprint->timebox}}
-                    ({{Helper::percentage($sprint, 'issues')}}% {{_('completed')}})</span></a>
+                    ({{Helper::percentage($sprint, 'issues')}}% {{trans('completed')}})</span></a>
                 <div class="progress">
                     <div class="progress-bar" style="width: {{Helper::percentage($sprint, 'issues')}}%;"></div>
                 </div>

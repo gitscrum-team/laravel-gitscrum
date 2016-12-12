@@ -114,7 +114,7 @@ class IssueController extends Controller
         }
 
         return redirect()->route('issues.show', ['slug' => $issue->slug])
-            ->with('success', _('Congratulations! The Issue has been created with successfully'));
+            ->with('success', trans('Congratulations! The Issue has been created with successfully'));
     }
 
     /**
@@ -193,7 +193,7 @@ class IssueController extends Controller
         }
 
         return back()
-            ->with('success', _('Congratulations! The Issue has been edited with successfully'));
+            ->with('success', trans('Congratulations! The Issue has been edited with successfully'));
     }
 
     public function statusUpdate(Request $request, $slug = null, int $status = 0)
@@ -241,7 +241,7 @@ class IssueController extends Controller
                 ->firstOrFail();
             $save($issue);
 
-            return back()->with('success', _('Updated successfully'));
+            return back()->with('success', trans('Updated successfully'));
         }
     }
 

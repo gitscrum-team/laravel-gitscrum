@@ -42,8 +42,8 @@ class CommentRequest extends FormRequest
     public function messages()
     {
         return [
-            'comment.required' => _('Comment cannot be blank'),
-            'comment.min' => _('Comment must be at least 2 characters'),
+            'comment.required' => trans('Comment cannot be blank'),
+            'comment.min' => trans('Comment must be at least 2 characters'),
         ];
     }
 }

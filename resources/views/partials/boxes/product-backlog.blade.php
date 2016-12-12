@@ -3,8 +3,8 @@
     <tr>
         <th></th>
         <th></th>
-        <th>{{_('Product Backlog')}}</th>
-        <th>{{_('Organization')}} </th>
+        <th>{{trans('Product Backlog')}}</th>
+        <th>{{trans('Organization')}} </th>
         <th></th>
     </tr>
     </thead>

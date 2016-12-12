@@ -1,4 +1,4 @@
-@section('title',  _('Create Sprint'))
+@section('title',  trans('Create Sprint'))
 
 @extends('layouts.modal')
 

@@ -1,4 +1,4 @@
-@section('title',  _('Sprint Backlog'))
+@section('title',  trans('Sprint Backlog'))
 
 @extends('layouts.master')
 
@@ -6,19 +6,19 @@
 <div class="col-lg-6">
     <h3>
         @if(isset($sprint->productBacklog->slug))
-        <a href="{{route('product_backlogs.show', ['slug'=>$sprint->productBacklog->slug])}}">{{_('Product Backlog')}}</a> &raquo;
+        <a href="{{route('product_backlogs.show', ['slug'=>$sprint->productBacklog->slug])}}">{{trans('Product Backlog')}}</a> &raquo;
         @endif
-        {{_('Sprint Backlog')}} <span class="label label-default">{{$sprint->visibility}}</span></h3>
+        {{trans('Sprint Backlog')}} <span class="label label-default">{{$sprint->visibility}}</span></h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $sprint->favorite, 'type' => 'sprint',
-        'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => _('Favorite')])
+        'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
     &nbsp;&nbsp;
     <div class="btn-group">
         <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
             class="btn btn-sm btn-primary"
             data-toggle="modal" data-target="#modalLarge">
-            <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Sprint Backlog')}}</a>
+            <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Sprint Backlog')}}</a>
         <form action="{{route('sprints.delete')}}" method="POST" class="form-delete pull-right">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="DELETE" />
@@ -35,11 +35,11 @@
     <div class="col-lg-4">
 
         <a href="{{route('issues.index', ['slug'=>$sprint->slug])}}"
-            class="btn btn-lg btn-block btn-warning"><strong>{{_('Sprint Planning')}}</strong></a>
+            class="btn btn-lg btn-block btn-warning"><strong>{{trans('Sprint Planning')}}</strong></a>
 
         <a href="{{route('issues.create', ['slug'=>$sprint->slug])}}"
             class="btn btn-block btn-primary"
-            data-toggle="modal" data-target="#modalLarge"><strong>{{_('Create Issue')}}</strong></a>
+            data-toggle="modal" data-target="#modalLarge"><strong>{{trans('Create Issue')}}</strong></a>
 
         @include('partials.boxes.chart-donut', ['list' => $sprint->issueStatus()])
 
@@ -51,15 +51,15 @@
             <tbody>
             <tr>
                 <td width="50%">
-                    <h6>{{$sprint->getEffort()}} {{_('effort')}}</h6>
+                    <h6>{{$sprint->getEffort()}} {{trans('effort')}}</h6>
                 </td>
                 <td width="50%">
-                    <h6>{{$sprint->getEffortAvg()}} {{_('effort avg.')}}</h6>
+                    <h6>{{$sprint->getEffortAvg()}} {{trans('effort avg.')}}</h6>
                 </td>
             </tr>
             <tr>
                 <td width="50%">
-                    <h6>{{$sprint->issues->count()}} {{_('issues')}}</h6>
+                    <h6>{{$sprint->issues->count()}} {{trans('issues')}}</h6>
                 </td>
                 <td width="50%"></td>
             </tr>
@@ -86,7 +86,7 @@
         @include('partials.boxes.issue-type', ['list' => $sprint->issueTypes()])
 
         @include('partials.boxes.note', [ 'list' => $sprint,
-            'type'=> 'sprint', 'title' => _('Definition of Done Checklist for Sprint'),
+            'type'=> 'sprint', 'title' => trans('Definition of Done Checklist for Sprint'),
             'percentage' => Helper::percentage($sprint, 'notes')])
 
         @include('partials.boxes.attachment', ['id' => $sprint->id, 'type' => 'sprint', 'list' => $sprint->attachments])
@@ -105,21 +105,21 @@
                 {{$sprint->title}}</span>
             </h4>
 
-            <h6 class="mtn ptn">{{_('Date')}}: {{$sprint->date_start}} {{_('to')}} {{$sprint->date_finish}}</h6>
+            <h6 class="mtn ptn">{{trans('Date')}}: {{$sprint->date_start}} {{trans('to')}} {{$sprint->date_finish}}</h6>
 
             <p>{{$sprint->workingDays(date('Y-m-d'))}} {{str_plural('missing day', $sprint->workingDays(date('Y-m-d')))}} /
                 {{$sprint->workingDays()}} {{str_plural('workdays', $sprint->workingDays())}}
                 ( {{$sprint->weeks()}} {{str_plural('week', $sprint->weeks())}} )</p>
 
             <p class="">
-                {{_('Product Backlog')}}: <a href="{{route('product_backlogs.show', ['slug' => $sprint->productBacklog->slug])}}">
+                {{trans('Product Backlog')}}: <a href="{{route('product_backlogs.show', ['slug' => $sprint->productBacklog->slug])}}">
                 <strong>{{$sprint->productBacklog->title}}</strong></a>
             </p>
 
             <p class="">{!! nl2br(e($sprint->description)) !!}</p>
 
             <div style="">
-                <h4 class="lead mbn pbn">{{$sprint->title}} {{_('Burndown')}}</h4>
+                <h4 class="lead mbn pbn">{{$sprint->title}} {{trans('Burndown')}}</h4>
                 <div class="row">
                     <canvas id="sprintBurndown" height="320" class="col-md-12"></canvas>
                 </div>
@@ -132,13 +132,13 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#tab-issues">
                         <i class="fa fa-list-alt" aria-hidden="true"></i>
-                        {{_('Issues')}} ({{$sprint->issues->count()}})</a></li>
+                        {{trans('Issues')}} ({{$sprint->issues->count()}})</a></li>
                     <li class=""><a data-toggle="tab" href="#tab-comments">
                         <i class="fa fa-comments" aria-hidden="true"></i>
-                        {{_('Comments')}} ({{$sprint->comments->count()}})</a></li>
+                        {{trans('Comments')}} ({{$sprint->comments->count()}})</a></li>
                     <li><a data-toggle="tab" href="#tab-activities">
                         <i class="fa fa-rss" aria-hidden="true"></i>
-                        {{_('Activities')}}</a></li>
+                        {{trans('Activities')}}</a></li>
                 </ul>
 
                 <div class="tab-content">

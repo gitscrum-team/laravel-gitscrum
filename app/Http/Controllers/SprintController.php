@@ -72,7 +72,7 @@ class SprintController extends Controller
         $sprint = Sprint::create($request->all());
 
         return redirect()->route('sprints.show', ['slug' => $sprint->slug])
-            ->with('success', _('Congratulations! The Sprint has been created with successfully'));
+            ->with('success', trans('Congratulations! The Sprint has been created with successfully'));
     }
 
     /**
@@ -139,7 +139,7 @@ class SprintController extends Controller
         $sprint->update($request->all());
 
         return back()
-            ->with('success', _('Congratulations! The Sprint has been edited with successfully'));
+            ->with('success', trans('Congratulations! The Sprint has been edited with successfully'));
     }
 
     /**
@@ -160,6 +160,6 @@ class SprintController extends Controller
         $sprint->delete();
 
         return redirect()->route('sprints.index')
-            ->with('success', _('Congratulations! The Sprint has been deleted successfully'));
+            ->with('success', trans('Congratulations! The Sprint has been deleted successfully'));
     }
 }

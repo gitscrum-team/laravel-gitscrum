@@ -114,6 +114,7 @@ Route::group(['prefix' => 'teams'], function () {
 });
 
 Route::group(['prefix' => 'wizard'], function () {
+    Route::get('/install', 'WizardController@install')->name('wizard.install');
     Route::get('/step1', 'WizardController@step1')->name('wizard.step1');
     Route::post('/step2', 'WizardController@step2')->name('wizard.step2');
     Route::get('/step3', 'WizardController@step3')->name('wizard.step3');

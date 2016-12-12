@@ -36,7 +36,7 @@ class AttachmentRequest extends FormRequest
     public function messages()
     {
         return [
-            'attachment.required' => _('Attachment cannot be blank'),
+            'attachment.required' => trans('Attachment cannot be blank'),
         ];
     }
 }

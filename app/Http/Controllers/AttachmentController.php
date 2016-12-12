@@ -24,6 +24,6 @@ class AttachmentController extends Controller
 
         Attachment::create($data);
 
-        return back()->with('success', _('File uploaded successfully'));
+        return back()->with('success', trans('File uploaded successfully'));
     }
 }

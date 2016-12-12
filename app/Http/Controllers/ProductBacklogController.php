@@ -49,7 +49,7 @@ class ProductBacklogController extends Controller
         $productBacklog = ProductBacklog::create($request->all());
 
         return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
-            ->with('success', _('Congratulations! The Product Backlog has been created with successfully'));
+            ->with('success', trans('Congratulations! The Product Backlog has been created with successfully'));
     }
 
     /**
@@ -120,7 +120,7 @@ class ProductBacklogController extends Controller
         $productBacklog->update($request->all());
 
         return back()
-            ->with('success', _('Congratulations! The Product Backlog has been edited with successfully'));
+            ->with('success', trans('Congratulations! The Product Backlog has been edited with successfully'));
     }
 
     /**

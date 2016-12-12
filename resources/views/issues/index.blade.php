@@ -1,4 +1,4 @@
-@section('title',  _('Sprints'))
+@section('title',  trans('Sprints'))
 
 @extends('layouts.master')
 
@@ -6,21 +6,21 @@
 <div class="col-lg-6">
     <h3>
         @include('partials.includes.breadcrumb-sprint', ['obj'=>$sprint])
-        {{_('Sprint Planning')}}</h3>
+        {{trans('Sprint Planning')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     @if( !is_null($sprint) )
         @include('partials.lnk-favorite', ['favorite' => $sprint->favorite, 'type' => 'sprint',
-            'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => _('Favorite')])
+            'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
         &nbsp;&nbsp;
         <div class="btn-group">
             <a href="{{route('issues.create', ['slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-primary"
                 data-toggle="modal" data-target="#modalLarge">
-                <i class="fa fa-plus" aria-hidden="true"></i> {{_('Create Issue')}}</a>
+                <i class="fa fa-plus" aria-hidden="true"></i> {{trans('Create Issue')}}</a>
             <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalLarge">
-                <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Sprint')}}</a>
+                <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Sprint')}}</a>
             <form action="{{route('sprints.delete')}}" method="POST" class="form-delete pull-right">
                 {{ csrf_field() }}
                 <input type="hidden" name="_method" value="DELETE" />

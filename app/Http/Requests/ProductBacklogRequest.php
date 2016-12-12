@@ -42,9 +42,9 @@ class ProductBacklogRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => _('Title for Backlog Product cannot be blank'),
-            'title.min' => _('Title must be at least 2 characters'),
-            'title.max' => _('Title must be between 2 and 255 characters'),
+            'title.required' => trans('Title for Backlog Product cannot be blank'),
+            'title.min' => trans('Title must be at least 2 characters'),
+            'title.max' => trans('Title must be between 2 and 255 characters'),
         ];
     }
 }

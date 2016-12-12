@@ -42,9 +42,9 @@ class IssueRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => _('Issue cannot be blank'),
-            'title.min' => _('Issue must be at least 2 characters'),
-            'title.max' => _('Issue must be between 2 and 255 characters'),
+            'title.required' => trans('Issue cannot be blank'),
+            'title.min' => trans('Issue must be at least 2 characters'),
+            'title.max' => trans('Issue must be between 2 and 255 characters'),
         ];
     }
 

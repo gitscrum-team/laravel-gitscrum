@@ -1,10 +1,10 @@
-@section('title',  _('Team'))
+@section('title',  trans('Team'))
 
 @extends('layouts.master')
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3>{{_('Team')}}</h3>
+    <h3>{{trans('Team')}}</h3>
 </div>
 <div class="col-lg-6 text-right"></div>
 @endsection

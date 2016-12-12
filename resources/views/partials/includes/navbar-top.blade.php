@@ -10,14 +10,14 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{{route('product_backlogs.index')}}">
-                            {{_('Product Backlog')}} </a></li>
+                            {{trans('Product Backlog')}} </a></li>
                     <li><a href="{{route('sprints.index')}}">
-                            {{_('Sprint Backlog')}} </a></li>
+                            {{trans('Sprint Backlog')}} </a></li>
                     <li>
-                        <a aria-expanded="false" role="button" href="#"> {{_('Documentation')}} </a>
+                        <a aria-expanded="false" role="button" href="#"> {{trans('Documentation')}} </a>
                     </li>
                     <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="{{route('team.index')}}"> {{_('Team')}} </a>
+                        <a aria-expanded="false" role="button" href="{{route('team.index')}}"> {{trans('Team')}} </a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -31,12 +31,12 @@
                         </a>
                         <ul class="dropdown-menu">
                           <li><a href="{{route('user.profile',['slug' => Auth::user()->username])}}">
-                              <i class="fa fa-user" aria-hidden="true"></i>{{_('Profile')}}</a></li>
+                              <i class="fa fa-user" aria-hidden="true"></i>{{trans('Profile')}}</a></li>
                           <li><a href="{{route('issues.index',['slug' => 0])}}">
-                              <i class="fa fa-th" aria-hidden="true"></i>{{_('Planning')}}</a></li>
+                              <i class="fa fa-th" aria-hidden="true"></i>{{trans('Planning')}}</a></li>
                           <li class="nav-divider"></li>
                           <li><a href="{{route('auth.logout')}}">
-                              <i class="fa fa-sign-out"></i> {{_('Logout')}}</a></li>
+                              <i class="fa fa-sign-out"></i> {{trans('Logout')}}</a></li>
                         </ul>
                     </li>
                 </ul>

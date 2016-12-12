@@ -45,11 +45,11 @@ class SprintRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => _('Title for Sprint cannot be blank'),
-            'title.min' => _('Title must be at least 2 characters'),
-            'title.max' => _('Title must be between 2 and 255 characters'),
-            'date_start.required' => _('Date to start cannot be blank'),
-            'date_finish.required' => _('Date to finish cannot be blank'),
+            'title.required' => trans('Title for Sprint cannot be blank'),
+            'title.min' => trans('Title must be at least 2 characters'),
+            'title.max' => trans('Title must be between 2 and 255 characters'),
+            'date_start.required' => trans('Date to start cannot be blank'),
+            'date_finish.required' => trans('Date to finish cannot be blank'),
         ];
     }
 

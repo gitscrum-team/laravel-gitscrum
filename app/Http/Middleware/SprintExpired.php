@@ -31,7 +31,7 @@ class SprintExpired
                 ->first();
 
             if ($sprint) {
-                $msg = _('This Sprint has been expired at').' '.$sprint->date_finish;
+                $msg = trans('This Sprint has been expired at').' '.$sprint->date_finish;
                 view()->share('notification', ['alert' => 'danger', 'message' => $msg]);
             }
         }

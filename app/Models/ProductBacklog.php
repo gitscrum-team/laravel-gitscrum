@@ -102,6 +102,6 @@ class ProductBacklog extends Model
 
     public function getVisibilityAttribute()
     {
-        return $this->attributes['is_private'] ? _('Private') : _('Public');
+        return $this->attributes['is_private'] ? trans('Private') : trans('Public');
     }
 }

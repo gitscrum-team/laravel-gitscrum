@@ -4,7 +4,7 @@
     @if ( isset($userStory) )
     <input type="hidden" name="user_story_id" value="{{$userStory->id}}">
     <div class="form-group">
-        <label class="col-sm-12 mbn pbn">{{_('User Story')}}</label>
+        <label class="col-sm-12 mbn pbn">{{trans('User Story')}}</label>
         <div class="col-sm-12"><a href="{{route('user_stories.show', ['slug' => $userStory->slug])}}"
             target="_blank" class="text-success">{{$userStory->title}}</a></div>
     </div>
@@ -13,7 +13,7 @@
 
     @if ( isset($productBacklogs) )
     <div class="form-group">
-        <label class="col-sm-12">{{_('Sprint Backlog')}}</label>
+        <label class="col-sm-12">{{trans('Sprint Backlog')}}</label>
         <div class="col-sm-12">
             <select name="sprint_id" class="form-control">
                 @foreach ($productBacklogs as $backlog)
@@ -40,7 +40,7 @@
     @endif
 
     <div class="form-group">
-        <label class="col-sm-12">{{_('Type')}}</label>
+        <label class="col-sm-12">{{trans('Type')}}</label>
         <div class="col-sm-12">
             <select name="issue_type_id" class="form-control">
                 @foreach ($issue_types as $type)
@@ -51,21 +51,21 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Issue')}}</label>
+        <label class="col-sm-12">{{trans('Issue')}}</label>
         <div class="col-sm-12">
             <input name="title" type="text" class="form-control" value="{{ $issue->title or '' }}"
-                pattern=".{2,255}" title="{{_('Title must be between 2 and 255 characters')}}"
+                pattern=".{2,255}" title="{{trans('Title must be between 2 and 255 characters')}}"
                 autocomplete="off" maxlength="255" required>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Description')}} ({{_('optional')}})</label>
+        <label class="col-sm-12">{{trans('Description')}} ({{trans('optional')}})</label>
         <div class="col-sm-12">
             <textarea name="description" type="text" class="form-control">{{ $issue->description or '' }}</textarea>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Avg Effort')}}</label>
+        <label class="col-sm-12">{{trans('Avg Effort')}}</label>
         <div class="col-sm-12">
             <select name="config_issue_effort_id" class="form-control m-b">
                 @foreach ($issue_efforts as $effort)
@@ -76,17 +76,17 @@
     </div>
     <div class="hr-line-dashed"></div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Assigned to')}}</label>
+        <label class="col-sm-12">{{trans('Assigned to')}}</label>
         <div class="col-sm-12">
             @include('partials.select-issue-assigned')
         </div>
     </div>
     <div class="hr-line-dashed"></div>
     <div class="form-group">
-        <label class="col-sm-3 control-label">{{_('Planning Pocker')}}</label>
+        <label class="col-sm-3 control-label">{{trans('Planning Pocker')}}</label>
         <div class="col-sm-9">
             <div class="i-checks"><input type="checkbox" value="" checked=""> <i></i></div>
-            <span class="help-block m-b-none">{{_('Collaborative Estimation')}}</span>
+            <span class="help-block m-b-none">{{trans('Collaborative Estimation')}}</span>
         </div>
     </div>
     <div class="hr-line-dashed"></div>

@@ -1,19 +1,19 @@
-@section('title',  _('Sprints'))
+@section('title',  trans('Sprints'))
 
 @extends('layouts.master')
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3>{{_('Sprint Backlog - Calendar')}}</h3>
+    <h3>{{trans('Sprint Backlog - Calendar')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     <div class="btn-group">
         <a href="{{route('sprints.index', ['mode'=>'default'])}}"
             class="btn btn-sm btn-primary">
-            {{_('Mode List')}}</a>
+            {{trans('Mode List')}}</a>
         <a href="{{route('sprints.create')}}"
             class="btn btn-sm btn-primary"
-            data-toggle="modal" data-target="#modalLarge">{{_('Create Sprint Backlog')}}</a>
+            data-toggle="modal" data-target="#modalLarge">{{trans('Create Sprint Backlog')}}</a>
     </div>
 </div>
 @endsection

@@ -60,7 +60,7 @@ class UserStoryController extends Controller
         $userStory = UserStory::create($request->all());
 
         return redirect()->route('user_stories.show', ['slug' => $userStory->slug])
-            ->with('success', _('Congratulations! The User Story has been created with successfully'));
+            ->with('success', trans('Congratulations! The User Story has been created with successfully'));
     }
 
     /**
@@ -116,7 +116,7 @@ class UserStoryController extends Controller
         $userStory->update($request->all());
 
         return back()
-            ->with('success', _('Congratulations! The User Story has been edited with successfully'));
+            ->with('success', trans('Congratulations! The User Story has been edited with successfully'));
     }
 
     /**

@@ -1,4 +1,4 @@
-@section('title',  _('Issue - ') . $issue->title)
+@section('title',  trans('Issue - ') . $issue->title)
 
 @extends('layouts.master')
 
@@ -7,19 +7,19 @@
     <h3>
         @include('partials.includes.breadcrumb-sprint', ['obj'=>$issue->sprint])
         @if(isset($issue->userStory->slug))
-        <a href="{{route('user_stories.show', ['slug'=>$issue->userStory->slug])}}">{{_('User Story')}}</a> &raquo;
+        <a href="{{route('user_stories.show', ['slug'=>$issue->userStory->slug])}}">{{trans('User Story')}}</a> &raquo;
         @endif
-        {{_('Issue')}}</h3>
+        {{trans('Issue')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $issue->favorite, 'type' => 'issue',
-        'id' => $issue->id, 'btnSize' => 'btn-sm font-bold', 'text' => _('Favorite')])
+        'id' => $issue->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
     &nbsp;&nbsp;
     <div class="btn-group">
         <a href="{{route('issues.edit', ['slug' => $issue->slug])}}"
             class="btn btn-sm btn-primary"
             data-toggle="modal" data-target="#modalLarge">
-            <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Issue')}}</a>
+            <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Issue')}}</a>
         <a href="{{route('issues.destroy', ['slug' => $issue->slug])}}"
             class="btn btn-sm btn-default">
             <i class="fa fa-trash" aria-hidden="true"></i></a>
@@ -43,7 +43,7 @@
         @if ( $issue->closed_at )
             <a href="{{route('issues.create', ['slug' => $issue->slug])}}"
                 class="mtl mbl btn btn-block btn-danger"
-                type="button">{{_('Defect Detected')}}</a>
+                type="button">{{trans('Defect Detected')}}</a>
         @endif
 
         <div class="mtl">
@@ -52,14 +52,14 @@
                 'slug' => $issue->slug, 'list' => $issue->labels, 'type' => 'issue', 'id' => $issue->id ])
 
             @include('partials.boxes.note', [ 'list' => $issue,
-                'type'=> 'issue', 'title' => _('Definition of Done Checklist'),
+                'type'=> 'issue', 'title' => trans('Definition of Done Checklist'),
                 'percentage' => Helper::percentage($issue, 'notes')])
 
             @include('partials.boxes.attachment', ['id'=>$issue->id, 'type'=>'issue', 'list' => $issue->attachments])
 
-            <h6>{{_('Assigned to')}}
+            <h6>{{trans('Assigned to')}}
                 <span class="pull-right">
-                    <a href="" class="btn btn-primary btn-xs">{{_('Add Member')}}</a>
+                    <a href="" class="btn btn-primary btn-xs">{{trans('Add Member')}}</a>
                 </span>
             </h6>
 
@@ -70,7 +70,7 @@
                         <div class="row">
                             @include('partials.select-issue-assigned', ['usersByOrganization' => $usersByOrganization])
                             <div class="">
-                                <button type="submit" class="btn btn-xs btn-primary pull-right" role="button">{{_('Confirm')}}</button>
+                                <button type="submit" class="btn btn-xs btn-primary pull-right" role="button">{{trans('Confirm')}}</button>
                             </div>
                         </div>
                     </div>
@@ -109,38 +109,38 @@
 
         </h3>
 
-        <h6 class="text-muted pbn">{{_('Use this code on commit')}}: <strong>#{{$issue->code}}-{{$issue->id}}</strong></h6>
+        <h6 class="text-muted pbn">{{trans('Use this code on commit')}}: <strong>#{{$issue->code}}-{{$issue->id}}</strong></h6>
 
         <p class="mbl">{!! nl2br(e($issue->description)) !!}</p>
 
         <p class="mbn pbn">
-            {{_('Author')}}: <a href="{{route('user.profile', ['username' => $issue->user->username])}}">
+            {{trans('Author')}}: <a href="{{route('user.profile', ['username' => $issue->user->username])}}">
                 <strong>{{$issue->user->username}}</strong></a>
         </p>
 
         <p class="mbn pbn">
-            {{_('Sprint Backlog')}}:
+            {{trans('Sprint Backlog')}}:
             @if( isset($issue->sprint->title) )
                 <a href="{{route('sprints.show', ['slug' => @$issue->sprint->slug])}}">
                 {{$issue->sprint->title}}</a>
             @else
-                <span class="text-muted">{{_('Undefined')}}</span>
+                <span class="text-muted">{{trans('Undefined')}}</span>
             @endif
         </p>
 
         <p class="">
-            {{_('User Story')}}:
+            {{trans('User Story')}}:
             @if( isset($issue->userStory) )
             <a href="{{route('user_stories.show', ['slug' => $issue->userStory->slug])}}">
                 {{$issue->userStory->title}}</a>
             @else
-                <span class="text-muted">{{_('Undefined')}}</span>
+                <span class="text-muted">{{trans('Undefined')}}</span>
             @endif
         </p>
 
         @if ( $issue->closed_at )
         <p class="text-danger">
-            <strong>{{_('Closed')}} {{_('by')}}
+            <strong>{{trans('Closed')}} {{trans('by')}}
                 <a href="{{route('user.profile', ['username' => $issue->closedUser->username])}}">
                 {{$issue->closedUser->username}}</a>: {{$issue->dateforhumans('closed_at')}}</strong>
         </p>
@@ -152,11 +152,11 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#tab-comments">
                     <i class="fa fa-comments" aria-hidden="true"></i>
-                    {{_('Comments')}} ({{$issue->comments->count()}})</a></li>
-                <li class=""><a data-toggle="tab" href="#tab-commits"> {{_('Commits')}} ({{$issue->commits->count()}})</a></li>
+                    {{trans('Comments')}} ({{$issue->comments->count()}})</a></li>
+                <li class=""><a data-toggle="tab" href="#tab-commits"> {{trans('Commits')}} ({{$issue->commits->count()}})</a></li>
                 <li class=""><a data-toggle="tab" href="#tab-activities">
                     <i class="fa fa-rss" aria-hidden="true"></i>
-                    {{_('Activities')}}</a></li>
+                    {{trans('Activities')}}</a></li>
             </ul>
             <div class="tab-content">
                 <div id="tab-comments" class="tab-pane active">

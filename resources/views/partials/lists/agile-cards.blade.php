@@ -21,7 +21,7 @@
     <div class="options">
         <a href="{{route('issues.edit', ['slug' => $card->slug])}}"
         data-toggle="modal" data-target="#modalLarge">
-        <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit Issue')}}</a>
+        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Issue')}}</a>
     <div>
 
     <div class="clearfix"></div>

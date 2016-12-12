@@ -266,7 +266,7 @@ class Sprint extends Model
 
     public function getVisibilityAttribute()
     {
-        return $this->attributes['is_private'] ? _('Private') : _('Public');
+        return $this->attributes['is_private'] ? trans('Private') : trans('Public');
     }
 
     public function getSlugAttribute()
@@ -281,6 +281,6 @@ class Sprint extends Model
         $date_finish = isset($this->attributes['date_finish']) ?
             Carbon::parse($this->attributes['date_finish'])->toDateString() : '';
 
-        return $date_start.' '._('to').' '.$date_finish;
+        return $date_start.' '.trans('to').' '.$date_finish;
     }
 }

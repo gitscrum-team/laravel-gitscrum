@@ -7,6 +7,7 @@ use GitScrum\Models\ProductBacklog;
 
 class WizardController extends Controller
 {
+
     public function step1()
     {
         $repositories = (object) app('GithubClass')->readRepositories();

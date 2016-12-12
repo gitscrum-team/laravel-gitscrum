@@ -7,17 +7,17 @@
         {{$list->title}}</a>
         <div class="info">
             <span><strong>{{str_plural('User story', $list->userStories->count())}}</strong>: {{$list->userStories->count()}}</span>
-            <span><strong>{{_('Sprints')}}:</strong> {{$list->sprints->where('closed_at', NULL)->count()}} {{_('Open')}} /
-            {{$list->sprints->where('closed_at', '!=', NULL)->count()}} {{_('Closed')}}</span>
-            <span><strong>{{_('Issues')}}:</strong> {{$list->issues->where('closed_at', NULL)->count()}} {{_('Open')}} /
-            {{$list->issues->where('closed_at', '!=', NULL)->count()}} {{_('Closed')}}</span>
+            <span><strong>{{trans('Sprints')}}:</strong> {{$list->sprints->where('closed_at', NULL)->count()}} {{trans('Open')}} /
+            {{$list->sprints->where('closed_at', '!=', NULL)->count()}} {{trans('Closed')}}</span>
+            <span><strong>{{trans('Issues')}}:</strong> {{$list->issues->where('closed_at', NULL)->count()}} {{trans('Open')}} /
+            {{$list->issues->where('closed_at', '!=', NULL)->count()}} {{trans('Closed')}}</span>
         </div>
     </td>
     <td><span class="text-middle">{{$list->organization->title}}</span></td>
     <td class="text-right" width="60">
         <a href="{{$list->html_url}}" target="_blank" class="text-middle icon-github"
             data-toggle="tooltip" data-placement="left"
-            title="{{_('Go to GitHub')}}" alt="{{_('Go to GitHub')}}">
+            title="{{trans('Go to GitHub')}}" alt="{{trans('Go to GitHub')}}">
             <i class="fa fa-github" aria-hidden="true"></i></a>
     </td>
 </tr>

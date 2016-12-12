@@ -6,19 +6,19 @@
             <input class="form-control" type="text" name="{{@$query}}" value="{{@$search}}"
                 autocomplete="off" placeholder="{{ $txtSearch or 'Search' }}">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">{{_('Search')}}!</button>
+                <button class="btn btn-default" type="submit">{{trans('Search')}}!</button>
             </span>
         </div>
     </div>
     </form>
 
 
-    <a href="{{@$route}}" class="btn btn-default pull-left"><i class="fa fa-refresh"></i> {{_('Refresh')}}</a>
+    <a href="{{@$route}}" class="btn btn-default pull-left"><i class="fa fa-refresh"></i> {{trans('Refresh')}}</a>
 
     <div class="clearfix"></div>
 
 </div>
 
 @if ( @$search )
-<p class="alert alert-success">{{_('Search by')}} <strong>{{$search}}</strong></p>
+<p class="alert alert-success">{{trans('Search by')}} <strong>{{$search}}</strong></p>
 @endif

@@ -1,7 +1,7 @@
 <form action="{{route($route, ['slug'=>@$userStory->slug])}}" method="post" class="form-horizontal">
     {{ csrf_field() }}
     <div class="form-group">
-        <label class="col-sm-12">{{_('Product Backlog')}}</label>
+        <label class="col-sm-12">{{trans('Product Backlog')}}</label>
         <div class="col-sm-12">
             <select name="product_backlog_id" class="form-control m-b">
                 @foreach ($productBacklogs as $productBacklog)
@@ -14,20 +14,20 @@
     </div>
     <div class="hr-line-dashed"></div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('User Story')}}</label>
+        <label class="col-sm-12">{{trans('User Story')}}</label>
         <div class="col-sm-12">
             <textarea name="title" type="text" class="form-control" autocomplete="off"
                 required>{{ @$userStory->title }}</textarea>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Additional information')}}</label>
+        <label class="col-sm-12">{{trans('Additional information')}}</label>
         <div class="col-sm-12">
             <textarea name="description" type="text" class="form-control">{{ @$userStory->description }}</textarea>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Priority')}}</label>
+        <label class="col-sm-12">{{trans('Priority')}}</label>
         <div class="col-sm-12">
             <select name="config_priority_id" class="form-control m-b">
                 @foreach ($priorities as $priority)
@@ -38,10 +38,10 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{_('Acceptance Criteria')}}</label>
+        <label class="col-sm-12">{{trans('Acceptance Criteria')}}</label>
         <div class="col-sm-12">
             <textarea name="acceptance_criteria" type="text" class="form-control">{{ @$userStory->acceptance_criteria }}</textarea>
-            <span class="help-block m-b-none small">{{_('Confirmation of requirement understanding and decide about acceptance of iteration deliverables')}}</span>
+            <span class="help-block m-b-none small">{{trans('Confirmation of requirement understanding and decide about acceptance of iteration deliverables')}}</span>
         </div>
     </div>
     <div class="hr-line-dashed"></div>

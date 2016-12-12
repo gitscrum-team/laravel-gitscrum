@@ -3,8 +3,8 @@
     <tr>
         <th width="10"></th>
         <th width="140"></th>
-        <th>{{_('Sprint Backlog')}}</th>
-        <th class="text-right">{{_('Product Backlog')}}</th>
+        <th>{{trans('Sprint Backlog')}}</th>
+        <th class="text-right">{{trans('Product Backlog')}}</th>
     </tr>
     </thead>
     <tbody>

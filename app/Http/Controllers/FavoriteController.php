@@ -21,7 +21,7 @@ class FavoriteController extends Controller
         ];
         Favorite::create($data);
 
-        return back()->with('success', _('Favorited successfully'));
+        return back()->with('success', trans('Favorited successfully'));
     }
 
     public function destroy($type, $id)
@@ -32,6 +32,6 @@ class FavoriteController extends Controller
 
         $favorite->delete();
 
-        return back()->with('success', _('Unfavorited successfully'));
+        return back()->with('success', trans('Unfavorited successfully'));
     }
 }

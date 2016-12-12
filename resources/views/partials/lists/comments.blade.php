@@ -13,11 +13,11 @@
                 <a href="{{route('comments.edit', ['id' => $comment->id])}}" class="font-bold"
                     data-toggle="modal" data-target="#modalLarge">
                     <span data-toggle="tooltip" title="Edit Comment">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> {{_('Edit')}}</span></a>
+                    <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit')}}</span></a>
 
                 <a href="{{route('comments.destroy', ['id' => $comment->id, '#tab-comments'])}}" class="font-bold"
                     data-toggle="tooltip" title="Delete Comment">
-                    <i class="fa fa-trash" aria-hidden="true"></i> {{_('Delete')}}</a>
+                    <i class="fa fa-trash" aria-hidden="true"></i> {{trans('Delete')}}</a>
             @endif
         </div>
     </div>

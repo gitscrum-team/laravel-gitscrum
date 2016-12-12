@@ -36,8 +36,8 @@ class UserStoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => _('User Story cannot be blank'),
-            'title.min' => _('User Story must be at least 2 characters'),
+            'title.required' => trans('User Story cannot be blank'),
+            'title.min' => trans('User Story must be at least 2 characters'),
         ];
     }
 }

@@ -1,4 +1,4 @@
-@section('title',  _('Edit Issue'))
+@section('title',  trans('Edit Issue'))
 
 @extends('layouts.modal')
 

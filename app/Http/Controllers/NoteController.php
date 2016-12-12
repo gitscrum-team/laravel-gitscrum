@@ -26,7 +26,7 @@ class NoteController extends Controller
 
         Note::create($data);
 
-        return back()->with('success', _('Added successfully'));
+        return back()->with('success', trans('Added successfully'));
     }
 
     public function update(Request $request, $slug)
@@ -37,7 +37,7 @@ class NoteController extends Controller
         $note->closed_at = Carbon::now();
         $note->save();
 
-        return back()->with('success', _('Updated successfully'));
+        return back()->with('success', trans('Updated successfully'));
     }
 
     public function destroy($id)
@@ -47,6 +47,6 @@ class NoteController extends Controller
             ->firstOrFail();
         $note->delete();
 
-        return back()->with('success', _('Note deleted successfully'));
+        return back()->with('success', trans('Note deleted successfully'));
     }
 }

@@ -23,7 +23,7 @@ class CommentController extends Controller
         ];
         Comment::create($data);
 
-        return back()->with('success', _('Comment added successfully'));
+        return back()->with('success', trans('Comment added successfully'));
     }
 
     public function edit($id)
@@ -44,7 +44,7 @@ class CommentController extends Controller
         $comment->comment = $request->comment;
         $comment->save();
 
-        return back()->with('success', _('Comment updated successfully'));
+        return back()->with('success', trans('Comment updated successfully'));
     }
 
     public function destroy($id)
@@ -54,6 +54,6 @@ class CommentController extends Controller
 
         $comment->delete();
 
-        return back()->with('success', _('Comment deleted successfully'));
+        return back()->with('success', trans('Comment deleted successfully'));
     }
 }

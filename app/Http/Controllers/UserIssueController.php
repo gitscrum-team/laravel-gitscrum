@@ -102,7 +102,7 @@ class UserIssueController extends Controller
         $issue->users()->sync($members);
 
         if (!$request->ajax()) {
-            return redirect()->back()->with('success', _('Updated successfully'));
+            return redirect()->back()->with('success', trans('Updated successfully'));
         }
     }
 

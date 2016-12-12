@@ -1,4 +1,4 @@
-@section('title',  _('Edit Product Backlog'))
+@section('title',  trans('Edit Product Backlog'))
 
 @extends('layouts.modal')
 

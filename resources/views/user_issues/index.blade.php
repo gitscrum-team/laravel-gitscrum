@@ -1,4 +1,4 @@
-@section('title',  _('Sprints'))
+@section('title',  trans('Sprints'))
 
 @extends('layouts.master')
 
@@ -8,8 +8,8 @@
     <h2>{{$user->username}}</h2>
     <ol class="breadcrumb">
         <li><a href="#">Dashboard</a></li>
-        <li><a href="{{route('user.profile', ['username' => $user->username])}}">{{_('Profile')}}</a></li>
-        <li class="active"><strong>{{_('Issues')}}</strong></li>
+        <li><a href="{{route('user.profile', ['username' => $user->username])}}">{{trans('Profile')}}</a></li>
+        <li class="active"><strong>{{trans('Issues')}}</strong></li>
     </ol>
 </div>
 
@@ -33,7 +33,7 @@
             <div class="ibox-title">
                 <h5>All projects assigned to this account</h5>
                 <div class="ibox-tools">
-                    <a href="" class="btn btn-primary btn-xs">{{_('Add a New')}}</a>
+                    <a href="" class="btn btn-primary btn-xs">{{trans('Add a New')}}</a>
                 </div>
             </div>
             <!--

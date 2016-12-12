@@ -42,8 +42,8 @@ class LabelRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => _('Field cannot be blank'),
-            'title.min' => _('Field must be at least 2 characters'),
+            'title.required' => trans('Field cannot be blank'),
+            'title.min' => trans('Field must be at least 2 characters'),
         ];
     }
 }

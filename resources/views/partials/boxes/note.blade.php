@@ -1,5 +1,5 @@
 <div class="">
-    <h6>{{ $title or _('Small Notes')}}</h6>
+    <h6>{{ $title or trans('Small Notes')}}</h6>
 
     @if(isset($percentage))
     <div class="">
