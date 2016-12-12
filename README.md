@@ -88,7 +88,7 @@ php artisan migrate --seed
 ## Use Docker
 Containers to run GitScrum : [php7, nginx and mysql57](https://github.com/renatomarinho/Docker-GitScrum)
 
-## Screnshots
+## Screenshots
 
 ![Screenshot 0](http://i.imgur.com/RcYFFCp.png)
 
