@@ -57,8 +57,10 @@ Application description: gitscrum
 Authorization callback URL: http://URL/auth/github/callback
 ```
 Finally fill the informations in the .env file
-
 ```
+APP_URL=xxxxxxxxxxxx.xxx
+
+
 GITHUB_CLIENT_ID=XXXXX
 GITHUB_CLIENT_SECRET=XXXXXXXXXXXXXXXXXX
 ```
@@ -88,7 +90,7 @@ php artisan migrate --seed
 ## Use Docker
 Containers to run GitScrum : [php7, nginx and mysql57](https://github.com/renatomarinho/Docker-GitScrum)
 
-## Screnshots
+## Screenshots
 
 ![Screenshot 0](http://i.imgur.com/RcYFFCp.png)
 
