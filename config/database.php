@@ -65,7 +65,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => env('DB_DATABASE'),
+            'database' => env('DB_DATABASE', ':memory:'),
             'prefix' => '',
         ],
 
