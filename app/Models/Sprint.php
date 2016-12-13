@@ -202,7 +202,7 @@ class Sprint extends Model
         return round($effort, 2);
     }
 
-    public function burdown()
+    public function burndown()
     {
         $helper = new Helper();
         $total = $this->issues->count();
@@ -216,7 +216,7 @@ class Sprint extends Model
         $arr[$previous] = $total;
 
         foreach ($dates as $date => $value) {
-            $closed = $this->issues()->whereDate('closed_at', '=', $date)->count();
+            $closed = $this->issues()->whereDate('closed_at', '=', $date)->get()->count();
             $totalPrevious = $total - $arr[$previous];
             $arr[$date] = $total - ($closed + $totalPrevious);
             $previous = $date;
