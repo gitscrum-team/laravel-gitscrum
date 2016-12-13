@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('github_id')->nullable()->unique('github_id_UNIQUE');
+            $table->bigInteger('github_id')->nullable()->unique();
             $table->string('username')->nullable()->index('users_username');
             $table->string('name');
             $table->string('avatar')->nullable();
