@@ -202,7 +202,7 @@ class Sprint extends Model
         return round($effort, 2);
     }
 
-    public function burdown()
+    public function burndown()
     {
         $helper = new Helper();
         $total = $this->issues->count();

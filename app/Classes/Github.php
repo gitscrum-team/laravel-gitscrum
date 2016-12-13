@@ -441,7 +441,6 @@ class Github
 
             $commits = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.
                 $repo.'/pulls/'.$pull->number.'/commits');
-            //dd($commits);
             foreach ($commits as $commit) {
                 $c = Commit::where('sha', '=', $commit->sha)->first();
                 $pull->commit()->sync([$c->id], false);
