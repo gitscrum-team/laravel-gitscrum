@@ -12,7 +12,7 @@ class CreatePullRequestsTable extends Migration
     {
         Schema::create('pull_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('github_id')->unsigned()->nullable()->unique('github_id_UNIQUE');
+            $table->integer('github_id')->unsigned()->nullable()->unique();
             $table->integer('head_branch_id')->unsigned()->nullable()->index('fk_pull_requests_head_branch_id_idx');
             $table->integer('base_branch_id')->unsigned()->nullable()->index('fk_pull_requests_base_branch_id_idx');
             $table->integer('user_id')->nullable();
