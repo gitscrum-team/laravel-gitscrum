@@ -40,6 +40,8 @@ class ConfigStatus extends Model
      */
     protected $casts = [];
 
+    public $timestamps = false;
+
     public function users()
     {
         return $this->belongsToMany(\GitScrum\Models\User::class, 'statuses', 'id', 'user_id');

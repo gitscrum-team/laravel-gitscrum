@@ -25,7 +25,7 @@ class Helper
     {
         $total = $model->{$feature}->count();
         $totalClosed = $model->{$feature}->where('closed_at', '!=', null)->count();
+
         return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
     }
-
 }

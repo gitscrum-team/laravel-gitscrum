@@ -15,6 +15,7 @@
     <link href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" rel="stylesheet" type="text/css" />
     <link href="/css/flat-ui.css" rel="stylesheet" type="text/css" />
     <link href="/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="/css/core.css" rel="stylesheet" type="text/css" />
 
     <script src="//code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>

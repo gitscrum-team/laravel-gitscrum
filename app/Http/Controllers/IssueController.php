@@ -206,7 +206,7 @@ class IssueController extends Controller
             $issue->config_status_id = $request->status_id;
             $issue->closed_user_id = null;
             $issue->closed_at = null;
-            
+
             if (!is_null($status->is_closed)) {
                 $issue->closed_user_id = Auth::id();
                 $issue->closed_at = Carbon::now();

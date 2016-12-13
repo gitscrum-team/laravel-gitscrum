@@ -109,7 +109,9 @@
 
         </h3>
 
-        <h6 class="text-muted pbn">{{trans('Use this code on commit')}}: <strong>#{{$issue->code}}-{{$issue->id}}</strong></h6>
+        @if($issue->number)
+        <h6 class="text-muted pbn">{{trans('Use this code on commit')}}: <strong>#{{$issue->number}}</strong></h6>
+        @endif
 
         <p class="mbl">{!! nl2br(e($issue->description)) !!}</p>
 

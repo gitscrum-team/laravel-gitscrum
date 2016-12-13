@@ -40,7 +40,7 @@ class CommentObserver
     {
         $statuses = $comment->statuses->first();
         Status::destroy($statuses->id);
-        
+
         if ($comment->commentable_type == 'issue') {
             app('GithubClass')->deleteIssueComment($comment);
         }

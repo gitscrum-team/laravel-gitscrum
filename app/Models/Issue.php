@@ -145,4 +145,9 @@ class Issue extends Model
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$dateField])->diffForHumans();
     }
+
+    public function getNumberAttribute()
+    {
+        return isset($this->attributes['number']) ? $this->attributes['number'] : null;
+    }
 }

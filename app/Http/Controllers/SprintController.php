@@ -107,14 +107,15 @@ class SprintController extends Controller
             ->with('sprint', $sprint);
     }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param $slug
-	 * @return \Illuminate\Http\Response
-	 * @internal param int $id
-	 *
-	 */
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param $slug
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @internal param int $id
+     */
     public function edit($slug)
     {
         $sprint = Sprint::where('slug', '=', $slug)->first();
@@ -124,15 +125,16 @@ class SprintController extends Controller
             ->with('sprint', $sprint);
     }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param SprintRequest|Request $request
-	 * @param $slug
-	 * @return \Illuminate\Http\Response
-	 * @internal param int $id
-	 *
-	 */
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param SprintRequest|Request $request
+     * @param $slug
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @internal param int $id
+     */
     public function update(SprintRequest $request, $slug)
     {
         $sprint = Sprint::where('slug', '=', $slug)->first();
@@ -142,14 +144,15 @@ class SprintController extends Controller
             ->with('success', trans('Congratulations! The Sprint has been edited with successfully'));
     }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param Request $request
-	 * @return \Illuminate\Http\Response
-	 * @internal param int $id
-	 *
-	 */
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @internal param int $id
+     */
     public function destroy(Request $request)
     {
         $sprint = Sprint::where('slug', '=', $request->input('slug'))->first();

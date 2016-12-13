@@ -62,7 +62,7 @@ Route::group(['prefix' => 'issues', 'middleware' => ['issue']], function () {
     Route::get('/edit/{slug}', 'IssueController@edit')->name('issues.edit');
     Route::post('/update/{slug}', 'IssueController@update')->name('issues.update');
     Route::get('/destroy/{slug}', 'IssueController@destroy')->name('issues.destroy');
-    Route::any('/status-update/{slug?}/{status?}', 'IssueController@statusUpdate')->name('issues.status.update');
+    Route::any('/update-status/{slug?}/{status?}', 'IssueController@statusUpdate')->name('issues.status.update');
 });
 
 Route::group(['prefix' => 'user-issue'], function () {

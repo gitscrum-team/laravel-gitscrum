@@ -30,13 +30,14 @@
                             <span class="font-extra-bold">{{Auth::user()->username}}</span>
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a href="{{route('user.profile',['slug' => Auth::user()->username])}}">
-                              <i class="fa fa-user" aria-hidden="true"></i>{{trans('Profile')}}</a></li>
-                          <li><a href="{{route('issues.index',['slug' => 0])}}">
-                              <i class="fa fa-th" aria-hidden="true"></i>{{trans('Planning')}}</a></li>
-                          <li class="nav-divider"></li>
-                          <li><a href="{{route('auth.logout')}}">
-                              <i class="fa fa-sign-out"></i> {{trans('Logout')}}</a></li>
+                            <li><a href="{{route('user.profile',['slug' => Auth::user()->username])}}">
+                                <i class="fa fa-user" aria-hidden="true"></i>{{trans('Profile')}}</a></li>
+                            <li class="nav-divider"></li>
+                            <li><a href="{{route('issues.index',['slug' => 0])}}">
+                                <i class="fa fa-th" aria-hidden="true"></i>{{trans('My Planning')}}</a></li>
+                            <li class="nav-divider"></li>
+                            <li><a href="{{route('auth.logout')}}">
+                                <i class="fa fa-sign-out"></i> {{trans('Logout')}}</a></li>
                         </ul>
                     </li>
                 </ul>

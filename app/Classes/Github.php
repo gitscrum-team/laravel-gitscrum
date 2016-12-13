@@ -42,7 +42,7 @@ class Github
     {
         $repos = collect($this->request('https://api.github.com/user/repos'));
 
-        $response = $repos->map(function($repo){
+        $response = $repos->map(function ($repo) {
             return $this->templateRepository($repo);
         });
 
@@ -62,6 +62,7 @@ class Github
             $oldTitle = str_slug($oldTitle, '-');
             $response = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$oldTitle, true, 'POST', $params);
         }
+
         return (object) $response;
     }
 
@@ -227,7 +228,7 @@ class Github
         return (object) $response;
     }
 
-    public function createOrUpdateIssueComment($obj, $verb='POST')
+    public function createOrUpdateIssueComment($obj, $verb = 'POST')
     {
         $params = [
             'body' => $obj->comment,
@@ -235,12 +236,11 @@ class Github
 
         $response = $this->request('https://api.github.com/repos/'.
             $obj->issue->productBacklog->organization->username.DIRECTORY_SEPARATOR.
-            $obj->issue->productBacklog->title.'/issues'.(isset($obj->github_id)?'':DIRECTORY_SEPARATOR.$obj->issue->number).'/comments'.
-            (isset($obj->github_id)?DIRECTORY_SEPARATOR.$obj->github_id:''),
+            $obj->issue->productBacklog->title.'/issues'.(isset($obj->github_id) ? '' : DIRECTORY_SEPARATOR.$obj->issue->number).'/comments'.
+            (isset($obj->github_id) ? DIRECTORY_SEPARATOR.$obj->github_id : ''),
             true, $verb, $params);
 
         return (object) $response;
-
     }
 
     public function deleteIssueComment($obj)
