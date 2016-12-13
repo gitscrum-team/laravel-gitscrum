@@ -14,7 +14,7 @@
                         </h6>
                         <form action="#" method="post">
                             {{ csrf_field() }}
-                            <textarea required name="comment" class="form-control" placeholder="{{_("Please tell us what bug or issue you've found, provide as much detail as possible")}}"></textarea>
+                            <textarea required name="comment" class="form-control" placeholder="{{trans("Please tell us what bug or issue you've found, provide as much detail as possible")}}"></textarea>
                             <button class="btn btn-primary btn-block mtm">{{trans('Submit Report')}}</button>
                         </form>
                     </div>

@@ -187,7 +187,7 @@ $(function() {
     var sprintBurnDown = $("#sprintBurndown");
 
     var data = {
-    labels: [ @foreach($sprint->burdown() as $key=>$value) '{{$key}}', @endforeach ],
+    labels: [ @foreach($sprint->burndown() as $key=>$value) '{{$key}}', @endforeach ],
     datasets: [
         {
             label: "Issues",
@@ -202,7 +202,7 @@ $(function() {
             pointHoverRadius: 1,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [ @foreach($sprint->burdown() as $key=>$value) '{{$value}}', @endforeach ],
+            data: [ @foreach($sprint->burndown() as $key=>$value) '{{$value}}', @endforeach ],
             spanGaps: false,
         }
     ]};

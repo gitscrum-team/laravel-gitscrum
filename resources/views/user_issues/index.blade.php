@@ -97,7 +97,7 @@ $(function(){
     Morris.Area({
         element: 'morris-area-chart',
         data: [
-            @foreach($user->burdown() as $key=>$value)
+            @foreach($user->burndown() as $key=>$value)
             { period: '{{$key}}', issues: '{{$value}}' },
             @endforeach
         ],
