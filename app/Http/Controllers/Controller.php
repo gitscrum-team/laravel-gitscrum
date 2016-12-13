@@ -18,6 +18,14 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function __construct(){
+
+        if ( File::exists( base_path() . DIRECTORY_SEPARATOR . '.env') ) {
+            return view('wizard.install');
+        }
+
+    }
+
     protected function formatValidationErrors(Validator $validator)
     {
         return $validator->errors()->all();
