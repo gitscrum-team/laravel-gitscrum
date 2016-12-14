@@ -259,6 +259,16 @@ class Github
         curl_setopt($ch, CURLOPT_AUTOREFERER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
+        if (env('PROXY_PORT')) {
+            curl_setopt($ch, CURLOPT_PROXYPORT, env('PROXY_PORT'));
+            curl_setopt($ch, CURLOPT_PROXYTYPE, env('PROXY_METHOD'));
+            curl_setopt($ch, CURLOPT_PROXY, env('PROXY_SERVER'));
+        }
+
+        if (env('PROXY_USER')) {
+            curl_setopt($ch, CURLOPT_PROXYUSERPWD, env('PROXY_USER').':'.env('PROXY_USER'));
+        }
+
         if (!is_null($postFields)) {
             $postFields = json_encode($postFields);
             curl_setopt($ch, CURLOPT_POST, true);
