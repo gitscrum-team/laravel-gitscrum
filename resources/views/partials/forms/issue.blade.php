@@ -1,6 +1,10 @@
 <form action="{{route($route, ['slug'=>@$issue->slug])}}" method="post" class="form-horizontal">
     {{ csrf_field() }}
 
+    @if ( isset($parent_id) )
+    <input type="hidden" name="parent_id" value="{{$parent_id}}">
+    @endif
+
     @if ( isset($userStory) )
     <input type="hidden" name="user_story_id" value="{{$userStory->id}}">
     <div class="form-group">
@@ -11,7 +15,11 @@
     <div class="hr-line-dashed"></div>
     @endif
 
-    @if ( isset($productBacklogs) )
+    @if (is_int($productBacklogs))
+    <input type="hidden" name="product_backlog_id" value="{{$productBacklogs}}">
+    @endif
+
+    @if ( isset($productBacklogs) && !is_int($productBacklogs) )
     <div class="form-group">
         <label class="col-sm-12">{{trans('Sprint Backlog')}}</label>
         <div class="col-sm-12">

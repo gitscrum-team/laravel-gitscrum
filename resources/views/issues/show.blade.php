@@ -41,8 +41,9 @@
         </div>
 
         @if ( $issue->closed_at )
-            <a href="{{route('issues.create', ['slug' => $issue->slug])}}"
+            <a href="{{route('issues.create', ['slug_sprint'=>0, 'slug_user_story'=>0, 'parent_id' => $issue->id])}}"
                 class="mtl mbl btn btn-block btn-danger"
+                data-toggle="modal" data-target="#modalLarge"
                 type="button">{{trans('Defect Detected')}}</a>
         @endif
 

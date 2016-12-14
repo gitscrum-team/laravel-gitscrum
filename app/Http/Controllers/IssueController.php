@@ -67,7 +67,7 @@ class IssueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($slug_sprint = null, $slug_user_story = null)
+    public function create($slug_sprint = null, $slug_user_story = null, $parent_id = null)
     {
         $issue_types = IssueType::where('enabled', 1)
             ->orderby('position', 'ASC')
@@ -79,19 +79,24 @@ class IssueController extends Controller
 
         $userStory = $productBacklogs = null;
 
-        if (is_null($slug_sprint) || !$slug_sprint) {
+        if ((is_null($slug_sprint) || !$slug_sprint) && $slug_user_story) {
             $userStory = UserStory::where('slug', $slug_user_story)->first();
             $productBacklogs = Auth::user()->productBacklogs($userStory->product_backlog_id);
             $usersByOrganization = Organization::find($userStory->productBacklog->organization_id)->users;
-        } else {
+        } else if ( $slug_sprint ) {
             $usersByOrganization = Organization::find(Sprint::where('slug', $slug_sprint)->first()
                 ->productBacklog->organization_id)->users;
+        } else {
+            $issue = Issue::find($parent_id);
+            $productBacklogs = $issue->product_backlog_id;
+            $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
         }
 
         return view('issues.create')
             ->with('productBacklogs', $productBacklogs)
             ->with('userStory', $userStory)
             ->with('slug', $slug_sprint)
+            ->with('parent_id', $parent_id)
             ->with('issue_types', $issue_types)
             ->with('issue_efforts', $issue_efforts)
             ->with('usersByOrganization', $usersByOrganization)
