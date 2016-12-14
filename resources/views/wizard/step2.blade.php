@@ -28,9 +28,11 @@
     @include('partials.boxes.repositories', ['list'=>$repositories, 'columns'=>$columns])
 
     <div class="text-center">
-        <a href="{{route('wizard.step3')}}" class="btn btn-lg btn-success">{{trans('Import my')}} <strong>{{trans('GitHub Issues')}}</strong></a>
 
+        @if(count($repositories))
+        <a href="{{route('wizard.step3')}}" class="btn btn-lg btn-success">{{trans('Import my')}} <strong>{{trans('GitHub Issues')}}</strong></a>
         <span class="mll mrl"><strong>{{trans('or')}}</strong></span>
+        @endif
 
         <a href="{{route('product_backlogs.index')}}" class="btn btn-lg btn-default">{{trans('Continue using')}} <strong>{{trans('GitScrum')}}</strong></a>
     </div>
