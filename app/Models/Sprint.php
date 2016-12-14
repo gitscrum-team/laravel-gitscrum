@@ -206,20 +206,22 @@ class Sprint extends Model
     {
         $helper = new Helper();
         $total = $this->issues->count();
-        $finished = (Carbon::now() > $this->attributes['date_finish']) ? Carbon::now() : $this->attributes['date_finish'];
-        $finished = (is_null($this->attributes['closed_at'])) ? $finished : $this->attributes['closed_at'];
-
-        $dates = $helper->arrayDateRange([$this->attributes['date_start'], $finished], $total);
-
-        $previous = $this->attributes['date_start'];
         $arr = [];
-        $arr[$previous] = $total;
+        if($total) {
+            $finished = (Carbon::now() > $this->attributes['date_finish']) ? Carbon::now() : $this->attributes['date_finish'];
+            $finished = (is_null($this->attributes['closed_at'])) ? $finished : $this->attributes['closed_at'];
 
-        foreach ($dates as $date => $value) {
-            $closed = $this->issues()->whereDate('closed_at', '=', $date)->get()->count();
-            $totalPrevious = $total - $arr[$previous];
-            $arr[$date] = $total - ($closed + $totalPrevious);
-            $previous = $date;
+            $dates = $helper->arrayDateRange([$this->attributes['date_start'], $finished], $total);
+
+            $previous = $this->attributes['date_start'];
+            $arr[$previous] = $total;
+
+            foreach ($dates as $date => $value) {
+                $closed = $this->issues()->whereDate('closed_at', '=', $date)->get()->count();
+                $totalPrevious = $total - $arr[$previous];
+                $arr[$date] = $total - ($closed + $totalPrevious);
+                $previous = $date;
+            }
         }
 
         return $arr;
