@@ -1,6 +1,6 @@
 @section('title',  trans('GitScrum Login'))
 
-@extends('layouts.master', ['hideNavbar' => true])
+@extends('layouts.master', ['hideNavbar' => true, 'bodyClass' => 'body-login'])
 
 @section('content')
 <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -12,7 +12,7 @@
         <div class="middle-box text-center loginscreen">
                 <h5 class="lead">{{trans('Welcome to')}} <strong>GitScrum</strong></h5>
 
-                <a href="{{route('auth.github')}}" class="btn btn-hg btn-info">
+                <a href="{{route('auth.github')}}" class="btn btn-hg btn-info btn-loader">
                         <i class="fa fa-github" aria-hidden="true"></i>&nbsp;&nbsp;Login with <strong>GitHub</strong></a>
 
                 <div class="text-center">

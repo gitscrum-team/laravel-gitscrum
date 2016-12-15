@@ -29,19 +29,23 @@ h3{
 	}
 }
 
-.loginscreen{
-	margin:60px auto;
-	padding:60px;
-	-webkit-box-shadow: inset 0px 0px 5px 0px rgba(43,43,43,1);
-	-moz-box-shadow: inset 0px 0px 5px 0px rgba(43,43,43,1);
-	box-shadow: inset 0px 0px 5px 0px rgba(43,43,43,1);
+.body-login{
+    background:#E0E4E7;
+    .loginscreen{
+        background:#fff;
+    	margin:60px auto;
+    	padding:60px;
+    	-webkit-box-shadow: inset 0px 0px 5px 0px rgba(43,43,43,1);
+    	-moz-box-shadow: inset 0px 0px 5px 0px rgba(43,43,43,1);
+    	box-shadow: inset 0px 0px 5px 0px rgba(43,43,43,1);
 
-	a{
-		margin:10px 0 40px;
-	}
-	p{
-		color:#888;
-	}
+    	a{
+    		margin:10px 0 40px;
+    	}
+    	p{
+    		color:#888;
+    	}
+    }
 }
 
 .tag-list{
@@ -591,4 +595,27 @@ header{
 	.form-comment{
 		margin-bottom: -30px;
 	}
+}
+
+.loader-area{
+	.loader {
+		position: absolute;
+		top:0;
+		left:0;
+		z-index: 9999;
+		border-top: 4px solid #0074D9;
+		width: 100%;
+		-webkit-animation: topBar 2s linear infinite  alternate;
+		animation: topBar 2s linear infinite  alternate;
+	}
+}
+
+@-webkit-keyframes topBar {
+	0% {width:0px; }
+	100% { width: 100%;}
+}
+
+@keyframes topBar {
+	0% {width:0px;}
+    100% {width:100%;}
 }

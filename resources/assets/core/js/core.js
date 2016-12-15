@@ -24,6 +24,7 @@ var main = {
         main.modalRemoveData();
         main.modalSwal();
         main.activateTab();
+        main.loading();
     },
 
     activateTab: function(){
@@ -62,5 +63,12 @@ var main = {
 
         });
     },
+
+    loading: function(){
+        var div = $("<div>", {"class": "loader"});
+        $('.btn-loader').on('click', function(){
+            $('.loader-area').append(div);
+        });
+    }
 
 }
