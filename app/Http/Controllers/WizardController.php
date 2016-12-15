@@ -25,6 +25,7 @@ class WizardController extends Controller
         $repositories = \Session::get('GithubRepositories')->whereIn('github_id', $request->repos);
         foreach ($repositories as $repository) {
             try {
+                app('GithubClass')->readCollaborators($repository->organization_title, $repository->title);
                 $product_backlog = ProductBacklog::create(get_object_vars($repository));
                 app('GithubClass')->createBranches($repository->organization_title, $product_backlog->id, $repository->title);
             } catch (\Illuminate\Database\QueryException $e) {

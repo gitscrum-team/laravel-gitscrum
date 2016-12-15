@@ -103,31 +103,22 @@ class Github
             $organization = Organization::where('username', $orgData->login)->first();
         }
 
-        if (!isset(Auth::user()->organizations()->where(
-            'organization_id',
-            $organization->id
-        )->first()->id)) {
-            Auth::user()->organizations()->attach($organization->id);
-        }
-
-        $this->members($orgData->login);
+        $organization->users()->sync([Auth::id()]);
 
         return $organization->id;
     }
 
-    public function members($org)
+    public function readCollaborators($owner, $repo)
     {
-        $members = $this->request('https://api.github.com/orgs/'.$org.'/members');
-        $organization = Organization::where('username', $org)->first()->users();
-
-        foreach ($members as $member) {
-            if (isset($member->id)) {
+        $collaborators = $this->request('https://api.github.com/repos/'.$owner.'/'.$repo.'/collaborators');
+        foreach ($collaborators as $collaborator) {
+            if (isset($collaborator->id)) {
                 $data = [
-                    'github_id' => $member->id,
-                    'username' => $member->login,
-                    'name' => $member->login,
-                    'avatar' => $member->avatar_url,
-                    'html_url' => $member->html_url,
+                    'github_id' => $collaborator->id,
+                    'username' => $collaborator->login,
+                    'name' => $collaborator->login,
+                    'avatar' => $collaborator->avatar_url,
+                    'html_url' => $collaborator->html_url,
                     'email' => null,
                     'remember_token' => null,
                     'bio' => null,
@@ -141,14 +132,17 @@ class Github
                 try {
                     $user = User::create($data);
                 } catch (\Exception $e) {
-                    $user = User::where('username', $member->login)->first();
+                    $user = User::where('username', $collaborator->login)->first();
                 }
 
-                if (!isset($organization->where('user_id', Auth::user()->id)->first()->id)) {
-                    $organization->attach($user->id);
-                }
+                $userId[] = $user->id;
+
             }
         }
+
+        $organization = Organization::where('username', $owner)->first()->users();
+        $organization->sync($userId);
+
     }
 
     public function createBranches($owner, $product_backlog_id, $repo)
