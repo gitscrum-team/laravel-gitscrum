@@ -171,6 +171,7 @@ class IssueController extends Controller
         $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
 
         return view('issues.edit')
+            ->with('productBacklogs', $issue->productBacklog->id)
             ->with('userStory', $issue->userStory)
             ->with('slug', isset($issue->sprint->slug) ? $issue->sprint->slug : null)
             ->with('issue_types', $issue_types)
