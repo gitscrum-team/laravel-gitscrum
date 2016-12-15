@@ -7,7 +7,7 @@
         <div class="input-group">
             <input class="form-control" name="title" type="text" autocomplete="off">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">{{trans('Add')}}</button>
+                <button class="btn btn-default btn-loader" type="submit">{{trans('Add')}}</button>
             </span>
         </div>
     </div>

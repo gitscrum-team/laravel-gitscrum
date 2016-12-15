@@ -30,4 +30,6 @@
 
 </head>
 
-<body>
+<body class="{{$bodyClass or ''}}">
+
+<div class="loader-area"></div>

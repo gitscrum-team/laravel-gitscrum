@@ -8,6 +8,6 @@
     </div>
     <span class='label label-info' id="file-attachment"></span>
     <div class="mtm mbl">
-        <button type="submit" class="btn btn-sm btn-success hidden" id="btn-file-attachment-upload">{{trans('Upload file')}}</button>
+        <button type="submit" class="btn btn-sm btn-success hidden btn-loader" id="btn-file-attachment-upload">{{trans('Upload file')}}</button>
     </div>
 </form>
