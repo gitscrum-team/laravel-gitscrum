@@ -10,8 +10,6 @@ namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use GitScrum\Classes\Helper;
-use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -100,6 +98,12 @@ class User extends Authenticatable
         return $this->hasMany(\GitScrum\Models\Status::class, 'user_id', 'id');
     }
 
+    public function notes()
+    {
+        return $this->morphMany(\GitScrum\Models\Note::class, 'noteable')
+            ->orderby('position', 'ASC');
+    }
+
     public function labels($feature)
     {
         return $this->{$feature}->map(function ($obj) {
@@ -127,8 +131,7 @@ class User extends Authenticatable
     public function sprints($sprint_id = null)
     {
         return $this->issues->map(function ($issue) use ($sprint_id) {
-            $obj = $issue->sprint()
-                ->get();
+            $obj = $issue->sprint()->get();
 
             if (!is_null($sprint_id)) {
                 $obj = $obj->where('id', '=', $sprint_id);
@@ -138,34 +141,6 @@ class User extends Authenticatable
         })->flatten(1)->unique('id');
     }
 
-    public function burdown()
-    {
-        $helper = new Helper();
-        $dt_finish = Carbon::now();
-
-        $date_finish = $dt_finish->toDateString();
-        $date_start = $dt_finish->subMonths(1)->toDateString();
-
-        $issues = $this->issues;
-
-        $total = $issues->count();
-
-        $dates = $helper->arrayDateRange([$date_start, $date_finish], $total);
-
-        $previous = $date_start;
-        $arr = [];
-        $arr[$previous] = $total;
-
-        foreach ($dates as $date => $value) {
-            $closed = $issues()->whereDate('closed_at', '=', $date)->count();
-            $totalPrevious = $total - $arr[$previous];
-            $arr[$date] = $total - ($closed + $totalPrevious);
-            $previous = $date;
-        }
-
-        return $arr;
-    }
-
     public function team()
     {
         return $this->organizations->map(function ($obj) {
@@ -173,10 +148,14 @@ class User extends Authenticatable
         })->flatten(1)->unique('id');
     }
 
-    public function activities()
+    public function activities($user_id = null)
     {
-        return $this->team()->map(function ($obj) {
-            return $obj->statuses;
+        return $this->team()->map(function ($obj) use ($user_id) {
+            $statuses = $obj->statuses;
+            if(!is_null($user_id)){
+                $statuses = $statuses->where('user_id', $user_id);
+            }
+            return $statuses;
         })->flatten(1)->sortByDesc('id')->take(6);
     }
 }

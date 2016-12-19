@@ -13,9 +13,9 @@
                             {{trans('Product Backlog')}} </a></li>
                     <li><a href="{{route('sprints.index')}}">
                             {{trans('Sprint Backlog')}} </a></li>
-                    <li>
+                    <!--<li>
                         <a aria-expanded="false" role="button" href="#"> {{trans('Documentation')}} </a>
-                    </li>
+                    </li>-->
                     <li class="dropdown">
                         <a aria-expanded="false" role="button" href="{{route('team.index')}}"> {{trans('Team')}} </a>
                     </li>

@@ -83,7 +83,7 @@ class IssueController extends Controller
             $userStory = UserStory::where('slug', $slug_user_story)->first();
             $productBacklogs = Auth::user()->productBacklogs($userStory->product_backlog_id);
             $usersByOrganization = Organization::find($userStory->productBacklog->organization_id)->users;
-        } else if ( $slug_sprint ) {
+        } elseif ($slug_sprint) {
             $usersByOrganization = Organization::find(Sprint::where('slug', $slug_sprint)->first()
                 ->productBacklog->organization_id)->users;
         } else {

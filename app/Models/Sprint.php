@@ -11,7 +11,6 @@ namespace GitScrum\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
-use GitScrum\Classes\Helper;
 
 class Sprint extends Model
 {
@@ -200,31 +199,6 @@ class Sprint extends Model
         })->avg('effort');
 
         return round($effort, 2);
-    }
-
-    public function burndown()
-    {
-        $helper = new Helper();
-        $total = $this->issues->count();
-        $arr = [];
-        if($total) {
-            $finished = (Carbon::now() > $this->attributes['date_finish']) ? Carbon::now() : $this->attributes['date_finish'];
-            $finished = (is_null($this->attributes['closed_at'])) ? $finished : $this->attributes['closed_at'];
-
-            $dates = $helper->arrayDateRange([$this->attributes['date_start'], $finished], $total);
-
-            $previous = $this->attributes['date_start'];
-            $arr[$previous] = $total;
-
-            foreach ($dates as $date => $value) {
-                $closed = $this->issues()->whereDate('closed_at', '=', $date)->get()->count();
-                $totalPrevious = $total - $arr[$previous];
-                $arr[$date] = $total - ($closed + $totalPrevious);
-                $previous = $date;
-            }
-        }
-
-        return $arr;
     }
 
     public function activities()

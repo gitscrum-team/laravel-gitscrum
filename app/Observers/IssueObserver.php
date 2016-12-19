@@ -43,7 +43,7 @@ class IssueObserver
         $issue->product_backlog_id = $product_backlog_id;
 
         $tmp = app('GithubClass')->createOrUpdateIssue($issue);
-        if(isset($tmp->id)){
+        if (isset($tmp->id)) {
             $issue->github_id = $tmp->id;
             $issue->number = $tmp->number;
         }

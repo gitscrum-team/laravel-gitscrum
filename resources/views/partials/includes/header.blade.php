@@ -15,7 +15,6 @@
     <link href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" rel="stylesheet" type="text/css" />
     <link href="/css/flat-ui.css" rel="stylesheet" type="text/css" />
     <link href="/css/core.css" rel="stylesheet" type="text/css" />
-    <link href="/css/core.css" rel="stylesheet" type="text/css" />
 
     <script src="//code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
@@ -23,8 +22,7 @@
     <script src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js" type="text/javascript"></script>
     <script src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js" type="text/javascript"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" type="text/javascript"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.0.0rc/js/bootstrap-switch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.0.0rc/js/bootstrap-switch.js" type="text/javascript"></script>
 
     <script src="/js/core.js" type="text/javascript"></script>
 
