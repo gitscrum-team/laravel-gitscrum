@@ -57,7 +57,11 @@ class Github
         ];
 
         if (is_null($oldTitle)) {
-            $response = $this->request('https://api.github.com/orgs/'.$owner.'/repos', true, 'POST', $params);
+            if (Auth::user()->username == $owner) {
+                $response = $this->request('https://api.github.com/user/repos', true, 'POST', $params);
+            } else {
+                $response = $this->request('https://api.github.com/orgs/'.$owner.'/repos', true, 'POST', $params);
+            }
         } else {
             $oldTitle = str_slug($oldTitle, '-');
             $response = $this->request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$oldTitle, true, 'POST', $params);
