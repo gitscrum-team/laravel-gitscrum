@@ -152,9 +152,10 @@ class User extends Authenticatable
     {
         return $this->team()->map(function ($obj) use ($user_id) {
             $statuses = $obj->statuses;
-            if(!is_null($user_id)){
+            if (!is_null($user_id)) {
                 $statuses = $statuses->where('user_id', $user_id);
             }
+
             return $statuses;
         })->flatten(1)->sortByDesc('id')->take(6);
     }
