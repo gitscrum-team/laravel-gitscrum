@@ -41,7 +41,8 @@
         "symfony/dom-crawler": "3.1.*",
         "way/generators": "dev-feature/laravel-five-stable",
         "xethron/migrations-generator": "^2.0",
-        "squizlabs/php_codesniffer": "^2.7"
+        "squizlabs/php_codesniffer": "^2.7",
+        "behat/behat": "^3.2"
     },
     "autoload": {
         "classmap": [
@@ -54,7 +55,8 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "tests/TestCase.php",
+            "tests/support/DatabaseMigrations.php"
         ]
     },
     "scripts": {
@@ -82,5 +84,5 @@
             "url": "https://github.com/jamisonvalenta/Laravel-4-Generators.git"
         }
     },
-    "version": "0.9.0"
+    "version": "0.10.0"
 }
