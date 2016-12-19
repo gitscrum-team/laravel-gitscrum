@@ -16,6 +16,7 @@ return [
         'issue' => \GitScrum\Models\Issue::class,
         'product_backlog' => \GitScrum\Models\ProductBacklog::class,
         'sprint' => \GitScrum\Models\Sprint::class,
+        'user' => \GitScrum\Models\User::class,
         'user_story' => \GitScrum\Models\UserStory::class,
     ],
 

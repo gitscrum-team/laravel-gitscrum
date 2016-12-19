@@ -136,13 +136,11 @@ class Github
                 }
 
                 $userId[] = $user->id;
-
             }
         }
 
         $organization = Organization::where('username', $owner)->first()->users();
         $organization->sync($userId);
-
     }
 
     public function createBranches($owner, $product_backlog_id, $repo)
