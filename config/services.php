@@ -26,4 +26,10 @@ return [
         'redirect' => env('APP_URL').'/auth/github/callback',
     ],
 
+    'gitlab' => [
+        'client_id' => env('GITLAB_KEY'),
+        'client_secret' => env('GITLAB_SECRET'),
+        'redirect' => env('GITLAB_REDIRECT_URI'),
+    ],
+
 ];
