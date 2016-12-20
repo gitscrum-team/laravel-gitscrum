@@ -4,10 +4,6 @@
 
         @include('partials.includes.navbar-top')
 
-        @include('partials.includes.sidebar')
-
-        @include('partials.boxes.bug-report')
-
         <div class="breadcrumb-area">
             <div class="container">
                 @yield('breadcrumb')

@@ -95,7 +95,7 @@ class Issue extends Model
 
     public function users()
     {
-        return $this->belongsToMany(\GitScrum\Models\User::class, 'issues_has_users', 'issue_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany(\GitScrum\Models\User::class, 'issues_has_users', 'issue_id', 'user_id');
     }
 
     public function commits()

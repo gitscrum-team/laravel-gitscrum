@@ -1,7 +1,9 @@
-<div style="">
-    <h4 class="lead mbn pbn">{{$title}} {{trans('Burndown')}}</h4>
+<div class="burndown">
+    @if(isset($title))
+    <h4>{{$title or trans('Burndown')}}</h4>
+    @endif
     <div class="row">
-        <canvas id="burndown" height="320" class="col-md-12"></canvas>
+        <canvas id="burndown" height="{{$height or '320'}}" class="col-md-12"></canvas>
     </div>
 </div>
 
@@ -18,16 +20,15 @@ $(function() {
             label: "Issues",
             fill: true,
             lineTension: 0,
-            height: 230,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
-            pointBorderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
+            backgroundColor: "rgba(219,68,83,0.4)",
+            borderColor: "rgba(219,68,83,1)",
+            pointBorderColor: "rgba(219,68,83,1)",
+            pointBackgroundColor: "rgba(219,68,83,1)",
             pointBorderWidth: 1,
-            pointHoverRadius: 1,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [ @foreach($list as $key=>$value) '{{$value}}', @endforeach ],
+            pointHoverRadius: 6,
+            pointRadius: 6,
+            pointHitRadius: 2,
+            data: [ @foreach($list as $key=>$value) '{{$value}}', @endforeach  ,0],
             spanGaps: false,
         }
     ]};

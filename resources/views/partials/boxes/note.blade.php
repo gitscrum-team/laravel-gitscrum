@@ -1,16 +1,14 @@
-<div class="">
-    <h6>{{ $title or trans('Small Notes')}}</h6>
+<div class="notes">
+    <h4>{{ $title or trans('Small Notes')}}</h4>
 
     @if(isset($percentage))
-    <div class="">
         @include('partials.boxes.progress-bar', [ 'percentage' => $percentage, 'title' => 'Completed'])
-    </div>
     @endif
 
     <div class="dd" id="nestable">
-        <ol class="ol-list">
+        <ul class="list-group">
             @each('partials.lists.notes-min', $list->notes, 'note')
-        </ol>
+        </ul>
     </div>
 
     @include('partials.forms.note', ['id'=> $list->id, 'type'=> $type])

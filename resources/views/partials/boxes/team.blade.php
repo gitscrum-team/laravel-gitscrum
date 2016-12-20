@@ -1,7 +1,7 @@
-<div class="ibox-content">
-    <h6>{{ $title or trans('Members')}}</h6>
+<div class="team">
+    <h4>{{ $title or trans('Members')}}</h4>
     <p class="small">{{ $subtitle or '' }}</p>
-    <div class="user-friends">
+    <div class="users">
         @each('partials.lists.users-min', $list, 'user', 'partials.lists.no-items')
     </div>
 </div>

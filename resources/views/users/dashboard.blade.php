@@ -19,70 +19,39 @@
 
 @section('content')
 
+<div class="col-lg-3">
 
-<div class="col-md-4">
+    <div class="shortcuts">
+        <h4>{{trans('Shortcuts')}}</h4>
+        <a href="{{route('issues.index',['slug' => 0])}}">{{trans('My Planning')}}</a>
+        <a href="{{route('wizard.step1')}}">{{trans('Sync Repos/Issues')}}</a>
+    </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            @include('partials.boxes.team', ['list'=>$user->team(), 'title'=>trans('My Team')])
-        </div>
+    @include('partials.boxes.team', ['list'=>$user->team(), 'title'=>trans('Team')])
 
-        <div class="col-lg-6 col-sm-12 mtl">
-            <div class="tile">
-                <i class="fa fa-trophy fa-4x" aria-hidden="true"></i>
-                <h3 class="tile-title mtm">62</h3>
-                <p>Effort</p>
-                <a class="btn btn-primary btn-large btn-block" href="#">My Activities</a>
-            </div>
-        </div>
+    @include('partials.boxes.note', [ 'list' => $user,
+        'type'=> 'user', 'title' => trans('Quick Notes'),
+        'percentage' => Helper::percentage($user, 'notes')])
+</div>
 
-        <div class="col-lg-6 col-sm-12 mtl">
-            <div class="tile">
-                <i class="fa fa-th fa-4x" aria-hidden="true"></i>
-                <h3 class="tile-title mtm">{{$user->issues()->count()}}</h3>
-                <p>{{trans('Issues')}}</p>
-                <a class="btn btn-primary btn-large btn-block"
-                    href="{{route('issues.index',['slug' => 0])}}">
-                    {{trans('My Planning')}}</a>
-            </div>
-        </div>
 
-        <div class="col-lg-12">
+<div class="col-lg-7">
 
-            <div class="tile tile-sprint">
-                <h3 class="tile-title mtm">{{trans('Sprints')}}</h3>
-                @foreach ($sprints as $key => $sprint)
-                <div class="">
-                    <a href="{{route('sprints.show', ['slug'=>$sprint->slug])}}">
-                        <strong>{{$sprint->title}}</strong>
-                        <span>{{$sprint->timebox}}
-                        ({{Helper::percentage($sprint, 'issues')}}% {{trans('completed')}})</span></a>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: {{Helper::percentage($sprint, 'issues')}}%;"></div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
+    @include('partials.boxes.burndown', ['list' => Helper::burndown($user, 5), 'height' => 220])
 
-            @include('partials.boxes.note', [ 'list' => Auth::user(),
-                'type'=> 'user', 'title' => trans('My Notes'),
-                'percentage' => Helper::percentage($user, 'notes')])
+    <h4>{{trans('Current Sprints Backlog')}} <a href="{{route('sprints.create')}}"
+         class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#modalLarge"
+         role="button">{{trans('Create Sprint Backlog')}}</a></h4>
+    @include('partials.boxes.sprint', [ 'list' => $sprints, 'column' => $sprintColumns ])
 
-        </div>
+</div>
+
+<div class="col-lg-2">
+    <div class="activities">
+        <h4>{{trans('Lastest Activities')}}</h4>
+        @each('partials.lists.activities-complete', $user->activities(null, 7), 'activity', 'partials.lists.no-items')
     </div>
 </div>
 
-<div class="col-lg-8">
-
-    @include('partials.boxes.burndown', ['title' => trans('My'), 'list' => Helper::burndown($user, 5)])
-
-    <div class="mtl">
-        <table class="table table-hover issue-tracker">
-            <tbody>
-            @each('partials.lists.issues', $user->issues->where('closed_at', null), 'list', 'partials.lists.no-items')
-            </tbody>
-        </table>
-    </div>
-</div>
 
 @endsection
