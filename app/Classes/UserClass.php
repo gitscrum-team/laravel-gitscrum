@@ -8,7 +8,7 @@ class UserClass
 {
     public function save($data)
     {
-        $userReturn = $user = User::where('github_id', '=', $data['github_id'])->first();
+        $userReturn = $user = User::where('provider_id', '=', $data['provider_id'])->first();
 
         if ($user === null) {
             return User::create($data);

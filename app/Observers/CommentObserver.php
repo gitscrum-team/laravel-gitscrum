@@ -20,7 +20,7 @@ class CommentObserver
 
         if ($comment->commentable_type == 'issue') {
             $tmp = app('GithubClass')->createOrUpdateIssueComment($comment);
-            $comment->github_id = $tmp->id;
+            $comment->provider_id = $tmp->id;
         }
     }
 
