@@ -31,7 +31,8 @@
         "phploc/phploc": "*",
         "barryvdh/laravel-debugbar": "^2.2",
         "intervention/image": "^2.3",
-        "talevskiigor/composer-bump": "^1.0"
+        "talevskiigor/composer-bump": "^1.0",
+        "socialiteproviders/gitlab": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
