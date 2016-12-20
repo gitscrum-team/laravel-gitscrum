@@ -68,7 +68,7 @@ class AuthController extends Controller
         $user = Socialite::driver($provider)->user();
 
         $data = [
-            'github_id' => $user->id,
+            'provider_id' => $user->id,
             'username' => $user->nickname,
             'name' => $user->name,
             'token' => $user->token,
