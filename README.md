@@ -2,7 +2,7 @@
 
 #Laravel GitScrum
 
-GitScrum is a Laravel 5.3 application to helps teams use Git version control and the Scrum framework in the support for day-to-day task management.
+GitScrum is a Laravel 5.3 application to help teams use Git version control and the Scrum framework in support of day-to-day task management.
 
 [![Build Status](https://travis-ci.org/renatomarinho/laravel-gitscrum.svg?branch=master)](https://travis-ci.org/renatomarinho/laravel-gitscrum)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/?branch=master)
@@ -13,7 +13,7 @@ GitScrum is a Laravel 5.3 application to helps teams use Git version control and
 ![Sprint Planning](http://i.imgur.com/QDzPUrn.png)
 
 
-## Instalation
+## Installation
 
 ### Create a project using Composer
 
@@ -28,7 +28,7 @@ Jump to GitHub Application and Database connection
 
 #### Starting
 
-Create a fork and after clone the git repository
+Create a fork and then clone the git repository
 
 ```
 git clone git@github.com/xxxxxxx/xxx.git
@@ -57,7 +57,7 @@ Homepage URL: URL (Same as APP_URL at .env)
 Application description: gitscrum
 Authorization callback URL: http://URL/auth/github/callback
 ```
-Finally fill the informations in the .env file
+Finally fill the information in the .env file
 ```
 APP_URL=http://yourdomain.tld (use protocol http or https)
 
