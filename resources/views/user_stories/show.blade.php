@@ -27,6 +27,14 @@
 @endsection
 
 @section('content')
+<div class="main-title">
+    <h4>
+        <span class="label label-danger pull-right"
+         style="font-size:16px;margin-top:3px;background-color:#{{$userStory->priority->color}}">
+            {{$userStory->priority->title}}</span>{{$userStory->title}}
+    </h4>
+</div>
+
 <div class="col-lg-4">
 
     <div class="">
@@ -53,13 +61,15 @@
 
 <div class="col-lg-8">
 
-    <h3 class="lead mtn ptn"><span class="label label-danger pull-right" style="font-size:16px;margin-top:3px;background-color:#{{$userStory->priority->color}}">
-        {{$userStory->priority->title}}</span>{{$userStory->title}}</h3>
-    <p class="m-b-md small">
-        {{trans('Product Backlog')}}: <a href="{{route('product_backlogs.show', ['slug' => $userStory->productBacklog->slug])}}">
-            <strong>{{$userStory->productBacklog->title}}</strong></a>
-    </p>
-    <p class="">{!! nl2br(e($userStory->description)) !!}</p>
+    <div class="well">
+        <p>
+            {{trans('Product Backlog')}}: <a href="{{route('product_backlogs.show', ['slug' => $userStory->productBacklog->slug])}}">
+                <strong>{{$userStory->productBacklog->title}}</strong></a>
+        </p>
+    </div>
+
+    <p class="description"><small>{{trans('Additional information')}}</small>
+        <span>{!! nl2br(e($userStory->description)) !!}</span></p>
 
     @if ( $userStory->acceptance_criteria )
     <br />

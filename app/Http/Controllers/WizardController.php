@@ -22,7 +22,7 @@ class WizardController extends Controller
 
     public function step2(Request $request)
     {
-        $repositories = \Session::get('GithubRepositories')->whereIn('github_id', $request->repos);
+        $repositories = \Session::get('GithubRepositories')->whereIn('provider_id', $request->repos);
         foreach ($repositories as $repository) {
             try {
                 app('GithubClass')->readCollaborators($repository->organization_title, $repository->title);
