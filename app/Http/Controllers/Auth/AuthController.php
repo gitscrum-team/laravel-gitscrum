@@ -66,20 +66,20 @@ class AuthController extends Controller
     public function handleProviderCallback($provider)
     {
         $user = Socialite::driver($provider)->user();
-
         $data = [
             'provider_id' => $user->id,
             'username' => $user->nickname,
             'name' => $user->name,
             'token' => $user->token,
-            'avatar' => $user->user['avatar_url'],
-            'html_url' => $user->user['html_url'],
-            'bio' => $user->user['bio'],
+            'avatar' => @$user->user['avatar_url'],
+            'html_url' => @$user->user['html_url'],
+            'bio' => @$user->user['bio'],
             'since' => Carbon::parse($user->user['created_at'])->toDateTimeString(),
-            'location' => $user->user['location'],
-            'blog' => $user->user['blog'],
+            'location' => @$user->user['location'],
+            'blog' => @$user->user['blog'],
             'email' => $user->email,
         ];
+
         $UserClass = new UserClass();
         Auth::loginUsingId($UserClass->save($data)->id);
 
