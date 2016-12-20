@@ -78,6 +78,7 @@ class AuthController extends Controller
             'location' => @$user->user['location'],
             'blog' => @$user->user['blog'],
             'email' => $user->email,
+            'provider' => $provider
         ];
 
         $UserClass = new UserClass();
