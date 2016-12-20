@@ -14,7 +14,7 @@ class CreateProviderTypeEnum extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('provider', ['gitlab', 'github']);
+            $table->enum('provider', ['gitlab', 'github'])->default('github');
         });
     }
 
