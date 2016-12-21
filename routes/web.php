@@ -21,8 +21,8 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('/register', 'Auth\AuthController@register')->name('auth.register');
     Route::get('/login', 'Auth\AuthController@login')->name('auth.login');
     Route::get('/dologin', 'Auth\AuthController@dologin')->name('auth.dologin');
-    Route::get('/github', 'Auth\AuthController@redirectToProvider')->name('auth.github');
-    Route::get('/github/callback', 'Auth\AuthController@handleProviderCallback');
+    Route::get('/provider/{provider}', 'Auth\AuthController@redirectToProvider')->name('auth.provider');
+    Route::get('/provider/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
     Route::get('/logout', 'Auth\AuthController@logout')->name('auth.logout');
 });
 

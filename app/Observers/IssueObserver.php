@@ -44,7 +44,7 @@ class IssueObserver
 
         $tmp = app('GithubClass')->createOrUpdateIssue($issue);
         if (isset($tmp->id)) {
-            $issue->github_id = $tmp->id;
+            $issue->provider_id = $tmp->id;
             $issue->number = $tmp->number;
         }
         // TODO Create a branch in GitHub

@@ -12,8 +12,13 @@
         <div class="middle-box text-center loginscreen">
                 <h5 class="lead">{{trans('Welcome to')}} <strong>GitScrum</strong></h5>
 
-                <a href="{{route('auth.github')}}" class="btn btn-hg btn-info btn-loader">
-                        <i class="fa fa-github" aria-hidden="true"></i>&nbsp;&nbsp;Login with <strong>GitHub</strong></a>
+                <a href="{{route('auth.provider', ['provider' => 'github'])}}" class="btn btn-hg btn-info btn-loader">
+                        <i class="fa fa-github" aria-hidden="true"></i>&nbsp;&nbsp;Login with <strong>GitHub</strong>
+                </a>
+
+                <a href="{{route('auth.provider', ['provider' => 'gitlab'])}}" class="btn btn-hg btn-danger btn-loader">
+                        <i class="fa fa-gitlab" aria-hidden="true"></i>&nbsp;&nbsp;Login with <strong>GitLab</strong>
+                </a>
 
                 <div class="text-center">
                     <a class="github-button" href="https://github.com/renatomarinho/laravel-gitscrum" data-icon="octicon-star" data-style="mega" data-count-href="/renatomarinho/laravel-gitscrum/stargazers" data-count-api="/repos/renatomarinho/laravel-gitscrum#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star renatomarinho/laravel-gitscrum on GitHub">Star</a>

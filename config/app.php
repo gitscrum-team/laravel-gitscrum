@@ -183,7 +183,8 @@ return [
         GitScrum\Providers\EventServiceProvider::class,
         GitScrum\Providers\RouteServiceProvider::class,
 
-        Laravel\Socialite\SocialiteServiceProvider::class,
+        SocialiteProviders\Manager\ServiceProvider::class,
+
         GrahamCampbell\GitHub\GitHubServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 

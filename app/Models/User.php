@@ -25,7 +25,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['github_id', 'username', 'name', 'avatar', 'html_url', 'email',
+    protected $fillable = ['provider_id', 'username', 'name', 'avatar', 'html_url', 'email',
         'bio', 'location', 'blog', 'since', 'token', 'main_repository', 'position_held', ];
 
     /**
@@ -130,15 +130,18 @@ class User extends Authenticatable
 
     public function sprints($sprint_id = null)
     {
-        return $this->issues->map(function ($issue) use ($sprint_id) {
-            $obj = $issue->sprint()->get();
+        $sprints = $this->issues->where('sprint_id', '!=', null)->map(function ($issue) use ($sprint_id) {
 
             if (!is_null($sprint_id)) {
-                $obj = $obj->where('id', '=', $sprint_id);
+                $obj = $issue->sprint()->where('id', '=', $sprint_id)->get();
+            } else {
+                $obj = $issue->sprint()->get();
             }
 
             return $obj;
         })->flatten(1)->unique('id');
+
+        return $sprints;
     }
 
     public function team()
@@ -148,7 +151,7 @@ class User extends Authenticatable
         })->flatten(1)->unique('id');
     }
 
-    public function activities($user_id = null)
+    public function activities($user_id = null, $limit = 6)
     {
         return $this->team()->map(function ($obj) use ($user_id) {
             $statuses = $obj->statuses;
@@ -157,6 +160,6 @@ class User extends Authenticatable
             }
 
             return $statuses;
-        })->flatten(1)->sortByDesc('id')->take(6);
+        })->flatten(1)->sortByDesc('id')->take($limit);
     }
 }

@@ -64,6 +64,12 @@ return [
 
     'connections' => [
 
+        'testing' => [
+            'driver' => 'sqlite',
+            'database' => storage_path().'/framework/cache/database.sqlite',
+            'prefix' => '',
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', ':memory:'),

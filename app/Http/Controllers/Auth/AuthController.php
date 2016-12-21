@@ -15,6 +15,7 @@ use GitScrum\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Socialite;
 use Auth;
+use SocialiteProviders\Manager\Exception\InvalidArgumentException;
 
 class AuthController extends Controller
 {
@@ -47,27 +48,39 @@ class AuthController extends Controller
     {
     }
 
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('github')->scopes(['repo', 'notifications', 'read:org'])->redirect();
+        switch ($provider) {
+            case 'gitlab':
+                return Socialite::with('gitlab')->redirect();
+                break;
+            case 'github':
+                return Socialite::driver('github')->scopes(['repo', 'notifications', 'read:org'])->redirect();
+                break;
+            default:
+                throw new InvalidArgumentException('Provider was not set');
+                break;
+        }
     }
 
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver('github')->user();
+        $user = Socialite::driver($provider)->user();
         $data = [
-            'github_id' => $user->id,
+            'provider_id' => $user->id,
             'username' => $user->nickname,
             'name' => $user->name,
             'token' => $user->token,
-            'avatar' => $user->user['avatar_url'],
-            'html_url' => $user->user['html_url'],
-            'bio' => $user->user['bio'],
+            'avatar' => @$user->user['avatar_url'],
+            'html_url' => @$user->user['html_url'],
+            'bio' => @$user->user['bio'],
             'since' => Carbon::parse($user->user['created_at'])->toDateTimeString(),
-            'location' => $user->user['location'],
-            'blog' => $user->user['blog'],
+            'location' => @$user->user['location'],
+            'blog' => @$user->user['blog'],
             'email' => $user->email,
+            'provider' => $provider
         ];
+
         $UserClass = new UserClass();
         Auth::loginUsingId($UserClass->save($data)->id);
 

@@ -22,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         'GitScrum\Events\SomeEvent' => [
             'GitScrum\Listeners\EventListener',
         ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\GitLab\GitLabExtendSocialite@handle',
+        ]
     ];
 
     /**

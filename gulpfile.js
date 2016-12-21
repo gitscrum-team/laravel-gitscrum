@@ -20,6 +20,16 @@ gulp.task('less-core', function () {
         .pipe(gulp.dest('./public/css'));
 });
 
+gulp.task('less-colors', function () {
+    return gulp.src(['./resources/assets/core/less/colors/*'])
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(concat('colors.css'))
+        .pipe(cleanCSS())
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('./public/css'));
+});
+
 gulp.task('javascript', function () {
     return gulp.src(['./resources/assets/core/js/*', './resources/assets/vendors/js/*'])
         .pipe(uglify({compress:true}))
@@ -39,7 +49,7 @@ gulp.task('phpcs', function () {
 
 gulp.task('phpcbf', shell.task(['vendor/bin/phpcbf --standard=PSR2 --ignore=vendor/,node_modules/,storage/ .']));
 
-gulp.task('develop', ['less-core','javascript']);
+gulp.task('develop', ['less-core', 'less-colors', 'javascript']);
 gulp.task('develop-phpcs', ['less-core','javascript','phpcs','phpcbf']);
 
 gulp.task('watch', function () {

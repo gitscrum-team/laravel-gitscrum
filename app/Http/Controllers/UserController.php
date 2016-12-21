@@ -23,9 +23,18 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $sprints = $user->sprints()->take(2);
+        $sprintColumns = ['tbody_sprintFavorite',
+            'tbody_sprintBacklog',
+            'tbody_sprintProductBacklog'];
+
+        $sprints = $sprints->map(function($sprint) use ($sprintColumns){
+            $sprint['column'] = $sprintColumns;
+            return $sprint;
+        });
 
         return view('users.dashboard')
             ->with('sprints', $sprints)
+            ->with('sprintColumns', $sprintColumns)
             ->with('user', $user);
     }
 

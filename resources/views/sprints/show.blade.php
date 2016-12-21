@@ -32,6 +32,17 @@
 @endsection
 
 @section('content')
+
+<div class="main-title">
+    <h4>
+        <span class="label label-danger pull-right"
+        style="font-size:16px;margin-top:3px;background-color:#{{$sprint->status->color}}">
+        {{$sprint->status->title}}</span>
+        <span @if ( $sprint->closed_at ) style="text-decoration: line-through;" @endif>
+        {{$sprint->title}}</span>
+    </h4>
+</div>
+
 <div class="col-lg-4">
 
     <a href="{{route('issues.index', ['slug'=>$sprint->slug])}}"
@@ -97,15 +108,9 @@
 
 <div class="col-lg-8">
 
-        <h4 class="mtn ptn">
-            <span class="label label-danger pull-right"
-            style="font-size:16px;margin-top:3px;background-color:#{{$sprint->status->color}}">
-            {{$sprint->status->title}}</span>
-            <span @if ( $sprint->closed_at ) style="text-decoration: line-through;" @endif>
-            {{$sprint->title}}</span>
-        </h4>
+    <div class="well">
 
-        <h6 class="mtn ptn">{{trans('Date')}}: {{$sprint->date_start}} {{trans('to')}} {{$sprint->date_finish}}</h6>
+        <h4>{{trans('Date')}}: {{$sprint->date_start}} {{trans('to')}} {{$sprint->date_finish}}</h4>
 
         <p>{{$sprint->workingDays(date('Y-m-d'))}} {{str_plural('missing day', $sprint->workingDays(date('Y-m-d')))}} /
             {{$sprint->workingDays()}} {{str_plural('workdays', $sprint->workingDays())}}
@@ -116,9 +121,11 @@
             <strong>{{$sprint->productBacklog->title}}</strong></a>
         </p>
 
-        <p class="">{!! nl2br(e($sprint->description)) !!}</p>
+    </div>
 
-        @include('partials.boxes.burndown', ['title' => $sprint->title, 'list' => Helper::burndown($sprint)])
+    <p class="description"><small>{{trans('Description')}}</small><span>{!! nl2br(e($sprint->description)) !!}<span></p>
+
+        @include('partials.boxes.burndown', ['title' => ('Burndown Chart'), 'list' => Helper::burndown($sprint)])
 
         <div class="clearfix"></div>
 

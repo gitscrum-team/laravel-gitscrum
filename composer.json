@@ -31,7 +31,8 @@
         "phploc/phploc": "*",
         "barryvdh/laravel-debugbar": "^2.2",
         "intervention/image": "^2.3",
-        "talevskiigor/composer-bump": "^1.0"
+        "talevskiigor/composer-bump": "^1.0",
+        "socialiteproviders/gitlab": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -41,7 +42,8 @@
         "symfony/dom-crawler": "3.1.*",
         "way/generators": "dev-feature/laravel-five-stable",
         "xethron/migrations-generator": "^2.0",
-        "squizlabs/php_codesniffer": "^2.7"
+        "squizlabs/php_codesniffer": "^2.7",
+        "behat/behat": "^3.2"
     },
     "autoload": {
         "classmap": [
@@ -54,7 +56,8 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "tests/TestCase.php",
+            "tests/support/DatabaseMigrations.php"
         ]
     },
     "scripts": {
@@ -82,5 +85,5 @@
             "url": "https://github.com/jamisonvalenta/Laravel-4-Generators.git"
         }
     },
-    "version": "0.9.0"
+    "version": "0.10.0"
 }

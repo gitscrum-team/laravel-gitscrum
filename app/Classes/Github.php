@@ -18,7 +18,7 @@ class Github
     public function templateRepository($repo, $slug = false)
     {
         return (object) [
-            'github_id' => $repo->id,
+            'provider_id' => $repo->id,
             'organization_id' => $this->organization($repo->owner->login),
             'organization_title' => $repo->owner->login,
             'slug' => $slug ? $slug : Helper::slug($repo->name),
@@ -81,7 +81,7 @@ class Github
         }
 
         $data = [
-            'github_id' => @$orgData->id,
+            'provider_id' => @$orgData->id,
             'username' => @$orgData->login,
             'url' => @$orgData->url,
             'repos_url' => @$orgData->repos_url,
@@ -120,7 +120,7 @@ class Github
         foreach ($collaborators as $collaborator) {
             if (isset($collaborator->id)) {
                 $data = [
-                    'github_id' => $collaborator->id,
+                    'provider_id' => $collaborator->id,
                     'username' => $collaborator->login,
                     'name' => $collaborator->login,
                     'avatar' => $collaborator->avatar_url,
@@ -176,36 +176,36 @@ class Github
             $issues = $this->request('https://api.github.com/repos/'.$repo->organization->username.DIRECTORY_SEPARATOR.$repo->title.'/issues?state=all');
 
             foreach ($issues as $issue) {
-                $user = User::where('username', $issue->user->login)->first();
 
-                $data = [
-                    'github_id' => $issue->id,
-                    'user_id' => isset($user_id) ? $user->id : Auth::user()->id,
-                    'product_backlog_id' => $repo->id,
-                    'effort' => 0,
-                    'config_issue_effort_id' => 1,
-                    'issue_type_id' => 1,
-                    'number' => $issue->number,
-                    'title' => $issue->title,
-                    'description' => $issue->body,
-                    'state' => $issue->state,
-                    'html_url' => $issue->html_url,
-                    'created_at' => $issue->created_at,
-                    'updated_at' => $issue->updated_at,
-                ];
+                try{
+                        
+                    $user = User::where('username', $issue->user->login)->first();
 
-                if (!is_null($issue->closed_at)) {
-                    $data['closed_at'] = Carbon::parse($issue->closed_at)->format('Y-m-d h:m:s');
-                    $data['closed_user_id'] = $data['user_id'];
-                    $data['config_status_id'] = ConfigStatus::where('type', 'issue')
-                        ->where('is_closed', 1)->first()->id;
+                    $data = [
+                        'provider_id' => $issue->id,
+                        'user_id' => isset($user_id) ? $user->id : Auth::user()->id,
+                        'product_backlog_id' => $repo->id,
+                        'effort' => 0,
+                        'config_issue_effort_id' => 1,
+                        'issue_type_id' => 1,
+                        'number' => $issue->number,
+                        'title' => $issue->title,
+                        'description' => $issue->body,
+                        'state' => $issue->state,
+                        'html_url' => $issue->html_url,
+                        'created_at' => $issue->created_at,
+                        'updated_at' => $issue->updated_at,
+                    ];
+
+                } catch( \Exception $e ){
+
                 }
 
-                if (!Issue::where('github_id', $issue->id)->first()) {
+                if (!Issue::where('provider_id', $issue->id)->first()) {
                     Issue::create($data)->users()->sync([$data['user_id']]);
                 }
                 //foreach ($issue->assignees as $assign) {
-                //    User::where('github_id', $assign->id)->first()->issues()->sync([$issueId], false);
+                //    User::where('provider_id', $assign->id)->first()->issues()->sync([$issueId], false);
                 //}
             }
         }
@@ -234,8 +234,8 @@ class Github
 
         $response = $this->request('https://api.github.com/repos/'.
             $obj->issue->productBacklog->organization->username.DIRECTORY_SEPARATOR.
-            $obj->issue->productBacklog->title.'/issues'.(isset($obj->github_id) ? '' : DIRECTORY_SEPARATOR.$obj->issue->number).'/comments'.
-            (isset($obj->github_id) ? DIRECTORY_SEPARATOR.$obj->github_id : ''),
+            $obj->issue->productBacklog->title.'/issues'.(isset($obj->provider_id) ? '' : DIRECTORY_SEPARATOR.$obj->issue->number).'/comments'.
+            (isset($obj->provider_id) ? DIRECTORY_SEPARATOR.$obj->provider_id : ''),
             true, $verb, $params);
 
         return (object) $response;
@@ -316,7 +316,7 @@ class Github
             $CommitRepository = new CommitRepository();
             foreach ($commits as $commit) {
                 try {
-                    $user = User::where('github_id', $commit->author->id)->first();
+                    $user = User::where('provider_id', $commit->author->id)->first();
                     $userId = $user->id;
                 } catch (\Exception $e) {
                     $userId = 0;
@@ -408,7 +408,7 @@ class Github
         foreach ($pulls as $pull) {
             $branch = Branch::where('name', $pull->head->ref)->first();
             try {
-                $user = User::where('github_id', $pull->user->id)->first();
+                $user = User::where('provider_id', $pull->user->id)->first();
                 $userId = $user->id;
             } catch (\Exception $e) {
                 $userId = 0;
@@ -428,7 +428,7 @@ class Github
             }
 
             $data = [
-                'github_id' => $pull->id,
+                'provider_id' => $pull->id,
                 'number' => $pull->number,
                 'user_id' => $userId,
                 'product_backlog_id' => $repository->id,
