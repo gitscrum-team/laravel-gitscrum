@@ -18,7 +18,7 @@ class ProductbacklogMiddleware
     public function handle($request, Closure $next)
     {
         if (!ProductBacklog::count()) {
-            return redirect()->route('wizard.step1');
+            return redirect()->route('wizard.call',['provider' => \Session::get('provider'), 'step' => 'step1']);
         }
 
         return $next($request);
