@@ -5,11 +5,7 @@ $(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
-    if ($('[data-toggle="switch"]').length) {
-      $('[data-toggle="switch"]').bootstrapSwitch();
-    }
-
+    
     $('[data-toggle="tooltip"]').tooltip();
 
     main.init();

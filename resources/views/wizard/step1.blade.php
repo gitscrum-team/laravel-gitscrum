@@ -21,8 +21,8 @@
 
         @include('partials.boxes.repositories', ['list'=>$repositories, 'columns'=>$columns])
 
-        <div class="text-center mbl">
-            <button class="btn btn-lg btn-success btn-loader">{{trans('Confirm to add repositories into the')}} <strong>{{trans('GitScrum')}}</strong></button>
+        <div class="text-center">
+            <button class="btn btn-lg btn-success">{{trans('Confirm to add repositories into the')}} <strong>{{trans('GitScrum')}}</strong></button>
         </div>
 
     </form>

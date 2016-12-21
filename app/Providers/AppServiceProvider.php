@@ -11,6 +11,7 @@ namespace GitScrum\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use GitScrum\Classes\Github;
+use GitScrum\Classes\Gitlab;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,13 +28,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('GithubClass', function () {
+        $this->app->bind('Github', function () {
             return new Github();
+        });
+
+        $this->app->bind('Gitlab', function () {
+            return new Gitlab();
         });
     }
 
     public function provides()
     {
-        return ['GithubClass'];
+        return ['Github', 'Gitlab'];
     }
 }
