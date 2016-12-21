@@ -17,8 +17,7 @@ class ProductbacklogMiddleware
       */
      public function handle($request, Closure $next)
      {
-
-         $total = Auth::user()->productBacklogs()->count();
+         $total = Auth::user()->organizations()->count();
 
          if (!$total) {
               return redirect()->route('wizard.step1');
