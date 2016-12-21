@@ -10,7 +10,7 @@
 
 <div class="col-lg-6 text-right">
     <div class="btn-group">
-        <a href="{{route('wizard.call', ['provider' => \Session::get('provider'), 'step' => 'step1'])}}" class="btn btn-sm btn-primary">
+        <a href="{{route('wizard.step1')}}" class="btn btn-sm btn-primary">
             {{trans('Update Repositories')}}</a>
     </div>
 </div>
@@ -24,7 +24,7 @@
     <div class="shortcuts">
         <h4>{{trans('Shortcuts')}}</h4>
         <a href="{{route('issues.index',['slug' => 0])}}">{{trans('My Planning')}}</a>
-        <a href="{{route('wizard.call', ['provider' => \Session::get('provider'), 'step' => 'step1'])}}">{{trans('Sync Repos/Issues')}}</a>
+        <a href="{{route('wizard.step1')}}">{{trans('Sync Repos/Issues')}}</a>
     </div>
 
     @include('partials.boxes.team', ['list'=>$user->team(), 'title'=>trans('Team')])

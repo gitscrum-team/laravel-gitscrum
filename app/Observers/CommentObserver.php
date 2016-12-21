@@ -19,7 +19,7 @@ class CommentObserver
         $comment->user_id = Auth::user()->id;
 
         if ($comment->commentable_type == 'issue') {
-            $tmp = app('GithubClass')->createOrUpdateIssueComment($comment);
+            $tmp = app(Auth::user()->provider)->createOrUpdateIssueComment($comment);
             $comment->provider_id = $tmp->id;
         }
     }
@@ -32,7 +32,7 @@ class CommentObserver
     public function updated(Comment $comment)
     {
         if ($comment->commentable_type == 'issue') {
-            app('GithubClass')->createOrUpdateIssueComment($comment);
+            app(Auth::user()->provider)->createOrUpdateIssueComment($comment);
         }
     }
 
@@ -42,7 +42,7 @@ class CommentObserver
         Status::destroy($statuses->id);
 
         if ($comment->commentable_type == 'issue') {
-            app('GithubClass')->deleteIssueComment($comment);
+            app(Auth::user()->provider)->deleteIssueComment($comment);
         }
     }
 }

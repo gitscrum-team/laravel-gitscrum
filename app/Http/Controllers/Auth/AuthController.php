@@ -10,9 +10,7 @@ namespace GitScrum\Http\Controllers\Auth;
 
 use GitScrum\Http\Requests\AuthRequest;
 use GitScrum\Models\User;
-use GitScrum\Classes\UserClass;
 use GitScrum\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Socialite;
 use Auth;
 use SocialiteProviders\Manager\Exception\InvalidArgumentException;
@@ -65,25 +63,16 @@ class AuthController extends Controller
 
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->user();
-        $data = [
-            'provider_id' => $user->id,
-            'username' => $user->nickname,
-            'name' => $user->name,
-            'token' => $user->token,
-            'avatar' => @$user->user['avatar_url'],
-            'html_url' => @$user->user['html_url'],
-            'bio' => @$user->user['bio'],
-            'since' => Carbon::parse($user->user['created_at'])->toDateTimeString(),
-            'location' => @$user->user['location'],
-            'blog' => @$user->user['blog'],
-            'email' => $user->email,
-            'provider' => $provider
-        ];
+        $providerUser = Socialite::driver($provider)->user();
+        $data = app(ucfirst($provider))->templateUser($providerUser);
 
-        $UserClass = new UserClass();
-        Auth::loginUsingId($UserClass->save($data)->id);
-        \Session::put('provider', $provider);
+        $user = User::where('provider_id', '=', $data['provider_id'])->first();
+
+        if (!isset($user)) {
+            $user = User::create($data);
+        }
+
+        Auth::loginUsingId($user->id);
 
         return redirect()->route('user.dashboard');
     }

@@ -16,13 +16,13 @@
 @section('content')
 <div class="col-lg-12">
 
-    <form action="{{route('wizard.call', ['provider' => \Session::get('provider'), 'step' => 'step2'])}}" method="post">
+    <form action="{{route('wizard.step2')}}" method="post">
         {{ csrf_field() }}
 
         @include('partials.boxes.repositories', ['list'=>$repositories, 'columns'=>$columns])
 
-        <div class="text-center mbl">
-            <button class="btn btn-lg btn-success btn-loader">{{trans('Confirm to add repositories into the')}} <strong>{{trans('GitScrum')}}</strong></button>
+        <div class="text-center">
+            <button class="btn btn-lg btn-success">{{trans('Confirm to add repositories into the')}} <strong>{{trans('GitScrum')}}</strong></button>
         </div>
 
     </form>

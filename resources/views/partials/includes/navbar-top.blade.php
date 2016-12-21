@@ -30,7 +30,7 @@
                                 <i class="fa fa-th" aria-hidden="true"></i>
                                     {{trans('Planning')}}</a></li>
                             <li class="nav-divider"></li>
-                            <li><a href="{{route('wizard.call', ['provider' => \Session::get('provider'), 'step' => 'step1'])}}">
+                            <li><a href="{{route('wizard.step1')}}">
                                 <i class="fa fa-refresh" aria-hidden="true"></i>
                                     {{trans('Sync Repos/Issues')}}</a></li>
                             <li class="nav-divider"></li>
