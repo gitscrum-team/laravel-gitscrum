@@ -83,6 +83,7 @@ class AuthController extends Controller
 
         $UserClass = new UserClass();
         Auth::loginUsingId($UserClass->save($data)->id);
+        \Session::put('provider', $provider);
 
         return redirect()->route('user.dashboard');
     }

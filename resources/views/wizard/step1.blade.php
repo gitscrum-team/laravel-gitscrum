@@ -16,7 +16,7 @@
 @section('content')
 <div class="col-lg-12">
 
-    <form action="{{route('wizard.step2')}}" method="post">
+    <form action="{{route('wizard.call', ['provider' => \Session::get('provider'), 'step' => 'step2'])}}" method="post">
         {{ csrf_field() }}
 
         @include('partials.boxes.repositories', ['list'=>$repositories, 'columns'=>$columns])

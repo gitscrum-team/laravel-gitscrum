@@ -14,7 +14,7 @@
                 </p>
             @else
                 {{trans(':( Choose at least one repository')}}
-                <p class="small">{{trans('You can click')}} <a href="{{route('wizard.step1')}}">
+                <p class="small">{{trans('You can click')}} <a href="{{route('wizard.call', ['provider' => \Session::get('provider'), 'step' => 'step1'])}}">
                     {{trans('here')}}</a> {{trans('and try again')}}</p>
             @endif
 
@@ -31,7 +31,7 @@
     <div class="text-center">
 
         @if(count($repositories))
-        <a href="{{route('wizard.step3')}}" class="btn btn-lg btn-success btn-loader">{{trans('Import my')}}
+        <a href="{{route('wizard.call', ['provider' => \Session::get('provider'), 'step' => 'step3'])}}" class="btn btn-lg btn-success btn-loader">{{trans('Import my')}}
             <strong>{{trans('GitHub Issues')}}</strong></a>
         <span class="mll mrl"><strong>{{trans('or')}}</strong></span>
         @endif
