@@ -3,6 +3,7 @@
 namespace GitScrum\Classes;
 
 use Carbon\Carbon;
+use Auth;
 
 class Helper
 {
@@ -64,5 +65,52 @@ class Helper
         }
 
         return $arr;
+    }
+
+    public static function request($url, $auth = true, $customRequest = null, $postFields = null)
+    {
+        $user = Auth::user();
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0');
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+        if (env('PROXY_PORT')) {
+            curl_setopt($ch, CURLOPT_PROXYPORT, env('PROXY_PORT'));
+            curl_setopt($ch, CURLOPT_PROXYTYPE, env('PROXY_METHOD'));
+            curl_setopt($ch, CURLOPT_PROXY, env('PROXY_SERVER'));
+        }
+
+        if (env('PROXY_USER')) {
+            curl_setopt($ch, CURLOPT_PROXYUSERPWD, env('PROXY_USER').':'.env('PROXY_USER'));
+        }
+
+        if (!is_null($postFields)) {
+            $postFields = json_encode($postFields);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+            curl_setopt($ch, CURLOPT_HTTPHEADER,  ['Content-Type: application/json',
+                'Content-Length: '.strlen($postFields), ]);
+        }
+
+        //curl_setopt($ch, CURLOPT_HTTPHEADER,  ['Authorization: Bearer OAUTH-TOKEN']);
+
+        if (!is_null($customRequest)) {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $customRequest); //'PATCH'
+        }
+
+        if ($auth && isset($user->username)) {
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            curl_setopt($ch, CURLOPT_USERPWD, $user->username.':'.$user->token);
+        }
+
+        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        return json_decode($result);
     }
 }

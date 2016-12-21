@@ -5,7 +5,8 @@
                 <button type="button" role="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                 </button>
-                <a href="{{route('user.dashboard')}}" class="navbar-brand">Git<strong>Scrum</strong></a>
+                <a href="{{route('user.dashboard')}}" class="navbar-brand">
+                    <i class="fa fa-{{strtolower(Auth::user()->provider)}}" aria-hidden="true" data-toggle="tooltip" title="{{trans('You are you connected using')}} {{Auth::user()->provider}}" data-placement="bottom"></i>Git<strong>Scrum</strong></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">

@@ -25,7 +25,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['provider_id', 'username', 'name', 'avatar', 'html_url', 'email',
+    protected $fillable = ['provider_id', 'provider', 'username', 'name', 'avatar', 'html_url', 'email',
         'bio', 'location', 'blog', 'since', 'token', 'main_repository', 'position_held', ];
 
     /**
@@ -131,7 +131,6 @@ class User extends Authenticatable
     public function sprints($sprint_id = null)
     {
         $sprints = $this->issues->where('sprint_id', '!=', null)->map(function ($issue) use ($sprint_id) {
-
             if (!is_null($sprint_id)) {
                 $obj = $issue->sprint()->where('id', '=', $sprint_id)->get();
             } else {
@@ -161,5 +160,10 @@ class User extends Authenticatable
 
             return $statuses;
         })->flatten(1)->sortByDesc('id')->take($limit);
+    }
+
+    public function getProviderAttribute()
+    {
+        return ucfirst($this->attributes['provider']);
     }
 }

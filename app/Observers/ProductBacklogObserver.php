@@ -21,14 +21,14 @@ class ProductBacklogObserver
         $productBacklog->slug = Helper::slug($productBacklog->title);
         if (isset($productBacklog->is_api)) {
             $owner = Organization::find($productBacklog->organization_id);
-            $productBacklog::$tmp = app('GithubClass')->createOrUpdateRepository($owner->username, $productBacklog);
+            $productBacklog::$tmp = app(Auth::user()->provider)->createOrUpdateRepository($owner->username, $productBacklog);
         }
     }
 
     public function created(ProductBacklog $productBacklog)
     {
         if (isset($productBacklog->is_api)) {
-            $template = app('GithubClass')->templateRepository($productBacklog::$tmp, $productBacklog->slug);
+            $template = app(Auth::user()->provider)->templateRepository($productBacklog::$tmp, $productBacklog->slug);
             $obj = ProductBacklog::where('slug', $template->slug)->first();
             $obj->update(get_object_vars($template));
             $productBacklog::$tmp = null;
@@ -39,7 +39,7 @@ class ProductBacklogObserver
     {
         $oldRepos = ProductBacklog::find($productBacklog->id);
         $owner = Organization::find($productBacklog->organization_id);
-        $repos = app('GithubClass')->createOrUpdateRepository($owner->username, $productBacklog, $oldRepos->title);
+        $repos = app(Auth::user()->provider)->createOrUpdateRepository($owner->username, $productBacklog, $oldRepos->title);
         $productBacklog->html_url = $repos->html_url;
         $productBacklog->ssh_url = $repos->ssh_url;
         $productBacklog->clone_url = $repos->clone_url;
