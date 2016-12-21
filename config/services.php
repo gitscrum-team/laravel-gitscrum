@@ -30,6 +30,7 @@ return [
         'client_id' => env('GITLAB_KEY'),
         'client_secret' => env('GITLAB_SECRET'),
         'redirect' => env('APP_URL').'/auth/provider/gitlab/callback',
+        'instance_uri' => env('GITLAB_INSTANCE_URI'),
     ],
 
 ];

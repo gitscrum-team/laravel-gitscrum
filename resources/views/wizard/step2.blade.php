@@ -6,11 +6,11 @@
 <div class="col-lg-12">
     <h3 class="text-center">
         @if($repositories->count())
-            {{trans('Congratulations.')}}
+            {{trans('Congratulations')}}.
             <span>{{trans('You have successfully added repositories for')}} {{trans('GitScrum')}}</span>
         @else
-            {{trans(':( Choose at least one repository')}}
-            <p class="small">{{trans('You can click')}} <a href="{{route('wizard.step1')}}">{{trans('here')}}</a> {{trans('and try again')}}</p>
+            {{trans(':( Choose at least one repository')}}.
+            <span>{{trans('You can click')}} <a href="{{route('wizard.step1')}}">{{trans('here')}}</a> {{trans('and try again')}}</span>
         @endif
     </h3>
 </div>
