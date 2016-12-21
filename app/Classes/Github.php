@@ -17,6 +17,7 @@ class Github
 {
     public function templateRepository($repo, $slug = false)
     {
+
         return (object) [
             'provider_id' => $repo->id,
             'organization_id' => $this->organization($repo->owner->login),
@@ -36,6 +37,7 @@ class Github
             'homepage' => $repo->homepage,
             'default_branch' => $repo->default_branch,
         ];
+
     }
 
     public function readRepositories()
@@ -74,42 +76,50 @@ class Github
 
     public function organization($login)
     {
-        $orgData = $this->request('https://api.github.com/orgs/'.$login);
 
-        if (!isset($orgData->id)) {
-            $orgData = $this->request('https://api.github.com/users/'.$login);
+        $organization = Organization::where('username', $login)->first();
+
+        if( !isset($organization) )
+        {
+
+            $orgData = $this->request('https://api.github.com/orgs/'.$login);
+
+            if (!isset($orgData->id)) {
+                $orgData = $this->request('https://api.github.com/users/'.$login);
+            }
+
+            $data = [
+                'provider_id' => @$orgData->id,
+                'username' => @$orgData->login,
+                'url' => @$orgData->url,
+                'repos_url' => @$orgData->repos_url,
+                'events_url' => @$orgData->events_url,
+                'hooks_url' => @$orgData->hooks_url,
+                'issues_url' => @$orgData->issues_url,
+                'members_url' => @$orgData->members_url,
+                'public_members_url' => @$orgData->public_members_url,
+                'avatar_url' => @$orgData->avatar_url,
+                'description' => @$orgData->description,
+                'title' => @$orgData->name,
+                'blog' => @$orgData->blog,
+                'location' => @$orgData->location,
+                'email' => @$orgData->email,
+                'public_repos' => @$orgData->public_repos,
+                'html_url' => @$orgData->html_url,
+                'total_private_repos' => @$orgData->total_private_repos,
+                'since' => @Carbon::parse($orgData->created_at)->toDateTimeString(),
+                'disk_usage' => @$orgData->disk_usage,
+            ];
+
+            try {
+                $organization = Organization::create($data);
+            } catch (\Illuminate\Database\QueryException $e) {
+
+            }
+
+            $organization->users()->sync([Auth::id()]);
+
         }
-
-        $data = [
-            'provider_id' => @$orgData->id,
-            'username' => @$orgData->login,
-            'url' => @$orgData->url,
-            'repos_url' => @$orgData->repos_url,
-            'events_url' => @$orgData->events_url,
-            'hooks_url' => @$orgData->hooks_url,
-            'issues_url' => @$orgData->issues_url,
-            'members_url' => @$orgData->members_url,
-            'public_members_url' => @$orgData->public_members_url,
-            'avatar_url' => @$orgData->avatar_url,
-            'description' => @$orgData->description,
-            'title' => @$orgData->name,
-            'blog' => @$orgData->blog,
-            'location' => @$orgData->location,
-            'email' => @$orgData->email,
-            'public_repos' => @$orgData->public_repos,
-            'html_url' => @$orgData->html_url,
-            'total_private_repos' => @$orgData->total_private_repos,
-            'since' => @Carbon::parse($orgData->created_at)->toDateTimeString(),
-            'disk_usage' => @$orgData->disk_usage,
-        ];
-
-        try {
-            $organization = Organization::create($data);
-        } catch (\Illuminate\Database\QueryException $e) {
-            $organization = Organization::where('username', $orgData->login)->first();
-        }
-
-        $organization->users()->sync([Auth::id()]);
 
         return $organization->id;
     }
@@ -178,7 +188,7 @@ class Github
             foreach ($issues as $issue) {
 
                 try{
-                        
+
                     $user = User::where('username', $issue->user->login)->first();
 
                     $data = [
