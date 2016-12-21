@@ -8,6 +8,8 @@ interface ProviderInterface
 
     public function templateRepository($repo, $slug = false);
 
+    public function templateIssue($obj, $productBacklogId);
+
     public function readRepositories();
 
     public function createOrUpdateRepository($owner, $obj, $oldTitle = null);
