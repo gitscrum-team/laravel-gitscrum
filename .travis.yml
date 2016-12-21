@@ -12,7 +12,7 @@ addons:
 install:
   - travis_retry composer self-update
   - travis_retry composer clear-cache
-  - travis_retry composer install
+  - travis_retry composer update
   - mysql -e 'create database develop;' -uroot
   - mysql -e "grant all privileges on *.* to 'travis'@'localhost' with grant option;" -uroot
 
