@@ -120,10 +120,10 @@ class Github implements ProviderInterface
         if( !isset($organization) )
         {
 
-            $orgData = $this->request('https://api.github.com/orgs/'.$login);
+            $orgData = Helper::request('https://api.github.com/orgs/'.$login);
 
             if (!isset($orgData->id)) {
-                $orgData = $this->request('https://api.github.com/users/'.$login);
+                $orgData = Helper::request('https://api.github.com/users/'.$login);
             }
 
             $data = [
