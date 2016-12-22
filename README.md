@@ -1,4 +1,4 @@
-![Laravel GitScrum](http://i.imgur.com/ZIMPy4w.png)
+![Laravel GitScrum](http://i.imgur.com/fJLrnxu.png)
 
 <p align="center">
 <b><a href="#overview">Overview</a></b>
@@ -18,23 +18,15 @@
 
 <hr>
 
-<p align="center">
 [![Build Status](https://travis-ci.org/renatomarinho/laravel-gitscrum.svg?branch=master)](https://travis-ci.org/renatomarinho/laravel-gitscrum)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/?branch=master)
 [![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-gitscrum/downloads)](https://packagist.org/packages/renatomarinho/laravel-gitscrum)
-</p>
 
 <hr>
 
 ## Overview
 
-<table>
-<tr>
-<td>
 Laravel GitScrum is a **free application** developed in Laravel 5.3. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
-</td>
-</tr>
-</table>
 
 
 ### Features
@@ -65,8 +57,7 @@ The requirements to Laravel GitScrum application is:
 - **Webserver**: Nginx or Apache
 - **Database**: MySQL, or Maria DB
 
-#### Use Docker
-Containers : [php7, nginx and mysql57](https://github.com/renatomarinho/Docker-GitScrum)
+[**Use Docker** - Containers: php7, nginx and mysql57](https://github.com/renatomarinho/Docker-GitScrum)
 
 ### Composer Package
 
@@ -170,26 +161,20 @@ PROXY_PASS=
 
 ## Screens
 
-<table>
-	<tr>
-		<td>![Screenshot 0](http://i.imgur.com/jejT8hY.png)</td>
-		<td>![Screenshot 0](http://i.imgur.com/apcFdv0.png)</td>
-	</tr>
-	<tr>
-		<td>![Screenshot 0](http://i.imgur.com/TRzRIpU.png)</td>
-		<td>![Screenshot 0](http://i.imgur.com/VcpRaNk.png)</td>
-	</tr>
-	<tr>
-		<td>![Screenshot 0](http://i.imgur.com/8uMYCLv.png)</td>
-		<td>![Screenshot 0](http://i.imgur.com/rIwkn7i.png)</td>
-	</tr>
-	<tr>
-		<td>![Screenshot 0](http://i.imgur.com/D954dbU.png)</td>
-		<td>![Screenshot 1](http://i.imgur.com/zdrEkkf.png)</td>
-	</tr>
-</table>
+![Screenshot 0](http://i.imgur.com/jejT8hY.png)
+![Screenshot 0](http://i.imgur.com/apcFdv0.png)
+![Screenshot 0](http://i.imgur.com/TRzRIpU.png)
+![Screenshot 0](http://i.imgur.com/VcpRaNk.png)
+![Screenshot 0](http://i.imgur.com/8uMYCLv.png)
+![Screenshot 0](http://i.imgur.com/rIwkn7i.png)
+![Screenshot 0](http://i.imgur.com/D954dbU.png)
 
+<br>
+### Database schema 
 
+![Screenshot 1](http://i.imgur.com/zdrEkkf.png)
+
+<br>
 
 ## Questions and issues
 
@@ -214,14 +199,9 @@ Contributions are always welcome! Please read the contribution guidelines first.
 ```
 
 
-### Bug Reports & Feature Requests
-
-Please use the [github issue tracker](https://github.com/renatomarinho/laravel-gitscrum/issues) to report any bugs or feature requests.
-
-
 ## License
 
-The GitScrum is licensed under the [GPL v3 license](http://opensource.org/licenses/GPL-3.0).
+Laravel GitScrum is licensed under the [GPL v3 license](http://opensource.org/licenses/GPL-3.0).
 
 
 ## Thanks
