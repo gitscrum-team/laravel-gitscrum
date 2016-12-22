@@ -11,7 +11,7 @@ GitScrum is a Laravel 5.3 application to help teams use Git version control and 
 # Dashboard
 ![Dashboard](http://i.imgur.com/w1NuHBz.png)
 
-# Kanban Board 
+# Kanban Board
 ## Sync your Github Issues to the GitScrum
 ![Sprint Planning](http://i.imgur.com/QDzPUrn.png)
 
@@ -58,7 +58,7 @@ First, create a new github app, visit [GitHub's New OAuth Application page](http
 Application name: gitscrum
 Homepage URL: URL (Same as APP_URL at .env)
 Application description: gitscrum
-Authorization callback URL: http://URL/auth/github/callback
+Authorization callback URL: http://URL/auth/provider/github/callback
 ```
 Finally fill the information in the .env file
 ```
