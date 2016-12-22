@@ -14,7 +14,7 @@ use GitScrum\Contracts\ProviderInterface;
 
 class Github implements ProviderInterface
 {
-    public function templateUser($obj)
+    public function tplUser($obj)
     {
         return [
             'provider_id' => $obj->id,
@@ -32,7 +32,7 @@ class Github implements ProviderInterface
         ];
     }
 
-    public function templateRepository($repo, $slug = false)
+    public function tplRepository($repo, $slug = false)
     {
 
         return (object) [
@@ -57,7 +57,7 @@ class Github implements ProviderInterface
 
     }
 
-    public function templateIssue($obj, $productBracklogId)
+    public function tplIssue($obj, $productBracklogId)
     {
         $user = User::where('username', @$obj->user->login)
             ->where('provider', 'github')->first();
@@ -84,7 +84,7 @@ class Github implements ProviderInterface
         $repos = collect(Helper::request('https://api.github.com/user/repos'));
 
         $response = $repos->map(function ($repo) {
-            return $this->templateRepository($repo);
+            return $this->tplRepository($repo);
         });
 
         return $response;
@@ -232,7 +232,7 @@ class Github implements ProviderInterface
 
             foreach ($issues as $issue) {
                 try {
-                    $data = $this->templateIssue($issue, $repo->id);
+                    $data = $this->tplIssue($issue, $repo->id);
                 } catch (\Exception $e) {
                 }
 

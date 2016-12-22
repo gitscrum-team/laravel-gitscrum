@@ -12,7 +12,7 @@ use GitScrum\Contracts\ProviderInterface;
 
 class Gitlab implements ProviderInterface
 {
-    public function templateUser($obj)
+    public function tplUser($obj)
     {
         return [
             'provider_id' => $obj->id,
@@ -30,7 +30,7 @@ class Gitlab implements ProviderInterface
         ];
     }
 
-    public function templateRepository($repo, $slug = false)
+    public function tplRepository($repo, $slug = false)
     {
         return (object) [
             'provider_id' => $repo->id,
@@ -53,7 +53,7 @@ class Gitlab implements ProviderInterface
         ];
     }
 
-    public function templateIssue($obj, $productBacklogId)
+    public function tplIssue($obj, $productBacklogId)
     {
         $user = User::where('username', @$obj->assignee->username)
             ->where('provider', 'gitlab')->first();
@@ -80,7 +80,7 @@ class Gitlab implements ProviderInterface
         $repos = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects?access_token='.Auth::user()->token));
 
         $response = $repos->map(function ($repo) {
-            return $this->templateRepository($repo);
+            return $this->tplRepository($repo);
         });
 
         return $response;
@@ -147,7 +147,7 @@ class Gitlab implements ProviderInterface
 
             foreach ($issues as $issue) {
                 try{
-                    $data = $this->templateIssue($issue, $repo->id);
+                    $data = $this->tplIssue($issue, $repo->id);
                     if (!Issue::where('provider_id', $data['provider_id'])->where('provider', 'gitlab')->first()) {
                         Issue::create($data)->users()->sync([$data['user_id']]);
                     }

@@ -4,11 +4,11 @@ namespace GitScrum\Contracts;
 
 interface ProviderInterface
 {
-    public function templateUser($obj);
+    public function tplUser($obj);
 
-    public function templateRepository($repo, $slug = false);
+    public function tplRepository($repo, $slug = false);
 
-    public function templateIssue($obj, $productBacklogId);
+    public function tplIssue($obj, $productBacklogId);
 
     public function readRepositories();
 
