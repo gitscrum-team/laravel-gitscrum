@@ -55,7 +55,8 @@ class Gitlab implements ProviderInterface
 
     public function templateIssue($obj, $productBacklogId)
     {
-        $user = User::where('username', $obj->assignee->username)->first();
+        $user = User::where('username', @$obj->assignee->username)
+            ->where('provider', 'gitlab')->first();
 
         return [
             'provider_id' => $obj->id,
@@ -117,7 +118,8 @@ class Gitlab implements ProviderInterface
         try {
             $organization = Organization::create($data);
         } catch (\Illuminate\Database\QueryException $e) {
-            $organization = Organization::where('username', $data['username'])->first();
+            $organization = Organization::where('username', $data['username'])
+                ->where('provider', 'gitlab')->first();
         }
 
         $organization->users()->sync([Auth::id()]);
@@ -144,13 +146,13 @@ class Gitlab implements ProviderInterface
             $issues = is_array($issues) ? $issues : [$issues];
 
             foreach ($issues as $issue) {
-                try {
+                try{
                     $data = $this->templateIssue($issue, $repo->id);
-                } catch (\Exception $e) {
-                }
+                    if (!Issue::where('provider_id', $data['provider_id'])->where('provider', 'gitlab')->first()) {
+                        Issue::create($data)->users()->sync([$data['user_id']]);
+                    }
+                } catch( \Exception $e){
 
-                if (!Issue::where('provider_id', $issue->id)->first()) {
-                    Issue::create($data)->users()->sync([$data['user_id']]);
                 }
             }
         }

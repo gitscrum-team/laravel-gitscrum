@@ -47,6 +47,9 @@ class IssueObserver
             $issue->provider_id = $tmp->id;
             $issue->number = $tmp->number;
         }
+
+        $issue->provider = strtolower(Auth::user()->provider);
+
         // TODO Create a branch in GitHub
         //$model->branch->sync([['sprint_id' => true]]);
     }
