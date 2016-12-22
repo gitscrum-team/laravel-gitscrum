@@ -14,6 +14,14 @@ class CreateProviderTypeEnum extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->enum('provider', ['gitlab', 'github'])->default('github')->after('provider_id');
         });
+
+        Schema::table('organizations', function (Blueprint $table) {
+            $table->enum('provider', ['gitlab', 'github'])->default('github')->after('provider_id');
+        });
+
+        Schema::table('issues', function (Blueprint $table) {
+            $table->enum('provider', ['gitlab', 'github'])->default('github')->after('provider_id');
+        });
     }
 
     /**
@@ -22,6 +30,14 @@ class CreateProviderTypeEnum extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('provider');
+        });
+
+        Schema::table('organizations', function (Blueprint $table) {
+            $table->dropColumn('provider');
+        });
+
+        Schema::table('issues', function (Blueprint $table) {
             $table->dropColumn('provider');
         });
     }

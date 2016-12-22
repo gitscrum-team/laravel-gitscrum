@@ -59,7 +59,8 @@ class Github implements ProviderInterface
 
     public function templateIssue($obj, $productBracklogId)
     {
-        $user = User::where('username', $obj->user->login)->first();
+        $user = User::where('username', @$obj->user->login)
+            ->where('provider', 'github')->first();
 
         return [
             'provider_id' => $obj->id,
@@ -115,7 +116,8 @@ class Github implements ProviderInterface
     public function organization($login)
     {
 
-        $organization = Organization::where('username', $login)->first();
+        $organization = Organization::where('username', $login)
+            ->where('provider', 'github')->first();
 
         if( !isset($organization) )
         {
@@ -186,14 +188,16 @@ class Github implements ProviderInterface
                 try {
                     $user = User::create($data);
                 } catch (\Exception $e) {
-                    $user = User::where('username', $collaborator->login)->first();
+                    $user = User::where('username', $collaborator->login)
+                        ->where('provider', 'github')->first();
                 }
 
                 $userId[] = $user->id;
             }
         }
 
-        $organization = Organization::where('username', $owner)->first()->users();
+        $organization = Organization::where('username', $owner)
+            ->where('provider', 'github')->first()->users();
         $organization->sync($userId);
     }
 
@@ -232,7 +236,7 @@ class Github implements ProviderInterface
                 } catch (\Exception $e) {
                 }
 
-                if (!Issue::where('provider_id', $issue->id)->first()) {
+                if (!Issue::where('provider_id', $issue->id)->where('provider', 'github')->first()) {
                     Issue::create($data)->users()->sync([$data['user_id']]);
                 }
             }
