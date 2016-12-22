@@ -35,6 +35,7 @@ class UserIssueController extends Controller
             ->select('issues.*')->paginate(env('APP_PAGINATE'));
 
         $user = User::where('username', $username)
+            ->where('provider', Auth::user()->provider)
             ->first();
 
         return view('user_issues.index')

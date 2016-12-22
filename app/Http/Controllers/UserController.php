@@ -78,6 +78,7 @@ class UserController extends Controller
     public function show($username)
     {
         $user = User::where('username', $username)
+            ->where('provider', Auth::user()->provider)
             ->first();
 
         $activities = $user->activities($user->id);
