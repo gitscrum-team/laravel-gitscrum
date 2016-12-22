@@ -64,7 +64,7 @@ class AuthController extends Controller
     public function handleProviderCallback($provider)
     {
         $providerUser = Socialite::driver($provider)->user();
-        $data = app(ucfirst($provider))->templateUser($providerUser);
+        $data = app(ucfirst($provider))->tplUser($providerUser);
 
         $user = User::where('provider_id', '=', $data['provider_id'])->first();
 
