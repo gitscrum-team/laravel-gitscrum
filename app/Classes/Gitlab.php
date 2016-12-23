@@ -12,7 +12,6 @@ use GitScrum\Contracts\ProviderInterface;
 
 class Gitlab implements ProviderInterface
 {
-
     private $gitlabGroups;
 
     public function tplUser($obj)

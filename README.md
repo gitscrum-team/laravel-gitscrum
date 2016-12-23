@@ -118,7 +118,7 @@ You must create a new Github App, visit [GitHub's New OAuth Application page](ht
 Application name: gitscrum
 Homepage URL: URL (Same as APP_URL at .env)
 Application description: gitscrum
-Authorization callback URL: http://{URL is the SAME APP_URL}/auth/github/callback
+Authorization callback URL: http://{URL is the SAME APP_URL}/auth/provider/github/callback
 ```
 
 .env file
@@ -134,7 +134,7 @@ You must create a new Gitlab App, visit [Gitlab new application](https://gitlab.
 
 ```
 name: gitscrum
-Redirect URI: http://{URL is the SAME APP_URL}/auth/gitlab/callback
+Redirect URI: http://{URL is the SAME APP_URL}/auth/provider/gitlab/callback
 Scopes: api and read_user
 ```
 
