@@ -12,6 +12,7 @@ use GitScrum\Contracts\ProviderInterface;
 
 class Gitlab implements ProviderInterface
 {
+
     private $gitlabGroups;
 
     public function tplUser($obj)
@@ -37,7 +38,7 @@ class Gitlab implements ProviderInterface
         $organization = $this->organization($repo);
 
         if (!$organization) {
-          return;
+            return;
         }
 
         return (object) [
@@ -157,8 +158,111 @@ class Gitlab implements ProviderInterface
         return $organization;
     }
 
-    public function readCollaborators($owner, $repo)
+    /**
+     * Get all members from a specific group in gitlab
+     *
+     * @param $group
+     * @return \Illuminate\Support\Collection
+     */
+    private function getGroupsMembers($group)
     {
+        $members = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/groups/'.$group.'/members?access_token='.Auth::user()->token));
+
+        return $members;
+    }
+
+    /**
+     * Get all members from the project in gitlab
+     *
+     * @param $projectId
+     * @return \Illuminate\Support\Collection
+     */
+    private function getProjectMembers($projectId)
+    {
+        $members = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects/'.$projectId.'/members?access_token='.Auth::user()->token));
+
+        return $members;
+    }
+
+    /**
+     * A project can be shared with many groups and each group has its members
+     * This method retrieves all members from the groups that the project is shared with
+     *
+     * @param $projectId
+     * @return \Illuminate\Support\Collection|static
+     */
+    private function getProjectSharedGroupsMembers($projectId)
+    {
+        $project = Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects/'.$projectId.'?access_token='.Auth::user()->token);
+
+        $members = new \Illuminate\Support\Collection();
+
+        if (!empty($project->shared_with_groups)) {
+            foreach ($project->shared_with_groups as $group) {
+                $groupsMembers = $this->getGroupsMembers($group->group_id);
+
+                $members = $members->merge($groupsMembers);
+            }
+        }
+
+        return $members;
+    }
+
+    /**
+     * Retrives all project members from three pespectives
+     *  Members from the project itself
+     *  Members of the groups that the project is owned by
+     *  Members by the groups that the project is shared with
+     *
+     * @param $owner
+     * @param $repo
+     * @param null $providerId
+     */
+    public function readCollaborators($owner, $repo, $providerId = null)
+    {
+        $collaborators = $this->getGroupsMembers($owner);
+
+        if ($providerId) {
+            $projectMembers = $this->getProjectMembers($providerId);
+            $collaborators = $collaborators->merge($projectMembers);
+
+            $projectSharedGroupsMembers = $this->getProjectSharedGroupsMembers($providerId);
+            $collaborators = $collaborators->merge($projectSharedGroupsMembers);
+        }
+
+        foreach ($collaborators as $collaborator) {
+            if (isset($collaborator->id)) {
+                $data = [
+                    'provider_id' => $collaborator->id,
+                    'username' => $collaborator->username,
+                    'name' => $collaborator->name,
+                    'avatar' => $collaborator->avatar_url,
+                    'html_url' => $collaborator->web_url,
+                    'email' => null,
+                    'remember_token' => null,
+                    'bio' => null,
+                    'location' => null,
+                    'blog' => null,
+                    'since' => null,
+                    'token' => null,
+                    'position_held' => null,
+                ];
+
+                try {
+                    $user = User::firstOrCreate($data);
+                } catch (\Exception $e) {
+                    $user = User::where('username', $collaborator->username)
+                        ->where('provider', 'gitlab')->first();
+                }
+
+                $userId[] = $user->id;
+            }
+        }
+
+        $organization = Organization::where('username', $owner)
+            ->where('provider', 'gitlab')->first()->users();
+
+        $organization->sync($userId);
     }
 
     public function createBranches($owner, $product_backlog_id, $repo)
