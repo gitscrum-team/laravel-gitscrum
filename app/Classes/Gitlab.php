@@ -12,6 +12,9 @@ use GitScrum\Contracts\ProviderInterface;
 
 class Gitlab implements ProviderInterface
 {
+
+    private $gitlabGroups;
+
     public function tplUser($obj)
     {
         return [
@@ -32,10 +35,16 @@ class Gitlab implements ProviderInterface
 
     public function tplRepository($repo, $slug = false)
     {
+        $organization = $this->organization($repo);
+
+        if (!$organization) {
+          return;
+        }
+
         return (object) [
             'provider_id' => $repo->id,
-            'organization_id' => $this->organization($repo),
-            'organization_title' => $repo->owner->username,
+            'organization_id' => $organization->id,
+            'organization_title' => $organization->username,
             'slug' => $slug ? $slug : Helper::slug($repo->path),
             'title' => $repo->path,
             'fullname' => $repo->name,
@@ -92,6 +101,28 @@ class Gitlab implements ProviderInterface
 
     public function organization($obj)
     {
+
+        if (!isset($obj->owner) && !isset($obj->namespace)) {
+            return false;
+        }
+
+        if (!isset($obj->owner) && isset($obj->namespace)) {
+            // To avoid to make unnecessary calls to the api to get the groups info saving the fetched groups into a private variable
+            if (!isset($this->gitlabGroups[$obj->namespace->id])) {
+                $group = current(collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/groups/'.$obj->namespace->id.'?access_token='.Auth::user()->token)));
+
+                $this->gitlabGroups[$obj->namespace->id] = $group;
+            }
+
+            $group = $this->gitlabGroups[$obj->namespace->id];
+
+            $obj->owner = new \stdClass;
+            $obj->owner->id = $group['id'];
+            $obj->owner->username = $group['path'];
+            $obj->owner->web_url = $group['web_url'];
+            $obj->owner->avatar_url = $group['avatar_url'];
+        }
+
         $data = [
             'provider_id' => $obj->owner->id,
             'username' => $obj->owner->username,
@@ -124,7 +155,7 @@ class Gitlab implements ProviderInterface
 
         $organization->users()->sync([Auth::id()]);
 
-        return $organization->id;
+        return $organization;
     }
 
     public function readCollaborators($owner, $repo)
