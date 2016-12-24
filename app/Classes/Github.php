@@ -164,7 +164,7 @@ class Github implements ProviderInterface
         return $organization->id;
     }
 
-    public function readCollaborators($owner, $repo)
+    public function readCollaborators($owner, $repo, $providerId = null)
     {
         $collaborators = Helper::request('https://api.github.com/repos/'.$owner.'/'.$repo.'/collaborators');
         foreach ($collaborators as $collaborator) {
