@@ -26,7 +26,7 @@ class WizardController extends Controller
         $repositories = \Session::get('Repositories')->whereIn('provider_id', $request->repos);
         foreach ($repositories as $repository) {
             try {
-                app(Auth::user()->provider)->readCollaborators($repository->organization_title, $repository->title);
+                app(Auth::user()->provider)->readCollaborators($repository->organization_title, $repository->title, $repository->provider_id);
                 $product_backlog = ProductBacklog::create(get_object_vars($repository));
                 app(Auth::user()->provider)->createBranches($repository->organization_title, $product_backlog->id, $repository->title);
             } catch (\Illuminate\Database\QueryException $e) {
