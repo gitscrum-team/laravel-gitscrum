@@ -28,7 +28,7 @@ class Issue extends Model
      *
      * @var array
      */
-    protected $fillable = ['config_issue_effort_id', 'issue_type_id', 'provider_id', 'user_id', 'product_backlog_id', 'parent_id',
+    protected $fillable = ['config_issue_effort_id', 'issue_type_id', 'provider_id', 'provider', 'user_id', 'product_backlog_id', 'parent_id',
         'branch_id', 'sprint_id', 'user_story_id', 'number', 'effort', 'slug', 'code', 'title', 'description', 'state',
         'config_status_id', 'position', 'is_planning_poker', 'closed_user_id', 'closed_at', ];
 
