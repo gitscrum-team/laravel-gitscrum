@@ -27,7 +27,7 @@ class Organization extends Model
      *
      * @var array
      */
-    protected $fillable = ['provider_id', 'username', 'url', 'repos_url', 'events_url', 'hooks_url',
+    protected $fillable = ['provider_id', 'provider', 'username', 'url', 'repos_url', 'events_url', 'hooks_url',
         'issues_url', 'members_url', 'public_members_url', 'avatar_url', 'title', 'description',
         'blog', 'location', 'email', 'public_repos', 'html_url', 'total_private_repos', 'since',
         'disk_usage', 'deleted_at', ];
