@@ -13,13 +13,13 @@ var agile = {
 
     scroll: function(){
         $('.agile-list').height( $( window ).height()-290 );
-        $('.kanban-board-scroll').width( $('.agile').length*385 );
+        $('.kanban-board-scroll').width( $('.agile').length*$('.agile-column .row').width()+100 );
         $('body').css('overflow-y','hidden');
     },
 
     columns: function(){
         $.each($('.agile-list'), function(){
-            $(this).closest('.agile').find('h5').css('border-bottom', '6px solid #'+$(this).data('color'));
+            $(this).closest('.agile').find('h5').css('border-top', '2px solid #'+$(this).data('color'));
             $(this).find('.small-issue-closed').hide();
             if($(this).data('closed')){
                 $(this).find('.small-issue-closed').show();
