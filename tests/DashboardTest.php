@@ -21,8 +21,14 @@ class Dashboardtest extends TestCase
         $title = $faker->sentence(mt_rand(10,16));
 
         $this->visit($this->visitUrl)
+            ->see('<div class="notes">')
             ->type( $title, 'frm_notes_title')
             ->press('Add')
-            ->seeInDatabase('notes', ['title' => $title]);;
+            ->seeInDatabase('notes', ['title' => $title]);
+    }
+
+    public function test_team_thumbnails()
+    {
+
     }
 }
