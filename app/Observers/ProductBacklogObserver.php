@@ -17,7 +17,11 @@ class ProductBacklogObserver
 {
     public function creating(ProductBacklog $productBacklog)
     {
-        $productBacklog->user_id = Auth::user()->id;
+        if(!isset($productBacklog->user_id))
+        {
+            $productBacklog->user_id = Auth::user()->id;
+        }
+
         $productBacklog->slug = Helper::slug($productBacklog->title);
         if (isset($productBacklog->is_api)) {
             $owner = Organization::find($productBacklog->organization_id);

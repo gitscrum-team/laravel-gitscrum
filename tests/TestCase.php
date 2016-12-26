@@ -3,12 +3,15 @@
 abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
     use DatabaseMigrations;
+
     /**
      * The base URL to use while testing the application.
      *
      * @var string
      */
-    protected $baseUrl = 'http://localhost';
+    protected $baseUrl = null;
+
+    protected $visitUrl = '/';
 
     /**
      * Creates the application.
@@ -21,12 +24,22 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
+        $this->baseUrl = env('APP_URL');
+
         return $app;
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->runDatabaseMigrations();
+        $this->initDatabase();
+
+        $user = \GitScrum\Models\User::find(1);
+        $this->be($user);
+    }
+
+    protected function tearDown()
+    {
+        //fwrite(STDOUT, __METHOD__ . "\n");
     }
 }
