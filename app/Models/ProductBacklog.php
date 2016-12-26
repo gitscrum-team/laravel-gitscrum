@@ -29,7 +29,7 @@ class ProductBacklog extends Model
      *
      * @var array
      */
-    protected $fillable = ['provider_id', 'organization_id', 'slug', 'title', 'description',
+    protected $fillable = ['provider_id', 'user_id', 'organization_id', 'slug', 'title', 'description',
         'fullname', 'private', 'html_url', 'description', 'fork', 'url', 'since', 'pushed_at',
         'git_url', 'ssh_url', 'clone_url', 'homepage', 'default_branch', 'is_api', ];
 
