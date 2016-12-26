@@ -198,7 +198,11 @@ class Github implements ProviderInterface
 
         $organization = Organization::where('username', $owner)
             ->where('provider', 'github')->first()->users();
-        $organization->sync($userId);
+
+        if(!$organization->where('user_id', Auth::user()->id)->count())
+        {
+            $organization->attach($userId);
+        }
     }
 
     public function createBranches($owner, $product_backlog_id, $repo)
