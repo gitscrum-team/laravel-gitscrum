@@ -30,7 +30,7 @@ class NoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:2',
+            'frm_notes_title' => 'required|min:2',
         ];
     }
 
@@ -42,8 +42,17 @@ class NoteRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => trans('Field cannot be blank'),
-            'title.min' => trans('Field must be at least 2 characters'),
+            'frm_notes_title.required' => trans('Field cannot be blank'),
+            'frm_notes_title.min' => trans('Field must be at least 2 characters'),
         ];
+    }
+
+    protected function getValidatorInstance()
+    {
+        $data = $this->all();
+        $data['title'] = $data['frm_notes_title'];
+        $this->getInputSource()->replace($data);
+
+        return parent::getValidatorInstance();
     }
 }

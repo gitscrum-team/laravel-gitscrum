@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7c2cfe9e51ee3b5c6645d4c54c961a98",
-    "content-hash": "2dc72134ef3afe504a546ddf0767f445",
+    "hash": "43e2c47c8778f6aaca58ef7c35472e61",
+    "content-hash": "f6fc6c757567c0d21e774fb9174790aa",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -887,12 +887,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "5bafd85283a5adbde6e12b8bf5df4cd45af157e8"
+                "reference": "5e1e5fe1492f17a248fe1c9936bcc4445795adb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/5bafd85283a5adbde6e12b8bf5df4cd45af157e8",
-                "reference": "5bafd85283a5adbde6e12b8bf5df4cd45af157e8",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/5e1e5fe1492f17a248fe1c9936bcc4445795adb4",
+                "reference": "5e1e5fe1492f17a248fe1c9936bcc4445795adb4",
                 "shasum": ""
             },
             "require": {
@@ -1007,7 +1007,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-12-19 23:22:02"
+            "time": "2016-12-25 15:00:03"
         },
         {
             "name": "laravel/socialite",
@@ -1015,12 +1015,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "aca8de9a93a28a119714e289c8bc599bd81aa88d"
+                "reference": "0ee268d317de9e6979a57212fa80ce55b357ffd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/aca8de9a93a28a119714e289c8bc599bd81aa88d",
-                "reference": "aca8de9a93a28a119714e289c8bc599bd81aa88d",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/0ee268d317de9e6979a57212fa80ce55b357ffd2",
+                "reference": "0ee268d317de9e6979a57212fa80ce55b357ffd2",
                 "shasum": ""
             },
             "require": {
@@ -1061,7 +1061,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2016-11-01 18:49:10"
+            "time": "2016-12-21 18:04:20"
         },
         {
             "name": "league/flysystem",
@@ -1215,12 +1215,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "938526c6956a6b0f6347aa5940e18e8497e67b26"
+                "reference": "f243e9c104bcf783a76409ed03095c6db1c6b7f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/938526c6956a6b0f6347aa5940e18e8497e67b26",
-                "reference": "938526c6956a6b0f6347aa5940e18e8497e67b26",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/f243e9c104bcf783a76409ed03095c6db1c6b7f6",
+                "reference": "f243e9c104bcf783a76409ed03095c6db1c6b7f6",
                 "shasum": ""
             },
             "require": {
@@ -1268,7 +1268,7 @@
                 "debug",
                 "debugbar"
             ],
-            "time": "2016-12-19 20:49:44"
+            "time": "2016-12-24 17:24:18"
         },
         {
             "name": "monolog/monolog",
@@ -1452,12 +1452,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "301c34373db1f978aa5d7f4b2965b1b63448e7eb"
+                "reference": "3e8c8d248dcaa837bdb91b82e7883fd9cc055aa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/301c34373db1f978aa5d7f4b2965b1b63448e7eb",
-                "reference": "301c34373db1f978aa5d7f4b2965b1b63448e7eb",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/3e8c8d248dcaa837bdb91b82e7883fd9cc055aa5",
+                "reference": "3e8c8d248dcaa837bdb91b82e7883fd9cc055aa5",
                 "shasum": ""
             },
             "require": {
@@ -1495,7 +1495,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2016-12-11 15:47:47"
+            "time": "2016-12-22 19:25:02"
         },
         {
             "name": "paragonie/random_compat",
@@ -2115,12 +2115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "84a1ec374f263b8d04213ffc6784a743f20aaadd"
+                "reference": "d30f02ff17c56fb541eb97abc61bf94261e9376f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/84a1ec374f263b8d04213ffc6784a743f20aaadd",
-                "reference": "84a1ec374f263b8d04213ffc6784a743f20aaadd",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d30f02ff17c56fb541eb97abc61bf94261e9376f",
+                "reference": "d30f02ff17c56fb541eb97abc61bf94261e9376f",
                 "shasum": ""
             },
             "require": {
@@ -2168,7 +2168,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-19 16:00:11"
+            "time": "2016-12-23 16:43:44"
         },
         {
             "name": "symfony/debug",
@@ -2395,12 +2395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "cd3712f285566b23aaf35dd6c58ed9956184923c"
+                "reference": "ae70d5004805a60e0cae72b5fde896e140fa2811"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/cd3712f285566b23aaf35dd6c58ed9956184923c",
-                "reference": "cd3712f285566b23aaf35dd6c58ed9956184923c",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/ae70d5004805a60e0cae72b5fde896e140fa2811",
+                "reference": "ae70d5004805a60e0cae72b5fde896e140fa2811",
                 "shasum": ""
             },
             "require": {
@@ -2469,7 +2469,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-19 16:00:11"
+            "time": "2016-12-20 17:35:30"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -3038,21 +3038,22 @@
     "packages-dev": [
         {
             "name": "behat/behat",
-            "version": "dev-master",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "4ea0ea06aa55145c28dcfac46036a40cfcdcc9f8"
+                "reference": "15a3a1857457eaa29cdf41564a5e421effb09526"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/4ea0ea06aa55145c28dcfac46036a40cfcdcc9f8",
-                "reference": "4ea0ea06aa55145c28dcfac46036a40cfcdcc9f8",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/15a3a1857457eaa29cdf41564a5e421effb09526",
+                "reference": "15a3a1857457eaa29cdf41564a5e421effb09526",
                 "shasum": ""
             },
             "require": {
                 "behat/gherkin": "^4.4.4",
                 "behat/transliterator": "~1.0",
+                "container-interop/container-interop": "^1.1",
                 "ext-mbstring": "*",
                 "php": ">=5.3.3",
                 "symfony/class-loader": "~2.1||~3.0",
@@ -3115,7 +3116,7 @@
                 "symfony",
                 "testing"
             ],
-            "time": "2016-12-17 12:39:36"
+            "time": "2016-12-25 13:43:52"
         },
         {
             "name": "behat/gherkin",
@@ -3219,6 +3220,33 @@
                 "transliterator"
             ],
             "time": "2016-10-21 08:46:05"
+        },
+        {
+            "name": "container-interop/container-interop",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/container-interop/container-interop.git",
+                "reference": "fc08354828f8fd3245f77a66b9e23a6bca48297e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/container-interop/container-interop/zipball/fc08354828f8fd3245f77a66b9e23a6bca48297e",
+                "reference": "fc08354828f8fd3245f77a66b9e23a6bca48297e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Interop\\Container\\": "src/Interop/Container/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
+            "time": "2014-12-30 15:22:37"
         },
         {
             "name": "doctrine/annotations",
@@ -3683,12 +3711,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "e810abf70325f1f9973f24543811bd13c130bca0"
+                "reference": "56ff6fa72a0678ff48df610e5637ca6b15c5444f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/e810abf70325f1f9973f24543811bd13c130bca0",
-                "reference": "e810abf70325f1f9973f24543811bd13c130bca0",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/56ff6fa72a0678ff48df610e5637ca6b15c5444f",
+                "reference": "56ff6fa72a0678ff48df610e5637ca6b15c5444f",
                 "shasum": ""
             },
             "require": {
@@ -3725,7 +3753,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-12-20 09:44:09"
+            "time": "2016-12-21 09:03:27"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -4344,12 +4372,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "94cec036f7cc3b7bab26cc1aaeb78e99bdb6f579"
+                "reference": "77b2654b82eac43847f1b1e7a45c2df0acf3b8fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/94cec036f7cc3b7bab26cc1aaeb78e99bdb6f579",
-                "reference": "94cec036f7cc3b7bab26cc1aaeb78e99bdb6f579",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/77b2654b82eac43847f1b1e7a45c2df0acf3b8fa",
+                "reference": "77b2654b82eac43847f1b1e7a45c2df0acf3b8fa",
                 "shasum": ""
             },
             "require": {
@@ -4418,7 +4446,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-12-13 21:21:43"
+            "time": "2016-12-20 14:49:04"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -4955,12 +4983,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "6d3a03aa1e823fe6bfd16ef8f267133e790c4610"
+                "reference": "56054917a1019b3dc8cf4810108fcef60ea85479"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6d3a03aa1e823fe6bfd16ef8f267133e790c4610",
-                "reference": "6d3a03aa1e823fe6bfd16ef8f267133e790c4610",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/56054917a1019b3dc8cf4810108fcef60ea85479",
+                "reference": "56054917a1019b3dc8cf4810108fcef60ea85479",
                 "shasum": ""
             },
             "require": {
@@ -5025,7 +5053,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-12-15 00:26:17"
+            "time": "2016-12-22 02:18:40"
         },
         {
             "name": "symfony/class-loader",
