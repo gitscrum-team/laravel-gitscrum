@@ -27,8 +27,9 @@ class Dashboardtest extends TestCase
             ->seeInDatabase('notes', ['title' => $title]);
     }
 
-    public function test_team_thumbnails()
+    public function test_message_empty_sprint_member()
     {
-
+        $this->visit($this->visitUrl)
+            ->see('list-sprint-empty');
     }
 }
