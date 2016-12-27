@@ -35,11 +35,26 @@
 
 <div class="main-title">
     <h4>
-        <span class="label label-danger pull-right"
-        style="font-size:16px;margin-top:3px;background-color:#{{$sprint->status->color}}">
-        {{$sprint->status->title}}</span>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary" style="background-color:#{{$sprint->status->color}}">
+                <strong>{{$sprint->status->title}}</strong></button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"  style="background-color:#{{$sprint->status->color}}">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                @foreach ($configStatus as $value)
+                    @if($value->is_closed)
+                        <li role="separator" class="divider"></li>
+                    @endif
+                <li><a href="{{route('sprints.status.update', ['slug'=>$sprint->slug, 'status'=>$value->id])}}">
+                    {{$value->title}}</a></li>
+                @endforeach
+            </ul>
+        </div>
+
         <span @if ( $sprint->closed_at ) style="text-decoration: line-through;" @endif>
-        {{$sprint->title}}</span>
+        {{$sprint->title}} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
     </h4>
 </div>
 

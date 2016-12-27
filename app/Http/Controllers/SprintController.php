@@ -171,8 +171,13 @@ class SprintController extends Controller
             ->with('success', trans('Congratulations! The Sprint has been deleted successfully'));
     }
 
-    public function updateStatus($sprint, $status)
+    public function statusUpdate($slug, $status)
     {
-        dd($sprint_slug);
+        $sprint = Sprint::slug($slug)
+            ->firstOrFail();
+        $sprint->config_status_id = $status;
+        $sprint->save();
+        
+        return back()->with('success', trans('Updated successfully'));
     }
 }
