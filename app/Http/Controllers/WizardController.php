@@ -31,7 +31,7 @@ class WizardController extends Controller
             {
                 $product_backlog = ProductBacklog::create(get_object_vars($repository));
             }
-            app(Auth::user()->provider)->createBranches($repository->organization_title, $product_backlog->id, $repository->title);
+            app(Auth::user()->provider)->createBranches($repository->organization_title, $product_backlog->id, $repository->title, $repository->provider_id);
         }
 
         return view('wizard.step2')
