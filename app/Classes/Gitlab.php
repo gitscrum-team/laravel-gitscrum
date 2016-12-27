@@ -7,6 +7,7 @@ use GitScrum\Models\User;
 use GitScrum\Models\Issue;
 use GitScrum\Models\Organization;
 use GitScrum\Models\ProductBacklog;
+use GitScrum\Models\Branch;
 use Carbon\Carbon;
 use GitScrum\Contracts\ProviderInterface;
 
@@ -63,8 +64,10 @@ class Gitlab implements ProviderInterface
 
     public function tplIssue($obj, $productBacklogId)
     {
-        $user = User::where('username', @$obj->assignee->username)
-            ->where('provider', 'gitlab')->first();
+        if (isset($obj->assignee->username)) {
+            $user = User::where('username', @$obj->assignee->username)
+                ->where('provider', 'gitlab')->first();
+        }
 
         return [
             'provider_id' => $obj->id,
@@ -77,7 +80,7 @@ class Gitlab implements ProviderInterface
             'title' => $obj->title,
             'description' => $obj->description,
             'state' => $obj->state,
-            'html_url' => $obj->web_url,
+            'html_url' => isset($obj->web_url) ? $obj->web_url : '',
             'created_at' => Carbon::parse($obj->created_at)->toDateTimeString(),
             'updated_at' => Carbon::parse($obj->updated_at)->toDateTimeString(),
         ];
@@ -305,7 +308,7 @@ class Gitlab implements ProviderInterface
                         Issue::create($data)->users()->sync([$data['user_id']]);
                     }
                 } catch( \Exception $e){
-
+                    
                 }
             }
         }
