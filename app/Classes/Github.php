@@ -205,7 +205,7 @@ class Github implements ProviderInterface
         }
     }
 
-    public function createBranches($owner, $product_backlog_id, $repo)
+    public function createBranches($owner, $product_backlog_id, $repo, $providerId = null)
     {
         $y = 0;
         for ($i = 1; $i > $y; ++$i) {

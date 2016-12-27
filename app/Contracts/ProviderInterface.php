@@ -16,9 +16,9 @@ interface ProviderInterface
 
     public function organization($login);
 
-    public function readCollaborators($owner, $repo);
+    public function readCollaborators($owner, $repo, $providerId = null);
 
-    public function createBranches($owner, $product_backlog_id, $repo);
+    public function createBranches($owner, $product_backlog_id, $repo, $providerId = null);
 
     public function readIssues();
 

@@ -268,8 +268,24 @@ class Gitlab implements ProviderInterface
 
     }
 
-    public function createBranches($owner, $product_backlog_id, $repo)
+    public function createBranches($owner, $product_backlog_id, $repo, $providerId = null)
     {
+        $branches = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects/'.$providerId.'/repository/branches?access_token='.Auth::user()->token));
+
+        $branchesData = [];
+        foreach ($branches as $branch) {
+            $branchesData[] = [
+                'product_backlog_id' => $product_backlog_id,
+                'title' => $branch->name,
+                'sha' => $branch->commit->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ];
+        }
+
+        if ($branchesData) {
+            Branch::insert($branchesData);
+        }
     }
 
     public function readIssues()
