@@ -31,7 +31,7 @@ class NoteController extends Controller
 
     public function update(Request $request, $slug)
     {
-        $note = Note::where('slug', $slug)->first();
+        $note = Note::slug($slug)->first();
 
         $note->closed_user_id = Auth::id();
         $note->closed_at = Carbon::now();

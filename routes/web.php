@@ -44,6 +44,7 @@ Route::group(['prefix' => 'sprints', 'middleware' => ['sprint.expired', 'global.
     Route::get('/edit/{slug}', 'SprintController@edit')->name('sprints.edit');
     Route::post('/update/{slug}', 'SprintController@update')->name('sprints.update');
     Route::delete('/destroy', 'SprintController@destroy')->name('sprints.delete');
+    Route::any('/status-update/{slug?}/{status?}', 'SprintController@statusUpdate')->name('sprints.status.update');
 });
 
 Route::group(['prefix' => 'user-stories'], function () {
@@ -62,7 +63,7 @@ Route::group(['prefix' => 'issues', 'middleware' => ['issue']], function () {
     Route::get('/edit/{slug}', 'IssueController@edit')->name('issues.edit');
     Route::post('/update/{slug}', 'IssueController@update')->name('issues.update');
     Route::get('/destroy/{slug}', 'IssueController@destroy')->name('issues.destroy');
-    Route::any('/update-status/{slug?}/{status?}', 'IssueController@statusUpdate')->name('issues.status.update');
+    Route::any('/status-update/{slug?}/{status?}', 'IssueController@statusUpdate')->name('issues.status.update');
 });
 
 Route::group(['prefix' => 'user-issue'], function () {

@@ -16,7 +16,7 @@ class LabelController extends Controller
 {
     public function index($model, $slug_label)
     {
-        $label = Label::where('slug', '=', $slug_label)->first();
+        $label = Label::slug($slug_label)->first();
 
         return view('labels.index')
             ->with('label', $label)

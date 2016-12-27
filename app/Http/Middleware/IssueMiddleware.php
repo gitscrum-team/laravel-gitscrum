@@ -25,7 +25,7 @@ class IssueMiddleware
     {
         try {
             if (isset($request->slug)) {
-                Issue::where('slug', $request->slug)->firstOrFail();
+                Issue::slug($request->slug)->firstOrFail();
             }
         } catch (\Exception $e) {
             return redirect()->route('user.dashboard');

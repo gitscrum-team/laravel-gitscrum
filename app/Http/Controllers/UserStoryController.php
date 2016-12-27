@@ -35,7 +35,7 @@ class UserStoryController extends Controller
         $productBacklog_id = null;
 
         if (!is_null($slug_product_backlog)) {
-            $productBacklog_id = ProductBacklog::where('slug', $slug_product_backlog)->first()->id;
+            $productBacklog_id = ProductBacklog::slug($slug_product_backlog)->first()->id;
         }
 
         $priorities = ConfigPriority::where('enabled', 1)
@@ -72,7 +72,7 @@ class UserStoryController extends Controller
      */
     public function show($slug)
     {
-        $userStory = UserStory::where('slug', $slug)
+        $userStory = UserStory::slug($slug)
             ->with('labels')
             ->first();
 
@@ -89,7 +89,7 @@ class UserStoryController extends Controller
      */
     public function edit($slug)
     {
-        $userStory = UserStory::where('slug', '=', $slug)->first();
+        $userStory = UserStory::slug($slug)->first();
 
         $priorities = ConfigPriority::where('enabled', 1)
             ->orderby('position', 'ASC')->get();
@@ -112,7 +112,7 @@ class UserStoryController extends Controller
      */
     public function update(UserStoryRequest $request, $slug)
     {
-        $userStory = UserStory::where('slug', '=', $slug)->first();
+        $userStory = UserStory::slug($slug)->first();
         $userStory->update($request->all());
 
         return back()

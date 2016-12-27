@@ -61,7 +61,7 @@ class ProductBacklogController extends Controller
      */
     public function show(Request $request, $slug)
     {
-        $productBacklog = ProductBacklog::where('slug', $slug)
+        $productBacklog = ProductBacklog::slug($slug)
             ->with('sprints')
             ->with('userStories')
             ->first();
@@ -99,7 +99,7 @@ class ProductBacklogController extends Controller
      */
     public function edit($slug)
     {
-        $productBacklog = ProductBacklog::where('slug', '=', $slug)->first();
+        $productBacklog = ProductBacklog::slug($slug)->first();
 
         return view('product_backlogs.edit')
             ->with('productBacklog', $productBacklog)
@@ -116,7 +116,7 @@ class ProductBacklogController extends Controller
      */
     public function update(ProductBacklogRequest $request, $slug)
     {
-        $productBacklog = ProductBacklog::where('slug', '=', $slug)->first();
+        $productBacklog = ProductBacklog::slug($slug)->first();
         $productBacklog->update($request->all());
 
         return back()
