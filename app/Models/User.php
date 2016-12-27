@@ -121,7 +121,7 @@ class User extends Authenticatable
                 ->with('issues')->get();
 
             if (!is_null($product_backlog_id)) {
-                $obj = $obj->where('id', '=', $product_backlog_id);
+                $obj = $obj->find($product_backlog_id);
             }
 
             return $obj;
@@ -132,7 +132,7 @@ class User extends Authenticatable
     {
         $sprints = $this->issues->where('sprint_id', '!=', null)->map(function ($issue) use ($sprint_id) {
             if (!is_null($sprint_id)) {
-                $obj = $issue->sprint()->where('id', '=', $sprint_id)->get();
+                $obj = $issue->sprint()->where('id', $sprint_id)->get();
             } else {
                 $obj = $issue->sprint()->get();
             }

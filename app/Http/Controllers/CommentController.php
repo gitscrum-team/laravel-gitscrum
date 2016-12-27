@@ -39,7 +39,7 @@ class CommentController extends Controller
 
     public function update(CommentRequest $request, $id)
     {
-        $comment = Comment::where('id', $id)
+        $comment = Comment::find($id)
             ->where('user_id', Auth::user()->id)->firstOrFail();
         $comment->comment = $request->comment;
         $comment->save();
@@ -49,7 +49,7 @@ class CommentController extends Controller
 
     public function destroy($id)
     {
-        $comment = Comment::where('id', $id)
+        $comment = Comment::find($id)
             ->where('user_id', Auth::user()->id)->firstOrFail();
 
         $comment->delete();

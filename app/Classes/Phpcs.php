@@ -28,7 +28,7 @@ class Phpcs
         $data = [];
         $rows = array_slice($arr, 2, (count($arr) - 5));
         $row = str_replace('<br />', '', implode('<br />', $rows));
-        $commit = CommitFile::where('id', '=', $this->id)->first();
+        $commit = CommitFile::find($this->id)->first();
         $commit->phpcs = $row;
         $commit->save();
     }
