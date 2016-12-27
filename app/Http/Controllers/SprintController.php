@@ -9,6 +9,7 @@
 namespace GitScrum\Http\Controllers;
 
 use GitScrum\Http\Requests\SprintRequest;
+use GitScrum\Models\ConfigStatus;
 use GitScrum\Models\ProductBacklog;
 use GitScrum\Models\Sprint;
 use Auth;
@@ -103,8 +104,11 @@ class SprintController extends Controller
             return redirect()->route('sprints.index');
         }
 
+        $configStatus = ConfigStatus::type('sprint')->get();
+
         return view('sprints.show')
-            ->with('sprint', $sprint);
+            ->with('sprint', $sprint)
+            ->with('configStatus', $configStatus);
     }
 
     /**

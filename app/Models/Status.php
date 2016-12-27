@@ -79,10 +79,9 @@ class Status extends Model
     {
         if (!isset($model->config_status_id)) {
             if (is_null($id)) {
-                $status = ConfigStatus::where('type', $alias)
-                    ->where('default', 1);
+                $status = ConfigStatus::type($alias)->default();
             } else {
-                $status = ConfigStatus::where('id', $id);
+                $status = ConfigStatus::find($id);
             }
 
             $model->config_status_id = $status->first()->id;
