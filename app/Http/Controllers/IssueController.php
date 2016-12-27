@@ -49,8 +49,7 @@ class IssueController extends Controller
 
         $issues = $issues->sortBy('position')->groupBy('config_status_id');
 
-        $configStatus = configStatus::where('type', 'issue')
-            ->orderby('position', 'ASC')->get();
+        $configStatus = ConfigStatus::type('issue')->get();
 
         if (!is_null($sprint) && !count($sprint)) {
             return redirect()->route('sprints.index');
@@ -140,8 +139,7 @@ class IssueController extends Controller
 
         $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
 
-        $configStatus = configStatus::where('type', 'issue')
-            ->orderby('position', 'ASC')->get();
+        $configStatus = ConfigStatus::type('issue')->get();
 
         return view('issues.show')
             ->with('issue', $issue)

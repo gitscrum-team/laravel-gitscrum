@@ -19,8 +19,6 @@ class SprintObserver
     {
         $sprint->user_id = Auth::user()->id;
         $sprint->slug = Helper::slug($sprint->title);
-        $sprint->config_status_id = ConfigStatus::where('type', '=', 'sprint')
-            ->where('default', '=', 1)
-            ->first()->id;
+        $sprint->config_status_id = ConfigStatus::type('sprint')->default()->first()->id;
     }
 }
