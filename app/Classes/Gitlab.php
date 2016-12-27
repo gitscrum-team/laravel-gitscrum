@@ -308,7 +308,7 @@ class Gitlab implements ProviderInterface
                         Issue::create($data)->users()->sync([$data['user_id']]);
                     }
                 } catch( \Exception $e){
-                    dd($e);
+                    
                 }
             }
         }
