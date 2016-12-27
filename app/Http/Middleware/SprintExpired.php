@@ -25,7 +25,7 @@ class SprintExpired
     public function handle($request, Closure $next)
     {
         if ($slug = $request->slug) {
-            $sprint = Sprint::where('slug', '=', $slug)
+            $sprint = Sprint::slug($slug)
                 ->whereDate('date_finish', '<', Carbon::now()->format('Y-m-d'))
                 //->whereNull('closed_at')
                 ->first();

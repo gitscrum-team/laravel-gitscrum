@@ -97,7 +97,7 @@ class UserIssueController extends Controller
     {
         $members = $request->input('members');
 
-        $issue = Issue::where('slug', '=', $slug)
+        $issue = Issue::slug($slug)
             ->firstOrFail();
 
         $issue->users()->sync($members);

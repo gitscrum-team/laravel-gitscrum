@@ -9,9 +9,11 @@
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use GitScrum\Scopes\GlobalScope;
 
 class Label extends Model
 {
+    use GlobalScope;
     /**
      * The database table used by the model.
      *

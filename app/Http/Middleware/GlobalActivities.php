@@ -23,7 +23,7 @@ class GlobalActivities
      */
     public function handle($request, Closure $next)
     {
-        $sprint = Sprint::where('slug', $request->slug)
+        $sprint = Sprint::slug($request->slug)
             ->with('issues.statuses')
             ->first();
 

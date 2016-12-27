@@ -30,7 +30,7 @@ class IssueController extends Controller
     public function index($slug)
     {
         if ($slug) {
-            $sprint = Sprint::where('slug', $slug)
+            $sprint = Sprint::slug($slug)
                 ->with('issues.user')
                 ->with('issues.users')
                 ->with('issues.commits')
@@ -79,11 +79,11 @@ class IssueController extends Controller
         $userStory = $productBacklogs = null;
 
         if ((is_null($slug_sprint) || !$slug_sprint) && $slug_user_story) {
-            $userStory = UserStory::where('slug', $slug_user_story)->first();
+            $userStory = UserStory::slug($slug_user_story)->first();
             $productBacklogs = Auth::user()->productBacklogs($userStory->product_backlog_id);
             $usersByOrganization = Organization::find($userStory->productBacklog->organization_id)->users;
         } elseif ($slug_sprint) {
-            $usersByOrganization = Organization::find(Sprint::where('slug', $slug_sprint)->first()
+            $usersByOrganization = Organization::find(Sprint::slug($slug_sprint)->first()
                 ->productBacklog->organization_id)->users;
         } else {
             $issue = Issue::find($parent_id);
@@ -130,7 +130,7 @@ class IssueController extends Controller
      */
     public function show($slug)
     {
-        $issue = Issue::where('slug', '=', $slug)
+        $issue = Issue::slug($slug)
             ->with('sprint')
             ->with('type')
             ->with('configEffort')
@@ -156,7 +156,7 @@ class IssueController extends Controller
      */
     public function edit($slug)
     {
-        $issue = Issue::where('slug', '=', $slug)->first();
+        $issue = Issue::slug($slug)->first();
 
         $issue_types = IssueType::where('enabled', 1)
             ->orderby('position', 'ASC')
@@ -189,7 +189,7 @@ class IssueController extends Controller
      */
     public function update(IssueRequest $request, $slug)
     {
-        $issue = Issue::where('slug', '=', $slug)->first();
+        $issue = Issue::slug($slug)->first();
         $issue->update($request->all());
 
         if (is_array($request->members)) {
@@ -241,7 +241,7 @@ class IssueController extends Controller
                 ]);
             }
         } else {
-            $issue = Issue::where('slug', $slug)
+            $issue = Issue::slug($slug)
                 ->firstOrFail();
             $save($issue);
 
@@ -258,7 +258,7 @@ class IssueController extends Controller
      */
     public function destroy($slug)
     {
-        $issue = Issue::where('slug', $slug)->firstOrFail();
+        $issue = Issue::slug($slug)->firstOrFail();
 
         if (isset($issue->userStory)) {
             $redirect = redirect()->route('user_stories.show', ['slug' => $issue->userStory->slug]);

@@ -10,10 +10,12 @@ namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use GitScrum\Scopes\GlobalScope;
 
 class ProductBacklog extends Model
 {
     use SoftDeletes;
+    use GlobalScope;
 
     public static $tmp = null;
 

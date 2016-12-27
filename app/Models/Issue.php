@@ -11,11 +11,12 @@ namespace GitScrum\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use GitScrum\Scopes\GlobalScope;
 
 class Issue extends Model
 {
     use SoftDeletes;
-
+    use GlobalScope;
     /**
      * The database table used by the model.
      *
