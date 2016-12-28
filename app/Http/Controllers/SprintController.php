@@ -177,7 +177,7 @@ class SprintController extends Controller
             ->firstOrFail();
         $sprint->config_status_id = $status;
         $sprint->save();
-        
+
         return back()->with('success', trans('Updated successfully'));
     }
 }

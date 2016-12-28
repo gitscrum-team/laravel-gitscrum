@@ -13,8 +13,7 @@ class OrganizationObserver
 {
     public function creating(Organization $organization)
     {
-        if(!isset($organization->provider))
-        {
+        if (!isset($organization->provider)) {
             $organization->provider = strtolower(Auth::user()->provider);
         }
     }

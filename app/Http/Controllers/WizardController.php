@@ -27,8 +27,7 @@ class WizardController extends Controller
         foreach ($repositories as $repository) {
             app(Auth::user()->provider)->readCollaborators($repository->organization_title, $repository->title, $repository->provider_id);
             $product_backlog = ProductBacklog::where('provider_id', $repository->provider_id)->first();
-            if(!isset($product_backlog))
-            {
+            if (!isset($product_backlog)) {
                 $product_backlog = ProductBacklog::create(get_object_vars($repository));
             }
             app(Auth::user()->provider)->createBranches($repository->organization_title, $product_backlog->id, $repository->title, $repository->provider_id);

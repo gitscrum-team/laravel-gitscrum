@@ -20,8 +20,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     public function createApplication()
     {
-        if(defined('HHVM_VERSION'))
-        {
+        if (defined('HHVM_VERSION')) {
             $this->markTestSkipped('must be revisited.');
         }
 

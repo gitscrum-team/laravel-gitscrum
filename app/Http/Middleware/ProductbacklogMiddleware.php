@@ -20,9 +20,9 @@ class ProductbacklogMiddleware
          $total = Auth::user()->organizations()->count();
 
          if (!$total) {
-              return redirect()->route('wizard.step1');
+             return redirect()->route('wizard.step1');
          }
 
-          return $next($request);
+         return $next($request);
      }
 }

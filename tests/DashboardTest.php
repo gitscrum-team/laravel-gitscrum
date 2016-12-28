@@ -1,8 +1,7 @@
 <?php
 
-class Dashboardtest extends TestCase
+class DashboardTest extends TestCase
 {
-
     public function _construct()
     {
         $this->visitUrl = '/dashboard';
@@ -18,11 +17,11 @@ class Dashboardtest extends TestCase
     {
         $faker = Faker\Factory::create();
 
-        $title = $faker->sentence(mt_rand(10,16));
+        $title = $faker->sentence(mt_rand(10, 16));
 
         $this->visit($this->visitUrl)
             ->see('<div class="notes">')
-            ->type( $title, 'frm_notes_title')
+            ->type($title, 'frm_notes_title')
             ->press('Add')
             ->seeInDatabase('notes', ['title' => $title]);
     }

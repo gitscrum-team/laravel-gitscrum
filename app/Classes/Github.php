@@ -34,7 +34,6 @@ class Github implements ProviderInterface
 
     public function tplRepository($repo, $slug = false)
     {
-
         return (object) [
             'provider_id' => $repo->id,
             'organization_id' => $this->organization($repo->owner->login),
@@ -54,7 +53,6 @@ class Github implements ProviderInterface
             'homepage' => $repo->homepage,
             'default_branch' => $repo->default_branch,
         ];
-
     }
 
     public function tplIssue($obj, $productBracklogId)
@@ -115,13 +113,10 @@ class Github implements ProviderInterface
 
     public function organization($login)
     {
-
         $organization = Organization::where('username', $login)
             ->where('provider', 'github')->first();
 
-        if( !isset($organization) )
-        {
-
+        if (!isset($organization)) {
             $orgData = Helper::request('https://api.github.com/orgs/'.$login);
 
             if (!isset($orgData->id)) {
@@ -154,11 +149,9 @@ class Github implements ProviderInterface
             try {
                 $organization = Organization::create($data);
             } catch (\Illuminate\Database\QueryException $e) {
-
             }
 
             $organization->users()->sync([Auth::id()]);
-
         }
 
         return $organization->id;
@@ -199,8 +192,7 @@ class Github implements ProviderInterface
         $organization = Organization::where('username', $owner)
             ->where('provider', 'github')->first()->users();
 
-        if(!$organization->where('user_id', Auth::user()->id)->count())
-        {
+        if (!$organization->userActive()->count()) {
             $organization->attach($userId);
         }
     }

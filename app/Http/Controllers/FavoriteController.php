@@ -9,7 +9,6 @@
 namespace GitScrum\Http\Controllers;
 
 use GitScrum\Models\Favorite;
-use Auth;
 
 class FavoriteController extends Controller
 {
@@ -27,8 +26,7 @@ class FavoriteController extends Controller
     public function destroy($type, $id)
     {
         $favorite = Favorite::where('favoriteable_id', $id)
-            ->where('favoriteable_type', $type)
-            ->where('user_id', Auth::user()->id)->first();
+            ->where('favoriteable_type', $type)->userActive()->first();
 
         $favorite->delete();
 
