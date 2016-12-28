@@ -10,7 +10,6 @@ namespace GitScrum\Http\Controllers;
 
 use GitScrum\Http\Requests\CommentRequest;
 use GitScrum\Models\Comment;
-use Auth;
 
 class CommentController extends Controller
 {
@@ -39,8 +38,7 @@ class CommentController extends Controller
 
     public function update(CommentRequest $request, $id)
     {
-        $comment = Comment::find($id)
-            ->where('user_id', Auth::user()->id)->firstOrFail();
+        $comment = Comment::find($id)->userActive()->firstOrFail();
         $comment->comment = $request->comment;
         $comment->save();
 
@@ -49,8 +47,7 @@ class CommentController extends Controller
 
     public function destroy($id)
     {
-        $comment = Comment::find($id)
-            ->where('user_id', Auth::user()->id)->firstOrFail();
+        $comment = Comment::find($id)->userActive()->firstOrFail();
 
         $comment->delete();
 

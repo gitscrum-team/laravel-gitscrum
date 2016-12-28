@@ -10,9 +10,11 @@ namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use GitScrum\Scopes\GlobalScope;
 
 class User extends Authenticatable
 {
+    use GlobalScope;
     /**
      * The database table used by the model.
      *
@@ -155,7 +157,7 @@ class User extends Authenticatable
         return $this->team()->map(function ($obj) use ($user_id) {
             $statuses = $obj->statuses;
             if (!is_null($user_id)) {
-                $statuses = $statuses->where('user_id', $user_id);
+                $statuses = $statuses->userActive($user_id);
             }
 
             return $statuses;

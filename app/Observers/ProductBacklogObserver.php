@@ -17,8 +17,7 @@ class ProductBacklogObserver
 {
     public function creating(ProductBacklog $productBacklog)
     {
-        if(!isset($productBacklog->user_id))
-        {
+        if (!isset($productBacklog->user_id)) {
             $productBacklog->user_id = Auth::user()->id;
         }
 

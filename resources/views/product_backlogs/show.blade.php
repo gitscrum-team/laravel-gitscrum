@@ -20,6 +20,13 @@
 @endsection
 
 @section('content')
+
+<div class="main-title">
+    <h4>
+        {{$productBacklog->title}}
+    </h4>
+</div>
+
 <div class="col-lg-4">
 
     <a href="{{route('user_stories.create', ['slug_user_story' => $productBacklog->slug])}}"
@@ -40,8 +47,6 @@
 </div>
 
 <div class="col-lg-8">
-
-    <h3 class="lead mtn ptn pbl">{{$productBacklog->title}}</h3>
 
     <div class="well">
         <h6>{{trans('Clone using ssh or https')}}</h6>
