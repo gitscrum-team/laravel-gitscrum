@@ -46,4 +46,10 @@ class SprintTest extends TestCase
         $this->assertNull($sprint->closed_at);
     }
 
+    public function test_list_total()
+    {
+        $sprints = Sprint::all();
+        $this->assertGreaterThan(0, $sprints->count());
+    }
+
 }

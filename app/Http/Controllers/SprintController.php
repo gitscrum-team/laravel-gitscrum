@@ -24,8 +24,7 @@ class SprintController extends Controller
      */
     public function index($mode = 'default', $slug_product_backlog = null)
     {
-        $sprints = Sprint::orderby('date_start', 'DESC')
-            ->orderby('date_finish', 'ASC');
+        $sprints = Sprint::order();
 
         if (!is_null($slug_product_backlog)) {
             $sprints = $sprints->join('product_backlogs', 'product_backlogs.id', 'sprints.product_backlog_id')
