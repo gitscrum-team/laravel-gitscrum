@@ -56,15 +56,29 @@
 
 <div class="col-lg-4">
 
-    <div class="">
-    @foreach ($configStatus as $status)
-        <a href="{{route('issues.status.update', ['slug' => $issue->slug,
-            'status' => $status->id])}}" class="font-bold btn btn-w-m
-            @if($status->id==$issue->config_status_id) btn-success @else btn-default @endif
-                btn-block" style="border-left:10px solid #{{$status->color}}"
-                type="button">{{$status->title}}</a>
-    @endforeach
-    </div>
+    @if(!isset($issue->sprint) || is_null($issue->sprint->closed_at))
+        <div class="">
+        @foreach ($configStatus as $status)
+            <a href="{{route('issues.status.update', ['slug' => $issue->slug,
+                'status' => $status->id])}}" class="font-bold btn btn-w-m
+                @if($status->id==$issue->config_status_id) btn-success @else btn-default @endif
+                    btn-block" style="border-left:10px solid #{{$status->color}}"
+                    type="button">{{$status->title}}</a>
+        @endforeach
+        </div>
+    @else
+
+        <div class="mb20">
+            <button class="font-bold btn btn-w-m btn-success btn-block" style="border-left:10px solid #{{$issue->status->color}}"
+                    type="button">{{$issue->status->title}}</button>
+        </div>
+
+        @include('errors.notification-message', ['notification' => ['message' => trans('This issue is in a sprint that is ').
+            '<strong>'.$issue->sprint->status->title.'</strong>.'.
+            '<p><a href="'.route('sprints.show', ['slug'=>$issue->sprint->slug]).'" class="font-bold"></p>'.
+            trans('Change Sprint Status') . '</a>',
+            'alert' => 'info', 'class' => 'padding-none show-sprint-issue']])
+    @endif
 
     @if ( $issue->closed_at )
         <a href="{{route('issues.create', ['slug_sprint'=>0, 'slug_user_story'=>0, 'parent_id' => $issue->id])}}"

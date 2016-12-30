@@ -76,7 +76,7 @@ class ConfigStatusesTableSeeder extends Seeder
                 'position' => 1,
                 'color' => '079a0d',
                 'is_closed' => null,
-                'default' => 1,
+                'default' => null,
             ),
             6 => array(
                 'id' => 7,
@@ -97,8 +97,8 @@ class ConfigStatusesTableSeeder extends Seeder
                 'description' => 'standby a sprint',
                 'position' => 2,
                 'color' => '8c023f',
-                'is_closed' => null,
-                'default' => null,
+                'is_closed' => 1,
+                'default' => 1,
             ),
             8 => array(
                 'id' => 9,
