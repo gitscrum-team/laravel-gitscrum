@@ -50,11 +50,15 @@ class IssueRequest extends FormRequest
 
     protected function getValidatorInstance()
     {
-        $data = $this->all();
 
+        $data = $this->all();
         if (isset($data['slug_sprint']) && !empty($data['slug_sprint'])) {
             $data['sprint_id'] = Sprint::slug($data['slug_sprint'])->first()->id;
             unset($data['slug_sprint']);
+        }
+
+        if (isset($data['sprint_id']) && empty($data['sprint_id'])) {
+            $data['sprint_id'] = null;
         }
 
         $this->getInputSource()->replace($data);

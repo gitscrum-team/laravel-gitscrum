@@ -24,6 +24,7 @@
         <label class="col-sm-12">{{trans('Sprint Backlog')}}</label>
         <div class="col-sm-12">
             <select name="sprint_id" class="form-control">
+                <option value=''>Not yet</option>
                 @foreach ($productBacklogs as $backlog)
 
                     @if ( $backlog->sprints->count() )
@@ -31,7 +32,14 @@
                     @endif
 
                     @foreach ($backlog->sprints as $productBacklog_sprint)
-                    <option value="{{$productBacklog_sprint->id}}">{{$productBacklog_sprint->title}}</option>
+                        <option
+                            value="{{$productBacklog_sprint->id}}"
+                            @if(isset($issue) && $issue->sprint_id == $productBacklog_sprint->id)
+                                selected = "selected"
+                            @endif
+                        >
+                            {{$productBacklog_sprint->title}}
+                        </option>
                     @endforeach
 
                     @if ($backlog->sprints->count())

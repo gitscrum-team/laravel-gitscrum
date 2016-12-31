@@ -113,11 +113,15 @@ class User extends Authenticatable
         })->flatten(1)->unique('id');
     }
 
-    public function productBacklogs($product_backlog_id = null)
+    public function productBacklogs($product_backlog_id = null, $withClosed = true)
     {
-        return $this->organizations->map(function ($organization) use ($product_backlog_id) {
+        return $this->organizations->map(function ($organization) use ($product_backlog_id, $withClosed) {
             $obj = $organization->productBacklog()
-                ->with('sprints')
+                ->with(['sprints' => function ($query) use ($withClosed) {
+                    if (!$withClosed) {
+                        $query->whereNotIn('config_status_id', [7]);
+                    }
+                }])
                 ->with('favorite')
                 ->with('organization')
                 ->with('issues')->get();

@@ -140,7 +140,6 @@ class IssueController extends Controller
         $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
 
         $configStatus = ConfigStatus::type('issue')->get();
-
         return view('issues.show')
             ->with('issue', $issue)
             ->with('usersByOrganization', $usersByOrganization)
@@ -168,8 +167,10 @@ class IssueController extends Controller
 
         $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
 
+        $productBacklogs = Auth::user()->productBacklogs($issue->productBacklog->id, false);
+
         return view('issues.edit')
-            ->with('productBacklogs', $issue->productBacklog->id)
+            ->with('productBacklogs', $productBacklogs)
             ->with('userStory', $issue->userStory)
             ->with('slug', isset($issue->sprint->slug) ? $issue->sprint->slug : null)
             ->with('issue_types', $issue_types)
@@ -190,6 +191,7 @@ class IssueController extends Controller
     public function update(IssueRequest $request, $slug)
     {
         $issue = Issue::slug($slug)->first();
+
         $issue->update($request->all());
 
         if (is_array($request->members)) {
