@@ -116,12 +116,9 @@ class IssueController extends Controller
 
         $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
 
-        $configStatus = ConfigStatus::type('issue')->get();
-
         return view('issues.show')
             ->with('issue', $issue)
-            ->with('usersByOrganization', $usersByOrganization)
-            ->with('configStatus', $configStatus);
+            ->with('usersByOrganization', $usersByOrganization);
     }
 
     public function edit($slug)

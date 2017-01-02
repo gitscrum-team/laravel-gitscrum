@@ -161,21 +161,8 @@
             <div class="tab-content">
                 <div id="tab-issues" class="tab-pane active">
                     <div class="panel-body">
-
                         @include('partials.boxes.search-min')
-
                         @include('partials.boxes.issue', ['list' => $sprint->issues])
-
-                        <div class="project-list">
-
-                            <table class="table table-hover issue-tracker">
-                                <tbody>
-                                @each('partials.lists.issues', $sprint->issues, 'list', 'partials.lists.no-items')
-                                </tbody>
-                            </table>
-
-                        </div>
-
                     </div>
                 </div>
                 <div id="tab-comments" class="tab-pane">

@@ -57,17 +57,18 @@
 <div class="col-lg-4">
 
     @if(!isset($issue->sprint) || is_null($issue->sprint->closed_at))
-        <div class="">
-        @foreach ($configStatus as $status)
-            <a href="{{route('issues.status.update', ['slug' => $issue->slug,
-                'status' => $status->id])}}" class="font-bold btn btn-w-m
-                @if($status->id==$issue->config_status_id) btn-success @else btn-default @endif
-                    btn-block" style="border-left:10px solid #{{$status->color}}"
-                    type="button">{{$status->title}}</a>
+        <ul class="mb20">
+        @foreach ($issue->statusAvailable() as $status)
+            <li>
+                <a href="{{route('issues.status.update', ['slug' => $issue->slug,
+                    'status' => $status->id])}}" class="font-bold btn btn-w-m
+                    @if($status->id==$issue->config_status_id) btn-success @else btn-default @endif
+                        btn-block" style="border-left:10px solid #{{$status->color}}"
+                        type="button">{{$status->title}}</a>
+            </li>
         @endforeach
-        </div>
+        </ul>
     @else
-
         <div class="mb20">
             <button class="font-bold btn btn-w-m btn-success btn-block" style="border-left:10px solid #{{$issue->status->color}}"
                     type="button">{{$issue->status->title}}</button>
@@ -82,7 +83,7 @@
 
     @if ( $issue->closed_at )
         <a href="{{route('issues.create', ['slug_sprint'=>0, 'slug_user_story'=>0, 'parent_id' => $issue->id])}}"
-            class="mtl mbl btn btn-block btn-danger"
+            class="btn btn-block btn-danger mb20"
             data-toggle="modal" data-target="#modalLarge"
             type="button">{{trans('Defect Detected')}}</a>
     @endif

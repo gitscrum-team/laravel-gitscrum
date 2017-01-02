@@ -151,4 +151,9 @@ class Issue extends Model
     {
         return isset($this->attributes['number']) ? $this->attributes['number'] : null;
     }
+
+    public function statusAvailable()
+	{
+		return ConfigStatus::type('issue')->get();
+	}
 }
