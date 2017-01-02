@@ -9,7 +9,6 @@ a{
   -ms-transition:color .1s ease-out, background .2s ease-in;
   -moz-transition:color .1s ease-out, background .2s ease-in;
   -webkit-transition:color .1s ease-out, background .2s ease-in;
-  /* ...and now override with proper CSS property */
   transition:color .1s ease-out, background .2s ease-in;
 }
 
@@ -101,7 +100,7 @@ header{
 .breadcrumb-area{
 	height:40px;
 	padding:5px 0px;
-	margin: 0 0 20px;
+	margin: 0;
 	.col-lg-6{
 		padding:0 14px;
 	}
@@ -127,13 +126,19 @@ header{
 	.btn-group{
 		top:1px;
 	}
-	.form-delete button{
-		top:1px;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-		padding: 2px 10px 4px 12px;
-		color:#eef2f6;
-		background:#474849;
+	.form-delete{
+		margin-top:2px;
+		margin-left:12px;
+		border-left:1px solid #c0c0c0;
+		button{
+			top:2px;
+			padding: 0 10px 4px 12px;
+			border-color:transparent;
+			background:transparent;
+			i{
+				font-size:14px;
+			}
+		}
 	}
 }
 
@@ -200,24 +205,29 @@ header{
 }
 
 .main-title{
-    min-height:30px;
-	margin:0 15px 20px;
-	h4{
-		margin: 0;
-		font-size:20px;
+	margin:0 0 20px;
+	padding:25px 0;
+	font-size:20px;
+	.container{
+		padding:0 28px;
 	}
 	.label{
+		border-radius: 6px;
 		position: relative;
 		padding:6px 10px 8px;
+		border:2px solid transparent;
+	}
+	a{
+		&:hover,
+		&:focus{
+			text-decoration: none;
+			opacity: 0.8;
+		}
 	}
 	.btn-group{
-		top:-2px;
+		top:-1px;
 		.btn{
-			border-color:#fff;
-			color:#fff;
-			&[data-toggle="dropdown"]:hover{
-				opacity: 0.6;
-			}
+			border-radius: 6px;
 		}
 	}
 	.dropdown-menu{
@@ -297,6 +307,10 @@ header{
 
 .mb20{
     margin-bottom:20px;
+}
+
+.mb35{
+    margin-bottom:35px;
 }
 
 .list-group-item{
@@ -555,6 +569,12 @@ header{
 	}
 }
 
+.frm-comment{
+	.btn{
+		margin:8px 0;
+	}
+}
+
 .comment-element{
 	padding:0;
 	margin:20px 0 20px;
@@ -583,4 +603,8 @@ header{
 
 .font-bold{
 	font-weight: 700;
+}
+
+.tag-list{
+	font-size:14px;
 }

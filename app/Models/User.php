@@ -123,7 +123,7 @@ class User extends Authenticatable
                 ->with('issues')->get();
 
             if (!is_null($product_backlog_id)) {
-                $obj = $obj->find($product_backlog_id);
+                $obj = $obj->where('id', $product_backlog_id);
             }
 
             return $obj;

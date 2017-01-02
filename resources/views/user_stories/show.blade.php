@@ -13,31 +13,34 @@
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $userStory->favorite, 'type' => 'user_story',
         'id' => $userStory->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
-    &nbsp;&nbsp;
-    <div class="btn-group">
-        <a href="{{route('user_stories.edit', ['slug' => $userStory->slug])}}"
-            class="btn btn-sm btn-primary"
-            data-toggle="modal" data-target="#modalLarge">
-            <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit User Story')}}</a>
-        <a href="{{route('user_stories.edit', ['slug' => $userStory->slug])}}"
-            class="btn btn-sm btn-default">
+
+    <a href="{{route('user_stories.edit', ['slug' => $userStory->slug])}}"
+        class="btn btn-sm btn-primary"
+        data-toggle="modal" data-target="#modalLarge">
+        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit User Story')}}</a>
+
+    <form action="{{route('user_stories.destroy')}}" method="POST" class="form-delete pull-right">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="hidden" name="slug" value="{{$userStory->slug}}" />
+        <button class="btn btn-sm btn-default" type="submit">
             <i class="fa fa-trash" aria-hidden="true"></i></a>
-    </div>
+        </button>
+    </form>
 </div>
 @endsection
 
-@section('content')
-<div class="main-title">
-    <h4>
-        <span class="label label-danger pull-right"
-         style="font-size:16px;margin-top:3px;background-color:#{{$userStory->priority->color}}">
-            {{$userStory->priority->title}}</span>{{$userStory->title}}
-    </h4>
-</div>
+@section('main-title')
+<span class="label label-danger"
+     style="background-color:#{{$userStory->priority->color}}">
+        {{$userStory->priority->title}}</span>
+<span>{{$userStory->title}}</span>
+@endsection
 
+@section('content')
 <div class="col-lg-4">
 
-    <div class="">
+    <div class="mb20">
         <a href="{{route('issues.create', ['slug_sprint' => '0', 'slug_user_story' => $userStory->slug])}}"
             class="btn btn-block btn-primary"
             data-toggle="modal" data-target="#modalLarge">
@@ -68,16 +71,21 @@
         </p>
     </div>
 
-    <p class="description"><small>{{trans('Additional information')}}</small>
-        <span>{!! nl2br(e($userStory->description)) !!}</span></p>
-
-    @if ( $userStory->acceptance_criteria )
-    <br />
-    <h6 class="mbn pbn">{{trans('Acceptance criteria')}}</h6>
-    <p class="">{!! nl2br(e($userStory->acceptance_criteria)) !!}</p>
+    @if(!empty($productBacklog->description))
+    <p class="description">
+        <small>{{trans('Additional information')}}</small>
+        <span>{!! nl2br(e($userStory->description)) !!}<span>
+    </p>
     @endif
 
-    <div class="">
+    @if ( $userStory->acceptance_criteria )
+    <p class="description">
+        <small>{{trans('Acceptance criteria')}}</small>
+        <span>{!! nl2br(e($userStory->acceptance_criteria)) !!}</span>
+    </p>
+    @endif
+
+    <div class="mb35">
         @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($userStory, 'issues')])
     </div>
 
@@ -92,17 +100,7 @@
     <div class="tab-content">
         <div id="tab-issues" class="tab-pane active">
             <div class="panel-body">
-
-                <div class="project-list">
-
-                    <table class="table table-hover issue-tracker">
-                        <tbody>
-                        @each('partials.lists.issues', $userStory->issues, 'list', 'partials.lists.no-items')
-                        </tbody>
-                    </table>
-
-                </div>
-
+                @include('partials.boxes.issue', ['list' => $userStory->issues, 'messageEmpty' => trans('This does not have any issue yet')])
             </div>
         </div>
         <div id="tab-comments" class="tab-pane">

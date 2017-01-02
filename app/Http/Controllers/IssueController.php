@@ -209,9 +209,9 @@ class IssueController extends Controller
         }
     }
 
-    public function destroy($slug)
+    public function destroy(Request $request)
     {
-        $issue = Issue::slug($slug)->firstOrFail();
+        $issue = Issue::slug($request->slug)->firstOrFail();
 
         if (isset($issue->userStory)) {
             $redirect = redirect()->route('user_stories.show', ['slug' => $issue->userStory->slug]);

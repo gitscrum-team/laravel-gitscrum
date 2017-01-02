@@ -140,3 +140,34 @@ header{
 .list-group-item{
 	border-color:#E6E9EE;
 }
+
+
+.main-title{
+	background: -moz-linear-gradient(top, rgba(164,164,164, 0.4) 0%, rgba(0,0,0,0) 45%);
+	background: -webkit-linear-gradient(top, rgba(164,164,164, 0.4) 0%,rgba(0,0,0,0) 45%);
+	background: linear-gradient(to bottom, rgba(164,164,164, 0.4) 0%,rgba(0,0,0,0) 45%);
+	border-color: rgba(164,164,164, 0.7);
+	.label{
+		border-color:#fff;
+	}
+	a{
+		&:hover,
+		&:focus{
+			text-shadow: 2px 2px #333;
+		}
+	}
+	.dropdown-menu{
+		a{
+			&:hover,
+			&:focus{
+				text-shadow: none;
+			}
+		}
+	}
+	.btn-group{
+		.btn{
+			border-color:#fff;
+			color:#fff;
+		}
+	}
+}

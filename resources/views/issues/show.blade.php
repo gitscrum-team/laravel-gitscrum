@@ -14,38 +14,37 @@
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $issue->favorite, 'type' => 'issue',
         'id' => $issue->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
-    &nbsp;&nbsp;
-    <div class="btn-group">
-        <a href="{{route('issues.edit', ['slug' => $issue->slug])}}"
-            class="btn btn-sm btn-primary"
-            data-toggle="modal" data-target="#modalLarge">
-            <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Issue')}}</a>
-        <a href="{{route('issues.destroy', ['slug' => $issue->slug])}}"
-            class="btn btn-sm btn-default">
+
+    <a href="{{route('issues.edit', ['slug' => $issue->slug])}}"
+        class="btn btn-sm btn-primary"
+        data-toggle="modal" data-target="#modalLarge">
+        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Issue')}}</a>
+
+    <form action="{{route('issues.destroy')}}" method="POST" class="form-delete pull-right">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="hidden" name="slug" value="{{$issue->slug}}" />
+        <button class="btn btn-sm btn-default" type="submit">
             <i class="fa fa-trash" aria-hidden="true"></i></a>
-    </div>
+        </button>
+    </form>
 </div>
 @endsection
 
+@section('main-title')
+
+<span class="label label-warning mrm">
+    Effort: {{$issue->configEffort->title}}</span>
+<span @if ( $issue->closed_at ) style="text-decoration: line-through;" @endif>
+    {{$issue->title}}</span>
+<a href="{{route('issue_types.index', ['sprint_slug' => $issue->sprintSlug,
+    'type_slug' => $issue->type->slug])}}" class="pull-right">
+    <span class="label" style="background-color:#{{$issue->type->color}}">
+    {{$issue->type->title}}</span></a>
+
+@endsection
+
 @section('content')
-
-<div class="main-title">
-    <h4>
-        <span class="label label-warning mrm">
-            Effort: {{$issue->configEffort->title}}</span>
-
-        <a href="{{route('issue_types.index', ['sprint_slug' => $issue->sprintSlug,
-            'type_slug' => $issue->type->slug])}}" class="pull-right">
-
-        <span class="label" style="background-color:#{{$issue->type->color}}">
-            {{$issue->type->title}}</span></a>
-
-        <span @if ( $issue->closed_at ) style="text-decoration: line-through;" @endif>
-            {{$issue->title}}</span>
-
-    </h4>
-</div>
-
 
 <div class="col-lg-4">
 
@@ -162,10 +161,14 @@
 
     </div>
 
-    <p class="description"><small>{{trans('description')}}</small>
-        <span>{!! nl2br(e($issue->description)) !!}</span></p>
+    @if(!empty($issue->description))
+    <p class="description">
+        <small>{{trans('Description')}}</small>
+        <span>{!! nl2br(e($issue->description)) !!}<span>
+    </p>
+    @endif
 
-        <div class="clearfix"></div>
+    <div class="clearfix"></div>
 
         <div class="tabs-container">
             <ul class="nav nav-tabs">
