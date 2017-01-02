@@ -8,12 +8,11 @@
         @if(isset($sprint->productBacklog->slug))
         <a href="{{route('product_backlogs.show', ['slug'=>$sprint->productBacklog->slug])}}">{{trans('Product Backlog')}}</a> &raquo;
         @endif
-        {{trans('Sprint Backlog')}} <span class="label label-default">{{$sprint->visibility}}</span></h3>
+        <span>{{trans('Sprint Backlog')}}</span></h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $sprint->favorite, 'type' => 'sprint',
         'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
-    &nbsp;&nbsp;
     <div class="btn-group">
         <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
             class="btn btn-sm btn-primary"
@@ -36,9 +35,9 @@
 <div class="main-title">
     <h4>
         <div class="btn-group pull-right">
-            <button type="button" class="btn btn-primary" style="background-color:#{{$sprint->status->color}}">
+            <button type="button" class="btn" style="background-color:#{{$sprint->status->color}}">
                 <strong>{{$sprint->status->title}}</strong></button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"  style="background-color:#{{$sprint->status->color}}">
                 <span class="caret"></span>
             </button>
@@ -53,6 +52,7 @@
             </ul>
         </div>
 
+        <span class="label label-default">{{$sprint->visibility}}</span>
         <span @if ( $sprint->closed_at ) style="text-decoration: line-through;" @endif>
         {{$sprint->title}}</span>
     </h4>

@@ -106,21 +106,40 @@ header{
 		padding:0 14px;
 	}
 	h3{
-		margin:6px 0 6px 0;
-		font-size: 12pt;
-	}
-	.btn{
-		i{
-			margin-right: 4px;
+		margin:8px 0 6px 0;
+		font-size: 13px;
+		a{
+			margin-right:5px;
+		}
+		span{
+			margin-left:5px;
 		}
 	}
+	button, .btn{
+		top:2px;
+		position: relative;
+    	padding: 1px 10px 3px;
+		i{
+			margin-right: 4px;
+			font-size:10px;
+		}
+	}
+	.btn-group{
+		top:1px;
+	}
 	.form-delete button{
+		top:1px;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
-		padding: 6px 6px 6px 8px;
+		padding: 2px 10px 4px 12px;
 		color:#eef2f6;
 		background:#474849;
 	}
+}
+
+.btn-outline{
+	background-color: transparent;
+	color:#c9302c;
 }
 
 .content-area{
@@ -186,14 +205,33 @@ header{
 	h4{
 		margin: 0;
 		font-size:20px;
-		.label{
-			position: relative;
-			top:-6px;
-			margin-left:10px;
+	}
+	.label{
+		position: relative;
+		padding:6px 10px 8px;
+	}
+	.btn-group{
+		top:-2px;
+		.btn{
+			border-color:#fff;
+			color:#fff;
+			&[data-toggle="dropdown"]:hover{
+				opacity: 0.6;
+			}
 		}
-        .pull-right{
-            top:-6px;
-        }
+	}
+	.dropdown-menu{
+		font-size:12px;
+		li{
+			padding:0;
+			margin:4px 0;
+		}
+	}
+}
+
+.list-issue-config-status{
+	li{
+		margin-bottom: 5px;
 	}
 }
 

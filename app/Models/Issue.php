@@ -152,8 +152,18 @@ class Issue extends Model
         return isset($this->attributes['number']) ? $this->attributes['number'] : null;
     }
 
-    public function statusAvailable()
+    public function getStatusAvailableAttribute()
 	{
 		return ConfigStatus::type('issue')->get();
+	}
+
+    public function getSprintSlugAttribute()
+	{
+		return isset($this->sprint->slug) ? $this->sprint->slug : 0;
+	}
+
+    public function getSprintClosedAttribute()
+	{
+		return isset($this->sprint->closed_at) ? $this->sprint->closed_at : null;
 	}
 }

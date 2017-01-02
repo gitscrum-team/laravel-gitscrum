@@ -1,6 +1,6 @@
 <div class="bx-attachment">
-    <h6>{{trans('General Attachments')}}</h6>
-    <ul class="list-group" style="padding: 0">
+    <h4>{{trans('General Attachments')}}</h4>
+    <ul class="list-group">
         @each('partials.lists.attachments-min', $list, 'attachment', 'partials.lists.no-items')
     </ul>
 

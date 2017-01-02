@@ -10,7 +10,7 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                @foreach ($list->statusAvailable() as $status)
+                @foreach ($list->statusAvailable as $status)
                     <li>
                         <a href="{{route('issues.status.update', ['slug' => $list->slug,
                             'status' => $status->id])}}" class="font-bold btn btn-w-m
