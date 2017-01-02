@@ -13,51 +13,46 @@
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $sprint->favorite, 'type' => 'sprint',
         'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
-    <div class="btn-group">
-        <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
-            class="btn btn-sm btn-primary"
-            data-toggle="modal" data-target="#modalLarge">
-            <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Sprint Backlog')}}</a>
-        <form action="{{route('sprints.delete')}}" method="POST" class="form-delete pull-right">
-            {{ csrf_field() }}
-            <input type="hidden" name="_method" value="DELETE" />
-            <input type="hidden" name="slug" value="{{$sprint->slug}}" />
-            <button class="btn btn-sm btn-default btn-submit-form" type="submit">
-                <i class="fa fa-trash" aria-hidden="true"></i></a>
-            </button>
-        </form>
-    </div>
+    <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
+        class="btn btn-sm btn-primary"
+        data-toggle="modal" data-target="#modalLarge">
+        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Sprint Backlog')}}</a>
+    <form action="{{route('sprints.destroy')}}" method="POST" class="form-delete pull-right">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="hidden" name="slug" value="{{$sprint->slug}}" />
+        <button class="btn btn-sm btn-default" type="submit">
+            <i class="fa fa-trash" aria-hidden="true"></i></a>
+        </button>
+    </form>
+</div>
+@endsection
+
+@section('main-title')
+<span class="label label-default">{{$sprint->visibility}}</span>
+<span @if ( $sprint->closed_at ) style="text-decoration: line-through;" @endif>
+    {{$sprint->title}}</span>
+
+<div class="btn-group pull-right">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="background-color:#{{$sprint->status->color}}">
+            <strong>{{$sprint->status->title}}</strong>
+            &nbsp;
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            @foreach ($configStatus as $value)
+                @if($value->is_closed)
+                    <li role="separator" class="divider"></li>
+                @endif
+            <li><a href="{{route('sprints.status.update', ['slug'=>$sprint->slug, 'status'=>$value->id])}}">
+                {{$value->title}}</a></li>
+            @endforeach
+        </ul>
 </div>
 @endsection
 
 @section('content')
-
-<div class="main-title">
-    <h4>
-        <div class="btn-group pull-right">
-            <button type="button" class="btn" style="background-color:#{{$sprint->status->color}}">
-                <strong>{{$sprint->status->title}}</strong></button>
-            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"  style="background-color:#{{$sprint->status->color}}">
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                @foreach ($configStatus as $value)
-                    @if($value->is_closed)
-                        <li role="separator" class="divider"></li>
-                    @endif
-                <li><a href="{{route('sprints.status.update', ['slug'=>$sprint->slug, 'status'=>$value->id])}}">
-                    {{$value->title}}</a></li>
-                @endforeach
-            </ul>
-        </div>
-
-        <span class="label label-default">{{$sprint->visibility}}</span>
-        <span @if ( $sprint->closed_at ) style="text-decoration: line-through;" @endif>
-        {{$sprint->title}}</span>
-    </h4>
-</div>
-
 <div class="col-lg-4">
 
     <a href="{{route('issues.index', ['slug'=>$sprint->slug])}}"
@@ -138,11 +133,16 @@
 
     </div>
 
-    <p class="description"><small>{{trans('Description')}}</small><span>{!! nl2br(e($sprint->description)) !!}<span></p>
+    @if(!empty($sprint->description))
+    <p class="description">
+        <small>{{trans('Description')}}</small>
+        <span>{!! nl2br(e($sprint->description)) !!}<span>
+    </p>
+    @endif
 
-        @include('partials.boxes.burndown', ['title' => ('Burndown Chart'), 'list' => Helper::burndown($sprint)])
+    @include('partials.boxes.burndown', ['title' => ('Burndown Chart'), 'list' => Helper::burndown($sprint)])
 
-        <div class="clearfix"></div>
+    <div class="clearfix"></div>
 
         <div class="tabs-container mtl">
 
@@ -162,7 +162,7 @@
                 <div id="tab-issues" class="tab-pane active">
                     <div class="panel-body">
                         @include('partials.boxes.search-min')
-                        @include('partials.boxes.issue', ['list' => $sprint->issues])
+                        @include('partials.boxes.issue', ['list' => $sprint->issues, 'messageEmpty' => trans('This does not have any issue yet')])
                     </div>
                 </div>
                 <div id="tab-comments" class="tab-pane">

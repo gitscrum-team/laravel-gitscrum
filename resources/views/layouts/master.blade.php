@@ -12,6 +12,12 @@
 
     @endif
 
+    <div class="main-title">
+        <div class="container">
+        @yield('main-title')
+        </div>
+    </div>
+
     <div class="content-area">
         <div class="container">
             @include('errors.validation-message')
