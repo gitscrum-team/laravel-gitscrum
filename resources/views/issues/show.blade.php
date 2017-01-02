@@ -31,21 +31,14 @@
 
 <div class="main-title">
     <h4>
-        @if( isset($issue->sprint->slug) )
-        <a href="{{route('issue_types.index', ['sprint_slug' => $issue->sprint->slug,
-            'type_slug' => $issue->type->slug])}}">
-        @else
-        <a href="{{route('issue_types.index', ['sprint_slug' => '0',
-                'type_slug' => $issue->type->slug])}}">
-        @endif
-
-        <span class="label label-danger pull-right"
-            style="font-size:16px;margin-top:3px;background-color:#{{$issue->type->color}}">
-            {{$issue->type->title}}</span></a>
-
-        <span class="label label-warning pull-right mrm"
-            style="font-size:16px;margin-top:3px;">
+        <span class="label label-warning mrm">
             Effort: {{$issue->configEffort->title}}</span>
+
+        <a href="{{route('issue_types.index', ['sprint_slug' => $issue->sprintSlug,
+            'type_slug' => $issue->type->slug])}}" class="pull-right">
+
+        <span class="label" style="background-color:#{{$issue->type->color}}">
+            {{$issue->type->title}}</span></a>
 
         <span @if ( $issue->closed_at ) style="text-decoration: line-through;" @endif>
             {{$issue->title}}</span>
@@ -56,20 +49,21 @@
 
 <div class="col-lg-4">
 
-    @if(!isset($issue->sprint) || is_null($issue->sprint->closed_at))
-        <div class="">
-        @foreach ($configStatus as $status)
-            <a href="{{route('issues.status.update', ['slug' => $issue->slug,
-                'status' => $status->id])}}" class="font-bold btn btn-w-m
-                @if($status->id==$issue->config_status_id) btn-success @else btn-default @endif
-                    btn-block" style="border-left:10px solid #{{$status->color}}"
-                    type="button">{{$status->title}}</a>
+    @if(is_null($issue->sprintClosed))
+        <ul class="mb20 list-issue-config-status">
+        @foreach ($issue->statusAvailable as $status)
+            <li>
+                <a href="{{route('issues.status.update', ['slug' => $issue->slug,
+                    'status' => $status->id])}}" class="font-bold btn
+                    @if($status->id==$issue->config_status_id) btn-success @else btn-default @endif
+                        btn-block" style="border-left:10px solid #{{$status->color}}"
+                        type="button">{{$status->title}}</a>
+            </li>
         @endforeach
-        </div>
+        </ul>
     @else
-
         <div class="mb20">
-            <button class="font-bold btn btn-w-m btn-success btn-block" style="border-left:10px solid #{{$issue->status->color}}"
+            <button class="font-bold btn btn-success btn-block" style="border-left:10px solid #{{$issue->status->color}}"
                     type="button">{{$issue->status->title}}</button>
         </div>
 
@@ -82,7 +76,7 @@
 
     @if ( $issue->closed_at )
         <a href="{{route('issues.create', ['slug_sprint'=>0, 'slug_user_story'=>0, 'parent_id' => $issue->id])}}"
-            class="mtl mbl btn btn-block btn-danger"
+            class="btn btn-block btn-danger mb20"
             data-toggle="modal" data-target="#modalLarge"
             type="button">{{trans('Defect Detected')}}</a>
     @endif
@@ -98,11 +92,11 @@
 
         @include('partials.boxes.attachment', ['id'=>$issue->id, 'type'=>'issue', 'list' => $issue->attachments])
 
-        <h6>{{trans('Assigned to')}}
+        <h4>{{trans('Assigned to')}}
             <span class="pull-right">
                 <a href="" class="btn btn-primary btn-xs">{{trans('Add Member')}}</a>
             </span>
-        </h6>
+        </h4>
 
         <div class="form-group">
             <form action="{{route('user_issue.update', ['slug'=>$issue->slug])}}" method="post">
