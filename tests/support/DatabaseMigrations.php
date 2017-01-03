@@ -8,31 +8,13 @@ trait DatabaseMigrations
     {
         if (!self::$dbInited) {
             fwrite(STDOUT, 'Preparing database'."\n");
-            $path = storage_path().'/framework/cache/database.sqlite';
-            $this->deleteDatabase($path);
-            $this->createDatabase($path);
-            $this->runDatabaseMigrations();
+            $this->artisan('migrate:refresh');
+            $this->artisan('db:seed');
             $user = $this->createUser();
             $this->createOrganization()->users()->sync([$user->id]);
             $this->createProductBacklog();
             self::$dbInited = true;
         }
-    }
-
-    private function deleteDatabase($path)
-    {
-        shell_exec('rm '.$path);
-    }
-
-    private function createDatabase($path)
-    {
-        shell_exec('touch '.$path);
-    }
-
-    private function runDatabaseMigrations()
-    {
-        $this->artisan('migrate');
-        $this->artisan('db:seed');
     }
 
     private function createOrganization()

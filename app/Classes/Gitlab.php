@@ -86,7 +86,7 @@ class Gitlab implements ProviderInterface
         ];
     }
 
-    public function readRepositories()
+    public function readRepositories($page = 1, &$repos = null)
     {
         $repos = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects?access_token='.Auth::user()->token));
 

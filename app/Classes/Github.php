@@ -80,13 +80,24 @@ class Github implements ProviderInterface
         ];
     }
 
-    public function readRepositories()
+    public function readRepositories($page = 1, &$repos = null)
     {
-        $response = collect(Helper::request('https://api.github.com/user/repos'))->map(function ($repo) {
+
+        $response = collect(Helper::request('https://api.github.com/user/repos?page='. $page))->map(function ($repo) {
             return $this->tplRepository($repo);
         });
 
-        return $response;
+        if(is_null($repos)){
+            $repos = collect();
+        }
+
+        $repos->push($response);
+
+        if ( $response->count() == 30){
+            $this->readRepositories(++$page, $repos);
+        }
+
+        return $repos->flatten(1)->sortBy('title');
     }
 
     public function createOrUpdateRepository($owner, $obj, $oldTitle = null)
@@ -162,15 +173,15 @@ class Github implements ProviderInterface
     public function readCollaborators($owner, $repo, $providerId = null)
     {
         $ids = collect();
-        $collaborators = collect(Helper::request('https://api.github.com/repos/'.$owner.'/'.$repo.'/collaborators'))
+
+        collect(Helper::request('https://api.github.com/repos/'.$owner.'/'.$repo.'/collaborators'))
             ->map(function($collaborator) use ($ids){
-            $data = $this->tplUser($collaborator);
 
             $user = User::where('username', $collaborator->login)
                 ->where('provider', 'github')->first();
 
             if (!isset($user)) {
-                $user = User::create($data);
+                $user = User::create($this->tplUser($collaborator));
             }
 
             $ids->push($user->id);
@@ -183,22 +194,21 @@ class Github implements ProviderInterface
 
     }
 
-    public function createBranches($owner, $product_backlog_id, $repo, $providerId = null)
+    public function createBranches($owner, $productBacklogId, $repo, $providerId = null, $page = 1)
     {
-        $y = 0;
-        for ($i = 1; $i > $y; ++$i) {
-            $branches = Helper::request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/branches?page='.$i);
-            foreach ($branches as $branch) {
-                $data = [
-                    'product_backlog_id' => $product_backlog_id,
-                    'title' => $branch->name,
-                    'sha' => $branch->commit->sha,
-                ];
-                Branch::create($data);
-            }
-            if (count($branches) < 30) {
-                $y = $i + 2;
-            }
+        $branches = collect(Helper::request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/branches?page='.$page));
+
+        $branches->map(function($branch) use ($productBacklogId){
+            $data = [
+                'product_backlog_id' => $productBacklogId,
+                'title' => $branch->name,
+                'sha' => $branch->commit->sha,
+            ];
+            Branch::create($data);
+        });
+
+        if($branches->count()==30){
+            $this->createBranches($owner, $productBacklogId, $repo, $providerId, ++$page);
         }
     }
 
