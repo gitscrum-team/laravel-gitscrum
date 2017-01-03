@@ -8,9 +8,13 @@
         <h3>{{trans('Welcome to')}} {{trans('GitScrum')}}</h3>
     </div>
     <div class="col-lg-6">
-        <h3 class="ptn mtn mbn pbn pull-right">{{trans('Choose repositories')}}</h3>
+        <h3 class="ptn mtn mbn pbn pull-right">{{$repositories->count()}} {{trans('repositories')}}</h3>
     </div>
 </div>
+@endsection
+
+@section('main-title')
+<p class="font-bold text-center">{{trans('You can import the repositories to GitScrum')}}</p>
 @endsection
 
 @section('content')
