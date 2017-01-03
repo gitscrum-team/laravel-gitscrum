@@ -33,7 +33,7 @@
     <div class="text-center">
 
         @if(count($repositories))
-        <a href="{{route('wizard.step3')}}" class="btn btn-lg btn-success">{{trans('Import my')}}
+        <a href="{{route('wizard.step3')}}" class="btn btn-lg btn-success btn-loader">{{trans('Import my')}}
             <strong>{{Auth::user()->provider}} {{trans('Issues')}}</strong></a>
         <span>&nbsp;&nbsp;&nbsp;<strong>{{trans('or')}}</strong>&nbsp;&nbsp;&nbsp;</span>
         @endif
