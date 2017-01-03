@@ -82,9 +82,7 @@ class Github implements ProviderInterface
 
     public function readRepositories()
     {
-        $repos = collect(Helper::request('https://api.github.com/user/repos'));
-
-        $response = $repos->map(function ($repo) {
+        $response = collect(Helper::request('https://api.github.com/user/repos'))->map(function ($repo) {
             return $this->tplRepository($repo);
         });
 
