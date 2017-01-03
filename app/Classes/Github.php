@@ -202,9 +202,16 @@ class Github implements ProviderInterface
         }
     }
 
-    public function readIssues()
+    public function readIssues($productBacklogId = null)
     {
-        $repos = ProductBacklog::all()->map(function($repo){
+
+        if ( is_null($productBacklogId) ) {
+            $productBacklog = ProductBacklog::all();
+        } else {
+            $productBacklog = ProductBacklog::find($productBacklogId);
+        }
+
+        $repos = $productBacklog->map(function($repo){
 
             $issues = collect(Helper::request('https://api.github.com/repos/'.$repo->organization->username.
                 DIRECTORY_SEPARATOR.$repo->title.'/issues?state=all'))->map(function($issue) use($repo){
