@@ -55,13 +55,6 @@ class AddForeignKeysToIssuesTable extends Migration
     public function down()
     {
         Schema::table('issues', function (Blueprint $table) {
-            $table->dropIndex('fk_issues_user_id_idx');
-            $table->dropIndex('fk_issues_issue_type_id_idx');
-            $table->dropIndex('fk_issues_product_backlog_id_idx');
-            $table->dropIndex('fk_issues_sprint_id_idx');
-            $table->dropIndex('fk_issues_user_story_id_idx');
-            $table->dropIndex('fk_issues_config_status_id_idx');
-            $table->dropIndex('fk_issues_config_issue_effort_id_idx');
             $table->dropForeign('fk_issues_user_id');
             $table->dropForeign('fk_issues_issue_type_id');
             $table->dropForeign('fk_issues_product_backlog_id');
@@ -69,6 +62,13 @@ class AddForeignKeysToIssuesTable extends Migration
             $table->dropForeign('fk_issues_user_story_id');
             $table->dropForeign('fk_issues_config_status_id');
             $table->dropForeign('fk_issues_config_issue_effort_id');
+            $table->dropIndex('fk_issues_user_id_idx');
+            $table->dropIndex('fk_issues_issue_type_id_idx');
+            $table->dropIndex('fk_issues_product_backlog_id_idx');
+            $table->dropIndex('fk_issues_sprint_id_idx');
+            $table->dropIndex('fk_issues_user_story_id_idx');
+            $table->dropIndex('fk_issues_config_status_id_idx');
+            $table->dropIndex('fk_issues_config_issue_effort_id_idx');
         });
     }
 }
