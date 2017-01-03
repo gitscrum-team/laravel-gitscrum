@@ -10,7 +10,7 @@ interface ProviderInterface
 
     public function tplIssue($obj, $productBacklogId);
 
-    public function readRepositories();
+    public function readRepositories($page, &$repos);
 
     public function createOrUpdateRepository($owner, $obj, $oldTitle = null);
 
