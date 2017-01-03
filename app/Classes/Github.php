@@ -164,22 +164,20 @@ class Github implements ProviderInterface
         $ids = collect();
         $collaborators = collect(Helper::request('https://api.github.com/repos/'.$owner.'/'.$repo.'/collaborators'))
             ->map(function($collaborator) use ($ids){
-            $data = $this->tplUser($collaborator);
 
             $user = User::where('username', $collaborator->login)
                 ->where('provider', 'github')->first();
 
             if (!isset($user)) {
-                $user = User::create($data);
+                $user = User::create($this->tplUser($collaborator));
             }
 
             $ids->push($user->id);
         });
 
-        $organization = Organization::where('username', $owner)
-            ->where('provider', 'github')->first()->users();
-
-        $organization->syncWithoutDetaching($ids->diff($organization->pluck('user_id')->toArray()));
+        Organization::where('username', $owner)
+            ->where('provider', 'github')->first()->users()
+            ->syncWithoutDetaching($ids->diff($organization->pluck('user_id')->toArray()));
 
     }
 
