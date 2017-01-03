@@ -57,8 +57,11 @@ class Github implements ProviderInterface
 
     public function tplIssue($obj, $productBracklogId)
     {
-        $user = User::where('username', @$obj->user->login)
-            ->where('provider', 'github')->first();
+        if(isset($obj->user->login))
+        {
+            $user = User::where('username', $obj->user->login)
+                ->where('provider', 'github')->first();
+        }
 
         return [
             'provider_id' => $obj->id,
@@ -146,12 +149,13 @@ class Github implements ProviderInterface
                 'disk_usage' => @$orgData->disk_usage,
             ];
 
-            try {
-                $organization = Organization::create($data);
-            } catch (\Illuminate\Database\QueryException $e) {
-            }
+            $organization = Organization::create($data);
 
-            $organization->users()->sync([Auth::id()]);
+        }
+
+        if(is_null($organization->users()->where('users_has_organizations.user_id', Auth::id())
+            ->where('users_has_organizations.organization_id', $organization->id)->first())){
+                $organization->users()->attach(Auth::id());
         }
 
         return $organization->id;
@@ -160,29 +164,24 @@ class Github implements ProviderInterface
     public function readCollaborators($owner, $repo, $providerId = null)
     {
         $ids = collect();
-        $collaborators = Helper::request('https://api.github.com/repos/'.$owner.'/'.$repo.'/collaborators');
-        foreach ($collaborators as $collaborator) {
-            if (isset($collaborator->id)) {
+        $collaborators = collect(Helper::request('https://api.github.com/repos/'.$owner.'/'.$repo.'/collaborators'))
+            ->map(function($collaborator) use ($ids){
+            $data = $this->tplUser($collaborator);
 
-                $data = $this->tplUser($collaborator);
+            $user = User::where('username', $collaborator->login)
+                ->where('provider', 'github')->first();
 
-                try {
-                    $user = User::create($data);
-                } catch (\Exception $e) {
-                    $user = User::where('username', $collaborator->login)
-                        ->where('provider', 'github')->first();
-                }
-
-                $ids->push($user->id);
+            if (!isset($user)) {
+                $user = User::create($data);
             }
-        }
+
+            $ids->push($user->id);
+        });
 
         $organization = Organization::where('username', $owner)
             ->where('provider', 'github')->first()->users();
 
-        $ids->diff($organization->pluck('user_id')->toArray())->map(function($id) use ($organization){
-            $organization->attach($id);
-        });
+        $organization->syncWithoutDetaching($ids->diff($organization->pluck('user_id')->toArray()));
 
     }
 
@@ -207,25 +206,19 @@ class Github implements ProviderInterface
 
     public function readIssues()
     {
-        $repos = ProductBacklog::all();
+        $repos = ProductBacklog::all()->map(function($repo){
 
-        foreach ($repos as $repo) {
-            $issues = Helper::request('https://api.github.com/repos/'.$repo->organization->username.
-                DIRECTORY_SEPARATOR.$repo->title.'/issues?state=all');
+            $issues = collect(Helper::request('https://api.github.com/repos/'.$repo->organization->username.
+                DIRECTORY_SEPARATOR.$repo->title.'/issues?state=all'))->map(function($issue) use($repo){
 
-            $issues = is_array($issues) ? $issues : [$issues];
-
-            foreach ($issues as $issue) {
-                try {
-                    $data = $this->tplIssue($issue, $repo->id);
-                } catch (\Exception $e) {
-                }
+                $data = $this->tplIssue($issue, $repo->id);
 
                 if (!Issue::where('provider_id', $issue->id)->where('provider', 'github')->first()) {
-                    Issue::create($data)->users()->sync([$data['user_id']]);
+                    Issue::create($data)->users()->attach($data['user_id']);
                 }
-            }
-        }
+
+            });
+        });
     }
 
     public function createOrUpdateIssue($obj)
