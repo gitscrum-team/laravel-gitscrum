@@ -238,6 +238,7 @@ class Gitlab implements ProviderInterface
             if (isset($collaborator->id)) {
                 $data = [
                     'provider_id' => $collaborator->id,
+                    'provider' => 'gitlab',
                     'username' => $collaborator->username,
                     'name' => $collaborator->name,
                     'avatar' => $collaborator->avatar_url,
