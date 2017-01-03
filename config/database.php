@@ -44,7 +44,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,15 +65,17 @@ return [
     'connections' => [
 
         'testing' => [
-            'driver' => 'sqlite',
-            'database' => storage_path().'/framework/cache/database.sqlite',
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
             'prefix' => '',
-        ],
-
-        'sqlite' => [
-            'driver' => 'sqlite',
-            'database' => env('DB_DATABASE', ':memory:'),
-            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
         ],
 
         'mysql' => [
