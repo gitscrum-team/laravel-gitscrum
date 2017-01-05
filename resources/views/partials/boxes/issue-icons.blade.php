@@ -1,3 +1,4 @@
+<span class="issue-icons">
 @if($issue->commits->count())
 <small title="{{trans('Commits')}}"><i class="fa fa-code" aria-hidden="true"></i> {{$issue->commits->count()}}</small>
 &nbsp;&nbsp;
@@ -21,3 +22,4 @@
 <small title="{{trans('Closed')}}" class="small-issue-closed">{{trans('closed')}} {{$issue->dateforhumans('closed_at')}}</small>
 &nbsp;&nbsp;
 @endif
+</span>

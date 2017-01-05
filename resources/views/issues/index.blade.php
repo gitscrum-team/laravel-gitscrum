@@ -26,7 +26,7 @@
             <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Sprint')}}</a>
-            <form action="{{route('sprints.delete')}}" method="POST" class="form-delete pull-right">
+            <form action="{{route('sprints.destroy')}}" method="POST" class="form-delete pull-right">
                 {{ csrf_field() }}
                 <input type="hidden" name="_method" value="DELETE" />
                 <input type="hidden" name="slug" value="{{$sprint->slug}}" />
@@ -36,7 +36,7 @@
             </form>
         </div>
     @endif
-</div><div class="clearfix"></div>
+</div>
 @endsection
 
 @section('content')

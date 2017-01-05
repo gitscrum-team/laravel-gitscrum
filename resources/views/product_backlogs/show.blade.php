@@ -9,24 +9,19 @@
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $productBacklog->favorite, 'type' => 'product_backlog',
         'id' => $productBacklog->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
-    &nbsp;&nbsp;
-    <div class="btn-group">
-        <a href="{{route('product_backlogs.edit', ['slug' => $productBacklog->slug])}}"
-            class="btn btn-sm btn-primary"
-            data-toggle="modal" data-target="#modalLarge">
-            <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Product Backlog')}}</a>
-    </div>
+
+    <a href="{{route('product_backlogs.edit', ['slug' => $productBacklog->slug])}}"
+        class="btn btn-sm btn-primary"
+        data-toggle="modal" data-target="#modalLarge">
+        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Product Backlog')}}</a>
 </div>
 @endsection
 
+@section('main-title')
+<span>{{$productBacklog->title}}</span>
+@endsection
+
 @section('content')
-
-<div class="main-title">
-    <h4>
-        {{$productBacklog->title}}
-    </h4>
-</div>
-
 <div class="col-lg-4">
 
     <a href="{{route('user_stories.create', ['slug_user_story' => $productBacklog->slug])}}"
@@ -54,7 +49,12 @@
         <p><strong>HTTPS</strong>: {{$productBacklog->clone_url}}</p>
     </div>
 
-    <p class="mtn ptn pbl">{!! nl2br(e($productBacklog->description)) !!}</p>
+    @if(!empty($productBacklog->description))
+    <p class="description">
+        <small>{{trans('Description')}}</small>
+        <span>{!! nl2br(e($productBacklog->description)) !!}<span>
+    </p>
+    @endif
 
     <div class="tabs-container">
         <ul class="nav nav-tabs">

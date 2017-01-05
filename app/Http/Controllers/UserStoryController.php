@@ -8,6 +8,7 @@
 
 namespace GitScrum\Http\Controllers;
 
+use Illuminate\Http\Request;
 use GitScrum\Http\Requests\UserStoryRequest;
 use GitScrum\Models\UserStory;
 use GitScrum\Models\ConfigPriority;
@@ -16,20 +17,11 @@ use Auth;
 
 class UserStoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($slug_product_backlog = null)
     {
         $productBacklog_id = null;
@@ -48,13 +40,6 @@ class UserStoryController extends Controller
             ->with('action', 'Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(UserStoryRequest $request)
     {
         $userStory = UserStory::create($request->all());
@@ -63,13 +48,6 @@ class UserStoryController extends Controller
             ->with('success', trans('Congratulations! The User Story has been created with successfully'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show($slug)
     {
         $userStory = UserStory::slug($slug)
@@ -80,13 +58,6 @@ class UserStoryController extends Controller
             ->with('userStory', $userStory);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($slug)
     {
         $userStory = UserStory::slug($slug)->first();
@@ -102,14 +73,6 @@ class UserStoryController extends Controller
             ->with('action', 'Edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function update(UserStoryRequest $request, $slug)
     {
         $userStory = UserStory::slug($slug)->first();
@@ -119,14 +82,11 @@ class UserStoryController extends Controller
             ->with('success', trans('Congratulations! The User Story has been edited with successfully'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $userStory = UserStory::slug($request->slug)->firstOrFail();
+        $userStory->delete();
+
+        return redirect()->route('product_backlogs.index');
     }
 }

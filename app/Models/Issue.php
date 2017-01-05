@@ -152,6 +152,7 @@ class Issue extends Model
         return isset($this->attributes['number']) ? $this->attributes['number'] : null;
     }
 
+
     /**
      * @return array
      */
@@ -164,9 +165,12 @@ class Issue extends Model
             if(is_null($status)) {
                 return $this->removeFromSprint();
             } else {
-                if (!is_null($status->is_closed)) {
+                if (!is_null($status->is_closed) && is_null($this->closed_at)) {
                     $this->closed_user_id = Auth::id();
                     $this->closed_at = Carbon::now();
+                } else if ( is_null($status->is_closed) ) {
+                    $this->closed_user_id = null;
+                    $this->closed_at = null;
                 }
 
                 if ($position) {
@@ -190,4 +194,20 @@ class Issue extends Model
         $this->config_status_id = 1; //reset in todo status
         return $this->save();
     }
+
+    public function getStatusAvailableAttribute()
+	{
+		return ConfigStatus::type('issue')->get();
+	}
+
+    public function getSprintSlugAttribute()
+	{
+		return isset($this->sprint->slug) ? $this->sprint->slug : 0;
+	}
+
+    public function getSprintClosedAttribute()
+	{
+		return isset($this->sprint->closed_at) ? $this->sprint->closed_at : null;
+	}
+
 }

@@ -9,8 +9,11 @@ a{
   -ms-transition:color .1s ease-out, background .2s ease-in;
   -moz-transition:color .1s ease-out, background .2s ease-in;
   -webkit-transition:color .1s ease-out, background .2s ease-in;
-  /* ...and now override with proper CSS property */
   transition:color .1s ease-out, background .2s ease-in;
+}
+
+ul{
+	padding:0 0 0 0;
 }
 
 li{
@@ -19,7 +22,7 @@ li{
 
 .loader-area{
 	.loader {
-		position: absolute;
+		position: fixed;
 		top:0;
 		left:0;
 		z-index: 9999;
@@ -97,26 +100,51 @@ header{
 .breadcrumb-area{
 	height:40px;
 	padding:5px 0px;
-	margin: 0 0 20px;
+	margin: 0;
 	.col-lg-6{
 		padding:0 14px;
 	}
 	h3{
-		margin:6px 0 6px 0;
-		font-size: 12pt;
-	}
-	.btn{
-		i{
-			margin-right: 4px;
+		margin:8px 0 6px 0;
+		font-size: 13px;
+		a{
+			margin-right:5px;
+		}
+		span{
+			margin-left:5px;
 		}
 	}
-	.form-delete button{
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-		padding: 6px 6px 6px 8px;
-		color:#eef2f6;
-		background:#474849;
+	button, .btn{
+		top:2px;
+		position: relative;
+    	padding: 1px 10px 3px;
+		i{
+			margin-right: 4px;
+			font-size:10px;
+		}
 	}
+	.btn-group{
+		top:1px;
+	}
+	.form-delete{
+		margin-top:2px;
+		margin-left:12px;
+		border-left:1px solid #c0c0c0;
+		button{
+			top:2px;
+			padding: 0 10px 4px 12px;
+			border-color:transparent;
+			background:transparent;
+			i{
+				font-size:14px;
+			}
+		}
+	}
+}
+
+.btn-outline{
+	background-color: transparent;
+	color:#c9302c;
 }
 
 .content-area{
@@ -165,20 +193,55 @@ header{
 	}
 }
 
+.table-issue{
+	.title-issue{
+		font-size: 14px;
+		position: relative;
+		top: -2px;
+	}
+    .issue-icons{
+		display:block;
+	}
+}
+
 .main-title{
-    min-height:30px;
-	margin:0 15px 20px;
-	h4{
-		margin: 0;
-		font-size:20px;
-		.label{
-			position: relative;
-			top:-6px;
-			margin-left:10px;
+	margin:0 0 20px;
+	padding:25px 0;
+	font-size:20px;
+	.container{
+		padding:0 28px;
+	}
+	.label{
+		border-radius: 6px;
+		position: relative;
+		padding:6px 10px 8px;
+		border:2px solid transparent;
+	}
+	a{
+		&:hover,
+		&:focus{
+			text-decoration: none;
+			opacity: 0.8;
 		}
-        .pull-right{
-            top:-6px;
-        }
+	}
+	.btn-group{
+		top:-1px;
+		.btn{
+			border-radius: 6px;
+		}
+	}
+	.dropdown-menu{
+		font-size:12px;
+		li{
+			padding:0;
+			margin:4px 0;
+		}
+	}
+}
+
+.list-issue-config-status{
+	li{
+		margin-bottom: 5px;
 	}
 }
 
@@ -226,8 +289,28 @@ header{
 	display:block;
 }
 
+.pb5{
+	padding-bottom: 10px;
+}
+
+.pb10{
+	padding-bottom: 10px;
+}
+
 .mr10{
 	margin-right:10px;
+}
+
+.mb10{
+	margin-bottom:10px;
+}
+
+.mb20{
+    margin-bottom:20px;
+}
+
+.mb35{
+    margin-bottom:35px;
 }
 
 .list-group-item{
@@ -486,6 +569,12 @@ header{
 	}
 }
 
+.frm-comment{
+	.btn{
+		margin:8px 0;
+	}
+}
+
 .comment-element{
 	padding:0;
 	margin:20px 0 20px;
@@ -514,4 +603,8 @@ header{
 
 .font-bold{
 	font-weight: 700;
+}
+
+.tag-list{
+	font-size:14px;
 }

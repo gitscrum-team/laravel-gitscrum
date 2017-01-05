@@ -1,4 +1,4 @@
-<div class="form-comment row">
+<div class="frm-comment">
 
     @if(isset($route))
         <form action="{{route($route, ['id'=>$comment->id, '#tab-comments'])}}" method="post">

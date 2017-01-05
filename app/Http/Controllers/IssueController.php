@@ -87,11 +87,6 @@ class IssueController extends Controller
             ->with('openUserStories', $openUserStories);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($slug_sprint = null, $slug_user_story = null, $parent_id = null)
     {
         $issue_types = IssueType::where('enabled', 1)
@@ -128,13 +123,6 @@ class IssueController extends Controller
             ->with('action', 'Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(IssueRequest $request)
     {
         $issue = Issue::create($request->all());
@@ -147,13 +135,6 @@ class IssueController extends Controller
             ->with('success', trans('Congratulations! The Issue has been created with successfully'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show($slug)
     {
         $issue = Issue::slug($slug)
@@ -165,20 +146,11 @@ class IssueController extends Controller
 
         $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
 
-        $configStatus = ConfigStatus::type('issue')->get();
         return view('issues.show')
             ->with('issue', $issue)
-            ->with('usersByOrganization', $usersByOrganization)
-            ->with('configStatus', $configStatus);
+            ->with('usersByOrganization', $usersByOrganization);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($slug)
     {
         $issue = Issue::slug($slug)->first();
@@ -206,14 +178,6 @@ class IssueController extends Controller
             ->with('action', 'Edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function update(IssueRequest $request, $slug)
     {
         $issue = Issue::slug($slug)->first();
@@ -265,16 +229,9 @@ class IssueController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($slug)
+    public function destroy(Request $request)
     {
-        $issue = Issue::slug($slug)->firstOrFail();
+        $issue = Issue::slug($request->slug)->firstOrFail();
 
         if (isset($issue->userStory)) {
             $redirect = redirect()->route('user_stories.show', ['slug' => $issue->userStory->slug]);

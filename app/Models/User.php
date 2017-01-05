@@ -127,7 +127,7 @@ class User extends Authenticatable
                 ->with('issues')->get();
 
             if (!is_null($product_backlog_id)) {
-                $obj = $obj->find($product_backlog_id);
+                $obj = $obj->where('id', $product_backlog_id);
             }
 
             return $obj;
@@ -161,7 +161,7 @@ class User extends Authenticatable
         return $this->team()->map(function ($obj) use ($user_id) {
             $statuses = $obj->statuses;
             if (!is_null($user_id)) {
-                $statuses = $statuses->userActive($user_id);
+                $statuses = $statuses->where('user_id', $user_id);
             }
 
             return $statuses;
