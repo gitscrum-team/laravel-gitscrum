@@ -168,7 +168,7 @@ class Issue extends Model
                 if (!is_null($status->is_closed) && is_null($this->closed_at)) {
                     $this->closed_user_id = Auth::id();
                     $this->closed_at = Carbon::now();
-                } else if ( is_null($status->is_closed) ) {
+                } else if (is_null($status->is_closed) ) {
                     $this->closed_user_id = null;
                     $this->closed_at = null;
                 }
@@ -191,7 +191,7 @@ class Issue extends Model
     public function removeFromSprint()
     {
         $this->sprint_id = null;
-        $this->config_status_id = 1; //reset in todo status
+        $this->config_status_id = \GitScrum\Models\ConfigStatus::type('issue')->default()->first()->id; //reset in todo status
         return $this->save();
     }
 

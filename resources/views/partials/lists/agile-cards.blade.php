@@ -1,7 +1,11 @@
 <li id="{{$card->id}}" class="card-detail" data-value="{{$card->id}}" style="border-left:3px solid #{{$card->type->color}}">
 
     <h4><a href="{{route('issues.show', ['slug' => $card->slug])}}">{{$card->title}}</a>
-        <small>{{$card->productBacklog->title . '/' . $card->userStory->title}}</small>
+        <small>{{$card->productBacklog->title}}
+            @if(!empty($card->userStory))
+                {{ '/' . $card->userStory->title }}
+            @endif
+        </small>
     </h4>
 
     <div class="team-members">

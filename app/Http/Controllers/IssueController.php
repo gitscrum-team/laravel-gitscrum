@@ -61,7 +61,7 @@ class IssueController extends Controller
             ->where('user_stories.product_backlog_id', $sprint->product_backlog_id)
             ->join('issues', function ($join) {
                 $join->on('user_stories.id', '=', 'issues.user_story_id')
-                    ->where('issues.config_status_id', 1);
+                    ->where('issues.config_status_id', ConfigStatus::type('issue')->default()->first()->id);
             })
             ->groupBy(['user_stories.id', 'user_stories.config_priority_id'])
             ->orderBy('user_stories.config_priority_id')
@@ -71,7 +71,7 @@ class IssueController extends Controller
         foreach ($userStoriesIds as $oneUserStoryId) {
             $openUserStory = UserStory::find($oneUserStoryId->id);
             $openUserStory->load(['issues' => function($query) {
-                    $query->where('config_status_id',1)
+                    $query->where('config_status_id', ConfigStatus::type('issue')->default()->first()->id)
                     ->whereNull('sprint_id');
             }, 'issues.type']);
             if ($openUserStory->issues->count() > 0) {
