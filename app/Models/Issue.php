@@ -152,6 +152,49 @@ class Issue extends Model
         return isset($this->attributes['number']) ? $this->attributes['number'] : null;
     }
 
+
+    /**
+     * @return array
+     */
+    public function updateStatusAndPosition($status_id, $status, $position = null)
+    {
+            $this->config_status_id = $status_id;
+            $this->closed_user_id = null;
+            $this->closed_at = null;
+
+            if(is_null($status)) {
+                return $this->removeFromSprint();
+            } else {
+                if (!is_null($status->is_closed) && is_null($this->closed_at)) {
+                    $this->closed_user_id = Auth::id();
+                    $this->closed_at = Carbon::now();
+                } else if (is_null($status->is_closed) ) {
+                    $this->closed_user_id = null;
+                    $this->closed_at = null;
+                }
+
+                if ($position) {
+                    $this->position = $position;
+                }
+
+                return $this->save();
+            }
+
+    }
+
+    public function assignToSprint(int $sprintId)
+    {
+        $this->sprint_id = $sprintId;
+        return $this->save();
+    }
+
+    public function removeFromSprint()
+    {
+        $this->sprint_id = null;
+        $this->config_status_id = \GitScrum\Models\ConfigStatus::type('issue')->default()->first()->id; //reset in todo status
+        return $this->save();
+    }
+
     public function getStatusAvailableAttribute()
 	{
 		return ConfigStatus::type('issue')->get();
@@ -166,4 +209,5 @@ class Issue extends Model
 	{
 		return isset($this->sprint->closed_at) ? $this->sprint->closed_at : null;
 	}
+
 }

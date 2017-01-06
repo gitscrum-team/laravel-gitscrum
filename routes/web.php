@@ -62,6 +62,8 @@ Route::group(['prefix' => 'issues', 'middleware' => ['issue']], function () {
     Route::get('/create/{slug_sprint?}/{slug_user_story?}/{parent_id?}', 'IssueController@create')->name('issues.create');
     Route::post('/store', 'IssueController@store')->name('issues.store');
     Route::get('/edit/{slug}', 'IssueController@edit')->name('issues.edit');
+    Route::get('/remove_from_sprint/{slug}', 'IssueController@removeFromSprint')->name('issues.remove_from_sprint');
+
     Route::post('/update/{slug}', 'IssueController@update')->name('issues.update');
     Route::delete('/destroy', 'IssueController@destroy')->name('issues.destroy');
     Route::any('/status-update/{slug?}/{status?}', 'IssueController@statusUpdate')->name('issues.status.update');

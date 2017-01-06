@@ -54,9 +54,14 @@ var agile = {
             stop: function() {
                 $.each($('.agile-list'), function(k,v){
                     $(v).closest('.agile').find('h5').find('span').text($(v).find('li').length);
-                    if($(v).sortable( "toArray" ).length)
-                    {
-                        $.post( $(v).data('endpoint'), { status_id: $(v).data('value'), json: window.JSON.stringify($(v).sortable( "toArray" )) });
+                    if($(v).sortable( "toArray" ).length) {
+                        if ($(v).data('value') > 0) {
+                            $.post($(v).data('endpoint'), {
+                                sprint_id: $(v).data('sprint'),
+                                status_id: $(v).data('value'),
+                                json: window.JSON.stringify($(v).sortable("toArray"))
+                            });
+                        }
                     }
                 });
                 agile.columns();

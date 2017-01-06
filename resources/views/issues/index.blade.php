@@ -26,7 +26,7 @@
             <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Sprint')}}</a>
-            <form action="{{route('sprints.delete')}}" method="POST" class="form-delete pull-right">
+            <form action="{{route('sprints.destroy')}}" method="POST" class="form-delete pull-right">
                 {{ csrf_field() }}
                 <input type="hidden" name="_method" value="DELETE" />
                 <input type="hidden" name="slug" value="{{$sprint->slug}}" />
@@ -41,14 +41,33 @@
 
 @section('content')
 <div class="kanban-board">
-
     <div class="kanban-board-scroll">
         <div class="agile-column connectColumn" data-endpoint="{{route('api.configStatus.position.update')}}">
+            @if(count($openUserStories) > 0)
+            <div style="float:left;" class="row">
+                <div class="agile" data-value="0" style="width: 350px;">
+                <h5 class="handle">
+                    <i class="fa fa-arrows-h" data-toggle="tooltip" titl="{{trans('Drag it')}}" aria-hidden="true"></i>
+                    Product Backlog Stories (<span>{{ count($openUserStories) }}</span>)
+                </h5>
+                <div class="agile-list-scroll">
+                    <ul class="agile-list"
+                        style="padding: 0; margin: 0;"
+                        data-color="8c023f"
+                        data-closed=""
+                       >
+                        @foreach($openUserStories as $userStory)
+                            @include('partials.lists.agile-user-story-cards', ['userStory' => $userStory, 'sprint' => $sprint])
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            @endif
         @foreach ($configStatus as $status)
         <div style="float:left" class="row">
             <div class="agile" data-value="{{$status->id}}">
                 <h5 class="handle">
-                    <i class="fa fa-arrows-h" data-toggle="tooltip" titl="{{trans('Drag it')}}" aria-hidden="true"></i>
+                    <i class="fa fa-arrows-h" data-toggle="tooltip" title="{{trans('Drag it')}}" aria-hidden="true"></i>
                     {{$status->title}}
                     (
                     @if(isset($issues[$status->id]))
@@ -60,8 +79,11 @@
                 </h5>
                 <div class="agile-list-scroll">
                     <ul class="sortable-list connectList agile-list"
-                        data-color="{{$status->color}}" data-closed="{{$status->is_closed}}"
-                        data-value="{{$status->id}}" data-endpoint="{{route('issues.status.update')}}">
+                        data-color="{{$status->color}}"
+                        data-closed="{{$status->is_closed}}"
+                        data-value="{{$status->id}}"
+                        data-sprint="{{$sprint->id}}"
+                        data-endpoint="{{route('issues.status.update')}}">
                         @if(isset($issues[$status->id]))
                             @each('partials.lists.agile-cards', $issues[$status->id], 'card', 'partials.lists.no-items')
                         @endif

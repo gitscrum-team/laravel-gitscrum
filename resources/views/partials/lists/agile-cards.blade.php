@@ -1,7 +1,11 @@
 <li id="{{$card->id}}" class="card-detail" data-value="{{$card->id}}" style="border-left:3px solid #{{$card->type->color}}">
 
     <h4><a href="{{route('issues.show', ['slug' => $card->slug])}}">{{$card->title}}</a>
-        <small>{{$card->productBacklog->title}}</small>
+        <small>{{$card->productBacklog->title}}
+            @if(!empty($card->userStory))
+                {{ '/' . $card->userStory->title }}
+            @endif
+        </small>
     </h4>
 
     <div class="team-members">
@@ -26,11 +30,16 @@
     <span class="label label-warning"> Effort:{{$card->configEffort->title}}</span>
 
     <div class="options">
-        <a href="{{route('issues.edit', ['slug' => $card->slug])}}"
-        data-toggle="modal" data-target="#modalLarge">
-        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Issue')}}</a>
-    <div>
-
+        <div class="pull-left">
+            <a href="{{route('issues.edit', ['slug' => $card->slug])}}"
+            data-toggle="modal" data-target="#modalLarge">
+            <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Issue')}}</a>
+        </div>
+        <div class=" pull-right">
+            <a href="{{route('issues.remove_from_sprint', ['slug' => $card->slug])}}" style="">
+            <i class="fa fa-chain-broken" aria-hidden="true"></i> {{trans('Remove from sprint')}}</a>
+        </div>
+    </div>
     <div class="clearfix"></div>
 
 </li>

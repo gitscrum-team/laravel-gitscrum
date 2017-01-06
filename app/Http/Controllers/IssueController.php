@@ -22,7 +22,11 @@ use Auth;
 
 class IssueController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index($slug)
     {
         if ($slug) {
@@ -51,10 +55,36 @@ class IssueController extends Controller
             return redirect()->route('sprints.index');
         }
 
+        //get all stories from this product with an open issue
+        //@TODO make sure stories are managable by user
+        $userStoriesIds = UserStory::select(['user_stories.id', 'user_stories.config_priority_id'])
+            ->where('user_stories.product_backlog_id', $sprint->product_backlog_id)
+            ->join('issues', function ($join) {
+                $join->on('user_stories.id', '=', 'issues.user_story_id')
+                    ->where('issues.config_status_id', ConfigStatus::type('issue')->default()->first()->id);
+            })
+            ->groupBy(['user_stories.id', 'user_stories.config_priority_id'])
+            ->orderBy('user_stories.config_priority_id')
+            ->orderBy('user_stories.id')
+            ->get();
+        $openUserStories = [];
+        foreach ($userStoriesIds as $oneUserStoryId) {
+            $openUserStory = UserStory::find($oneUserStoryId->id);
+            $openUserStory->load(['issues' => function($query) {
+                    $query->where('config_status_id', ConfigStatus::type('issue')->default()->first()->id)
+                    ->whereNull('sprint_id');
+            }, 'issues.type']);
+            if ($openUserStory->issues->count() > 0) {
+                $openUserStory->load('priority');
+                $openUserStories[] = $openUserStory;
+            }
+        }
+
         return view('issues.index')
             ->with('sprint', $sprint)
             ->with('issues', $issues)
-            ->with('configStatus', $configStatus);
+            ->with('configStatus', $configStatus)
+            ->with('openUserStories', $openUserStories);
     }
 
     public function create($slug_sprint = null, $slug_user_story = null, $parent_id = null)
@@ -135,8 +165,10 @@ class IssueController extends Controller
 
         $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
 
+        $productBacklogs = Auth::user()->productBacklogs($issue->productBacklog->id, false);
+
         return view('issues.edit')
-            ->with('productBacklogs', $issue->productBacklog->id)
+            ->with('productBacklogs', $productBacklogs)
             ->with('userStory', $issue->userStory)
             ->with('slug', isset($issue->sprint->slug) ? $issue->sprint->slug : null)
             ->with('issue_types', $issue_types)
@@ -149,6 +181,7 @@ class IssueController extends Controller
     public function update(IssueRequest $request, $slug)
     {
         $issue = Issue::slug($slug)->first();
+
         $issue->update($request->all());
 
         if (is_array($request->members)) {
@@ -161,39 +194,27 @@ class IssueController extends Controller
 
     public function statusUpdate(Request $request, $slug = null, int $status = 0)
     {
+
         if (!isset($request->status_id)) {
             $request->status_id = $status;
         }
         $status = ConfigStatus::find($request->status_id);
-        $save = function ($issue, $position = null) use ($request, $status) {
-            $issue->config_status_id = $request->status_id;
-
-            if (!is_null($status->is_closed) && is_null($issue->closed_at)) {
-                $issue->closed_user_id = Auth::id();
-                $issue->closed_at = Carbon::now();
-            } else if ( is_null($status->is_closed) ) {
-                $issue->closed_user_id = null;
-                $issue->closed_at = null;
-            }
-
-            if ($position) {
-                $issue->position = $position;
-            }
-
-            return $issue->save();
-        };
 
         if ($request->ajax()) {
             $position = 1;
+
             try {
                 foreach (json_decode($request->json) as $id) {
                     $issue = Issue::find($id);
-                    $save($issue, $position);
+                    if (empty($issue->sprint_id) && !empty($request->sprint_id)) {
+                        $issue->assignToSprint($request->sprint_id);
+                    }
+                    $updateSuccess = $issue->updateStatusAndPosition($request->status_id, $status, $position);
                     ++$position;
                 }
 
                 return response()->json([
-                    'success' => true,
+                    'success' => $updateSuccess,
                 ]);
             } catch (\Exception $e) {
                 return response()->json([
@@ -201,9 +222,8 @@ class IssueController extends Controller
                 ]);
             }
         } else {
-            $issue = Issue::slug($slug)
-                ->firstOrFail();
-            $save($issue);
+            $issue = Issue::slug($slug)->firstOrFail();
+            $issue->updateStatusAndPosition($request->status_id, $status);
 
             return back()->with('success', trans('Updated successfully'));
         }
@@ -222,5 +242,13 @@ class IssueController extends Controller
         $issue->delete();
 
         return $redirect;
+    }
+
+    public function removeFromSprint($slug)
+    {
+        $issue = Issue::slug($slug)->firstOrFail();
+        $sprintSlug = $issue->sprint->slug;
+        $issue->removeFromSprint();
+        return redirect()->route('issues.index', ['slug' => $sprintSlug]);
     }
 }
