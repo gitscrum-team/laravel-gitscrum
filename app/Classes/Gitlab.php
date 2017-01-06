@@ -86,6 +86,32 @@ class Gitlab implements ProviderInterface
         ];
     }
 
+    public function tplOrganization($obj)
+    {
+        return [
+            'provider_id' => $obj->owner->id,
+            'username' => $obj->owner->username,
+            'url' => $obj->owner->web_url,
+            'repos_url' => null,
+            'events_url' => null,
+            'hooks_url' => null,
+            'issues_url' => null,
+            'members_url' => null,
+            'public_members_url' => null,
+            'avatar_url' => $obj->owner->avatar_url,
+            'description' => null,
+            'title' => $obj->owner->username,
+            'blog' => null,
+            'location' => null,
+            'email' => null,
+            'public_repos' => null,
+            'html_url' => null,
+            'total_private_repos' => null,
+            'since' => @Carbon::parse($obj->namespace->created_at)->toDateTimeString(),
+            'disk_usage' => null,
+        ];
+    }
+
     public function readRepositories($page = 1, &$repos = null)
     {
         $repos = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects?access_token='.Auth::user()->token));
@@ -124,28 +150,7 @@ class Gitlab implements ProviderInterface
             $obj->owner->avatar_url = $group['avatar_url'];
         }
 
-        $data = [
-            'provider_id' => $obj->owner->id,
-            'username' => $obj->owner->username,
-            'url' => $obj->owner->web_url,
-            'repos_url' => null,
-            'events_url' => null,
-            'hooks_url' => null,
-            'issues_url' => null,
-            'members_url' => null,
-            'public_members_url' => null,
-            'avatar_url' => $obj->owner->avatar_url,
-            'description' => null,
-            'title' => $obj->owner->username,
-            'blog' => null,
-            'location' => null,
-            'email' => null,
-            'public_repos' => null,
-            'html_url' => null,
-            'total_private_repos' => null,
-            'since' => @Carbon::parse($obj->namespace->created_at)->toDateTimeString(),
-            'disk_usage' => null,
-        ];
+        $data = $this->tplOrganization($obj);
 
         try {
             $organization = Organization::create($data);

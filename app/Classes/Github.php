@@ -80,6 +80,32 @@ class Github implements ProviderInterface
         ];
     }
 
+    public function tplOrganization($obj)
+    {
+        return [
+            'provider_id' => $obj->id,
+            'username' => $obj->login,
+            'url' => isset($obj->url) ? $obj->url : null,
+            'repos_url' => isset($obj->repos_url) ? $obj->repos_url : null,
+            'events_url' => isset($obj->events_url) ? $obj->events_url : null,
+            'hooks_url' => isset($obj->hooks_url) ? $obj->hooks_url : null,
+            'issues_url' => isset($obj->issues_url) ? $obj->issues_url : null,
+            'members_url' => isset($obj->members_url) ? $obj->members_url : null,
+            'public_members_url' => isset($obj->public_members_url) ? $obj->public_members_url : null,
+            'avatar_url' => isset($obj->avatar_url) ? $obj->avatar_url : null,
+            'description' => isset($obj->description) ? $obj->description : null,
+            'title' => isset($obj->name) ? $obj->name : null,
+            'blog' => isset($obj->blog) ? $obj->blog : null,
+            'location' => isset($obj->location) ? $obj->location : null,
+            'email' => isset($obj->email) ? $obj->email : null,
+            'public_repos' => isset($obj->public_repos) ? $obj->public_repos : null,
+            'html_url' => isset($obj->html_url) ? $obj->html_url : null,
+            'total_private_repos' => isset($obj->total_private_repos) ? $obj->total_private_repos : null,
+            'since' => Carbon::parse((isset($obj->created_at) ? $obj->created_at : Carbon::now()))->toDateTimeString(),
+            'disk_usage' => isset($obj->disk_usage) ? $obj->disk_usage : null,
+        ];
+    }
+
     public function readRepositories($page = 1, &$repos = null)
     {
 
@@ -129,37 +155,15 @@ class Github implements ProviderInterface
             ->where('provider', 'github')->first();
 
         if (!isset($organization)) {
-            $orgData = Helper::request('https://api.github.com/orgs/'.$login);
+            $response = Helper::request('https://api.github.com/orgs/'.$login);
 
-            if (!isset($orgData->id)) {
-                $orgData = Helper::request('https://api.github.com/users/'.$login);
+            if (!isset($response->id)) {
+                $response = Helper::request('https://api.github.com/users/'.$login);
             }
 
-            $data = [
-                'provider_id' => @$orgData->id,
-                'username' => @$orgData->login,
-                'url' => @$orgData->url,
-                'repos_url' => @$orgData->repos_url,
-                'events_url' => @$orgData->events_url,
-                'hooks_url' => @$orgData->hooks_url,
-                'issues_url' => @$orgData->issues_url,
-                'members_url' => @$orgData->members_url,
-                'public_members_url' => @$orgData->public_members_url,
-                'avatar_url' => @$orgData->avatar_url,
-                'description' => @$orgData->description,
-                'title' => @$orgData->name,
-                'blog' => @$orgData->blog,
-                'location' => @$orgData->location,
-                'email' => @$orgData->email,
-                'public_repos' => @$orgData->public_repos,
-                'html_url' => @$orgData->html_url,
-                'total_private_repos' => @$orgData->total_private_repos,
-                'since' => @Carbon::parse($orgData->created_at)->toDateTimeString(),
-                'disk_usage' => @$orgData->disk_usage,
-            ];
-
-            $organization = Organization::create($data);
-
+            if(isset($response->id)) {
+                $organization = Organization::create($this->tplOrganization($response));
+            }
         }
 
         if(is_null($organization->users()->where('users_has_organizations.user_id', Auth::id())
