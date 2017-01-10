@@ -16,7 +16,10 @@ class UserStoryObserver
 {
     public function creating(UserStory $userStory)
     {
-        $userStory->user_id = Auth::user()->id;
+        if (!isset($userStory->user_id)) {
+            $userStory->user_id = Auth::user()->id;
+        }
+
         $userStory->slug = Helper::slug($userStory->title);
     }
 
