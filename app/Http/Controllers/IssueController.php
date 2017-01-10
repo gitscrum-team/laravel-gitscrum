@@ -22,7 +22,6 @@ use Auth;
 
 class IssueController extends Controller
 {
-
     public function index($slug)
     {
         if ($slug) {
@@ -171,7 +170,7 @@ class IssueController extends Controller
             if (!is_null($status->is_closed) && is_null($issue->closed_at)) {
                 $issue->closed_user_id = Auth::id();
                 $issue->closed_at = Carbon::now();
-            } else if ( is_null($status->is_closed) ) {
+            } elseif (is_null($status->is_closed)) {
                 $issue->closed_user_id = null;
                 $issue->closed_at = null;
             }

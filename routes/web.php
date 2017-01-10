@@ -48,7 +48,7 @@ Route::group(['prefix' => 'sprints', 'middleware' => ['sprint.expired', 'global.
 });
 
 Route::group(['prefix' => 'user-stories'], function () {
-    Route::get('/list/{mode?}/{slug_product_backlog?}', 'SprintController@index')->name('user_stories.index');
+    Route::get('/list', 'UserStoryController@index')->name('user_stories.index');
     Route::get('/show/{slug}', 'UserStoryController@show')->name('user_stories.show');
     Route::get('/create/{slug_product_backlog?}', 'UserStoryController@create')->name('user_stories.create');
     Route::post('/store', 'UserStoryController@store')->name('user_stories.store');

@@ -153,17 +153,17 @@ class Issue extends Model
     }
 
     public function getStatusAvailableAttribute()
-	{
-		return ConfigStatus::type('issue')->get();
-	}
+    {
+        return ConfigStatus::type('issue')->get();
+    }
 
     public function getSprintSlugAttribute()
-	{
-		return isset($this->sprint->slug) ? $this->sprint->slug : 0;
-	}
+    {
+        return isset($this->sprint->slug) ? $this->sprint->slug : 0;
+    }
 
     public function getSprintClosedAttribute()
-	{
-		return isset($this->sprint->closed_at) ? $this->sprint->closed_at : null;
-	}
+    {
+        return isset($this->sprint->closed_at) ? $this->sprint->closed_at : null;
+    }
 }

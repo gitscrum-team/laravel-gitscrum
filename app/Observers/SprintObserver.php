@@ -23,7 +23,7 @@ class SprintObserver
 
         $configStatus = ConfigStatus::type('sprint')->default()->first();
         
-        if ( $configStatus->is_closed ) {
+        if ($configStatus->is_closed) {
             $sprint->closed_at = Carbon::now();
         }
 
@@ -35,7 +35,7 @@ class SprintObserver
         $is_closed = ConfigStatus::find($sprint->config_status_id)->is_closed;
         $sprint->closed_at = null;
 
-        if ( $is_closed ) {
+        if ($is_closed) {
             $sprint->closed_at = Carbon::now();
         }
     }

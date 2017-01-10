@@ -16,4 +16,7 @@
 <div class="col-lg-12">
     @include('partials.boxes.product-backlog', [ 'list' => $backlogs->sortByDesc('favorite') ])
 </div>
+
+{{$backlogs->setPath('')->links()}}
+
 @endsection

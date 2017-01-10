@@ -112,6 +112,7 @@ class User extends Authenticatable
         return $this->organizations->map(function ($organization) use ($product_backlog_id) {
             $obj = $organization->productBacklog()
                 ->with('sprints')
+                ->with('userStories')
                 ->with('favorite')
                 ->with('organization')
                 ->with('issues')
@@ -138,6 +139,13 @@ class User extends Authenticatable
         })->flatten(1)->unique('id');
 
         return $sprints;
+    }
+
+    public function userStories($user_story_id = null)
+    {
+        return $this->productBacklogs()->map(function ($productBacklog) {
+            return $productBacklog->userStories()->get();
+        })->flatten(1);
     }
 
     public function team()
