@@ -69,12 +69,6 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
-    public function organizationActive()
-    {
-        return $this->belongsToMany(\GitScrum\Models\Organization::class, 'users_has_organizations', 'user_id', 'organization_id')
-            ->withTimestamps();
-    }
-
     public function attachments()
     {
         return $this->hasMany(\GitScrum\Models\Attachment::class, 'user_id', 'id');
@@ -118,9 +112,11 @@ class User extends Authenticatable
         return $this->organizations->map(function ($organization) use ($product_backlog_id) {
             $obj = $organization->productBacklog()
                 ->with('sprints')
+                ->with('userStories')
                 ->with('favorite')
                 ->with('organization')
-                ->with('issues')->get();
+                ->with('issues')
+                ->get();
 
             if (!is_null($product_backlog_id)) {
                 $obj = $obj->where('id', $product_backlog_id);
@@ -143,6 +139,13 @@ class User extends Authenticatable
         })->flatten(1)->unique('id');
 
         return $sprints;
+    }
+
+    public function userStories($user_story_id = null)
+    {
+        return $this->productBacklogs()->map(function ($productBacklog) {
+            return $productBacklog->userStories()->get();
+        })->flatten(1);
     }
 
     public function team()

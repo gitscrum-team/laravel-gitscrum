@@ -13,13 +13,16 @@ use GitScrum\Http\Requests\UserStoryRequest;
 use GitScrum\Models\UserStory;
 use GitScrum\Models\ConfigPriority;
 use GitScrum\Models\ProductBacklog;
+use GitScrum\Classes\Helper;
 use Auth;
 
 class UserStoryController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
+        $userStories = Helper::lengthAwarePaginator(Auth::user()->userStories(), $request->page);
+        return view('user_stories.index')
+            ->with('userStories', $userStories);
     }
 
     public function create($slug_product_backlog = null)

@@ -6,7 +6,6 @@ use Carbon\Carbon;
 
 class SprintTest extends TestCase
 {
-
     public function test_create_sprint()
     {
         $faker = Faker\Factory::create();
@@ -16,7 +15,7 @@ class SprintTest extends TestCase
 
         $data = [
             'product_backlog_id' => 1,
-            'title' => 'sprint'.mt_rand(1,20),
+            'title' => 'sprint'.mt_rand(1, 20),
             'description' => $faker->sentence(mt_rand(10, 20)),
             'date_start' => $dateStart->toDateTimeString(),
             'date_finish' => $dateFinish->toDateTimeString()
@@ -51,5 +50,4 @@ class SprintTest extends TestCase
         $sprints = Sprint::all();
         $this->assertGreaterThan(0, $sprints->count());
     }
-
 }

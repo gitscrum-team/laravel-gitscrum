@@ -10,14 +10,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
+                    <li><a href="{{route('user_stories.index')}}">
+                        {{trans('User Stories')}}</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{route('product_backlogs.index')}}">
                         {{trans('Product Backlog')}}</a></li>
                     <li><a href="{{route('sprints.index')}}">
                         {{trans('Sprint Backlog')}}</a></li>
-                    <li><a href="{{route('team.index')}}">
-                        {{trans('Team')}}</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a aria-expanded="false" role="button" href="#" data-toggle="dropdown">
                             <img src="{{Auth::user()->avatar}}"
@@ -31,6 +31,9 @@
                                 <i class="fa fa-th" aria-hidden="true"></i>
                                     {{trans('Planning')}}</a></li>
                             <li class="nav-divider"></li>
+                            <li><a href="{{route('team.index')}}">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                    {{trans('Team')}}</a></li>
                             <li><a href="{{route('wizard.step1')}}">
                                 <i class="fa fa-refresh" aria-hidden="true"></i>
                                     {{trans('Sync Repos/Issues')}}</a></li>

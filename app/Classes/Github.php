@@ -57,8 +57,7 @@ class Github implements ProviderInterface
 
     public function tplIssue($obj, $productBracklogId)
     {
-        if(isset($obj->user->login))
-        {
+        if (isset($obj->user->login)) {
             $user = User::where('username', $obj->user->login)
                 ->where('provider', 'github')->first();
         }
@@ -108,18 +107,17 @@ class Github implements ProviderInterface
 
     public function readRepositories($page = 1, &$repos = null)
     {
-
         $response = collect(Helper::request('https://api.github.com/user/repos?page='. $page))->map(function ($repo) {
             return $this->tplRepository($repo);
         });
 
-        if(is_null($repos)){
+        if (is_null($repos)) {
             $repos = collect();
         }
 
         $repos->push($response);
 
-        if ( $response->count() == 30){
+        if ($response->count() == 30) {
             $this->readRepositories(++$page, $repos);
         }
 
@@ -161,14 +159,14 @@ class Github implements ProviderInterface
                 $response = Helper::request('https://api.github.com/users/'.$login);
             }
 
-            if(isset($response->id)) {
+            if (isset($response->id)) {
                 $organization = Organization::create($this->tplOrganization($response));
             }
         }
 
-        if(is_null($organization->users()->where('users_has_organizations.user_id', Auth::id())
-            ->where('users_has_organizations.organization_id', $organization->id)->first())){
-                $organization->users()->attach(Auth::id());
+        if (is_null($organization->users()->where('users_has_organizations.user_id', Auth::id())
+            ->where('users_has_organizations.organization_id', $organization->id)->first())) {
+            $organization->users()->attach(Auth::id());
         }
 
         return $organization->id;
@@ -179,30 +177,28 @@ class Github implements ProviderInterface
         $ids = collect();
 
         collect(Helper::request('https://api.github.com/repos/'.$owner.'/'.$repo.'/collaborators'))
-            ->map(function($collaborator) use ($ids){
-
-            $user = User::where('username', $collaborator->login)
+            ->map(function ($collaborator) use ($ids) {
+                $user = User::where('username', $collaborator->login)
                 ->where('provider', 'github')->first();
 
-            if (!isset($user)) {
-                $user = User::create($this->tplUser($collaborator));
-            }
+                if (!isset($user)) {
+                    $user = User::create($this->tplUser($collaborator));
+                }
 
-            $ids->push($user->id);
-        });
+                $ids->push($user->id);
+            });
 
         $organization = Organization::where('username', $owner)
             ->where('provider', 'github')->first()->users();
 
         $organization->syncWithoutDetaching($ids->diff($organization->pluck('user_id')->toArray()));
-
     }
 
     public function createBranches($owner, $productBacklogId, $repo, $providerId = null, $page = 1)
     {
         $branches = collect(Helper::request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/branches?page='.$page));
 
-        $branches->map(function($branch) use ($productBacklogId){
+        $branches->map(function ($branch) use ($productBacklogId) {
             $data = [
                 'product_backlog_id' => $productBacklogId,
                 'title' => $branch->name,
@@ -211,32 +207,28 @@ class Github implements ProviderInterface
             Branch::create($data);
         });
 
-        if($branches->count()==30){
+        if ($branches->count()==30) {
             $this->createBranches($owner, $productBacklogId, $repo, $providerId, ++$page);
         }
     }
 
     public function readIssues($productBacklogId = null)
     {
-
-        if ( is_null($productBacklogId) ) {
+        if (is_null($productBacklogId)) {
             $productBacklog = ProductBacklog::all();
         } else {
             $productBacklog = ProductBacklog::find($productBacklogId);
         }
 
-        $repos = $productBacklog->map(function($repo){
-
+        $repos = $productBacklog->map(function ($repo) {
             $issues = collect(Helper::request('https://api.github.com/repos/'.$repo->organization->username.
-                DIRECTORY_SEPARATOR.$repo->title.'/issues?state=all'))->map(function($issue) use($repo){
+                DIRECTORY_SEPARATOR.$repo->title.'/issues?state=all'))->map(function ($issue) use ($repo) {
+                    $data = $this->tplIssue($issue, $repo->id);
 
-                $data = $this->tplIssue($issue, $repo->id);
-
-                if (!Issue::where('provider_id', $issue->id)->where('provider', 'github')->first()) {
-                    Issue::create($data)->users()->attach($data['user_id']);
-                }
-
-            });
+                    if (!Issue::where('provider_id', $issue->id)->where('provider', 'github')->first()) {
+                        Issue::create($data)->users()->attach($data['user_id']);
+                    }
+                });
         });
     }
 

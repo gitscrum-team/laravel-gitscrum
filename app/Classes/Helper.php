@@ -2,6 +2,7 @@
 
 namespace GitScrum\Classes;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Carbon\Carbon;
 use Auth;
 
@@ -92,7 +93,7 @@ class Helper
             $postFields = json_encode($postFields);
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
-            curl_setopt($ch, CURLOPT_HTTPHEADER,  ['Content-Type: application/json',
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json',
                 'Content-Length: '.strlen($postFields), ]);
         }
 
@@ -112,5 +113,12 @@ class Helper
         curl_close($ch);
 
         return json_decode($result);
+    }
+
+    public static function lengthAwarePaginator($collection, $page = 1)
+    {
+        $page = intval($page)?intval($page):1;
+        return new LengthAwarePaginator($collection->forPage($page, env('APP_PAGINATE')),
+            $collection->count(), env('APP_PAGINATE'));
     }
 }

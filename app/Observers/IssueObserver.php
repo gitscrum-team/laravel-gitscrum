@@ -41,6 +41,7 @@ class IssueObserver
         }
 
         $issue->product_backlog_id = $product_backlog_id;
+        $issue->sprint_id = intval($issue->sprint_id)?$issue->sprint_id:null;
 
         $tmp = app(Auth::user()->provider)->createOrUpdateIssue($issue);
         if (isset($tmp->id)) {

@@ -13,6 +13,7 @@ trait DatabaseMigrations
             $user = $this->createUser();
             $this->createOrganization()->users()->sync([$user->id]);
             $this->createProductBacklog();
+            $this->createUserStory();
             self::$dbInited = true;
         }
     }
@@ -63,5 +64,19 @@ trait DatabaseMigrations
         ];
 
         return \GitScrum\Models\ProductBacklog::create($data);
+    }
+
+    private function createUserStory()
+    {
+        $data = [
+            'product_backlog_id' => \GitScrum\Models\ProductBacklog::first()->id,
+            'user_id' => \GitScrum\Models\User::first()->id,
+            'title' => "As a user, I can indicate folders not to backup so that my backup drive isn't filled up with things I don't need saved.",
+            'description' => 'As a user, I can indicate folders not ...',
+            'acceptance_criteria' => '',
+            'position' => 1
+        ];
+
+        return \GitScrum\Models\UserStory::create($data);
     }
 }
