@@ -11,6 +11,7 @@ namespace GitScrum\Http\Controllers;
 use Illuminate\Http\Request;
 use GitScrum\Http\Requests\ProductBacklogRequest;
 use GitScrum\Models\ProductBacklog;
+use GitScrum\Classes\Helper;
 use Auth;
 
 class ProductBacklogController extends Controller
@@ -20,10 +21,11 @@ class ProductBacklogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($mode = 'default')
+    public function index(Request $request, $mode = 'default')
     {
+        $backlogs = Helper::lengthAwarePaginator(Auth::user()->productBacklogs(), $request->page);
         return view('product_backlogs.index-'.$mode)
-            ->with('backlogs', Auth::user()->productBacklogs());
+            ->with('backlogs', $backlogs);
     }
 
     /**
