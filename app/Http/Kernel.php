@@ -60,7 +60,7 @@ class Kernel extends HttpKernel
         'guest' => \GitScrum\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-        'user.auth' => \GitScrum\Http\Middleware\UserAuthenticated::class,
+        'user.authenticated' => \GitScrum\Http\Middleware\UserAuthenticated::class,
 
         'sprint.expired' => \GitScrum\Http\Middleware\SprintExpired::class,
         'global.activities' => \GitScrum\Http\Middleware\GlobalActivities::class,
