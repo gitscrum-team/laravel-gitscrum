@@ -173,4 +173,9 @@ class Issue extends Model
         $parsedown = new Parsedown;
         return $parsedown->text($this->attributes['description']);
     }
+
+    public function getMarkdownDescriptionAttribute()
+    {
+        return $this->attributes['description'];
+    }
 }
