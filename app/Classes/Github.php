@@ -223,10 +223,12 @@ class Github implements ProviderInterface
         $repos = $productBacklog->map(function ($repo) {
             $issues = collect(Helper::request('https://api.github.com/repos/'.$repo->organization->username.
                 DIRECTORY_SEPARATOR.$repo->title.'/issues?state=all'))->map(function ($issue) use ($repo) {
-                    $data = $this->tplIssue($issue, $repo->id);
+                    if (isset($issue->id)) {
+                        $data = $this->tplIssue($issue, $repo->id);
 
-                    if (!Issue::where('provider_id', $issue->id)->where('provider', 'github')->first()) {
-                        Issue::create($data)->users()->attach($data['user_id']);
+                        if (!Issue::where('provider_id', $issue->id)->where('provider', 'github')->first()) {
+                            Issue::create($data)->users()->attach($data['user_id']);
+                        }
                     }
                 });
         });
