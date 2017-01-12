@@ -162,10 +162,13 @@
     </div>
 
     @if(!empty($issue->description))
-    <p class="description">
+
+    <div class="description">
         <small>{{trans('Description')}}</small>
-        <span>{!! nl2br(e($issue->description)) !!}<span>
-    </p>
+        <div class="well">
+            <span>{!! $issue->description !!}<span>
+        </div>
+    </div>
     @endif
 
     <div class="clearfix"></div>

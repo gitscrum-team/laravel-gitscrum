@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Classes\Parsedown;
 
 class Issue extends Model
 {
@@ -165,5 +166,11 @@ class Issue extends Model
     public function getSprintClosedAttribute()
     {
         return isset($this->sprint->closed_at) ? $this->sprint->closed_at : null;
+    }
+
+    public function getDescriptionAttribute()
+    {
+        $parsedown = new Parsedown;
+        return $parsedown->text($this->attributes['description']);
     }
 }
