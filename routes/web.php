@@ -14,7 +14,7 @@ Route::get('/', function () {
     return redirect()->route('auth.login');
 })->name('home');
 
-Route::get('/dashboard', 'UserController@dashboard')->name('user.dashboard')->middleware('user.authenticated','product-backlog');
+Route::get('/dashboard', 'UserController@dashboard')->name('user.dashboard')->middleware('user.authenticated', 'product-backlog');
 Route::get('/profile/{username}', 'UserController@show')->name('user.profile')->middleware('user.authenticated');
 
 Route::group(['prefix' => 'auth'], function () {
