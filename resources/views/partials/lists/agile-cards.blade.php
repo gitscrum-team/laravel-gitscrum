@@ -7,7 +7,6 @@
     <div class="team-members">
         @each('partials.lists.users-min', $card->users, 'user')
     </div>
-    <p>{{str_limit($card->description, 120)}}</p>
 
     <div class="icons">
         @include('partials.boxes.issue-icons', ['issue' => $card])
