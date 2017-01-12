@@ -9,11 +9,12 @@
 
     <title>@yield('title') - {{ env('APP_TITLE') }}</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="//code.jquery.com/ui/1.11.4/themes/flick/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/core.css" rel="stylesheet" type="text/css" />
     <link href="/css/colors.css" rel="stylesheet" type="text/css" />
 
@@ -23,7 +24,7 @@
     <script src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js" type="text/javascript"></script>
     <script src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js" type="text/javascript"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.0.0rc/js/bootstrap-switch.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/js/bootstrap-markdown.min.js" type="text/javascript"></script>
 
     <script src="/js/core.js" type="text/javascript"></script>
 

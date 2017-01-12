@@ -8,6 +8,8 @@ $(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
+    $('[data-provide="markdown"]').markdown({autofocus:false,savable:false})
+
     main.init();
     attachment.init();
     agile.init();

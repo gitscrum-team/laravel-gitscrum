@@ -69,7 +69,7 @@
     <div class="form-group">
         <label class="col-sm-12">{{trans('Description')}} ({{trans('optional')}})</label>
         <div class="col-sm-12">
-            <textarea name="description" type="text" class="form-control">{{ $issue->description or '' }}</textarea>
+            <textarea name="description" type="text" class="form-control" data-provide="markdown" style="padding:10px;">{{ $issue->markdownDescription or '' }}</textarea>
         </div>
     </div>
     <div class="form-group">
@@ -100,3 +100,9 @@
     <div class="hr-line-dashed"></div>
     @include('partials.includes.form-btn-submit', ['action' => @$action])
 </form>
+
+<script>
+$(function(){
+    $('[data-provide="markdown"]').markdown({autofocus:false,savable:false})
+})
+</script>
