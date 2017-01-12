@@ -23,9 +23,7 @@ class UserAuthenticated
      */
     public function handle($request, Closure $next)
     {
-
-        if ( !Auth::user() )
-        {
+        if (!Auth::user()) {
             return redirect()->route('auth.login')->with('success', trans('GitScrum authentication is required'));
         }
 
