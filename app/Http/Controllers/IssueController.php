@@ -34,12 +34,27 @@ class IssueController extends Controller
                 ->with('issues.comments')
                 ->with('issues.attachments')
                 ->with('issues.type')
+                ->with('issues.productBacklog')
+                ->with('issues.sprint')
+                ->with('issues.configEffort')
                 ->first();
 
             $issues = $sprint->issues;
         } else {
             $sprint = null;
-            $issues = Auth::user()->issues;
+            $issues = Auth::user()->issues()
+                ->with('user')
+                ->with('users')
+                ->with('commits')
+                ->with('statuses')
+                ->with('status')
+                ->with('comments')
+                ->with('attachments')
+                ->with('type')
+                ->with('productBacklog')
+                ->with('sprint')
+                ->with('configEffort')
+                ->get();
         }
 
         $issues = $issues->sortBy('position')->groupBy('config_status_id');
