@@ -49,11 +49,6 @@ class Label extends Model
      */
     protected $dates = [];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function labelable()
     {
         return $this->morphTo();

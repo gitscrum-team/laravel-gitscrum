@@ -19,14 +19,14 @@
             'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
         &nbsp;&nbsp;
         <div class="btn-group">
-            <a href="{{route('issues.create', ['slug'=>$sprint->slug])}}"
+            <a href="{{route('issues.create', ['scope' => 'sprint', 'slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-primary"
                 data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-plus" aria-hidden="true"></i> {{trans('Create Issue')}}</a>
             <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalLarge">
                 <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Sprint')}}</a>
-            <form action="{{route('sprints.delete')}}" method="POST" class="form-delete pull-right">
+            <form action="{{route('sprints.destroy')}}" method="POST" class="form-delete pull-right">
                 {{ csrf_field() }}
                 <input type="hidden" name="_method" value="DELETE" />
                 <input type="hidden" name="slug" value="{{$sprint->slug}}" />

@@ -8,12 +8,14 @@
 
 namespace GitScrum\Models;
 
-use GitScrum\Scopes\ConfigStatusScope;
 use Illuminate\Database\Eloquent\Model;
+use GitScrum\Scopes\ConfigStatusScope;
+use GitScrum\Scopes\GlobalScope;
 
 class ConfigStatus extends Model
 {
     use ConfigStatusScope;
+    use GlobalScope;
 
     /**
      * The database table used by the model.

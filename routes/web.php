@@ -59,7 +59,7 @@ Route::group(['prefix' => 'user-stories', 'middleware' => ['user.authenticated']
 
 Route::group(['prefix' => 'issues', 'middleware' => ['user.authenticated', 'issue']], function () {
     Route::get('/show/{slug}', 'IssueController@show')->name('issues.show');
-    Route::get('/create/{slug_sprint?}/{slug_user_story?}/{parent_id?}', 'IssueController@create')->name('issues.create');
+    Route::get('/create/{scope}/{slug}/{parent_id?}', 'IssueController@create')->name('issues.create');
     Route::post('/store', 'IssueController@store')->name('issues.store');
     Route::get('/edit/{slug}', 'IssueController@edit')->name('issues.edit');
     Route::post('/update/{slug}', 'IssueController@update')->name('issues.update');

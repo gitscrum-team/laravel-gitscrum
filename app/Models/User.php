@@ -11,10 +11,12 @@ namespace GitScrum\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\UserScope;
 
 class User extends Authenticatable
 {
     use GlobalScope;
+    use UserScope;
     /**
      * The database table used by the model.
      *
@@ -43,15 +45,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [];
-
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = $value;
-
-        if (empty($value)) {
-            $this->attributes['name'] = $this->attributes['username'];
-        }
-    }
 
     public function configStatuses()
     {
@@ -100,71 +93,13 @@ class User extends Authenticatable
             ->orderby('position', 'ASC');
     }
 
-    public function labels($feature)
+    public function setNameAttribute($value)
     {
-        return $this->{$feature}->map(function ($obj) {
-            return $obj->labels;
-        })->flatten(1)->unique('id');
-    }
+        $this->attributes['name'] = $value;
 
-    public function productBacklogs($product_backlog_id = null)
-    {
-        return $this->organizations->map(function ($organization) use ($product_backlog_id) {
-            $obj = $organization->productBacklog()
-                ->with('sprints')
-                ->with('userStories')
-                ->with('favorite')
-                ->with('organization')
-                ->with('issues')
-                ->get();
-
-            if (!is_null($product_backlog_id)) {
-                $obj = $obj->where('id', $product_backlog_id);
-            }
-
-            return $obj;
-        })->flatten(1);
-    }
-
-    public function sprints($sprint_id = null)
-    {
-        $sprints = $this->issues->where('sprint_id', '!=', null)->map(function ($issue) use ($sprint_id) {
-            if (!is_null($sprint_id)) {
-                $obj = $issue->sprint()->where('id', $sprint_id)->get();
-            } else {
-                $obj = $issue->sprint()->get();
-            }
-
-            return $obj;
-        })->flatten(1)->unique('id');
-
-        return $sprints;
-    }
-
-    public function userStories($user_story_id = null)
-    {
-        return $this->productBacklogs()->map(function ($productBacklog) {
-            return $productBacklog->userStories()->get();
-        })->flatten(1);
-    }
-
-    public function team()
-    {
-        return $this->organizations->map(function ($obj) {
-            return $obj->users;
-        })->flatten(1)->unique('id');
-    }
-
-    public function activities($user_id = null, $limit = 6)
-    {
-        return $this->team()->map(function ($obj) use ($user_id) {
-            $statuses = $obj->statuses;
-            if (!is_null($user_id)) {
-                $statuses = $statuses->where('user_id', $user_id);
-            }
-
-            return $statuses;
-        })->flatten(1)->sortByDesc('id')->take($limit);
+        if (empty($value)) {
+            $this->attributes['name'] = $this->attributes['username'];
+        }
     }
 
     public function getProviderAttribute()

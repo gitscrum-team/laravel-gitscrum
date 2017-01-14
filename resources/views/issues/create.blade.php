@@ -4,6 +4,6 @@
 
 @section('content')
 
-    @include('partials.forms.issue', ['route' => 'issues.store', 'issue_types' => $issue_types])
+    @include('partials.forms.issue', ['route' => 'issues.store'])
 
 @endsection

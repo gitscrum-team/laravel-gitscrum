@@ -27,7 +27,7 @@ class SprintTest extends TestCase
 
     public function test_config_status_id_default()
     {
-        $configStatusId = ConfigStatus::type('sprint')->default()->first()->id;
+        $configStatusId = ConfigStatus::type('sprints')->default()->first()->id;
 
         $sprint = Sprint::first();
 
@@ -36,7 +36,7 @@ class SprintTest extends TestCase
 
     public function test_config_status_id_change_to_open()
     {
-        $configStatusId = ConfigStatus::type('sprint')->where('is_closed', null)->first()->id;
+        $configStatusId = ConfigStatus::type('sprints')->where('is_closed', null)->first()->id;
 
         $sprint = Sprint::first();
         $sprint->config_status_id = $configStatusId;

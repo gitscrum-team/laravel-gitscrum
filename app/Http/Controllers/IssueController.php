@@ -14,9 +14,7 @@ use GitScrum\Models\Sprint;
 use GitScrum\Models\UserStory;
 use GitScrum\Models\Issue;
 use GitScrum\Models\Organization;
-use GitScrum\Models\IssueType;
 use GitScrum\Models\ConfigStatus;
-use GitScrum\Models\ConfigIssueEffort;
 use Carbon\Carbon;
 use Auth;
 
@@ -59,7 +57,7 @@ class IssueController extends Controller
 
         $issues = $issues->sortBy('position')->groupBy('config_status_id');
 
-        $configStatus = ConfigStatus::type('issue')->get();
+        $configStatus = ConfigStatus::type('issues')->get();
 
         if (!is_null($sprint) && !count($sprint)) {
             return redirect()->route('sprints.index');
@@ -71,40 +69,20 @@ class IssueController extends Controller
             ->with('configStatus', $configStatus);
     }
 
-    public function create($slug_sprint = null, $slug_user_story = null, $parent_id = null)
+    public function create($scope, $slug, $parent_id = null)
     {
-        $issue_types = IssueType::where('enabled', 1)
-            ->orderby('position', 'ASC')
-            ->get();
+        $model = 'GitScrum\\Models\\'.$scope;
 
-        $issue_efforts = ConfigIssueEffort::where('enabled', 1)
-            ->orderby('position', 'ASC')
-            ->get();
-
-        $userStory = $productBacklogs = null;
-
-        if ((is_null($slug_sprint) || !$slug_sprint) && $slug_user_story) {
-            $userStory = UserStory::slug($slug_user_story)->first();
-            $productBacklogs = Auth::user()->productBacklogs($userStory->product_backlog_id);
-            $usersByOrganization = Organization::find($userStory->productBacklog->organization_id)->users;
-        } elseif ($slug_sprint) {
-            $usersByOrganization = Organization::find(Sprint::slug($slug_sprint)->first()
-                ->productBacklog->organization_id)->users;
-        } else {
-            $issue = Issue::find($parent_id);
-            $productBacklogs = $issue->product_backlog_id;
-            $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
-        }
+        $obj = $model::slug($slug)->first();
+        $organization = Organization::find($obj->productBacklog->organization_id);
 
         return view('issues.create')
-            ->with('productBacklogs', $productBacklogs)
-            ->with('userStory', $userStory)
-            ->with('slug', $slug_sprint)
+            ->with('relation', with(new $model)->getTable())
+            ->with('obj', $obj)
+            ->with('organization', $organization)
             ->with('parent_id', $parent_id)
-            ->with('issue_types', $issue_types)
-            ->with('issue_efforts', $issue_efforts)
-            ->with('usersByOrganization', $usersByOrganization)
             ->with('action', 'Create');
+
     }
 
     public function store(IssueRequest $request)
@@ -137,26 +115,16 @@ class IssueController extends Controller
 
     public function edit($slug)
     {
-        $issue = Issue::slug($slug)->first();
+        $obj = $issue = Issue::slug($slug)->first();
 
-        $issue_types = IssueType::where('enabled', 1)
-            ->orderby('position', 'ASC')
-            ->get();
+        $organization = Organization::find($issue->productBacklog->organization_id);
 
-        $issue_efforts = ConfigIssueEffort::where('enabled', 1)
-            ->orderby('position', 'ASC')
-            ->get();
-
-        $usersByOrganization = Organization::find($issue->productBacklog->organization_id)->users;
-
-        return view('issues.edit')
-            ->with('productBacklogs', $issue->productBacklog->id)
-            ->with('userStory', $issue->userStory)
-            ->with('slug', isset($issue->sprint->slug) ? $issue->sprint->slug : null)
-            ->with('issue_types', $issue_types)
-            ->with('issue_efforts', $issue_efforts)
-            ->with('usersByOrganization', $usersByOrganization)
+        return view('issues.create')
+            ->with('relation', 'issue')
             ->with('issue', $issue)
+            ->with('obj', $obj)
+            ->with('organization', $organization)
+            ->with('parent_id', $issue->parent_id)
             ->with('action', 'Edit');
     }
 

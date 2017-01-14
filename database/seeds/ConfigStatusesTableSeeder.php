@@ -15,7 +15,7 @@ class ConfigStatusesTableSeeder extends Seeder
             0 => array(
                 'id' => 1,
                 'slug' => 'issue-todo',
-                'type' => 'issue',
+                'type' => 'issues',
                 'title' => 'Todo',
                 'description' => 'changed status to "todo"',
                 'position' => 1,
@@ -26,7 +26,7 @@ class ConfigStatusesTableSeeder extends Seeder
             1 => array(
                 'id' => 2,
                 'slug' => 'issue-in-progress',
-                'type' => 'issue',
+                'type' => 'issues',
                 'description' => 'changed status to "in progress"',
                 'title' => 'In Progress',
                 'position' => 2,
@@ -37,7 +37,7 @@ class ConfigStatusesTableSeeder extends Seeder
             2 => array(
                 'id' => 3,
                 'slug' => 'issue-done',
-                'type' => 'issue',
+                'type' => 'issues',
                 'title' => 'Done',
                 'description' => 'changed status to "done"',
                 'position' => 3,
@@ -48,7 +48,7 @@ class ConfigStatusesTableSeeder extends Seeder
             3 => array(
                 'id' => 4,
                 'slug' => 'issue-archived',
-                'type' => 'issue',
+                'type' => 'issues',
                 'title' => 'Archived',
                 'description' => 'changed status to "archived"',
                 'position' => 4,
@@ -59,7 +59,7 @@ class ConfigStatusesTableSeeder extends Seeder
             4 => array(
                 'id' => 5,
                 'slug' => 'note-added',
-                'type' => 'note',
+                'type' => 'notes',
                 'title' => 'added',
                 'description' => 'added a note',
                 'position' => 0,
@@ -70,7 +70,7 @@ class ConfigStatusesTableSeeder extends Seeder
             5 => array(
                 'id' => 6,
                 'slug' => 'sprint-open',
-                'type' => 'sprint',
+                'type' => 'sprints',
                 'title' => 'Open',
                 'description' => 'open a sprint',
                 'position' => 1,
@@ -81,7 +81,7 @@ class ConfigStatusesTableSeeder extends Seeder
             6 => array(
                 'id' => 7,
                 'slug' => 'sprint-closed',
-                'type' => 'sprint',
+                'type' => 'sprints',
                 'title' => 'Closed',
                 'description' => 'closed a sprint',
                 'position' => 3,
@@ -92,7 +92,7 @@ class ConfigStatusesTableSeeder extends Seeder
             7 => array(
                 'id' => 8,
                 'slug' => 'sprint-standby',
-                'type' => 'sprint',
+                'type' => 'sprints',
                 'title' => 'Standby',
                 'description' => 'standby a sprint',
                 'position' => 2,
@@ -103,7 +103,7 @@ class ConfigStatusesTableSeeder extends Seeder
             8 => array(
                 'id' => 9,
                 'slug' => 'attachment-added',
-                'type' => 'attachment',
+                'type' => 'attachments',
                 'title' => 'Added',
                 'description' => 'added an attachment',
                 'position' => 1,
@@ -114,7 +114,7 @@ class ConfigStatusesTableSeeder extends Seeder
             9 => array(
                 'id' => 10,
                 'slug' => 'comment-added',
-                'type' => 'comment',
+                'type' => 'comments',
                 'title' => 'Commented',
                 'description' => 'added a comment',
                 'position' => 1,
@@ -125,7 +125,7 @@ class ConfigStatusesTableSeeder extends Seeder
             10 => array(
                 'id' => 11,
                 'slug' => 'label-assigned',
-                'type' => 'label',
+                'type' => 'labels',
                 'title' => 'Assigned',
                 'description' => 'assigned a label',
                 'position' => 1,

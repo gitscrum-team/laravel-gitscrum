@@ -11,12 +11,14 @@ namespace GitScrum\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\StatusScope;
 use Carbon\Carbon;
 
 class Status extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use StatusScope;
 
     /**
      * The database table used by the model.
@@ -48,11 +50,6 @@ class Status extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function setUpdatedAtAttribute($value)
     {
     }
@@ -71,30 +68,6 @@ class Status extends Model
     {
         return $this->hasMany(\GitScrum\Models\ConfigStatus::class, 'type', 'statusesable_type')
             ->orderby('position', 'ASC');
-    }
-
-    public function getDateforhumansAttribute()
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->diffForHumans();
-    }
-
-    public function track($alias, $model, $id = null)
-    {
-        if (!isset($model->config_status_id)) {
-            if (is_null($id)) {
-                $status = ConfigStatus::type($alias)->default();
-            } else {
-                $status = ConfigStatus::find($id);
-            }
-
-            $model->config_status_id = $status->first()->id;
-        }
-
-        $this->create([
-            'statusesable_type' => $alias,
-            'statusesable_id' => $model->id,
-            'config_status_id' => $model->config_status_id,
-            'user_id' => $model->user_id, ]);
     }
 
     public function statusesable()

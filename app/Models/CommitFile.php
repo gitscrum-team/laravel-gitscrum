@@ -9,9 +9,13 @@
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use GitScrum\Scopes\CommitFileScope;
+use GitScrum\Scopes\GlobalScope;
 
 class CommitFile extends Model
 {
+    use CommitFileScope;
+    use GlobalScope;
     /**
      * The database table used by the model.
      *
@@ -48,18 +52,6 @@ class CommitFile extends Model
     public function filePhpcs()
     {
         return $this->hasMany(\GitScrum\Models\CommitFilePhpc::class, 'commit_file_id', 'id');
-    }
-
-    public function totalLines()
-    {
-        $total = preg_split('/\R/', $this->raw);
-
-        return count($total);
-    }
-
-    public function totalPHPCS($type = 'ERROR')
-    {
-        return $this->filePhpcs()->where('type', '=', $type)->groupBy('type')->count();
     }
 
     public function getAdditionsAttribute()

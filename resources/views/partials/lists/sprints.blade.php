@@ -1,7 +1,7 @@
 <tr>
 
     @if(!isset($list->column) || in_array('tbody_sprintFavorite', $list->column))
-    <td>@include('partials.lnk-favorite', ['favorite' => $list->favorite, 'type' => 'sprint',
+    <td>@include('partials.lnk-favorite', ['favorite' => $list->favorite, 'type' => 'sprints',
         'id' => $list->id, 'btnSize' => 'btn-xs'])</td>
     @endif
 

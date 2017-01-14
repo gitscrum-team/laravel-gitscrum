@@ -21,8 +21,8 @@ class SprintObserver
         $sprint->user_id = Auth::user()->id;
         $sprint->slug = Helper::slug($sprint->title);
 
-        $configStatus = ConfigStatus::type('sprint')->default()->first();
-        
+        $configStatus = ConfigStatus::type('sprints')->default()->first();
+
         if ($configStatus->is_closed) {
             $sprint->closed_at = Carbon::now();
         }

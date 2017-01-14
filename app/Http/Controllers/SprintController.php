@@ -103,7 +103,7 @@ class SprintController extends Controller
             return redirect()->route('sprints.index');
         }
 
-        $configStatus = ConfigStatus::type('sprint')->get();
+        $configStatus = ConfigStatus::type('sprints')->get();
 
         return view('sprints.show')
             ->with('sprint', $sprint)

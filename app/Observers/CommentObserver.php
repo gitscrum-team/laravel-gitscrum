@@ -18,7 +18,7 @@ class CommentObserver
     {
         $comment->user_id = Auth::user()->id;
 
-        if ($comment->commentable_type == 'issue') {
+        if ($comment->commentable_type == 'issues') {
             $tmp = app(Auth::user()->provider)->createOrUpdateIssueComment($comment);
             $comment->provider_id = $tmp->id;
         }
@@ -26,7 +26,7 @@ class CommentObserver
 
     public function created(Comment $comment)
     {
-        (new Status())->track('comment', $comment);
+        (new Status())->track('comments', $comment);
     }
 
     public function updated(Comment $comment)

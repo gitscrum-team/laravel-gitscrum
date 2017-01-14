@@ -12,8 +12,11 @@
         <testsuite name="Application Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
-        <testsuite name="user">
+        <testsuite name="default">
+            <file>./tests/integration/DashboardTest.php</file>
             <file>./tests/unit/UserTest.php</file>
+            <file>./tests/unit/SprintTest.php</file>
+            <file>./tests/unit/ProductBacklogTest.php</file>
         </testsuite>
     </testsuites>
     <filter>

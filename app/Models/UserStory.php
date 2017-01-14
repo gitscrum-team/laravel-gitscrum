@@ -11,11 +11,13 @@ namespace GitScrum\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\UserStoryScope;
 
 class UserStory extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use UserStoryScope;
     /**
      * The database table used by the model.
      *
@@ -43,11 +45,6 @@ class UserStory extends Model
      * @var array
      */
     protected $casts = [];
-
-    protected static function boot()
-    {
-        parent::boot();
-    }
 
     public function productBacklog()
     {
@@ -85,39 +82,5 @@ class UserStory extends Model
     public function labels()
     {
         return $this->morphToMany(\GitScrum\Models\Label::class, 'labelable');
-    }
-
-    public function activities()
-    {
-        $activities = $this->issues()
-            ->with('statuses')->get()->map(function ($issue) {
-                return $issue->statuses;
-            })->flatten(1)->map(function ($statuses) {
-                return $statuses;
-            })->sortByDesc('created_at');
-
-        $activities->splice(15);
-
-        return $activities->all();
-    }
-
-    public function issuesHasUsers($total = 3)
-    {
-        $users = $this->issues->map(function ($issue) {
-            return $issue->users;
-        })->reject(function ($value) {
-            return $value == null;
-        })->flatten(1)->unique('id')->splice(0, $total);
-
-        return $users->all();
-    }
-
-    public function issueStatus()
-    {
-        $status = $this->issues->map(function ($issue) {
-            return $issue->status;
-        })->groupBy('slug')->all();
-
-        return $status;
     }
 }

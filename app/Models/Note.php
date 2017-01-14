@@ -53,11 +53,6 @@ class Note extends Model
      */
     protected $dates = ['deleted_at'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function noteable()
     {
         return $this->morphTo('noteable');

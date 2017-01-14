@@ -12,12 +12,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\IssueScope;
 use GitScrum\Classes\Parsedown;
 
 class Issue extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use IssueScope;
     /**
      * The database table used by the model.
      *
@@ -49,11 +51,6 @@ class Issue extends Model
     protected $casts = [];
 
     protected $dates = ['deleted_at'];
-
-    protected static function boot()
-    {
-        parent::boot();
-    }
 
     public function branch()
     {
@@ -143,11 +140,6 @@ class Issue extends Model
             ->orderby('created_at', 'DESC');
     }
 
-    public function dateForHumans($dateField = 'created_at')
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$dateField])->diffForHumans();
-    }
-
     public function getNumberAttribute()
     {
         return isset($this->attributes['number']) ? $this->attributes['number'] : null;
@@ -155,7 +147,7 @@ class Issue extends Model
 
     public function getStatusAvailableAttribute()
     {
-        return ConfigStatus::type('issue')->get();
+        return \GitScrum\Models\ConfigStatus::type('issues')->get();
     }
 
     public function getSprintSlugAttribute()

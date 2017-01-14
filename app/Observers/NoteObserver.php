@@ -23,6 +23,6 @@ class NoteObserver
 
     public function created(Note $note)
     {
-        (new Status())->track('note', $note);
+        (new Status())->track('notes', $note);
     }
 }
