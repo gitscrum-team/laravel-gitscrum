@@ -23,6 +23,6 @@ class LabelObserver
 
     public function created(Label $label)
     {
-        (new Status())->track('label', $label);
+        (new Status())->track('labels', $label);
     }
 }

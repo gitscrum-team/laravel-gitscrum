@@ -54,7 +54,7 @@ class IssueObserver
 
     public function created($issue)
     {
-        (new Status())->track('issue', $issue);
+        (new Status())->track('issues', $issue);
     }
 
     public function updating($issue)
@@ -62,7 +62,7 @@ class IssueObserver
         if (isset($issue->number)) {
             app(Auth::user()->provider)->createOrUpdateIssue($issue);
         }
-        (new Status())->track('issue', $issue);
+        (new Status())->track('issues', $issue);
     }
 
     public function deleting(Issue $issue)

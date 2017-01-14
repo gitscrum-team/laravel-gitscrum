@@ -21,6 +21,6 @@ class AttachmentObserver
 
     public function created(Attachment $attachment)
     {
-        (new Status())->track('attachment', $attachment);
+        (new Status())->track('attachments', $attachment);
     }
 }
