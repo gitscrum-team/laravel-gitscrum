@@ -1,5 +1,5 @@
 <tr>
-    <td width="30">@include('partials.lnk-favorite', ['favorite' => $list->favorite, 'type' => 'product_backlog',
+    <td width="30">@include('partials.lnk-favorite', ['favorite' => $list->favorite, 'type' => 'product_backlogs',
         'id' => $list->id, 'btnSize' => 'btn-xs' ])</td>
     <td width="30"><span class="label label-default">{{$list->visibility}}</span></td>
     <td>

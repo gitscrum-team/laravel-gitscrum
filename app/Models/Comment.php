@@ -10,14 +10,13 @@ namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
 use GitScrum\Scopes\GlobalScope;
 
 class Comment extends Model
 {
     use SoftDeletes;
     use GlobalScope;
-    
+
     /**
      * The database table used by the model.
      *
@@ -48,11 +47,6 @@ class Comment extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function user()
     {
         return $this->belongsTo(\GitScrum\Models\User::class, 'user_id', 'id');
@@ -67,10 +61,5 @@ class Comment extends Model
     {
         return $this->morphMany(\GitScrum\Models\Status::class, 'statusesable')
             ->orderby('created_at', 'DESC');
-    }
-
-    public function getDateforhumansAttribute()
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->diffForHumans();
     }
 }

@@ -16,7 +16,6 @@ class Organization extends Model
 {
     use SoftDeletes;
     use GlobalScope;
-
     /**
      * The database table used by the model.
      *

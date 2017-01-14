@@ -30,7 +30,7 @@
     @include('partials.boxes.team', ['list'=>$user->team(), 'title'=>trans('Team')])
 
     @include('partials.boxes.note', [ 'list' => $user,
-        'type'=> 'user', 'title' => trans('Quick Notes'),
+        'type'=> 'users', 'title' => trans('Quick Notes'),
         'percentage' => Helper::percentage($user, 'notes')])
 </div>
 

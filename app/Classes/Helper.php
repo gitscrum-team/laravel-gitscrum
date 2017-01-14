@@ -3,6 +3,8 @@
 namespace GitScrum\Classes;
 
 use Illuminate\Pagination\LengthAwarePaginator;
+use GitScrum\Models\IssueType;
+use GitScrum\Models\ConfigIssueEffort;
 use Carbon\Carbon;
 use Auth;
 
@@ -66,6 +68,20 @@ class Helper
         }
 
         return $arr;
+    }
+
+    public static function issueTypes()
+    {
+        return IssueType::where('enabled', 1)
+            ->orderby('position', 'ASC')
+            ->get();
+    }
+
+    public static function issueEfforts()
+    {
+        return ConfigIssueEffort::where('enabled', 1)
+            ->orderby('position', 'ASC')
+            ->get();
     }
 
     public static function request($url, $auth = true, $customRequest = null, $postFields = null)

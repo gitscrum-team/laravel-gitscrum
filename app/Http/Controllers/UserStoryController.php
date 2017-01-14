@@ -56,7 +56,7 @@ class UserStoryController extends Controller
         $userStory = UserStory::slug($slug)
             ->with('labels')
             ->first();
-
+            
         return view('user_stories.show')
             ->with('userStory', $userStory);
     }

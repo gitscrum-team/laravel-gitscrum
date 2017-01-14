@@ -9,10 +9,14 @@
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use GitScrum\Scopes\CommitScope;
+use GitScrum\Scopes\GlobalScope;
 use Carbon\Carbon;
 
 class Commit extends Model
 {
+    use GlobalScope;
+    use CommitScope;
     /**
      * The database table used by the model.
      *
@@ -71,56 +75,6 @@ class Commit extends Model
     public function files()
     {
         return $this->hasMany(\GitScrum\Models\CommitFile::class, 'commit_id', 'id');
-    }
-
-    public function totalLines()
-    {
-        $lines = $this->files->map(function ($file) {
-            return count(preg_split('/\R/', $file->raw));
-        });
-
-        return array_sum($lines->all());
-    }
-
-    public function totalAdditions()
-    {
-        $additions = $this->files->map(function ($file) {
-            return $file->additions;
-        });
-
-        return array_sum($additions->all());
-    }
-
-    public function totalChanges()
-    {
-        $changes = $this->files->map(function ($file) {
-            return $file->changes;
-        });
-
-        return array_sum($changes->all());
-    }
-
-    public function totalDeletions()
-    {
-        $deletions = $this->files->map(function ($file) {
-            return $file->deletions;
-        });
-
-        return array_sum($deletions->all());
-    }
-
-    public function totalPHPCS($type = 'ERROR')
-    {
-        $errors = $this->files->map(function ($file) use ($type) {
-            return $file->filePhpcs()->where('type', '=', $type)->groupBy('type')->count();
-        });
-
-        return array_sum($errors->all());
-    }
-
-    public function getDateforhumansAttribute()
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->diffForHumans();
     }
 
     public function comments()

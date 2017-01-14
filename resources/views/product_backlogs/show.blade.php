@@ -7,7 +7,7 @@
     <h3>{{trans('Product Backlog')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
-    @include('partials.lnk-favorite', ['favorite' => $productBacklog->favorite, 'type' => 'product_backlog',
+    @include('partials.lnk-favorite', ['favorite' => $productBacklog->favorite, 'type' => 'product_backlogs',
         'id' => $productBacklog->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
 
     <a href="{{route('product_backlogs.edit', ['slug' => $productBacklog->slug])}}"
@@ -24,7 +24,7 @@
 @section('content')
 <div class="col-lg-4">
 
-    <a href="{{route('user_stories.create', ['slug_user_story' => $productBacklog->slug])}}"
+    <a href="{{route('user_stories.create')}}"
         class="btn btn-block btn-primary"
         data-toggle="modal" data-target="#modalLarge">{{trans('Create User Story')}}</a>
     <a href="{{route('sprints.create', ['slug_product_backlog' => $productBacklog->slug])}}"
@@ -34,10 +34,10 @@
 
     <hr />
 
-    @include('partials.boxes.note', [ 'list' => $productBacklog, 'type'=> 'product_backlog',
+    @include('partials.boxes.note', [ 'list' => $productBacklog, 'type'=> 'product_backlogs',
         'title' => 'Notes', 'percentage' => Helper::percentage($productBacklog, 'notes')])
 
-    @include('partials.boxes.attachment', ['id'=>$productBacklog->id, 'type'=>'product_backlog', 'list' => $productBacklog->attachments])
+    @include('partials.boxes.attachment', ['id'=>$productBacklog->id, 'type'=>'product_backlogs', 'list' => $productBacklog->attachments])
 
 </div>
 
@@ -81,7 +81,7 @@
             </div>
             <div id="tab-comments" class="tab-pane">
                 <div class="panel-body">
-                    @include('partials.forms.comment', ['id'=>$productBacklog->id, 'type'=>'product_backlog'])
+                    @include('partials.forms.comment', ['id'=>$productBacklog->id, 'type'=>'product_backlogs'])
                     @each('partials.lists.comments', $productBacklog->comments, 'comment', 'partials.lists.no-items')
                 </div>
             </div>

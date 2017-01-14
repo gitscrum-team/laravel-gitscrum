@@ -1,57 +1,48 @@
 <form action="{{route($route, ['slug'=>@$issue->slug])}}" method="post" class="form-horizontal">
     {{ csrf_field() }}
+    <input type="hidden" name="product_backlog_id" value="{{$obj->productBacklog->id or $issue->productBacklog->id}}">
 
-    @if ( isset($parent_id) )
-    <input type="hidden" name="parent_id" value="{{$parent_id}}">
+    @if($relation == 'user_stories')
+    <input type="hidden" name="user_story_id" value="{{$obj->id}}">
     @endif
 
-    @if ( isset($userStory) )
-    <input type="hidden" name="user_story_id" value="{{$userStory->id}}">
+    @if(!is_null($obj->user_story_id))
     <div class="form-group">
         <label class="col-sm-12 mbn pbn">{{trans('User Story')}}</label>
-        <div class="col-sm-12"><a href="{{route('user_stories.show', ['slug' => $userStory->slug])}}"
-            target="_blank" class="text-success">{{$userStory->title}}</a></div>
+        <div class="col-sm-12">
+                <a href="{{route('user_stories.show', ['slug' => $obj->userStory->slug])}}"
+                    target="_blank" class="text-success">
+            {{$obj->userStory->title}}</a></div>
     </div>
     <div class="hr-line-dashed"></div>
     @endif
 
-    @if (is_int($productBacklogs))
-    <input type="hidden" name="product_backlog_id" value="{{$productBacklogs}}">
-    @endif
-
-    @if ( isset($productBacklogs) && !is_int($productBacklogs) )
     <div class="form-group">
         <label class="col-sm-12">{{trans('Sprint Backlog')}}</label>
         <div class="col-sm-12">
+            @if( $obj->productBacklog->sprints()->count() )
             <select name="sprint_id" class="form-control">
-                @foreach ($productBacklogs as $backlog)
-
-                    @if ( $backlog->sprints->count() )
-                    <optgroup label="{{$backlog->title}}">
-                    @endif
-
-                    @foreach ($backlog->sprints as $productBacklog_sprint)
-                    <option value="{{$productBacklog_sprint->id}}">{{$productBacklog_sprint->title}}</option>
-                    @endforeach
-
-                    @if ($backlog->sprints->count())
-                    </optgroup>
-                    @endif
-
+                @foreach ($obj->productBacklog->sprints()->get() as $sprint)
+                    <option @if(isset($issue->sprint_id) && $issue->sprint_id = $sprint->id) selected="selected" @endif
+                        value="{{$sprint->id}}">{{$sprint->title}} - {{$sprint->timebox}}</option>
                 @endforeach
             </select>
+            @else
+                {{trans('Create a Sprint')}}
+            @endif
         </div>
     </div>
     <div class="hr-line-dashed"></div>
-    @else
-    <input type="hidden" name="slug_sprint" value="{{ $slug }}">
+
+    @if ( isset($parent_id) )
+    <input type="hidden" name="parent_id" value="{{$parent_id}}">
     @endif
 
     <div class="form-group">
         <label class="col-sm-12">{{trans('Type')}}</label>
         <div class="col-sm-12">
             <select name="issue_type_id" class="form-control">
-                @foreach ($issue_types as $type)
+                @foreach (Helper::issueTypes() as $type)
                 <option value="{{$type->id}}" @if( isset($issue->type) && $issue->type->id == $type->id )
                     selected="selected" @endif >{{$type->title}}</option>
                 @endforeach
@@ -76,8 +67,9 @@
         <label class="col-sm-12">{{trans('Avg Effort')}}</label>
         <div class="col-sm-12">
             <select name="config_issue_effort_id" class="form-control m-b">
-                @foreach ($issue_efforts as $effort)
-                <option value="{{$effort->id}}">{{$effort->title}}</option>
+                @foreach (Helper::issueEfforts() as $effort)
+                <option value="{{$effort->id}}"  @if( isset($issue->config_issue_effort_id) && $issue->config_issue_effort_id == $effort->id )
+                    selected="selected" @endif>{{$effort->title}}</option>
                 @endforeach
             </select>
         </div>
@@ -86,7 +78,7 @@
     <div class="form-group">
         <label class="col-sm-12">{{trans('Assigned to')}}</label>
         <div class="col-sm-12">
-            @include('partials.select-issue-assigned')
+            @include('partials.select-issue-assigned', ['users' => $organization->users])
         </div>
     </div>
     <div class="hr-line-dashed"></div>

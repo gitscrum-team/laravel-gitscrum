@@ -49,11 +49,6 @@ class ProductBacklog extends Model
      */
     protected $casts = ['private' => 'boolean', 'fork' => 'boolean'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function organization()
     {
         return $this->hasOne(\GitScrum\Models\Organization::class, 'id', 'organization_id');

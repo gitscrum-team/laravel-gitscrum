@@ -28,11 +28,6 @@ class Favorite extends Model
      */
     protected $fillable = ['favoriteable_type', 'favoriteable_id', 'user_id'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function favoriteable()
     {
         return $this->morphTo('favoriteable');

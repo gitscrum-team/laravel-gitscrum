@@ -20,13 +20,11 @@ class IssueObserver
 {
     public function creating(Issue $issue)
     {
-        if (isset($issue->product_backlog_id)) {
-            $product_backlog_id = $issue->product_backlog_id;
-        } else {
+        if (!isset($issue->product_backlog_id)) {
             try {
-                $product_backlog_id = UserStory::find($issue->user_story_id)->product_backlog_id;
+                $issue->product_backlog_id = UserStory::find($issue->user_story_id)->product_backlog_id;
             } catch (\Exception $e) {
-                $product_backlog_id = $issue->sprint()->first()->product_backlog_id;
+                $issue->product_backlog_id = Sprint::find($issue->sprint_id)->product_backlog_id;
             }
         }
 
@@ -40,7 +38,6 @@ class IssueObserver
             $issue->config_status_id = ConfigStatus::where('default', '=', 1)->first()->id;
         }
 
-        $issue->product_backlog_id = $product_backlog_id;
         $issue->sprint_id = intval($issue->sprint_id)?$issue->sprint_id:null;
 
         $tmp = app(Auth::user()->provider)->createOrUpdateIssue($issue);

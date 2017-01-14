@@ -11,7 +11,7 @@
         {{trans('User Story')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
-    @include('partials.lnk-favorite', ['favorite' => $userStory->favorite, 'type' => 'user_story',
+    @include('partials.lnk-favorite', ['favorite' => $userStory->favorite, 'type' => 'user_stories',
         'id' => $userStory->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
 
     <a href="{{route('user_stories.edit', ['slug' => $userStory->slug])}}"
@@ -41,7 +41,7 @@
 <div class="col-lg-4">
 
     <div class="mb20">
-        <a href="{{route('issues.create', ['slug_sprint' => '0', 'slug_user_story' => $userStory->slug])}}"
+        <a href="{{route('issues.create', ['scope' => 'UserStory', 'slug' => $userStory->slug])}}"
             class="btn btn-block btn-primary"
             data-toggle="modal" data-target="#modalLarge">
             {{trans('Create Issue')}}</a>
@@ -52,10 +52,10 @@
     </div>
 
     @include('partials.boxes.label', ['title' => 'Assign Labels', 'route' => 'user_issue.update',
-        'slug' => $userStory->slug, 'list' => $userStory->labels, 'type' => 'user_story', 'id' => $userStory->id ])
+        'slug' => $userStory->slug, 'list' => $userStory->labels, 'type' => 'user_stories', 'id' => $userStory->id ])
 
     @include('partials.boxes.note', [ 'list' => $userStory,
-        'type'=> 'user_story', 'title' => trans('Definition of Done Checklist'),
+        'type'=> 'user_stories', 'title' => trans('Definition of Done Checklist'),
         'percentage' => Helper::percentage($userStory, 'notes')])
 
     @include('partials.boxes.team', ['title' => 'Team Members', 'list' => $userStory->issuesHasUsers(12)])
@@ -89,38 +89,39 @@
         @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($userStory, 'issues')])
     </div>
 
-<div class="tabs-container">
+    <div class="tabs-container">
 
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#tab-issues"> {{trans('Issues')}} ({{$userStory->issues->count()}}) </a></li>
-        <li class=""><a data-toggle="tab" href="#tab-comments"> {{trans('Comments')}} ({{$userStory->comments->count()}}) </a></li>
-        <li class=""><a data-toggle="tab" href="#tab-activities"> {{trans('Activities')}} </a></li>
-    </ul>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab-issues"> {{trans('Issues')}} ({{$userStory->issues->count()}}) </a></li>
+            <li class=""><a data-toggle="tab" href="#tab-comments"> {{trans('Comments')}} ({{$userStory->comments->count()}}) </a></li>
+            <li class=""><a data-toggle="tab" href="#tab-activities"> {{trans('Activities')}} </a></li>
+        </ul>
 
-    <div class="tab-content">
-        <div id="tab-issues" class="tab-pane active">
-            <div class="panel-body">
-                @include('partials.boxes.issue', ['list' => $userStory->issues, 'messageEmpty' => trans('This does not have any issue yet')])
+        <div class="tab-content">
+            <div id="tab-issues" class="tab-pane active">
+                <div class="panel-body">
+                    @include('partials.boxes.issue', ['list' => $userStory->issues, 'messageEmpty' => trans('This does not have any issue yet')])
+                </div>
             </div>
-        </div>
-        <div id="tab-comments" class="tab-pane">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="social-footer">
-                        <div class="social-comment">
-                            @include('partials.forms.comment', ['id'=>$userStory->id, 'type'=>'user_story'])
+            <div id="tab-comments" class="tab-pane">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="social-footer">
+                            <div class="social-comment">
+                                @include('partials.forms.comment', ['id'=>$userStory->id, 'type'=>'user_stories'])
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="feed-activity-list">
-                    @each('partials.lists.comments', $userStory->comments, 'comment', 'partials.lists.no-items')
+                    <div class="feed-activity-list">
+                        @each('partials.lists.comments', $userStory->comments, 'comment', 'partials.lists.no-items')
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="tab-activities" class="tab-pane ">
-            <div class="panel-body">
-                <div class="feed-activity-list">
-                    @each('partials.lists.activities-complete', $userStory->activities(), 'activity', 'partials.lists.no-items')
+            <div id="tab-activities" class="tab-pane ">
+                <div class="panel-body">
+                    <div class="feed-activity-list">
+                        @each('partials.lists.activities-complete', $userStory->activities(), 'activity', 'partials.lists.no-items')
+                    </div>
                 </div>
             </div>
         </div>

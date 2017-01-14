@@ -23,13 +23,14 @@ class IssueMiddleware
      */
     public function handle($request, Closure $next)
     {
+        /*
         try {
             if (isset($request->slug)) {
                 Issue::slug($request->slug)->firstOrFail();
             }
         } catch (\Exception $e) {
             return redirect()->route('user.dashboard');
-        }
+        }*/
 
         return $next($request);
     }

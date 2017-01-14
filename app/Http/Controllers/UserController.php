@@ -27,7 +27,7 @@ class UserController extends Controller
             'tbody_sprintBacklog',
             'tbody_sprintProductBacklog', ];
 
-        $sprints = $sprints->map(function ($sprint) use ($sprintColumns) {
+        $sprints = $sprints->get()->map(function ($sprint) use ($sprintColumns) {
             $sprint['column'] = $sprintColumns;
 
             return $sprint;

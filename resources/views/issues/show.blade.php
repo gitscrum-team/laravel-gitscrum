@@ -12,7 +12,7 @@
         {{trans('Issue')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
-    @include('partials.lnk-favorite', ['favorite' => $issue->favorite, 'type' => 'issue',
+    @include('partials.lnk-favorite', ['favorite' => $issue->favorite, 'type' => 'issues',
         'id' => $issue->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
 
     <a href="{{route('issues.edit', ['slug' => $issue->slug])}}"
@@ -74,7 +74,7 @@
     @endif
 
     @if ( $issue->closed_at )
-        <a href="{{route('issues.create', ['slug_sprint'=>0, 'slug_user_story'=>0, 'parent_id' => $issue->id])}}"
+        <a href="{{route('issues.create', ['scope' => 'issue', 'slug' => $issue->slug, 'parent_id' => $issue->id])}}"
             class="btn btn-block btn-danger mb20"
             data-toggle="modal" data-target="#modalLarge"
             type="button">{{trans('Defect Detected')}}</a>
@@ -83,13 +83,13 @@
     <div class="mtl">
 
         @include('partials.boxes.label', ['title' => 'Assign Labels', 'route' => 'user_issue.update',
-            'slug' => $issue->slug, 'list' => $issue->labels, 'type' => 'issue', 'id' => $issue->id ])
+            'slug' => $issue->slug, 'list' => $issue->labels, 'type' => 'issues', 'id' => $issue->id ])
 
         @include('partials.boxes.note', [ 'list' => $issue,
-            'type'=> 'issue', 'title' => trans('Definition of Done Checklist'),
+            'type'=> 'issues', 'title' => trans('Definition of Done Checklist'),
             'percentage' => Helper::percentage($issue, 'notes')])
 
-        @include('partials.boxes.attachment', ['id'=>$issue->id, 'type'=>'issue', 'list' => $issue->attachments])
+        @include('partials.boxes.attachment', ['id'=>$issue->id, 'type'=>'issues', 'list' => $issue->attachments])
 
         <h4>{{trans('Assigned to')}}
             <span class="pull-right">
@@ -102,7 +102,7 @@
                 {{ csrf_field() }}
                 <div class="col-lg-12">
                     <div class="row">
-                        @include('partials.select-issue-assigned', ['usersByOrganization' => $usersByOrganization])
+                        @include('partials.select-issue-assigned', ['users' => $usersByOrganization])
                         <div class="">
                             <button type="submit" class="btn btn-xs btn-primary pull-right" role="button">{{trans('Confirm')}}</button>
                         </div>
@@ -155,7 +155,7 @@
         <p class="text-danger">
             <strong>{{trans('Closed')}} {{trans('by')}}
                 <a href="{{route('user.profile', ['username' => $issue->closedUser->username])}}">
-                {{$issue->closedUser->username}}</a>: {{$issue->dateforhumans('closed_at')}}</strong>
+                {{$issue->closedUser->username}}</a>: {{$issue->dateforHumans('closed_at')}}</strong>
         </p>
         @endif
 
@@ -186,7 +186,7 @@
             <div class="tab-content">
                 <div id="tab-comments" class="tab-pane active">
                     <div class="panel-body">
-                        @include('partials.forms.comment', ['id'=>$issue->id, 'type'=>'issue'])
+                        @include('partials.forms.comment', ['id'=>$issue->id, 'type'=>'issues'])
                         @each('partials.lists.comments', $issue->comments, 'comment', 'partials.lists.no-items')
                     </div>
                 </div>
