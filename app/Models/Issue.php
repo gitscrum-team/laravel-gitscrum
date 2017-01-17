@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use GitScrum\Scopes\GlobalScope;
+use Auth;
 
 class Issue extends Model
 {
