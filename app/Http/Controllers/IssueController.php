@@ -119,7 +119,7 @@ class IssueController extends Controller
 
         $organization = Organization::find($issue->productBacklog->organization_id);
 
-        return view('issues.create')
+        return view('issues.edit')
             ->with('relation', 'issue')
             ->with('issue', $issue)
             ->with('obj', $obj)

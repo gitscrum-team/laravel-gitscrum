@@ -1,3 +1,5 @@
+{{$route}}
+
 <form action="{{route($route, ['slug'=>@$issue->slug])}}" method="post" class="form-horizontal">
     {{ csrf_field() }}
     <input type="hidden" name="product_backlog_id" value="{{$obj->productBacklog->id or $issue->productBacklog->id}}">
