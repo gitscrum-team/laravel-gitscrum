@@ -22,7 +22,7 @@
         <input type="hidden" name="_method" value="DELETE" />
         <input type="hidden" name="slug" value="{{$sprint->slug}}" />
         <button class="btn btn-sm btn-default" type="submit">
-            <i class="fa fa-trash" aria-hidden="true"></i></a>
+            <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
     </form>
 </div>
@@ -30,7 +30,7 @@
 
 @section('main-title')
 <span class="label label-default">{{$sprint->visibility}}</span>
-<span @if ( $sprint->closed_at ) style="text-decoration: line-through;" @endif>
+<span @if( isset($sprint->closed_at) ) style="text-decoration: line-through;" @endif>
     {{$sprint->title}}</span>
 
 <div class="btn-group pull-right">
@@ -119,7 +119,7 @@
     @if(!empty($sprint->description))
     <p class="description">
         <small>{{trans('Description')}}</small>
-        <span>{!! nl2br(e($sprint->description)) !!}<span>
+        <span>{!! nl2br(e($sprint->description)) !!}</span>
     </p>
     @endif
 

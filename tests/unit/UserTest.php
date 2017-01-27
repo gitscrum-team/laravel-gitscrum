@@ -2,7 +2,6 @@
 
 use GitScrum\Models\User;
 use GitScrum\Classes\Helper;
-use Carbon\Carbon;
 
 class UserTest extends TestCase
 {

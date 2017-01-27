@@ -31,7 +31,7 @@
                 <input type="hidden" name="_method" value="DELETE" />
                 <input type="hidden" name="slug" value="{{$sprint->slug}}" />
                 <button class="btn btn-sm btn-default btn-submit-form" type="submit">
-                    <i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
             </form>
         </div>
@@ -48,7 +48,7 @@
         <div style="float:left" class="row">
             <div class="agile" data-value="{{$status->id}}">
                 <h5 class="handle">
-                    <i class="fa fa-arrows-h" data-toggle="tooltip" titl="{{trans('Drag it')}}" aria-hidden="true"></i>
+                    <i class="fa fa-arrows-h" data-toggle="tooltip" title="{{trans('Drag it')}}" aria-hidden="true"></i>
                     {{$status->title}}
                     (
                     @if(isset($issues[$status->id]))

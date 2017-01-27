@@ -9,7 +9,6 @@
 namespace GitScrum\Http\Middleware;
 
 use Closure;
-use GitScrum\Models\Issue;
 
 class IssueMiddleware
 {

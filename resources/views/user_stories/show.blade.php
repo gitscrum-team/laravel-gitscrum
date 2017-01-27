@@ -24,7 +24,7 @@
         <input type="hidden" name="_method" value="DELETE" />
         <input type="hidden" name="slug" value="{{$userStory->slug}}" />
         <button class="btn btn-sm btn-default" type="submit">
-            <i class="fa fa-trash" aria-hidden="true"></i></a>
+            <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
     </form>
 </div>
@@ -74,7 +74,7 @@
     @if(!empty($productBacklog->description))
     <p class="description">
         <small>{{trans('Additional information')}}</small>
-        <span>{!! nl2br(e($userStory->description)) !!}<span>
+        <span>{!! nl2br(e($userStory->description)) !!}</span>
     </p>
     @endif
 

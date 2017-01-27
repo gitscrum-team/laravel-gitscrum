@@ -11,7 +11,6 @@ namespace GitScrum\Models;
 use Illuminate\Database\Eloquent\Model;
 use GitScrum\Scopes\CommitScope;
 use GitScrum\Scopes\GlobalScope;
-use Carbon\Carbon;
 
 class Commit extends Model
 {

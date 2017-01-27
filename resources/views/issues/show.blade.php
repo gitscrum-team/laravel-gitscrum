@@ -166,7 +166,7 @@
     <div class="description">
         <small>{{trans('Description')}}</small>
         <div class="well">
-            <span>{!! $issue->description !!}<span>
+            <span>{!! $issue->description !!}</span>
         </div>
     </div>
     @endif

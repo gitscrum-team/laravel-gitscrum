@@ -2,7 +2,6 @@
 
 namespace GitScrum\Scopes;
 
-use GitScrum\Models\ConfigStatus;
 use GitScrum\Models\Sprint;
 
 trait UserScope

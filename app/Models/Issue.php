@@ -10,7 +10,6 @@ namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
 use GitScrum\Scopes\GlobalScope;
 use GitScrum\Scopes\IssueScope;
 use GitScrum\Classes\Parsedown;

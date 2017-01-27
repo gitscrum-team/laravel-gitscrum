@@ -52,7 +52,7 @@
     @if(!empty($productBacklog->description))
     <p class="description">
         <small>{{trans('Description')}}</small>
-        <span>{!! nl2br(e($productBacklog->description)) !!}<span>
+        <span>{!! nl2br(e($productBacklog->description)) !!}</span>
     </p>
     @endif
 
