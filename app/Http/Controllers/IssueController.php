@@ -141,7 +141,7 @@ class IssueController extends Controller
             ->with('success', trans('Congratulations! The Issue has been edited with successfully'));
     }
 
-    public function statusUpdate(Request $request, $slug = null, int $status = 0)
+    public function statusUpdate(Request $request, $slug = null, $status = 0)
     {
         if (!isset($request->status_id)) {
             $request->status_id = $status;
