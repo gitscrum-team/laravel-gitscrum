@@ -19,7 +19,6 @@
 <hr>
 
 [![Build Status](https://travis-ci.org/renatomarinho/laravel-gitscrum.svg?branch=master)](https://travis-ci.org/renatomarinho/laravel-gitscrum)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/?branch=master)
 [![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-gitscrum/downloads)](https://packagist.org/packages/renatomarinho/laravel-gitscrum)
 
 <hr>
@@ -58,6 +57,8 @@ The requirements to Laravel GitScrum application is:
 - **Database**: MySQL, or Maria DB
 
 [**Use Docker** - Containers: php7, nginx and mysql57](https://github.com/renatomarinho/Docker-GitScrum)
+
+[Unofficial step by step guide on how to install GitScrum on Ubuntu](https://www.rosehosting.com/blog/how-to-install-gitscrum-on-ubuntu-16-04/)
 
 ### Composer Package
 
