@@ -13,7 +13,7 @@ var agile = {
 
     scroll: function(){
         // $('.agile-list').height( $( window ).height()-290 );
-        // $('.kanban-board-scroll').width( $('.agile').length*$('.agile-column .row').width()+100 );
+        $('.kanban-board-scroll').width( $('.agile').length*$('.agile-column .row').width()+100 );
         // $('body').css('overflow-y','hidden');
     },
 
