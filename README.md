@@ -19,7 +19,7 @@
 <hr>
 
 [![Build Status](https://travis-ci.org/renatomarinho/laravel-gitscrum.svg?branch=master)](https://travis-ci.org/renatomarinho/laravel-gitscrum)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/renatomarinho/laravel-gitscrum/?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2abfe5173e0b4565a2b1e3e345160939)](https://www.codacy.com/app/renatomarinho/laravel-gitscrum?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renatomarinho/laravel-gitscrum&amp;utm_campaign=Badge_Grade)
 [![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-gitscrum/downloads)](https://packagist.org/packages/renatomarinho/laravel-gitscrum)
 
 <hr>
