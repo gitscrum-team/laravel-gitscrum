@@ -185,12 +185,9 @@ return [
 
         SocialiteProviders\Manager\ServiceProvider::class,
 
-        GrahamCampbell\GitHub\GitHubServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
-        Talevskiigor\ComposerBump\ComposerBumpServiceProvider::class,
-        Way\Generators\GeneratorsServiceProvider::class,
-        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+        Talevskiigor\ComposerBump\ComposerBumpServiceProvider::class
 
     ],
 
