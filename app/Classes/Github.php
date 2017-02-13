@@ -178,7 +178,7 @@ class Github implements ProviderInterface
             return $organization->id;
         }
 
-        return $this->organization[$login];
+        return $this->organization[$login]->id;
 
     }
 
