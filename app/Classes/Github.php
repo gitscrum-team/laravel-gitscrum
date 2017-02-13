@@ -14,6 +14,9 @@ use GitScrum\Contracts\ProviderInterface;
 
 class Github implements ProviderInterface
 {
+
+    private $organization = [];
+
     public function tplUser($obj)
     {
         return [
@@ -149,27 +152,34 @@ class Github implements ProviderInterface
 
     public function organization($login)
     {
-        $organization = Organization::where('username', $login)
-            ->where('provider', 'github')->first();
+        if( !array_key_exists($login, $this->organization) )
+        {
+            $organization = Organization::where('username', $login)
+                ->where('provider', 'github')->first();
 
-        if (!isset($organization)) {
-            $response = Helper::request('https://api.github.com/orgs/'.$login);
+            if (!isset($organization)) {
+                $response = Helper::request('https://api.github.com/orgs/'.$login);
 
-            if (!isset($response->id)) {
-                $response = Helper::request('https://api.github.com/users/'.$login);
+                if (!isset($response->id)) {
+                    $response = Helper::request('https://api.github.com/users/'.$login);
+                }
+
+                if (isset($response->id)) {
+                    $organization = Organization::create($this->tplOrganization($response));
+                }
             }
 
-            if (isset($response->id)) {
-                $organization = Organization::create($this->tplOrganization($response));
+            if (is_null($organization->users()->where('users_has_organizations.user_id', Auth::id())
+                ->where('users_has_organizations.organization_id', $organization->id)->first())) {
+                $organization->users()->attach(Auth::id());
             }
+            $this->organization[$login] = $organization;
+
+            return $organization->id;
         }
 
-        if (is_null($organization->users()->where('users_has_organizations.user_id', Auth::id())
-            ->where('users_has_organizations.organization_id', $organization->id)->first())) {
-            $organization->users()->attach(Auth::id());
-        }
+        return $this->organization[$login];
 
-        return $organization->id;
     }
 
     public function readCollaborators($owner, $repo, $providerId = null)
