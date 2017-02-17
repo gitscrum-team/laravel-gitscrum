@@ -26,7 +26,7 @@
 
 ## Overview
 
-Laravel GitScrum is a **free application** developed in Laravel 5.3. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
+Laravel GitScrum is a **free application** developed in Laravel 5.4. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
 
 
 ### Features
@@ -53,7 +53,7 @@ GitScrum can be integrated with **Github** or **Gitlab**.
 
 The requirements to Laravel GitScrum application is:
 
-- **PHP - Supported Versions**: PHP 5.6, PHP 7.0 or HHVM
+- **PHP - Supported Versions**: >= 7.x
 - **Webserver**: Nginx or Apache
 - **Database**: MySQL, or Maria DB
 
