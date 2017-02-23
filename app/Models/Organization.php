@@ -1,15 +1,14 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\{Model,SoftDeletes};
 use GitScrum\Scopes\GlobalScope;
 
 class Organization extends Model
@@ -49,12 +48,12 @@ class Organization extends Model
 
     public function users()
     {
-        return $this->belongsToMany(\GitScrum\Models\User::class, 'users_has_organizations')
+        return $this->belongsToMany(User::class, 'users_has_organizations')
             ->withTimestamps();
     }
 
     public function productBacklog()
     {
-        return $this->hasMany(\GitScrum\Models\ProductBacklog::class, 'organization_id', 'id');
+        return $this->hasMany(ProductBacklog::class, 'organization_id', 'id');
     }
 }

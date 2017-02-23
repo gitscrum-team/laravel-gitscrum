@@ -1,16 +1,15 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use GitScrum\Scopes\CommitScope;
-use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\{CommitScope,GlobalScope};
 
 class Commit extends Model
 {
@@ -28,7 +27,8 @@ class Commit extends Model
      *
      * @var array
      */
-    protected $fillable = ['product_backlog_id', 'branch_id', 'user_id', 'issue_id', 'sha', 'url', 'message', 'html_url', 'date', 'tree_sha', 'tree_url', 'deleted_at'];
+    protected $fillable = ['product_backlog_id', 'branch_id', 'user_id', 'issue_id',
+        'sha', 'url', 'message', 'html_url', 'date', 'tree_sha', 'tree_url', 'deleted_at'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -48,36 +48,36 @@ class Commit extends Model
 
     public function branch()
     {
-        return $this->belongsTo(\GitScrum\Models\Branch::class, 'branch_id', 'id');
+        return $this->belongsTo(Branch::class, 'branch_id', 'id');
     }
 
     public function issue()
     {
-        return $this->belongsTo(\GitScrum\Models\Issue::class, 'issue_id', 'id');
+        return $this->belongsTo(Issue::class, 'issue_id', 'id');
     }
 
     public function repository()
     {
-        return $this->belongsTo(\GitScrum\Models\ProductBacklog::class, 'product_backlog_id', 'id');
+        return $this->belongsTo(ProductBacklog::class, 'product_backlog_id', 'id');
     }
 
     public function user()
     {
-        return $this->belongsTo(\GitScrum\Models\User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function pullRequestsHasCommits()
     {
-        return $this->belongsToMany(\GitScrum\Models\PullRequestsHasCommit::class, 'pull_requests_has_commits', 'commit_id', 'pull_request_id');
+        return $this->belongsToMany(PullRequestsHasCommit::class, 'pull_requests_has_commits', 'commit_id', 'pull_request_id');
     }
 
     public function files()
     {
-        return $this->hasMany(\GitScrum\Models\CommitFile::class, 'commit_id', 'id');
+        return $this->hasMany(CommitFile::class, 'commit_id', 'id');
     }
 
     public function comments()
     {
-        return $this->morphMany(\GitScrum\Models\Comment::class, 'commentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

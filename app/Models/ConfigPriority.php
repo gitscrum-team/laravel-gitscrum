@@ -44,6 +44,6 @@ class ConfigPriority extends Model
 
     public function users()
     {
-        return $this->belongsToMany(\GitScrum\Models\User::class);
+        return $this->belongsToMany(User::class);
     }
 }

@@ -1,15 +1,14 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\{Model,SoftDeletes};
 use GitScrum\Scopes\GlobalScope;
 
 class Comment extends Model
@@ -49,17 +48,17 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->belongsTo(\GitScrum\Models\User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function issue()
     {
-        return $this->belongsTo(\GitScrum\Models\Issue::class, 'commentable_id', 'id');
+        return $this->belongsTo(Issue::class, 'commentable_id', 'id');
     }
 
     public function statuses()
     {
-        return $this->morphMany(\GitScrum\Models\Status::class, 'statusesable')
+        return $this->morphMany(Status::class, 'statusesable')
             ->orderby('created_at', 'DESC');
     }
 }

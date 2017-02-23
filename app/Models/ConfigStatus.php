@@ -1,16 +1,15 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use GitScrum\Scopes\ConfigStatusScope;
-use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\{ConfigStatusScope,GlobalScope};
 
 class ConfigStatus extends Model
 {
@@ -49,7 +48,7 @@ class ConfigStatus extends Model
 
     public function users()
     {
-        return $this->belongsToMany(\GitScrum\Models\User::class, 'statuses', 'id', 'user_id');
+        return $this->belongsToMany(User::class, 'statuses', 'id', 'user_id');
     }
 
     public function status()
@@ -59,6 +58,6 @@ class ConfigStatus extends Model
 
     public function issue()
     {
-        return $this->belongsTo(\GitScrum\Models\Issue::class, 'config_status_id', 'id');
+        return $this->belongsTo(Issue::class, 'config_status_id', 'id');
     }
 }

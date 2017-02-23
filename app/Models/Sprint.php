@@ -1,18 +1,16 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\{Model,SoftDeletes};
+use GitScrum\Scopes\{GlobalScope,SprintScope};
 use Carbon\Carbon;
-use GitScrum\Scopes\GlobalScope;
-use GitScrum\Scopes\SprintScope;
 
 class Sprint extends Model
 {
@@ -50,45 +48,45 @@ class Sprint extends Model
 
     public function productBacklog()
     {
-        return $this->belongsTo(\GitScrum\Models\ProductBacklog::class, 'product_backlog_id', 'id');
+        return $this->belongsTo(ProductBacklog::class, 'product_backlog_id', 'id');
     }
 
     public function branches()
     {
-        return $this->hasMany(\GitScrum\Models\Branch::class, 'sprint_id', 'id');
+        return $this->hasMany(Branch::class, 'sprint_id', 'id');
     }
 
     public function issues()
     {
-        return $this->hasMany(\GitScrum\Models\Issue::class, 'sprint_id', 'id')
+        return $this->hasMany(Issue::class, 'sprint_id', 'id')
             ->orderby('position', 'ASC');
     }
 
     public function comments()
     {
-        return $this->morphMany(\GitScrum\Models\Comment::class, 'commentable')
+        return $this->morphMany(Comment::class, 'commentable')
             ->orderby('created_at', 'DESC');
     }
 
     public function attachments()
     {
-        return $this->morphMany(\GitScrum\Models\Attachment::class, 'attachmentable');
+        return $this->morphMany(Attachment::class, 'attachmentable');
     }
 
     public function notes()
     {
-        return $this->morphMany(\GitScrum\Models\Note::class, 'noteable')
+        return $this->morphMany(Note::class, 'noteable')
             ->orderby('position', 'ASC');
     }
 
     public function favorite()
     {
-        return $this->morphOne(\GitScrum\Models\Favorite::class, 'favoriteable');
+        return $this->morphOne(Favorite::class, 'favoriteable');
     }
 
     public function status()
     {
-        return $this->hasOne(\GitScrum\Models\ConfigStatus::class, 'id', 'config_status_id');
+        return $this->hasOne(ConfigStatus::class, 'id', 'config_status_id');
     }
 
     public function getVisibilityAttribute()
