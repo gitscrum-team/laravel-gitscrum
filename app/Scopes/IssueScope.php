@@ -10,5 +10,4 @@ namespace GitScrum\Scopes;
 
 trait IssueScope
 {
-    
 }

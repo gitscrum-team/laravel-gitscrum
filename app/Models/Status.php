@@ -8,8 +8,10 @@
 
 namespace GitScrum\Models;
 
-use Illuminate\Database\Eloquent\{Model,SoftDeletes};
-use GitScrum\Scopes\{GlobalScope,StatusScope};
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\StatusScope;
 
 class Status extends Model
 {

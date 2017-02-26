@@ -12,7 +12,6 @@ use GitScrum\Models\Sprint;
 
 trait UserScope
 {
-
     public function scopeLabels($feature)
     {
         return $this->{$feature}->map(function ($obj) {
@@ -37,7 +36,7 @@ trait UserScope
                 }
 
                 return $obj;
-        })->flatten(1);
+            })->flatten(1);
     }
 
     public function scopeSprints($query, $sprint_id = null)

@@ -8,7 +8,8 @@
 
 namespace GitScrum\Observers;
 
-use GitScrum\Models\{Note,Status};
+use GitScrum\Models\Note;
+use GitScrum\Models\Status;
 use GitScrum\Classes\Helper;
 use Auth;
 

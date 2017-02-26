@@ -8,8 +8,10 @@
 
 namespace GitScrum\Models;
 
-use Illuminate\Database\Eloquent\{Model,SoftDeletes};
-use GitScrum\Scopes\{GlobalScope,SprintScope};
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\SprintScope;
 use Carbon\Carbon;
 
 class Sprint extends Model

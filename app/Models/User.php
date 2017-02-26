@@ -10,7 +10,8 @@ namespace GitScrum\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use GitScrum\Scopes\{GlobalScope,UserScope};
+use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\UserScope;
 
 class User extends Authenticatable
 {

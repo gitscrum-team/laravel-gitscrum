@@ -9,7 +9,8 @@
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use GitScrum\Scopes\{CommitScope,GlobalScope};
+use GitScrum\Scopes\CommitScope;
+use GitScrum\Scopes\GlobalScope;
 
 class Commit extends Model
 {

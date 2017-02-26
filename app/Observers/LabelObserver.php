@@ -8,7 +8,8 @@
 
 namespace GitScrum\Observers;
 
-use GitScrum\Models\{Label,Status};
+use GitScrum\Models\Label;
+use GitScrum\Models\Status;
 use GitScrum\Classes\Helper;
 use Auth;
 

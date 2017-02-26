@@ -24,7 +24,7 @@ trait UserStoryScope
         return collect($activities->all());
     }
 
-	public function scopeIssuesHasUsers($query, $total = 3)
+    public function scopeIssuesHasUsers($query, $total = 3)
     {
         $users = $this->issues->map(function ($issue) {
             return $issue->users;

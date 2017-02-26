@@ -9,7 +9,8 @@
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use GitScrum\Scopes\{CommitFileScope,GlobalScope};
+use GitScrum\Scopes\CommitFileScope;
+use GitScrum\Scopes\GlobalScope;
 
 class CommitFile extends Model
 {

@@ -8,7 +8,8 @@
 
 namespace GitScrum\Observers;
 
-use GitScrum\Models\{Sprint,ConfigStatus};
+use GitScrum\Models\Sprint;
+use GitScrum\Models\ConfigStatus;
 use GitScrum\Classes\Helper;
 use Carbon\Carbon;
 use Auth;

@@ -9,7 +9,8 @@
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use GitScrum\Scopes\{ConfigStatusScope,GlobalScope};
+use GitScrum\Scopes\ConfigStatusScope;
+use GitScrum\Scopes\GlobalScope;
 
 class ConfigStatus extends Model
 {
