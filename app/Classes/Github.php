@@ -8,14 +8,8 @@
 
 namespace GitScrum\Classes;
 
-use Auth;
-use GitScrum\Models\Branch;
-use GitScrum\Models\Commit;
-use GitScrum\Models\User;
-use GitScrum\Models\Issue;
-use GitScrum\Models\Organization;
-use GitScrum\Models\ProductBacklog;
-use Carbon\Carbon;
+use {Auth,Carbon};
+use GitScrum\Models\{Branch,User,Issue,Organization,ProductBacklog};
 use GitScrum\Contracts\ProviderInterface;
 
 class Github implements ProviderInterface

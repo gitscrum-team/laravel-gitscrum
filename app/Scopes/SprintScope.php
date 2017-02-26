@@ -9,7 +9,7 @@
 namespace GitScrum\Scopes;
 
 use GitScrum\Models\ConfigStatus;
-use Carbon\Carbon;
+use Carbon;
 
 trait SprintScope
 {
@@ -25,15 +25,15 @@ trait SprintScope
     {
         $types = $this->issues->map(function ($issue) {
             return $issue->type;
-            })->groupBy('slug')->map(function ($type) {
-                $obj = $type->first();
-                return [
+        })->groupBy('slug')->map(function ($type) {
+            $obj = $type->first();
+            return [
                     'sprint' => $this->slug,
                     'slug' => $obj->slug,
                     'title' => $obj->title,
                     'color' => $obj->color,
                     'total' => $type->count(), ];
-            })->sortByDesc('total')->all();
+        })->sortByDesc('total')->all();
 
         return collect($types);
     }
@@ -133,5 +133,4 @@ trait SprintScope
 
         return round($begin->diffInDays($end) / 7);
     }
-
 }

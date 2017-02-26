@@ -1,14 +1,15 @@
 <?php
+/**
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
+ */
 
 namespace GitScrum\Classes;
 
-use Auth;
-use GitScrum\Models\User;
-use GitScrum\Models\Issue;
-use GitScrum\Models\Organization;
-use GitScrum\Models\ProductBacklog;
-use GitScrum\Models\Branch;
-use Carbon\Carbon;
+use {Auth, Carbon};
+use GitScrum\Models\{User,Issue,Organization,ProductBacklog,Branch};
 use GitScrum\Contracts\ProviderInterface;
 
 class Gitlab implements ProviderInterface

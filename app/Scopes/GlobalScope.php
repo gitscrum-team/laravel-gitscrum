@@ -8,8 +8,7 @@
 
 namespace GitScrum\Scopes;
 
-use Auth;
-use Carbon\Carbon;
+use {Auth,Carbon};
 
 trait GlobalScope
 {
