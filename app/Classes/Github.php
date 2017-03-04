@@ -8,13 +8,17 @@
 
 namespace GitScrum\Classes;
 
-use {Auth,Carbon};
-use GitScrum\Models\{Branch,User,Issue,Organization,ProductBacklog};
+use Auth;
+use Carbon;
+use GitScrum\Models\Branch;
+use GitScrum\Models\User;
+use GitScrum\Models\Issue;
+use GitScrum\Models\Organization;
+use GitScrum\Models\ProductBacklog;
 use GitScrum\Contracts\ProviderInterface;
 
 class Github implements ProviderInterface
 {
-
     private $organization = [];
 
     public function tplUser($obj)
@@ -152,8 +156,7 @@ class Github implements ProviderInterface
 
     public function organization($login)
     {
-        if( !array_key_exists($login, $this->organization) )
-        {
+        if (!array_key_exists($login, $this->organization)) {
             $organization = Organization::where('username', $login)
                 ->where('provider', 'github')->first();
 
@@ -179,7 +182,6 @@ class Github implements ProviderInterface
         }
 
         return $this->organization[$login]->id;
-
     }
 
     public function readCollaborators($owner, $repo, $providerId = null)

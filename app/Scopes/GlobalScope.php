@@ -8,7 +8,8 @@
 
 namespace GitScrum\Scopes;
 
-use {Auth,Carbon};
+use Auth;
+use Carbon;
 
 trait GlobalScope
 {
@@ -25,8 +26,7 @@ trait GlobalScope
 
     public function scopeIssueStatus($query)
     {
-        if( isset($this->issues) )
-        {
+        if (isset($this->issues)) {
             $status = $this->issues->map(function ($issue) {
                 return $issue->status;
             })->groupBy('slug')->all();

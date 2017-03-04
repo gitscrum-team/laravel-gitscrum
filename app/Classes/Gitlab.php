@@ -8,8 +8,13 @@
 
 namespace GitScrum\Classes;
 
-use {Auth, Carbon};
-use GitScrum\Models\{User,Issue,Organization,ProductBacklog,Branch};
+use Auth;
+use Carbon;
+use GitScrum\Models\User;
+use GitScrum\Models\Issue;
+use GitScrum\Models\Organization;
+use GitScrum\Models\ProductBacklog;
+use GitScrum\Models\Branch;
 use GitScrum\Contracts\ProviderInterface;
 
 class Gitlab implements ProviderInterface

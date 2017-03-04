@@ -11,7 +11,8 @@ namespace GitScrum\Classes;
 use Illuminate\Pagination\LengthAwarePaginator;
 use GitScrum\Models\IssueType;
 use GitScrum\Models\ConfigIssueEffort;
-use {Auth,Carbon};
+use Auth;
+use Carbon;
 
 class Helper
 {
