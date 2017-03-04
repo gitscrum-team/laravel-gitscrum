@@ -1,4 +1,4 @@
-@section('title',  trans('gitscrum.edit-comment'))
+@section('title',  trans('Edit Comment'))
 
 @extends('layouts.modal')
 

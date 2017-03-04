@@ -1,4 +1,4 @@
-@section('title',  trans('gitscrum.issue') . ' - ' . $issue->title)
+@section('title',  trans('Issue - ') . $issue->title)
 
 @extends('layouts.master')
 
@@ -7,19 +7,18 @@
     <h3>
         @include('partials.includes.breadcrumb-sprint', ['obj'=>$issue->sprint])
         @if(isset($issue->userStory->slug))
-        <a href="{{route('user_stories.show', ['slug'=>$issue->userStory->slug])}}">{{trans('gitscrum.user-story')
-        }}</a> &raquo;
+        <a href="{{route('user_stories.show', ['slug'=>$issue->userStory->slug])}}">{{trans('User Story')}}</a> &raquo;
         @endif
-        {{trans('gitscrum.issue')}}</h3>
+        {{trans('Issue')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $issue->favorite, 'type' => 'issues',
-        'id' => $issue->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('gitscrum.favorite')])
+        'id' => $issue->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
 
     <a href="{{route('issues.edit', ['slug' => $issue->slug])}}"
         class="btn btn-sm btn-primary"
         data-toggle="modal" data-target="#modalLarge">
-        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('gitscrum.edit-issue')}}</a>
+        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Issue')}}</a>
 
     <form action="{{route('issues.destroy')}}" method="POST" class="form-delete pull-right">
         {{ csrf_field() }}
@@ -35,7 +34,7 @@
 @section('main-title')
 
 <span class="label label-warning mrm">
-    {{trans('gitscrum.effort')}}: {{$issue->configEffort->title}}</span>
+    Effort: {{$issue->configEffort->title}}</span>
 <span @if ( $issue->closed_at ) style="text-decoration: line-through;" @endif>
     {{$issue->title}}</span>
 <a href="{{route('issue_types.index', ['sprint_slug' => $issue->sprintSlug,
@@ -67,11 +66,10 @@
                     type="button">{{$issue->status->title}}</button>
         </div>
 
-        @include('errors.notification-message', ['notification' => ['message' => trans('gitscrum.this-issue-is-in-a
-        sprint-that-is').
-            ' <strong>'.$issue->sprint->status->title.'</strong>.'.
+        @include('errors.notification-message', ['notification' => ['message' => trans('This issue is in a sprint that is ').
+            '<strong>'.$issue->sprint->status->title.'</strong>.'.
             '<p><a href="'.route('sprints.show', ['slug'=>$issue->sprint->slug]).'" class="font-bold"></p>'.
-            trans('gitscrum.change-sprint-status') . '</a>',
+            trans('Change Sprint Status') . '</a>',
             'alert' => 'info', 'class' => 'padding-none show-sprint-issue']])
     @endif
 
@@ -79,7 +77,7 @@
         <a href="{{route('issues.create', ['scope' => 'issue', 'slug' => $issue->slug, 'parent_id' => $issue->id])}}"
             class="btn btn-block btn-danger mb20"
             data-toggle="modal" data-target="#modalLarge"
-            type="button">{{trans('gitscrum.defect-detected')}}</a>
+            type="button">{{trans('Defect Detected')}}</a>
     @endif
 
     <div class="mtl">
@@ -88,14 +86,14 @@
             'slug' => $issue->slug, 'list' => $issue->labels, 'type' => 'issues', 'id' => $issue->id ])
 
         @include('partials.boxes.note', [ 'list' => $issue,
-            'type'=> 'issues', 'title' => trans('gitscrum.definition-of-done-checklist'),
+            'type'=> 'issues', 'title' => trans('Definition of Done Checklist'),
             'percentage' => Helper::percentage($issue, 'notes')])
 
         @include('partials.boxes.attachment', ['id'=>$issue->id, 'type'=>'issues', 'list' => $issue->attachments])
 
-        <h4>{{trans('gitscrum.assigned-to')}}
+        <h4>{{trans('Assigned to')}}
             <span class="pull-right">
-                <a href="" class="btn btn-primary btn-xs">{{trans('gitscrum.add-member')}}</a>
+                <a href="" class="btn btn-primary btn-xs">{{trans('Add Member')}}</a>
             </span>
         </h4>
 
@@ -106,7 +104,7 @@
                     <div class="row">
                         @include('partials.select-issue-assigned', ['users' => $usersByOrganization])
                         <div class="">
-                            <button type="submit" class="btn btn-xs btn-primary pull-right" role="button">{{trans('gitscrum.confirm')}}</button>
+                            <button type="submit" class="btn btn-xs btn-primary pull-right" role="button">{{trans('Confirm')}}</button>
                         </div>
                     </div>
                 </div>
@@ -125,37 +123,37 @@
 
     <div class="well">
         @if($issue->number)
-        <h6 class="text-muted pbn">{{trans('gitscrum.use-this-code-on-commit')}}: <strong>#{{$issue->number}}</strong></h6>
+        <h6 class="text-muted pbn">{{trans('Use this code on commit')}}: <strong>#{{$issue->number}}</strong></h6>
         @endif
 
         <p>
-            {{trans('gitscrum.author')}}: <a href="{{route('user.profile', ['username' => $issue->user->username])}}">
+            {{trans('Author')}}: <a href="{{route('user.profile', ['username' => $issue->user->username])}}">
                 <strong>{{$issue->user->username}}</strong></a>
         </p>
 
         <p>
-            {{trans('gitscrum.sprint-backlog')}}:
+            {{trans('Sprint Backlog')}}:
             @if( isset($issue->sprint->title) )
                 <a href="{{route('sprints.show', ['slug' => @$issue->sprint->slug])}}">
                 {{$issue->sprint->title}}</a>
             @else
-                <span class="text-muted">{{trans('gitscrum.undefined')}}</span>
+                <span class="text-muted">{{trans('Undefined')}}</span>
             @endif
         </p>
 
         <p>
-            {{trans('gitscrum.user-story')}}:
+            {{trans('User Story')}}:
             @if( isset($issue->userStory) )
             <a href="{{route('user_stories.show', ['slug' => $issue->userStory->slug])}}">
                 {{$issue->userStory->title}}</a>
             @else
-                <span class="text-muted">{{trans('gitscrum.undefined')}}</span>
+                <span class="text-muted">{{trans('Undefined')}}</span>
             @endif
         </p>
 
         @if ( $issue->closed_at )
         <p class="text-danger">
-            <strong>{{trans('gitscrum.closed')}} {{trans('gitscrum.by')}}
+            <strong>{{trans('Closed')}} {{trans('by')}}
                 <a href="{{route('user.profile', ['username' => $issue->closedUser->username])}}">
                 {{$issue->closedUser->username}}</a>: {{$issue->dateforHumans('closed_at')}}</strong>
         </p>
@@ -166,7 +164,7 @@
     @if(!empty($issue->description))
 
     <div class="description">
-        <small>{{trans('gitscrum.description')}}</small>
+        <small>{{trans('Description')}}</small>
         <div class="well">
             <span>{!! $issue->description !!}</span>
         </div>
@@ -179,12 +177,11 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#tab-comments">
                     <i class="fa fa-comments" aria-hidden="true"></i>
-                    {{trans('gitscrum.comments')}} ({{$issue->comments->count()}})</a></li>
-                <li class=""><a data-toggle="tab" href="#tab-commits"> {{trans('gitscrum.commits')}}
-                        ({{$issue->commits->count()}})</a></li>
+                    {{trans('Comments')}} ({{$issue->comments->count()}})</a></li>
+                <li class=""><a data-toggle="tab" href="#tab-commits"> {{trans('Commits')}} ({{$issue->commits->count()}})</a></li>
                 <li class=""><a data-toggle="tab" href="#tab-activities">
                     <i class="fa fa-rss" aria-hidden="true"></i>
-                    {{trans('gitscrum.activities')}}</a></li>
+                    {{trans('Activities')}}</a></li>
             </ul>
             <div class="tab-content">
                 <div id="tab-comments" class="tab-pane active">

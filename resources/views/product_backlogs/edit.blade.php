@@ -1,4 +1,4 @@
-@section('title',  trans('gitscrum.edit-product-backlog'))
+@section('title',  trans('Edit Product Backlog'))
 
 @extends('layouts.modal')
 

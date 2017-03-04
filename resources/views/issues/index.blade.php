@@ -1,4 +1,4 @@
-@section('title',  trans('gitscrum-sprints'))
+@section('title',  trans('Sprints'))
 
 @extends('layouts.kanban')
 
@@ -7,25 +7,25 @@
     <h3>
         @include('partials.includes.breadcrumb-sprint', ['obj'=>$sprint])
         @if( !is_null($sprint) )
-        {{trans('gitscrum.sprint-planning')}}
+        {{trans('Sprint Planning')}}
         @else
-        {{trans('gitscrum.my-planning')}}
+        {{trans('My Planning')}}
         @endif
     </h3>
 </div>
 <div class="col-lg-6 text-right">
     @if( !is_null($sprint) )
         @include('partials.lnk-favorite', ['favorite' => $sprint->favorite, 'type' => 'sprint',
-            'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('gitscrum.favorite')])
+            'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
         &nbsp;&nbsp;
         <div class="btn-group">
             <a href="{{route('issues.create', ['scope' => 'sprint', 'slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-primary"
                 data-toggle="modal" data-target="#modalLarge">
-                <i class="fa fa-plus" aria-hidden="true"></i> {{trans('gitscrum.create-issue')}}</a>
+                <i class="fa fa-plus" aria-hidden="true"></i> {{trans('Create Issue')}}</a>
             <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
                 class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalLarge">
-                <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('gitscrum.edit-sprint')}}</a>
+                <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Sprint')}}</a>
             <form action="{{route('sprints.destroy')}}" method="POST" class="form-delete pull-right">
                 {{ csrf_field() }}
                 <input type="hidden" name="_method" value="DELETE" />
@@ -48,8 +48,7 @@
         <div style="float:left" class="row">
             <div class="agile" data-value="{{$status->id}}">
                 <h5 class="handle">
-                    <i class="fa fa-arrows-h" data-toggle="tooltip" title="{{trans('gitscrum.drag-it')}}"
-                       aria-hidden="true"></i>
+                    <i class="fa fa-arrows-h" data-toggle="tooltip" title="{{trans('Drag it')}}" aria-hidden="true"></i>
                     {{$status->title}}
                     (
                     @if(isset($issues[$status->id]))
