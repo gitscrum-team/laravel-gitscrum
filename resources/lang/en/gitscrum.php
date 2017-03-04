@@ -80,5 +80,10 @@ return[
     'planning-pocker' => 'Planning Pocker',
     'collaborative-estimation' => 'Collaborative Estimation',
     'add' => 'Add',
-    'name' => 'Name'
+    'name' => 'Name',
+    'timebox' => 'Timebox',
+    'yes-publish-for-team' => 'Yes, publish for team',
+    'no-display-only-for-me' => 'No, Display only for me',
+    'public' => 'Public',
+    'version' => 'Version'
 ];
