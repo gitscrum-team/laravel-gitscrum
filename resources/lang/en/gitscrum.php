@@ -65,5 +65,6 @@ return[
     'refresh' => 'Refresh',
     'search-by' => 'Search by',
     'you-are-not-a-member-of-any-sprint' => 'You are not a member of any sprint',
-    'list-sprint-backlog' => 'List Sprint Backlog'
+    'list-sprint-backlog' => 'List Sprint Backlog',
+    'members' => 'Members'
 ];
