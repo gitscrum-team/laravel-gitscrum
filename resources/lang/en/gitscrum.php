@@ -69,5 +69,6 @@ return[
     'members' => 'Members',
     'you-are-have-not-user-story' => 'You are have not user story',
     'browse' => 'Browse',
-    'upload-file' => 'Upload file'
+    'upload-file' => 'Upload file',
+    'write-comment' => 'Write comment...'
 ];
