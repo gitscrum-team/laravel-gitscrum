@@ -58,5 +58,10 @@ return[
     'issue-types' => 'Issue Types',
     'tags' => 'Tags',
     'small-notes' => 'Small Notes',
-    'completed' => 'Completed'
+    'completed' => 'Completed',
+    'product-backlog' => 'Product Backlog',
+    'organization' => 'Organization',
+    'search' => 'Search',
+    'refresh' => 'Refresh',
+    'search-by' => 'Search by'
 ];
