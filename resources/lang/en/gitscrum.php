@@ -54,5 +54,6 @@ return[
     'please-tell-us-what-bug-or-issue-you-ve-found-provide-as-much-detail-as-possible' => 'Please tell us what bug or issue you\'ve found, provide as much detail as possible',
     'submit-report' => 'Submit Report',
     'burndown' => 'Burndown',
-    'attachments' => 'Attachments'
+    'attachments' => 'Attachments',
+    'issue-types' => 'Issue Types'
 ];
