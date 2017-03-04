@@ -47,5 +47,6 @@ return[
     'commits' => 'Commits',
     'activities' => 'Activities',
     'labels' => 'Labels',
-    'label' => 'Label'
+    'label' => 'Label',
+    'general-attachments' => 'General Attachments'
 ];
