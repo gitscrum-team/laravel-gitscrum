@@ -48,39 +48,39 @@ class UserStory extends Model
 
     public function productBacklog()
     {
-        return $this->belongsTo(\GitScrum\Models\ProductBacklog::class, 'product_backlog_id', 'id');
+        return $this->belongsTo(ProductBacklog::class, 'product_backlog_id', 'id');
     }
 
     public function issues()
     {
-        return $this->hasMany(\GitScrum\Models\Issue::class, 'user_story_id', 'id')
+        return $this->hasMany(Issue::class, 'user_story_id', 'id')
             ->orderby('position', 'ASC');
     }
 
     public function priority()
     {
-        return $this->hasOne(\GitScrum\Models\ConfigPriority::class, 'id', 'config_priority_id');
+        return $this->hasOne(ConfigPriority::class, 'id', 'config_priority_id');
     }
 
     public function favorite()
     {
-        return $this->morphOne(\GitScrum\Models\Favorite::class, 'favoriteable');
+        return $this->morphOne(Favorite::class, 'favoriteable');
     }
 
     public function comments()
     {
-        return $this->morphMany(\GitScrum\Models\Comment::class, 'commentable')
+        return $this->morphMany(Comment::class, 'commentable')
             ->orderby('created_at', 'DESC');
     }
 
     public function notes()
     {
-        return $this->morphMany(\GitScrum\Models\Note::class, 'noteable')
+        return $this->morphMany(Note::class, 'noteable')
             ->orderby('position', 'ASC');
     }
 
     public function labels()
     {
-        return $this->morphToMany(\GitScrum\Models\Label::class, 'labelable');
+        return $this->morphToMany(Label::class, 'labelable');
     }
 }

@@ -1,9 +1,15 @@
 <?php
+/**
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
+ */
 
 namespace GitScrum\Scopes;
 
 use Auth;
-use Carbon\Carbon;
+use Carbon;
 
 trait GlobalScope
 {
@@ -20,8 +26,7 @@ trait GlobalScope
 
     public function scopeIssueStatus($query)
     {
-        if( isset($this->issues) )
-        {
+        if (isset($this->issues)) {
             $status = $this->issues->map(function ($issue) {
                 return $issue->status;
             })->groupBy('slug')->all();

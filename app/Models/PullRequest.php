@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
@@ -54,21 +54,21 @@ class PullRequest extends Model
 
     public function baseBranch()
     {
-        return $this->belongsTo(\GitScrum\Models\Branch::class, 'base_branch_id', 'id');
+        return $this->belongsTo(Branch::class, 'base_branch_id', 'id');
     }
 
     public function headBranch()
     {
-        return $this->belongsTo(\GitScrum\Models\Branch::class, 'head_branch_id', 'id');
+        return $this->belongsTo(Branch::class, 'head_branch_id', 'id');
     }
 
     public function repository()
     {
-        return $this->belongsTo(\GitScrum\Models\ProductBacklog::class, 'product_backlog_id', 'id');
+        return $this->belongsTo(ProductBacklog::class, 'product_backlog_id', 'id');
     }
 
     public function user()
     {
-        return $this->hasOne(\GitScrum\Models\User::class, 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

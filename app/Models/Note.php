@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
@@ -60,13 +60,13 @@ class Note extends Model
 
     public function statuses()
     {
-        return $this->morphMany(\GitScrum\Models\Status::class, 'statusesable')
+        return $this->morphMany(Status::class, 'statusesable')
             ->orderby('created_at', 'DESC');
     }
 
     public function closedUser()
     {
-        return $this->belongsTo(\GitScrum\Models\User::class, 'closed_user_id', 'id');
+        return $this->belongsTo(User::class, 'closed_user_id', 'id');
     }
 
     public function setClosedUserIdAttribute($value)

@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
@@ -55,17 +55,17 @@ class Status extends Model
 
     public function user()
     {
-        return $this->belongsTo(\GitScrum\Models\User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function configStatus()
     {
-        return $this->belongsTo(\GitScrum\Models\ConfigStatus::class, 'config_status_id', 'id');
+        return $this->belongsTo(ConfigStatus::class, 'config_status_id', 'id');
     }
 
     public function available()
     {
-        return $this->hasMany(\GitScrum\Models\ConfigStatus::class, 'type', 'statusesable_type')
+        return $this->hasMany(ConfigStatus::class, 'type', 'statusesable_type')
             ->orderby('position', 'ASC');
     }
 

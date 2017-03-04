@@ -1,4 +1,10 @@
 <?php
+/**
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
+ */
 
 namespace GitScrum\Scopes;
 
@@ -18,7 +24,7 @@ trait UserStoryScope
         return collect($activities->all());
     }
 
-	public function scopeIssuesHasUsers($query, $total = 3)
+    public function scopeIssuesHasUsers($query, $total = 3)
     {
         $users = $this->issues->map(function ($issue) {
             return $issue->users;

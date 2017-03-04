@@ -1,4 +1,10 @@
 <?php
+/**
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
+ */
 
 namespace GitScrum\Scopes;
 
@@ -6,7 +12,6 @@ use GitScrum\Models\Sprint;
 
 trait UserScope
 {
-
     public function scopeLabels($feature)
     {
         return $this->{$feature}->map(function ($obj) {
@@ -31,7 +36,7 @@ trait UserScope
                 }
 
                 return $obj;
-        })->flatten(1);
+            })->flatten(1);
     }
 
     public function scopeSprints($query, $sprint_id = null)

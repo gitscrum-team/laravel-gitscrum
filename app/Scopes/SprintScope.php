@@ -1,9 +1,15 @@
 <?php
+/**
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
+ */
 
 namespace GitScrum\Scopes;
 
 use GitScrum\Models\ConfigStatus;
-use Carbon\Carbon;
+use Carbon;
 
 trait SprintScope
 {
@@ -19,15 +25,15 @@ trait SprintScope
     {
         $types = $this->issues->map(function ($issue) {
             return $issue->type;
-            })->groupBy('slug')->map(function ($type) {
-                $obj = $type->first();
-                return [
+        })->groupBy('slug')->map(function ($type) {
+            $obj = $type->first();
+            return [
                     'sprint' => $this->slug,
                     'slug' => $obj->slug,
                     'title' => $obj->title,
                     'color' => $obj->color,
                     'total' => $type->count(), ];
-            })->sortByDesc('total')->all();
+        })->sortByDesc('total')->all();
 
         return collect($types);
     }
@@ -127,5 +133,4 @@ trait SprintScope
 
         return round($begin->diffInDays($end) / 7);
     }
-
 }

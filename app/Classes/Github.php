@@ -1,20 +1,24 @@
 <?php
+/**
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
+ */
 
 namespace GitScrum\Classes;
 
 use Auth;
+use Carbon;
 use GitScrum\Models\Branch;
-use GitScrum\Models\Commit;
 use GitScrum\Models\User;
 use GitScrum\Models\Issue;
 use GitScrum\Models\Organization;
 use GitScrum\Models\ProductBacklog;
-use Carbon\Carbon;
 use GitScrum\Contracts\ProviderInterface;
 
 class Github implements ProviderInterface
 {
-
     private $organization = [];
 
     public function tplUser($obj)
@@ -152,8 +156,7 @@ class Github implements ProviderInterface
 
     public function organization($login)
     {
-        if( !array_key_exists($login, $this->organization) )
-        {
+        if (!array_key_exists($login, $this->organization)) {
             $organization = Organization::where('username', $login)
                 ->where('provider', 'github')->first();
 
@@ -179,7 +182,6 @@ class Github implements ProviderInterface
         }
 
         return $this->organization[$login]->id;
-
     }
 
     public function readCollaborators($owner, $repo, $providerId = null)

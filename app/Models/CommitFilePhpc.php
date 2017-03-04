@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
@@ -44,6 +44,6 @@ class CommitFilePhpc extends Model
 
     public function commitFile()
     {
-        return $this->belongsTo(\GitScrum\Models\CommitFile::class, 'commit_file_id', 'id');
+        return $this->belongsTo(CommitFile::class, 'commit_file_id', 'id');
     }
 }
