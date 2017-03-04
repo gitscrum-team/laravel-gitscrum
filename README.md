@@ -94,6 +94,8 @@ APP_URL=http://yourdomain.tld (you must use protocol http or https)
 
 Available in english and Brazilian Portuguese.
 
+Options: en|pt
+
 .env file
 
 ```
