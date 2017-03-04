@@ -36,7 +36,7 @@ class AttachmentRequest extends FormRequest
     public function messages()
     {
         return [
-            'attachment.required' => trans('Attachment cannot be blank'),
+            'attachment.required' => trans('gitscrum.attachment-cannot-be-blank'),
         ];
     }
 }

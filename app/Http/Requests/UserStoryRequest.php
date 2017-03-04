@@ -36,8 +36,8 @@ class UserStoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => trans('User Story cannot be blank'),
-            'title.min' => trans('User Story must be at least 2 characters'),
+            'title.required' => trans('gitscrum.user-Story-cannot-be-blank'),
+            'title.min' => trans('gitscrum.user-story-must-be-at-least-2-characters'),
         ];
     }
 }

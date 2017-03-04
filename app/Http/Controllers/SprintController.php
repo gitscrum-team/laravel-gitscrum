@@ -72,7 +72,7 @@ class SprintController extends Controller
         $sprint = Sprint::create($request->all());
 
         return redirect()->route('sprints.show', ['slug' => $sprint->slug])
-            ->with('success', trans('Congratulations! The Sprint has been created with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-sprint-has-been-created-with-successfully'));
     }
 
     /**
@@ -144,7 +144,7 @@ class SprintController extends Controller
         $sprint->update($request->all());
 
         return back()
-            ->with('success', trans('Congratulations! The Sprint has been edited with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-sprint-has-been-updated-with-successfully'));
     }
 
     /**
@@ -167,7 +167,7 @@ class SprintController extends Controller
         $sprint->delete();
 
         return redirect()->route('sprints.index')
-            ->with('success', trans('Congratulations! The Sprint has been deleted successfully'));
+            ->with('success', trans('gitscrum.deleted-successfully'));
     }
 
     public function statusUpdate($slug, $status)
@@ -177,6 +177,6 @@ class SprintController extends Controller
         $sprint->config_status_id = $status;
         $sprint->save();
 
-        return back()->with('success', trans('Updated successfully'));
+        return back()->with('success', trans('gitscrum.updated-successfully'));
     }
 }
