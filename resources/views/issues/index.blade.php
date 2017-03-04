@@ -1,4 +1,4 @@
-@section('title',  trans('Sprints'))
+@section('title',  trans('gitscrum-sprints'))
 
 @extends('layouts.kanban')
 
@@ -7,7 +7,7 @@
     <h3>
         @include('partials.includes.breadcrumb-sprint', ['obj'=>$sprint])
         @if( !is_null($sprint) )
-        {{trans('Sprint Planning')}}
+        {{trans('gitscrum.sprint-planning')}}
         @else
         {{trans('My Planning')}}
         @endif

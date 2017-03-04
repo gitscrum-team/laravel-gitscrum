@@ -1,10 +1,10 @@
-@section('title',  trans('Sprints'))
+@section('title',  trans('gitscrum.sprints'))
 
 @extends('layouts.master')
 
 @section('breadcrumb')
 <div class="col-lg-8">
-    <h3>{{trans('Issue Type')}}: <span class="">{{$issues->first()->type->title}}</span></h3>
+    <h3>{{trans('gitscrum.issue-type')}}: <span class="">{{$issues->first()->type->title}}</span></h3>
 </div>
 <div class="col-lg-4 text-right">
 
@@ -16,9 +16,9 @@
 
     <div class="form-group">
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="{{trans('Search issue type by name...')}}">
+            <input class="form-control" type="text" placeholder="{{trans('gitscrum.search-issue-type-by-name...')}}">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
+                <button class="btn btn-default" type="button">{{trans('gitscrum.go')}}</button>
             </span>
         </div>
     </div>
