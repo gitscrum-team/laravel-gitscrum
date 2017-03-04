@@ -90,6 +90,18 @@ $ composer run-script post-root-package-install
 APP_URL=http://yourdomain.tld (you must use protocol http or https)
 ```
 
+#### Language
+
+Available in english and Brazilian Portuguese.
+
+.env file
+
+```
+APP_LANG=en
+```
+Can you help us translate a few phrases into different languages? See: https://github.com/renatomarinho/laravel-gitscrum/tree/feature/language-pack/resources/lang
+
+
 #### Database
 
 .env file
