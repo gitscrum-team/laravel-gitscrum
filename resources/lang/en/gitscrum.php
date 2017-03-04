@@ -49,5 +49,8 @@ return[
     'labels' => 'Labels',
     'label' => 'Label',
     'general-attachments' => 'General Attachments',
-    'branch' => 'Branch'
+    'branch' => 'Branch',
+    'bug-report' => 'Bug Report',
+    'please-tell-us-what-bug-or-issue-you-ve-found-provide-as-much-detail-as-possible' => 'Please tell us what bug or issue you\'ve found, provide as much detail as possible'
+    'submit-report' => 'Submit Report'
 ];
