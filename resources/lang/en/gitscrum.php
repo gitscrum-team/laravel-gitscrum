@@ -56,5 +56,7 @@ return[
     'burndown' => 'Burndown',
     'attachments' => 'Attachments',
     'issue-types' => 'Issue Types',
-    'tags' => 'Tags'
+    'tags' => 'Tags',
+    'small-notes' => 'Small Notes',
+    'completed' => 'Completed'
 ];

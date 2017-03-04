@@ -1,8 +1,8 @@
 <div class="notes">
-    <h4>{{ $title or trans('Small Notes')}}</h4>
+    <h4>{{ $title or trans('gitscrum.small-notes')}}</h4>
 
     @if(isset($percentage))
-        @include('partials.boxes.progress-bar', [ 'percentage' => $percentage, 'title' => 'Completed'])
+        @include('partials.boxes.progress-bar', [ 'percentage' => $percentage, 'title' => trans('gitscrum.completed')])
     @endif
 
     <div class="dd" id="nestable">
