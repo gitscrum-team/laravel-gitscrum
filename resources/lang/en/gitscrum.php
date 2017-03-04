@@ -85,5 +85,9 @@ return[
     'yes-publish-for-team' => 'Yes, publish for team',
     'no-display-only-for-me' => 'No, Display only for me',
     'public' => 'Public',
-    'version' => 'Version'
+    'version' => 'Version',
+    'additional-information' => 'Additional information',
+    'priority' => 'Priority',
+    'acceptance-criteria' => 'Acceptance Criteria',
+    'confirmation-of-requirement-understanding-and-decide-about-acceptance-of-iteration-deliverable' => 'Confirmation of requirement understanding and decide about acceptance of iteration deliverable'
 ];
