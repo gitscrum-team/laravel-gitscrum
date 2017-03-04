@@ -48,7 +48,7 @@ class UserStoryController extends Controller
         $userStory = UserStory::create($request->all());
 
         return redirect()->route('user_stories.show', ['slug' => $userStory->slug])
-            ->with('success', trans('Congratulations! The User Story has been created with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-user-story-has-been-created-with-successfully'));
     }
 
     public function show($slug)
@@ -82,7 +82,7 @@ class UserStoryController extends Controller
         $userStory->update($request->all());
 
         return back()
-            ->with('success', trans('Congratulations! The User Story has been edited with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-user-story-has-been-updated-with-successfully'));
     }
 
     public function destroy(Request $request)

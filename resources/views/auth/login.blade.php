@@ -1,4 +1,4 @@
-@section('title',  trans('GitScrum Login'))
+@section('title',  trans('gitscrum.title-login'))
 
 @extends('layouts.master', ['hideNavbar' => true, 'bodyClass' => 'body-login'])
 
@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
         <div class="middle-box text-center loginscreen">
-                <h5 class="lead">{{trans('Welcome to')}} <strong>GitScrum</strong></h5>
+                <h5 class="lead">{{trans('gitscrum.welcome-to')}} <strong>GitScrum</strong></h5>
 
                 <a href="{{route('auth.provider', ['provider' => 'github'])}}" class="btn btn-hg btn-info btn-loader">
                         <i class="fa fa-github" aria-hidden="true"></i>&nbsp;&nbsp;Login with <strong>GitHub</strong>

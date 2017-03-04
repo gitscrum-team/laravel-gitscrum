@@ -103,7 +103,7 @@ class UserIssueController extends Controller
         $issue->users()->sync($members);
 
         if (!$request->ajax()) {
-            return redirect()->back()->with('success', trans('Updated successfully'));
+            return redirect()->back()->with('success', trans('gitscrum.updated-successfully'));
         }
     }
 

@@ -45,7 +45,7 @@ class LabelController extends Controller
             $result->labels()->attach([$label->id]);
         }
 
-        return back()->with('success', trans('Label added successfully'));
+        return back()->with('success', trans('gitscrum.label-added-successfully'));
     }
 
     public function update(Request $request, $id)

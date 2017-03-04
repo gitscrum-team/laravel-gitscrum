@@ -1,10 +1,10 @@
-@section('title',  trans('Team'))
+@section('title',  trans('gitscrum.team'))
 
 @extends('layouts.master')
 
 @section('breadcrumb')
 <div class="col-lg-6">
-    <h3>{{trans('Team')}}</h3>
+    <h3>{{trans('gitscrum.team')}}</h3>
 </div>
 <div class="col-lg-6 text-right"></div>
 @endsection

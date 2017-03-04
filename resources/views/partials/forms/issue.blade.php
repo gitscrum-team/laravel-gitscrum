@@ -8,7 +8,7 @@
 
     @if(!is_null($obj->user_story_id))
     <div class="form-group">
-        <label class="col-sm-12 mbn pbn">{{trans('User Story')}}</label>
+        <label class="col-sm-12 mbn pbn">{{trans('gitscrum.user-story')}}</label>
         <div class="col-sm-12">
                 <a href="{{route('user_stories.show', ['slug' => $obj->userStory->slug])}}"
                     target="_blank" class="text-success">
@@ -18,7 +18,7 @@
     @endif
 
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Sprint Backlog')}}</label>
+        <label class="col-sm-12">{{trans('gitscrum.sprint-backlog')}}</label>
         <div class="col-sm-12">
             @if( $obj->productBacklog->sprints()->count() )
             <select name="sprint_id" class="form-control">
@@ -28,7 +28,7 @@
                 @endforeach
             </select>
             @else
-                {{trans('Create a Sprint')}}
+                {{trans('gitscrum.create-a-sprint')}}
             @endif
         </div>
     </div>
@@ -39,7 +39,7 @@
     @endif
 
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Type')}}</label>
+        <label class="col-sm-12">{{trans('gitscrum.type')}}</label>
         <div class="col-sm-12">
             <select name="issue_type_id" class="form-control">
                 @foreach (Helper::issueTypes() as $type)
@@ -50,21 +50,21 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Issue')}}</label>
+        <label class="col-sm-12">{{trans('gitscrum.issue')}}</label>
         <div class="col-sm-12">
             <input name="title" type="text" class="form-control" value="{{ $issue->title or '' }}"
-                pattern=".{2,255}" title="{{trans('Title must be between 2 and 255 characters')}}"
+                pattern=".{2,255}" title="{{trans('gitscrum.title-must-be-between-2-and-255-characters')}}"
                 autocomplete="off" maxlength="255" required>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Description')}} ({{trans('optional')}})</label>
+        <label class="col-sm-12">{{trans('gitscrum.description')}} ({{trans('gitscrum.optional')}})</label>
         <div class="col-sm-12">
             <textarea name="description" class="form-control" data-provide="markdown" style="padding:10px;">{{ $issue->markdownDescription or '' }}</textarea>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Avg Effort')}}</label>
+        <label class="col-sm-12">{{trans('gitscrum.avg-effort')}}</label>
         <div class="col-sm-12">
             <select name="config_issue_effort_id" class="form-control m-b">
                 @foreach (Helper::issueEfforts() as $effort)
@@ -76,17 +76,17 @@
     </div>
     <div class="hr-line-dashed"></div>
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Assigned to')}}</label>
+        <label class="col-sm-12">{{trans('gitscrum.assigned-to')}}</label>
         <div class="col-sm-12">
             @include('partials.select-issue-assigned', ['users' => $organization->users])
         </div>
     </div>
     <div class="hr-line-dashed"></div>
     <div class="form-group">
-        <label class="col-sm-3 control-label">{{trans('Planning Pocker')}}</label>
+        <label class="col-sm-3 control-label">{{trans('gitscrum.planning-pocker')}}</label>
         <div class="col-sm-9">
             <div class="i-checks"><input type="checkbox" value="" checked=""> <i></i></div>
-            <span class="help-block m-b-none">{{trans('Collaborative Estimation')}}</span>
+            <span class="help-block m-b-none">{{trans('gitscrum.collaborative-estimation')}}</span>
         </div>
     </div>
     <div class="hr-line-dashed"></div>

@@ -1,5 +1,5 @@
 <div class="mb20">
-    <h4>{{trans('Issue Types')}}</h4>
+    <h4>{{trans('gitscrum.issue-types')}}</h4>
     <ul class="tag-list list-inline">
         @each('partials.lists.issue-types', $list, 'list')
     </ul>

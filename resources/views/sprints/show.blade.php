@@ -1,4 +1,4 @@
-@section('title',  trans('Sprint Backlog'))
+@section('title',  trans('gitscrum.sprint-backlog'))
 
 @extends('layouts.master')
 
@@ -6,17 +6,17 @@
 <div class="col-lg-6">
     <h3>
         @if(isset($sprint->productBacklog->slug))
-        <a href="{{route('product_backlogs.show', ['slug'=>$sprint->productBacklog->slug])}}">{{trans('Product Backlog')}}</a> &raquo;
+        <a href="{{route('product_backlogs.show', ['slug'=>$sprint->productBacklog->slug])}}">{{trans('gitscrum.product-backlog')}}</a> &raquo;
         @endif
-        <span>{{trans('Sprint Backlog')}}</span></h3>
+        <span>{{trans('gitscrum.sprint-backlog')}}</span></h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $sprint->favorite, 'type' => 'sprints',
-        'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
+        'id' => $sprint->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('gitscrum.favorite')])
     <a href="{{route('sprints.edit', ['slug'=>$sprint->slug])}}"
         class="btn btn-sm btn-primary"
         data-toggle="modal" data-target="#modalLarge">
-        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit Sprint Backlog')}}</a>
+        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('gitscrum.edit-sprint-backlog')}}</a>
     <form action="{{route('sprints.destroy')}}" method="POST" class="form-delete pull-right">
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="DELETE" />
@@ -56,11 +56,11 @@
 <div class="col-lg-4">
 
     <a href="{{route('issues.index', ['slug'=>$sprint->slug])}}"
-        class="btn btn-lg btn-block btn-warning"><strong>{{trans('Sprint Planning')}}</strong></a>
+        class="btn btn-lg btn-block btn-warning"><strong>{{trans('gitscrum.sprint-planning')}}</strong></a>
 
     <a href="{{route('issues.create', ['scope' => 'Sprint', 'slug' => $sprint->slug])}}"
         class="btn btn-block btn-primary"
-        data-toggle="modal" data-target="#modalLarge"><strong>{{trans('Create Issue')}}</strong></a>
+        data-toggle="modal" data-target="#modalLarge"><strong>{{trans('gitscrum.create-issue')}}</strong></a>
 
     @include('partials.boxes.chart-donut', ['list' => $sprint->issueStatus()])
 
@@ -72,15 +72,15 @@
         <tbody>
         <tr>
             <td width="50%">
-                <h6>{{$sprint->effort()->sum('effort')}} {{trans('effort')}}</h6>
+                <h6>{{$sprint->effort()->sum('effort')}} {{trans('gitscrum.effort')}}</h6>
             </td>
             <td width="50%">
-                <h6>{{$sprint->effort()->avg('effort')}} {{trans('effort avg.')}}</h6>
+                <h6>{{$sprint->effort()->avg('effort')}} {{trans('gitscrum.effort-avg')}}</h6>
             </td>
         </tr>
         <tr>
             <td width="50%">
-                <h6>{{$sprint->issues->count()}} {{trans('issues')}}</h6>
+                <h6>{{$sprint->issues->count()}} {{trans('gitscrum.issues')}}</h6>
             </td>
             <td width="50%"></td>
         </tr>
@@ -90,7 +90,7 @@
     @include('partials.boxes.issue-type', ['list' => $sprint->issueTypes()])
 
     @include('partials.boxes.note', [ 'list' => $sprint,
-        'type'=> 'sprints', 'title' => trans('Definition of Done Checklist for Sprint'),
+        'type'=> 'sprints', 'title' => trans('gitscrum.definition-of-done-checklist'),
         'percentage' => Helper::percentage($sprint, 'notes')])
 
     @include('partials.boxes.attachment', ['id' => $sprint->id, 'type' => 'sprints', 'list' => $sprint->attachments])
@@ -103,14 +103,15 @@
 
     <div class="well">
 
-        <h4>{{trans('Date')}}: {{$sprint->date_start}} {{trans('to')}} {{$sprint->date_finish}}</h4>
+        <h4>{{trans('gitscrum.date')}}: {{$sprint->date_start}} {{trans('gitscrum.to')}} {{$sprint->date_finish}}</h4>
 
-        <p>{{$sprint->workingDays(date('Y-m-d'))}} {{str_plural('missing day', $sprint->workingDays(date('Y-m-d')))}} /
-            {{$sprint->workingDays()}} {{str_plural('workdays', $sprint->workingDays())}}
-            ( {{$sprint->weeks()}} {{str_plural('week', $sprint->weeks())}} )</p>
+        <p>{{$sprint->workingDays(date('Y-m-d'))}} {{trans('gitscrum.missing-day')}} /
+            {{$sprint->workingDays()}} {{trans('gitscrum.workdays')}}
+            ( {{$sprint->weeks()}} {{trans('gitscrum.week')}} )</p>
 
         <p class="">
-            {{trans('Product Backlog')}}: <a href="{{route('product_backlogs.show', ['slug' => $sprint->productBacklog->slug])}}">
+            {{trans('gitscrum.product-backlog')}}: <a href="{{route('product_backlogs.show', ['slug' =>
+            $sprint->productBacklog->slug])}}">
             <strong>{{$sprint->productBacklog->title}}</strong></a>
         </p>
 
@@ -118,7 +119,7 @@
 
     @if(!empty($sprint->description))
     <p class="description">
-        <small>{{trans('Description')}}</small>
+        <small>{{trans('gitscrum.description')}}</small>
         <span>{!! nl2br(e($sprint->description)) !!}</span>
     </p>
     @endif
@@ -132,20 +133,20 @@
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab-issues">
                 <i class="fa fa-list-alt" aria-hidden="true"></i>
-                {{trans('Issues')}} ({{$sprint->issues->count()}})</a></li>
+                {{trans('gitscrum.issues')}} ({{$sprint->issues->count()}})</a></li>
             <li class=""><a data-toggle="tab" href="#tab-comments">
                 <i class="fa fa-comments" aria-hidden="true"></i>
-                {{trans('Comments')}} ({{$sprint->comments->count()}})</a></li>
+                {{trans('gitscrum.comments')}} ({{$sprint->comments->count()}})</a></li>
             <li><a data-toggle="tab" href="#tab-activities">
                 <i class="fa fa-rss" aria-hidden="true"></i>
-                {{trans('Activities')}}</a></li>
+                {{trans('gitscrum.activities')}}</a></li>
         </ul>
 
         <div class="tab-content">
             <div id="tab-issues" class="tab-pane active">
                 <div class="panel-body">
                     @include('partials.boxes.search-min')
-                    @include('partials.boxes.issue', ['list' => $sprint->issues, 'messageEmpty' => trans('This does not have any issue yet')])
+                    @include('partials.boxes.issue', ['list' => $sprint->issues, 'messageEmpty' => trans('gitscrum.this-does-not-have-any-issue-yet')])
                 </div>
             </div>
             <div id="tab-comments" class="tab-pane">

@@ -1,4 +1,4 @@
-@section('title',  trans('User Story'))
+@section('title',  trans('gitscrum.user-story'))
 
 @extends('layouts.master')
 
@@ -6,18 +6,19 @@
 <div class="col-lg-6">
     <h3>
         @if(isset($userStory->productBacklog->slug))
-        <a href="{{route('product_backlogs.show', ['slug'=>$userStory->productBacklog->slug])}}">{{trans('Product Backlog')}}</a> &raquo;
+        <a href="{{route('product_backlogs.show', ['slug'=>$userStory->productBacklog->slug])}}">{{trans('gitscrum.product-backlog')
+        }}</a> &raquo;
         @endif
-        {{trans('User Story')}}</h3>
+        {{trans('gitscrum.user-story')}}</h3>
 </div>
 <div class="col-lg-6 text-right">
     @include('partials.lnk-favorite', ['favorite' => $userStory->favorite, 'type' => 'user_stories',
-        'id' => $userStory->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('Favorite')])
+        'id' => $userStory->id, 'btnSize' => 'btn-sm font-bold', 'text' => trans('gitscrum.favorite')])
 
     <a href="{{route('user_stories.edit', ['slug' => $userStory->slug])}}"
         class="btn btn-sm btn-primary"
         data-toggle="modal" data-target="#modalLarge">
-        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit User Story')}}</a>
+        <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('gitscrum.edit-user-story')}}</a>
 
     <form action="{{route('user_stories.destroy')}}" method="POST" class="form-delete pull-right">
         {{ csrf_field() }}
@@ -44,7 +45,7 @@
         <a href="{{route('issues.create', ['scope' => 'UserStory', 'slug' => $userStory->slug])}}"
             class="btn btn-block btn-primary"
             data-toggle="modal" data-target="#modalLarge">
-            {{trans('Create Issue')}}</a>
+            {{trans('gitscrum.create-issue')}}</a>
     </div>
 
     <div class="">
@@ -55,7 +56,7 @@
         'slug' => $userStory->slug, 'list' => $userStory->labels, 'type' => 'user_stories', 'id' => $userStory->id ])
 
     @include('partials.boxes.note', [ 'list' => $userStory,
-        'type'=> 'user_stories', 'title' => trans('Definition of Done Checklist'),
+        'type'=> 'user_stories', 'title' => trans('gitscrum.gitscrum.definition-of-done-checklist'),
         'percentage' => Helper::percentage($userStory, 'notes')])
 
     @include('partials.boxes.team', ['title' => 'Team Members', 'list' => $userStory->issuesHasUsers(12)])
@@ -66,21 +67,22 @@
 
     <div class="well">
         <p>
-            {{trans('Product Backlog')}}: <a href="{{route('product_backlogs.show', ['slug' => $userStory->productBacklog->slug])}}">
+            {{trans('gitscrum.product-backlog')}}: <a href="{{route('product_backlogs.show', ['slug' =>
+            $userStory->productBacklog->slug])}}">
                 <strong>{{$userStory->productBacklog->title}}</strong></a>
         </p>
     </div>
 
     @if(!empty($productBacklog->description))
     <p class="description">
-        <small>{{trans('Additional information')}}</small>
+        <small>{{trans('gitscrum.additional-information')}}</small>
         <span>{!! nl2br(e($userStory->description)) !!}</span>
     </p>
     @endif
 
     @if ( $userStory->acceptance_criteria )
     <p class="description">
-        <small>{{trans('Acceptance criteria')}}</small>
+        <small>{{trans('gitscrum.acceptance-criteria')}}</small>
         <span>{!! nl2br(e($userStory->acceptance_criteria)) !!}</span>
     </p>
     @endif
@@ -92,15 +94,18 @@
     <div class="tabs-container">
 
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#tab-issues"> {{trans('Issues')}} ({{$userStory->issues->count()}}) </a></li>
-            <li class=""><a data-toggle="tab" href="#tab-comments"> {{trans('Comments')}} ({{$userStory->comments->count()}}) </a></li>
-            <li class=""><a data-toggle="tab" href="#tab-activities"> {{trans('Activities')}} </a></li>
+            <li class="active"><a data-toggle="tab" href="#tab-issues"> {{trans('gitscrum.issues')}}
+                    ({{$userStory->issues->count()}}) </a></li>
+            <li class=""><a data-toggle="tab" href="#tab-comments"> {{trans('gitscrum.comments')}}
+                    ({{$userStory->comments->count()}}) </a></li>
+            <li class=""><a data-toggle="tab" href="#tab-activities"> {{trans('gitscrum.activities')}} </a></li>
         </ul>
 
         <div class="tab-content">
             <div id="tab-issues" class="tab-pane active">
                 <div class="panel-body">
-                    @include('partials.boxes.issue', ['list' => $userStory->issues, 'messageEmpty' => trans('This does not have any issue yet')])
+                    @include('partials.boxes.issue', ['list' => $userStory->issues, 'messageEmpty' => trans('gitscrum
+                    .gitscrum.this-does-not-have-any-issue-yet')])
                 </div>
             </div>
             <div id="tab-comments" class="tab-pane">
