@@ -45,5 +45,7 @@ return[
     'description' => 'Description',
     'comments' => 'Comments',
     'commits' => 'Commits',
-    'activities' => 'Activities'
+    'activities' => 'Activities',
+    'labels' => 'Labels',
+    'label' => 'Label'
 ];
