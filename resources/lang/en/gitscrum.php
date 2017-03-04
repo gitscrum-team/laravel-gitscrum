@@ -63,5 +63,7 @@ return[
     'organization' => 'Organization',
     'search' => 'Search',
     'refresh' => 'Refresh',
-    'search-by' => 'Search by'
+    'search-by' => 'Search by',
+    'you-are-not-a-member-of-any-sprint' => 'You are not a member of any sprint',
+    'list-sprint-backlog' => 'List Sprint Backlog'
 ];
