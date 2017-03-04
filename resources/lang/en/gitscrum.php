@@ -55,5 +55,6 @@ return[
     'submit-report' => 'Submit Report',
     'burndown' => 'Burndown',
     'attachments' => 'Attachments',
-    'issue-types' => 'Issue Types'
+    'issue-types' => 'Issue Types',
+    'tags' => 'Tags'
 ];
