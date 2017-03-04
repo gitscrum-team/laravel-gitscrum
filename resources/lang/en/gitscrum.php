@@ -22,7 +22,6 @@ return[
     'sprint-planning' => 'Sprint Planning',
     'my-planning' => 'My Planning',
     'favorite' => 'Favorite',
-    'create-issue' => 'Create Issue',
     'edit-issue' => 'Edit Issue',
     'edit-sprint' => 'Edit Sprint',
     'drag-it' => 'Drag it',
@@ -89,5 +88,14 @@ return[
     'additional-information' => 'Additional information',
     'priority' => 'Priority',
     'acceptance-criteria' => 'Acceptance Criteria',
-    'confirmation-of-requirement-understanding-and-decide-about-acceptance-of-iteration-deliverable' => 'Confirmation of requirement understanding and decide about acceptance of iteration deliverable'
+    'confirmation-of-requirement-understanding-and-decide-about-acceptance-of-iteration-deliverable' => 'Confirmation of requirement understanding and decide about acceptance of iteration deliverable',
+    'confirm-and' => 'Confirm and',
+    'create' => 'Create',
+    'user-stories' => 'User Stories',
+    'profile' => 'Profile',
+    'planning' => 'Planning',
+    'team' => 'Team',
+    'sync-repos-issues' => 'Sync Repos/Issues',
+    'logout' => 'Logout',
+    'you-are-you-connected-using' => 'You are you connected using'
 ];
