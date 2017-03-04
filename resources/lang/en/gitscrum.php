@@ -79,4 +79,5 @@ return[
     'assigned-to' => 'Assigned to',
     'planning-pocker' => 'Planning Pocker',
     'collaborative-estimation' => 'Collaborative Estimation',
+    'add' => 'Add'
 ];
