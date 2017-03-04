@@ -97,5 +97,6 @@ return[
     'team' => 'Team',
     'sync-repos-issues' => 'Sync Repos/Issues',
     'logout' => 'Logout',
-    'you-are-you-connected-using' => 'You are you connected using'
+    'you-are-you-connected-using' => 'You are you connected using',
+    'issue-labels' => 'Issue Labels'
 ];
