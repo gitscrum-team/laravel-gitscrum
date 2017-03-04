@@ -48,5 +48,6 @@ return[
     'activities' => 'Activities',
     'labels' => 'Labels',
     'label' => 'Label',
-    'general-attachments' => 'General Attachments'
+    'general-attachments' => 'General Attachments',
+    'branch' => 'Branch'
 ];
