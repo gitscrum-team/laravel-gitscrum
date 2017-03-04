@@ -201,7 +201,7 @@ Contributions are always welcome! Please read the contribution guidelines first.
 
 ## License
 
-Laravel GitScrum is licensed under the [GPL v3 license](http://opensource.org/licenses/GPL-3.0).
+Laravel GitScrum is licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
 ## Thanks
