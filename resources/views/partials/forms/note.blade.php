@@ -7,7 +7,8 @@
         <div class="input-group">
             <input class="form-control" name="frm_notes_title" type="text" autocomplete="off">
             <span class="input-group-btn">
-                <button id="frm_notes_submit" class="btn btn-default btn-loader" type="submit">{{trans('Add')}}</button>
+                <button id="frm_notes_submit" class="btn btn-default btn-loader" type="submit">{{trans('gitscrum.add')
+                }}</button>
             </span>
         </div>
     </div>
