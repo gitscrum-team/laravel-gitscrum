@@ -20,7 +20,7 @@ class FavoriteController extends Controller
         ];
         Favorite::create($data);
 
-        return back()->with('success', trans('Favorited successfully'));
+        return back()->with('success', trans('gitscrum.favorited-successfully'));
     }
 
     public function destroy($type, $id)
@@ -30,6 +30,6 @@ class FavoriteController extends Controller
 
         $favorite->delete();
 
-        return back()->with('success', trans('Unfavorited successfully'));
+        return back()->with('success', trans('gitscrum.unfavorited-successfully'));
     }
 }

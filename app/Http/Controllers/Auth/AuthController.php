@@ -56,7 +56,7 @@ class AuthController extends Controller
                 return Socialite::driver('github')->scopes(['repo', 'notifications', 'read:org'])->redirect();
                 break;
             default:
-                throw new InvalidArgumentException('Provider was not set');
+                throw new InvalidArgumentException(trans('gitscrum.provider-was-not-set'));
                 break;
         }
     }

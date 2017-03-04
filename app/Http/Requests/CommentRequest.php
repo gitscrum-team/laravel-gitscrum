@@ -42,8 +42,8 @@ class CommentRequest extends FormRequest
     public function messages()
     {
         return [
-            'comment.required' => trans('Comment cannot be blank'),
-            'comment.min' => trans('Comment must be at least 2 characters'),
+            'comment.required' => trans('gitscrum.comment-cannot-be-blank'),
+            'comment.min' => trans('gitscrum.comment-must-be-at-least-2-characters'),
         ];
     }
 }
