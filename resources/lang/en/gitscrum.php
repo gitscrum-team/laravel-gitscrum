@@ -70,5 +70,13 @@ return[
     'you-are-have-not-user-story' => 'You are have not user story',
     'browse' => 'Browse',
     'upload-file' => 'Upload file',
-    'write-comment' => 'Write comment...'
+    'write-comment' => 'Write comment...',
+    'create-a-sprint' => 'Create a Sprint',
+    'type' => 'Type',
+    'title-must-be-between-2-and-255-characters' => 'Title must be between 2 and 255 characters',
+    'optional' => 'optional',
+    'avg-effort' => 'Avg Effort',
+    'assigned-to' => 'Assigned to',
+    'planning-pocker' => 'Planning Pocker',
+    'collaborative-estimation' => 'Collaborative Estimation',
 ];
