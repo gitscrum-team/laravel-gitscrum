@@ -19,5 +19,10 @@ return[
     'go' => 'Go',
     'create-issue' => 'Create Issue',
     'edit-issue' => 'Edit Issue',
-    'sprint-planning' => 'Sprint Planning'
+    'sprint-planning' => 'Sprint Planning',
+    'my-planning' => 'My Planning',
+    'favorite' => 'Favorite',
+    'create-issue' => 'Create Issue',
+    'edit-sprint' => 'Edit Sprint',
+    'drag-it' => 'Drag it'
 ];
