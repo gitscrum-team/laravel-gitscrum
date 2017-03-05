@@ -83,7 +83,7 @@
             </div>
             <div id="tab-sprints" class="tab-pane">
                 <div class="panel-body">
-                    @include('partials.boxes.search-min', ['txtSearch' => trans('gitscrum.search-by-sprint-backlogs'))])
+                    @include('partials.boxes.search-min', ['txtSearch' => trans('gitscrum.search-by-sprint-backlogs')])
                     @include('partials.boxes.sprint', [ 'list' => $sprints ])
                 </div>
             </div>
