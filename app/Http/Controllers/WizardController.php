@@ -9,7 +9,9 @@
 namespace GitScrum\Http\Controllers;
 
 use GitScrum\Models\ProductBacklog;
-use {Request,Session,Auth};
+use Request;
+use Session;
+use Auth;
 
 class WizardController extends Controller
 {
