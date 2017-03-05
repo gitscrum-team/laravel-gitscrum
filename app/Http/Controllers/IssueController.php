@@ -11,7 +11,6 @@ namespace GitScrum\Http\Controllers;
 use Illuminate\Http\Request;
 use GitScrum\Http\Requests\IssueRequest;
 use GitScrum\Models\Sprint;
-use GitScrum\Models\UserStory;
 use GitScrum\Models\Issue;
 use GitScrum\Models\Organization;
 use GitScrum\Models\ConfigStatus;

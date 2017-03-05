@@ -9,7 +9,7 @@
 namespace GitScrum\Http\Controllers;
 
 use GitScrum\Models\ProductBacklog;
-use Request;
+use Illuminate\Http\Request;
 use Session;
 use Auth;
 
