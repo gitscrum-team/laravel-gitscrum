@@ -28,7 +28,7 @@
 
 Laravel GitScrum is a **free application** developed in Laravel 5.4. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
 
-Available in English, Chinese and Brazilian Portuguese.
+Available in English, Chinese and Portuguese.
 
 ### Features
 
