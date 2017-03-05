@@ -8,6 +8,7 @@
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\SprintPresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
@@ -19,6 +20,7 @@ class Sprint extends Model
     use SoftDeletes;
     use GlobalScope;
     use SprintScope;
+    use SprintPresenter;
     /**
      * The database table used by the model.
      *
@@ -89,25 +91,5 @@ class Sprint extends Model
     public function status()
     {
         return $this->hasOne(ConfigStatus::class, 'id', 'config_status_id');
-    }
-
-    public function getVisibilityAttribute()
-    {
-        return $this->attributes['is_private'] ? trans('Private') : trans('Public');
-    }
-
-    public function getSlugAttribute()
-    {
-        return isset($this->attributes['slug']) ? $this->attributes['slug'] : '';
-    }
-
-    public function getTimeboxAttribute()
-    {
-        $date_start = isset($this->attributes['date_start']) ?
-            Carbon::parse($this->attributes['date_start'])->toDateString() : '';
-        $date_finish = isset($this->attributes['date_finish']) ?
-            Carbon::parse($this->attributes['date_finish'])->toDateString() : '';
-
-        return $date_start.' '.trans('to').' '.$date_finish;
     }
 }

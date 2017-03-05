@@ -26,7 +26,9 @@ class PullRequest extends Model
      *
      * @var array
      */
-    protected $fillable = ['provider_id', 'head_branch_id', 'base_branch_id', 'user_id', 'product_backlog_id', 'number', 'url', 'html_url', 'issue_url', 'commits_url', 'state', 'title', 'body', 'github_created_at', 'github_updated_at', 'deleted_at'];
+    protected $fillable = ['provider_id', 'head_branch_id', 'base_branch_id', 'user_id', 'product_backlog_id', 'number',
+        'url', 'html_url', 'issue_url', 'commits_url', 'state', 'title', 'body', 'github_created_at', 'github_updated_at',
+        'deleted_at'];
 
     /**
      * The attributes excluded from the model's JSON form.
