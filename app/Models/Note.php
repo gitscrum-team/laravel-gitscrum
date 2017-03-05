@@ -8,6 +8,7 @@
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\NotePresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
@@ -16,6 +17,7 @@ class Note extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use NotePresenter;
 
     /**
      * The database table used by the model.
@@ -67,15 +69,5 @@ class Note extends Model
     public function closedUser()
     {
         return $this->belongsTo(User::class, 'closed_user_id', 'id');
-    }
-
-    public function setClosedUserIdAttribute($value)
-    {
-        $this->attributes['closed_user_id'] = is_null($this->closed_at) ? $value : null;
-    }
-
-    public function setClosedAtAttribute($value)
-    {
-        $this->attributes['closed_at'] = is_null($this->closed_at) ? $value : null;
     }
 }

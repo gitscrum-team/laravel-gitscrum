@@ -8,6 +8,7 @@
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\UserPresenter;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use GitScrum\Scopes\GlobalScope;
@@ -17,6 +18,7 @@ class User extends Authenticatable
 {
     use GlobalScope;
     use UserScope;
+    use UserPresenter;
     /**
      * The database table used by the model.
      *
@@ -91,19 +93,5 @@ class User extends Authenticatable
     {
         return $this->morphMany(Note::class, 'noteable')
             ->orderby('position', 'ASC');
-    }
-
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = $value;
-
-        if (empty($value)) {
-            $this->attributes['name'] = $this->attributes['username'];
-        }
-    }
-
-    public function getProviderAttribute()
-    {
-        return ucfirst($this->attributes['provider']);
     }
 }

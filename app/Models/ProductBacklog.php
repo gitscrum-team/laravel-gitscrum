@@ -8,6 +8,7 @@
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\ProductBacklogPresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
@@ -16,6 +17,7 @@ class ProductBacklog extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use ProductBacklogPresenter;
 
     public static $tmp = null;
 
@@ -95,10 +97,5 @@ class ProductBacklog extends Model
     {
         return $this->morphMany(Comment::class, 'commentable')
             ->orderby('created_at', 'DESC');
-    }
-
-    public function getVisibilityAttribute()
-    {
-        return $this->attributes['is_private'] ? trans('Private') : trans('Public');
     }
 }

@@ -8,17 +8,18 @@
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\IssuePresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
 use GitScrum\Scopes\IssueScope;
-use GitScrum\Classes\Parsedown;
 
 class Issue extends Model
 {
     use SoftDeletes;
     use GlobalScope;
     use IssueScope;
+    use IssuePresenter;
     /**
      * The database table used by the model.
      *
@@ -137,36 +138,5 @@ class Issue extends Model
     {
         return $this->morphMany(Status::class, 'statusesable')
             ->orderby('created_at', 'DESC');
-    }
-
-    public function getNumberAttribute()
-    {
-        return isset($this->attributes['number']) ? $this->attributes['number'] : null;
-    }
-
-    public function getStatusAvailableAttribute()
-    {
-        return ConfigStatus::type('issues')->get();
-    }
-
-    public function getSprintSlugAttribute()
-    {
-        return isset($this->sprint->slug) ? $this->sprint->slug : 0;
-    }
-
-    public function getSprintClosedAttribute()
-    {
-        return isset($this->sprint->closed_at) ? $this->sprint->closed_at : null;
-    }
-
-    public function getDescriptionAttribute()
-    {
-        $parsedown = new Parsedown;
-        return $parsedown->text($this->attributes['description']);
-    }
-
-    public function getMarkdownDescriptionAttribute()
-    {
-        return $this->attributes['description'];
     }
 }

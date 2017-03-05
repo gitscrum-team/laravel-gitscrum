@@ -8,6 +8,7 @@
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\CommitFilePresenter;
 use Illuminate\Database\Eloquent\Model;
 use GitScrum\Scopes\CommitFileScope;
 use GitScrum\Scopes\GlobalScope;
@@ -16,6 +17,7 @@ class CommitFile extends Model
 {
     use CommitFileScope;
     use GlobalScope;
+    use CommitFilePresenter;
     /**
      * The database table used by the model.
      *
@@ -59,21 +61,6 @@ class CommitFile extends Model
     public function filePhpcs()
     {
         return $this->hasMany(CommitFilePhpc::class, 'commit_file_id', 'id');
-    }
-
-    public function getAdditionsAttribute()
-    {
-        return $this->attributes['additions'] !== null ? $this->attributes['additions'] : 0;
-    }
-
-    public function getChangesAttribute()
-    {
-        return $this->attributes['changes'] !== null ? $this->attributes['changes'] : 0;
-    }
-
-    public function getDeletionsAttribute()
-    {
-        return $this->attributes['deletions'] !== null ? $this->attributes['deletions'] : 0;
     }
 
     public function comments()
