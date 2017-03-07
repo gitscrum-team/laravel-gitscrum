@@ -23,7 +23,7 @@ services:
       - MYSQL_PASSWORD=gitscrum
 
   web:
-    image: ambientum/php:7.0-apache
+    image: ambientum/php:7.1-nginx
     container_name: gitscrum-web
     volumes:
       - .:/var/www/app
