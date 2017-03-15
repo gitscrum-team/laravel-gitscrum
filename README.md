@@ -30,6 +30,8 @@ Laravel GitScrum is a **free application** developed in Laravel 5.4. The aim is 
 
 Available in English, Chinese, Spanish, Portuguese and Italian.
 
+Laravel GitScrum in gitter.im : [https://gitter.im/laravel-gitscrum/Lobby](https://gitter.im/laravel-gitscrum/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+
 ### Features
 
 GitScrum can be integrated with **Github** or **Gitlab**.
