@@ -188,4 +188,8 @@ return[
     'congratulations-the-sprint-has-been-updated-with-successfully' => 'Congratulations! The Sprint has been updated with successfully',
     'congratulations-the-user-story-has-been-created-with-successfully' => 'Congratulations! The User Story has been created with successfully',
     'congratulations-the-user-story-has-been-updated-with-successfully' => 'Congratulations! The User Story has been updated with successfully',
+    'repository' => 'Repository',
+    'settings' => 'Settings',
+    'list-team' => 'List Team',
+    'write' => 'write',
 ];

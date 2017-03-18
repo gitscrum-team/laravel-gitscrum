@@ -1,7 +1,8 @@
 @if(Session::has('success'))
-    <div class="col-lg-12">
-        <div class="alert alert-success alert-errors">
-         {{ Session::get('success') }}
+    <div class="ui success message">
+        <i class="close icon"></i>
+        <div class="header">
+            {{ Session::get('success') }}
         </div>
     </div>
 @endif

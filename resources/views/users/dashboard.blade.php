@@ -1,37 +1,41 @@
-@section('title',  trans('gitscrum.dashboard'))
+@section('page-title',  trans('gitscrum.dashboard'))
+
+@section('header-title',  trans('gitscrum.dashboard'))
 
 @extends('layouts.master', ['bodyClass' => 'body-dashboard'])
 
-@section('breadcrumb')
-
-<div class="col-lg-6">
-    <h3>{{trans('gitscrum.dashboard')}}</h3>
-</div>
-
-<div class="col-lg-6 text-right">
-    <div class="btn-group">
-        <a href="{{route('wizard.step1')}}" class="btn btn-sm btn-primary">
-            {{trans('gitscrum.update-repositories')}}</a>
-    </div>
-</div>
-
-@endsection
-
 @section('content')
+
+    <div class="ui grid">
+        <div class="four wide column">
+            <div class="ui segment">
+                <div class="ui list">
+                    <h3 class="ui header">{{trans('gitscrum.shortcuts')}}</h3>
+                    <a href="{{route('issues.index',['slug' => 0])}}" class="item">{{trans('gitscrum.my-planning')}}</a>
+                    <a href="{{route('wizard.step1')}}" class="item">{{trans('gitscrum.sync-repos-issues')}}</a>
+                </div>
+            </div>
+
+            @include('partials.boxes.note', [ 'list' => $user,
+                'type'=> 'users', 'title' => trans('gitscrum.quick-notes'),
+                'percentage' => Helper::percentage($user, 'notes')])
+
+            @include('partials.boxes.team', ['list'=>$user->team(), 'title'=>trans('gitscrum.team')])
+
+        </div>
+        <div class="nine wide computer three wide tablet six wide mobile column">
+            <div class="ui segment">Content</div>
+        </div>
+        <div class="three wide computer nine wide tablet six wide mobile column">
+            <div class="ui segment">Content</div>
+        </div>
+    </div>
 
 <div class="col-lg-3">
 
-    <div class="shortcuts">
-        <h4>{{trans('gitscrum.shortcuts')}}</h4>
-        <a href="{{route('issues.index',['slug' => 0])}}">{{trans('gitscrum.my-planning')}}</a>
-        <a href="{{route('wizard.step1')}}">{{trans('gitscrum.sync-repos-issues')}}</a>
-    </div>
 
-    @include('partials.boxes.team', ['list'=>$user->team(), 'title'=>trans('gitscrum.team')])
 
-    @include('partials.boxes.note', [ 'list' => $user,
-        'type'=> 'users', 'title' => trans('gitscrum.quick-notes'),
-        'percentage' => Helper::percentage($user, 'notes')])
+
 </div>
 
 

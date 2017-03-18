@@ -188,4 +188,5 @@ return[
     'congratulations-the-sprint-has-been-updated-with-successfully' => '恭喜! Sprint已經更新成功',
     'congratulations-the-user-story-has-been-created-with-successfully' => '恭喜! User Storyu已經新增成功',
     'congratulations-the-user-story-has-been-updated-with-successfully' => '恭喜! User Story 已經更新成功',
+    'repository' => 'Repository',
 ];

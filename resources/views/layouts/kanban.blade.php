@@ -2,7 +2,7 @@
 
     @if ( Auth::check() && (!isset($hideNavbar) || !$hideNavbar) )
 
-        @include('partials.includes.navbar-top')
+        @include('partials.includes.menubar')
 
         <div class="breadcrumb-area">
             <div class="container">

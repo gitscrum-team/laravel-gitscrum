@@ -1,20 +1,131 @@
 $(function () {
 
+    $('[data-toggle="modal"]').on('click', function(event) {
+        event.preventDefault();
+
+        $('.ui.modal.default-modal')
+            .modal('setting', 'transition', 'horizontal flip')
+            .modal('show');
+    });
+
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
-    $('[data-toggle="tooltip"]').tooltip();
-
+    $('.menu .item').tab();
+    $('.progress').progress();
+/*
     $('[data-provide="markdown"]').markdown({autofocus:false,savable:false})
 
     main.init();
     attachment.init();
     agile.init();
+    */
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document)
+    .ready(function() {
+
+        $('.ui.search')
+            .search({
+                type          : 'category',
+                minCharacters : 3,
+                apiSettings   : {
+                    onResponse: function(githubResponse) {
+                        var
+                            response = {
+                                results : {}
+                            }
+                            ;
+                        // translate GitHub API response to work with search
+                        $.each(githubResponse.items, function(index, item) {
+                            var
+                                language   = item.language || 'Unknown',
+                                maxResults = 8
+                                ;
+                            if(index >= maxResults) {
+                                return false;
+                            }
+                            // create new language category
+                            if(response.results[language] === undefined) {
+                                response.results[language] = {
+                                    name    : language,
+                                    results : []
+                                };
+                            }
+                            // add result to category
+                            response.results[language].results.push({
+                                title       : item.name,
+                                description : item.description,
+                                url         : item.html_url
+                            });
+                        });
+                        return response;
+                    },
+                    url: 'http://api.github.com/search/repositories?q={query}'
+                }
+            });
+
+        $('.ui.menu .ui.dropdown').dropdown({
+            on: 'hover'
+        });
+        $('.ui.menu a.item')
+            .on('click', function() {
+                $(this)
+                    .addClass('active')
+                    .siblings()
+                    .removeClass('active')
+                ;
+            })
+        ;
+
+
+        $('.open__sidebar_notes').on('click', function(){
+            $('.ui.sidebar')
+                .sidebar('toggle');
+        });
+
+
+    })
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var main = {
 

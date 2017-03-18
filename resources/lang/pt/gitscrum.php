@@ -195,4 +195,5 @@ return[
     'congratulations-the-sprint-has-been-updated-with-successfully' => 'Parabéns! A Sprint foi atualizada com sucesso',
     'congratulations-the-user-story-has-been-created-with-successfully' => 'Parabéns! A User Story foi criada com sucesso',
     'congratulations-the-user-story-has-been-updated-with-successfully' => 'Parabéns! A User Story foi atualizada com sucesso',
+    'repository' => 'Repositorio',
 ];

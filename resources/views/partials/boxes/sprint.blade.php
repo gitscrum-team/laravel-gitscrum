@@ -1,32 +1,28 @@
 @if(!empty($list[0]))
-    <table class="table-sprint-backlog table table-striped table-hover">
+
+    <table class="ui celled structured table">
         <thead>
         <tr>
-            @if(isset($column['thead_sprintFavorite']))
-            <th width="10"></th>
-            @endif
-
-            @if(isset($column['thead_sprintLabels']))
-            <th width="140"></th>
-            @endif
-
-            @if(isset($column['thead_sprintBacklog']))
-            <th>{{trans('gitscrum.sprint-backlog')}}</th>
-            @endif
-
-            @if(isset($column['thead_sprintProductBacklog']))
-            <th class="text-right">{{trans('gitscrum.product-backlog')}}</th>
-            @endif
+            <th rowspan="2" style="width:10px"></th>
+            <th colspan="3">{{trans('gitscrum.sprint-backlog')}}</th>
+            <th colspan="2">{{trans('gitscrum.issues')}}</th>
+            <th rowspan="2">{{trans('gitscrum.organization')}}</th>
+            <th rowspan="2">{{trans('gitscrum.type')}}</th>
+            <th rowspan="2" style="width:10px"></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>{{trans('gitscrum.user-stories')}}</th>
+            <th>{{trans('gitscrum.sprints')}}</th>
+            <th>{{trans('gitscrum.open')}}</th>
+            <th>{{trans('gitscrum.closed')}}</th>
         </tr>
         </thead>
         <tbody>
-            @each('partials.lists.sprints', $list, 'list', 'partials.lists.no-items')
+        @each('partials.lists.sprints', $list, 'list', 'partials.lists.no-items')
         </tbody>
     </table>
 
-    @if(!empty($list->links))
-    {{ $list->links() }}
-    @endif
 @else
     @include('errors.notification-message', ['notification' => ['message' => trans('gitscrum.you-are-not-a-member-of-any-sprint') .
         '. <a href="'.route('sprints.index').'" class="font-bold">'. trans('gitscrum.list-sprint-backlog') . '</a>',

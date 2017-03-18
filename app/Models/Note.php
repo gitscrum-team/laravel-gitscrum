@@ -66,6 +66,11 @@ class Note extends Model
             ->orderby('created_at', 'DESC');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
     public function closedUser()
     {
         return $this->belongsTo(User::class, 'closed_user_id', 'id');
