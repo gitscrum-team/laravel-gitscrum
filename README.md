@@ -110,7 +110,6 @@ Can you help us translate a few phrases into different languages? See: https://g
 .env file
 
 ```
-
 DB_CONNECTION=mysql
 DB_HOST=XXXXXX
 DB_PORT=3306
