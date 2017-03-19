@@ -10,6 +10,11 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get( '{any}', function( $any ){
+    return view('app');
+})->where('any', '.*');
+
+/*
 Route::get('/', function () {
     return redirect()->route('auth.login');
 })->name('home');
@@ -121,3 +126,4 @@ Route::group(['prefix' => 'wizard', 'middleware' => ['user.authenticated']], fun
     Route::post('/step2', 'WizardController@step2')->name('wizard.step2');
     Route::get('/step3', 'WizardController@step3')->name('wizard.step3');
 });
+*/
