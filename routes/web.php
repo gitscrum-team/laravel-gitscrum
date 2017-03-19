@@ -10,7 +10,7 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::get( '{any}', function( $any ){
+Route::get( '{any}', function(){
     return view('app');
 })->where('any', '.*');
 
