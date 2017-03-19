@@ -1,75 +1,38 @@
-@section('title',  trans('gitscrum.profile') . ' - ' . $user->username)
+@section('page-title',  trans('gitscrum.profile') . ' - ' . $user->username)
 
 @extends('layouts.master')
 
-@section('breadcrumb')
-
-<div class="col-lg-6">
-    <h3>{{trans('gitscrum.profile')}}</h3>
-</div>
-
-<div class="col-lg-6 text-right">
-    <div class="btn-group">
-
-    </div>
-</div>
-
-@endsection
-
 @section('content')
+<h2 class="ui header dividing padding-bottom-20px">
+    <img src="{{$user->avatar}}" class="ui circular image">
+    {{$user->name}}
+</h2>
 
-<div class="col-md-12 user-profile">
-    <div class="row">
-
-        <div class="col-lg-3 information">
-
-            @each('partials.lists.users', [$user], 'list', 'partials.lists.no-items')
-
-            <div class="clearfix"></div>
-
-            @each('partials.lists.activities-complete', $activities, 'activity', 'partials.lists.no-items')
-
+<div class="ui four statistics">
+    <div class="statistic">
+        <div class="value">
+            <i class="trophy icon"></i> 22
         </div>
-
-        <div class="col-lg-9">
-
-            <div class="row">
-                <div class="col-lg-3 col-sm-4">
-                    <div class="tile mbn pbn">
-                        <i class="fa fa-trophy fa-4x" aria-hidden="true"></i>
-                        <h3 class="tile-title mtm">62</h3>
-                        <p class="pbm">Effort</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-4">
-                    <div class="tile mbn pbn">
-                        <i class="fa fa-list fa-4x" aria-hidden="true"></i>
-                        <h3 class="tile-title mtm">{{$user->sprints()->count()}}</h3>
-                        <p class="pbm">{{trans('gitscrum.cooperation')}}</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-4">
-                    <div class="tile mbn pbn">
-                        <i class="fa fa-th fa-4x" aria-hidden="true"></i>
-                        <h3 class="tile-title mtm">{{$user->issues()->count()}}</h3>
-                        <p class="pbm">{{trans('gitscrum.issues-done')}}</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-4">
-                    <div class="tile mbn pbn">
-                        <i class="fa fa-list fa-4x" aria-hidden="true"></i>
-                        <h3 class="tile-title mtm">{{$user->sprints()->count()}}</h3>
-                        <p class="pbm">{{trans('gitscrum.commits')}}</p>
-                    </div>
-                </div>
-
-            </div>
-
+        <div class="label">{{trans('gitscrum.effort')}}</div>
+    </div>
+    <div class="statistic">
+        <div class="value">
+            <i class="puzzle icon"></i> 5
         </div>
-
+        <div class="label">{{trans('gitscrum.cooperation')}}</div>
+    </div>
+    <div class="statistic">
+        <div class="value">
+            <i class="check square icon"></i> 5
+        </div>
+        <div class="label">{{trans('gitscrum.issues-done')}}</div>
+    </div>
+    <div class="statistic">
+        <div class="value">
+            <i class="{{strtolower(Auth::user()->provider)}} icon"></i>
+            42
+        </div>
+        <div class="label">{{trans('gitscrum.commits')}}</div>
     </div>
 </div>
 

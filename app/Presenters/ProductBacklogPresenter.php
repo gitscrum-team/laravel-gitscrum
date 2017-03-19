@@ -14,4 +14,9 @@ trait ProductBacklogPresenter
     {
         return $this->attributes['is_private'] ? trans('Private') : trans('Public');
     }
+
+    public function getDescriptionAttribute()
+    {
+        return $this->attributes['description'] ?? '';
+    }
 }

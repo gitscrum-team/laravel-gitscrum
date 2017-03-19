@@ -12,11 +12,7 @@ trait UserPresenter
 {
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = $value;
-
-        if (empty($value)) {
-            $this->attributes['name'] = $this->attributes['username'];
-        }
+        $this->attributes['name'] = $value ?? $this->attributes['username'];
     }
 
     public function getProviderAttribute()

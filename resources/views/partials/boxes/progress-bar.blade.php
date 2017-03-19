@@ -1,4 +1,4 @@
-<small class="progress-title">{{ $percentage }}% {{$title or trans('gitscrum.completed')}}</small>
-<div class="progress progress-mini">
-    <div style="width: {{ $percentage }}%;" class="progress-bar progress-success"></div>
+<div class="ui tiny yellow progress" data-percent="{{ $percentage }}">
+    <div class="bar"></div>
+    <div class="label">{{ $percentage }}% {{$title or trans('gitscrum.completed')}}</div>
 </div>
