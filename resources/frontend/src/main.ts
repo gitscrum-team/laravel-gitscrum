@@ -1,3 +1,6 @@
+// Include Semantic UI scripts
+import '../../assets/semantic-ui/semantic.min.js';
+
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
