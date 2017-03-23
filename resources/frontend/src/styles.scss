@@ -2,3 +2,34 @@
 
 // Include Semantic UI styles
 @import '../../assets/semantic-ui/semantic.min.css';
+
+.ui.main.container.center{margin-top:80px}.ui.main.container.center .ui.main.container{margin-top:0}.body-login .main-column{max-width:600px;padding-bottom:20px}.body-login .button-column{padding-top:20px}.divider-column{position:relative;padding:0!important}.padding-top-15{padding:15% 0 0 0}.padding-top-20px{padding:20px 0 0 0!important}.padding-bottom-20px{padding:0 0 20px 0!important}.ui.inverted.vertical.footer.segment{margin-top:30px!important}.breadcrumb{margin-bottom:30px!important}
+/*# sourceMappingURL=maps/core.css.map */
+
+.main.container {
+    padding-top: 80px;
+}
+
+.ui.main.container .ui.vertical.menu {
+    width: auto;
+}
+
+.ui.selection.dropdown{
+    min-width:8em;
+}
+
+table .ui.icon.button{
+    padding:6px 10px;
+}
+
+table .icon.dropdown .image{
+    max-height:1.2em !important;
+}
+
+.ui.progress:last-child {
+    margin: 0.4em 0 0.4em;
+}
+
+.padding-bottom-6{
+    padding-bottom: 6px;
+}

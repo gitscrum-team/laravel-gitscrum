@@ -1,3 +1,157 @@
-<h1>
-  {{title}}
-</h1>
+<!--<ul>
+  <li><a routerLink="/">Login</a></li>
+  <li><a routerLink="/dashboard">Dashboard</a></li>
+  <li><a routerLink="/404">404</a></li>
+</ul>
+<div>
+  <router-outlet></router-outlet>
+</div>-->
+
+<div class="ui sidebar inverted vertical menu">
+    <a class="item">
+        1
+    </a>
+    <a class="item">
+        2
+    </a>
+    <a class="item">
+        3
+    </a>
+    <a class="item">
+        1
+    </a>
+    <a class="item">
+        2
+    </a>
+    <a class="item">
+        3
+    </a>
+    <a class="item">
+        1
+    </a>
+
+</div>
+<div class="pusher">
+
+    <!-- HEADER -->
+    <header>
+        <div class="ui fixed menu">
+            <div class="ui container">
+
+                <a href="http://app.gitscrum.dev/dashboard" class="header item">
+                    <i class="left github icon" aria-hidden="true" data-toggle="tooltip"
+                       title="You are you connected using Github"
+                       data-placement="bottom"></i>Git<strong>Scrum</strong></a>
+
+                <div class="ui category search item">
+                    <div class="ui icon input">
+                        <input class="prompt" placeholder="Search animals..." type="text">
+                        <i class="search icon"></i>
+                    </div>
+                    <div class="results"></div>
+                </div>
+
+                <div class="item">
+                    <button class="mini ui blue button">
+                        Create a New
+                    </button>
+                </div>
+
+                <div class="right menu">
+
+                    <a class="item open__sidebar_notes"><i class="sticky note icon"></i>My Notes</a>
+
+                    <div class="ui dropdown item" tabindex="0">
+                        <img src="https://avatars.githubusercontent.com/u/26571?v=3"
+                             class="ui avatar image" />renatomarinho
+                        <i class="dropdown icon"></i>
+                        <div class="menu transition hidden" tabindex="-1">
+                            <div class="item">
+                                <a href="http://app.gitscrum.dev/profile/renatomarinho">
+                                    <i class="id card outline icon"></i>Profile</a>
+                            </div>
+                            <div class="item"><i class="protect icon"></i>Permissions</div>
+                            <div class="divider"></div>
+                            <div class="item">
+                                <a href="http://app.gitscrum.dev/wizard/step1">
+                                    <i class="retweet icon"></i>Sync Repos/Issues</a>
+                            </div>
+                            <div class="item">
+                                <a href="http://app.gitscrum.dev/auth/logout">
+                                    <i class="power icon"></i>Logout</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HEADER -->
+
+    <div class="ui main container">
+        <router-outlet></router-outlet>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="ui inverted vertical footer segment">
+        <div class="ui center aligned container">
+            <div class="ui stackable inverted divided grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Group 1</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Link One</a>
+                        <a href="#" class="item">Link Two</a>
+                        <a href="#" class="item">Link Three</a>
+                        <a href="#" class="item">Link Four</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Group 2</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Link One</a>
+                        <a href="#" class="item">Link Two</a>
+                        <a href="#" class="item">Link Three</a>
+                        <a href="#" class="item">Link Four</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Group 3</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Link One</a>
+                        <a href="#" class="item">Link Two</a>
+                        <a href="#" class="item">Link Three</a>
+                        <a href="#" class="item">Link Four</a>
+                    </div>
+                </div>
+                <div class="seven wide column ">
+
+                    <div class="ui floating dropdown icon button">
+                        <span class="text">
+                            <i class="us flag"></i>
+                            English
+                        </span>
+                        <div class="menu">
+                            <div class="item"><i class="us flag"></i> English</div>
+                            <div class="item"><i class="cn flag"></i> Chinese</div>
+                            <div class="item"><i class="pt flag"></i> Portuguese</div>
+                            <div class="item"><i class="it flag"></i> Italian</div>
+                        </div>
+                    </div>
+
+                    <h4 class="ui inverted header">Footer Header</h4>
+                    <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <img src="https://chocolatey.org/content/packageimages/git.2.12.1.svg" class="ui centered mini image">
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="#">Site Map</a>
+                <a class="item" href="#">Contact Us</a>
+                <a class="item" href="#">Terms and Conditions</a>
+                <a class="item" href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
+</div>
