@@ -28,7 +28,10 @@
 
 Laravel GitScrum is a **free application** developed in Laravel 5.4. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
 
-Available in English, Chinese, Portuguese and Italian.
+Available in English, Chinese, Spanish, Portuguese and Italian.
+
+
+Laravel GitScrum in gitter.im : [https://gitter.im/laravel-gitscrum/Lobby](https://gitter.im/laravel-gitscrum/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 
 ### Features
 
@@ -93,7 +96,7 @@ APP_URL=http://yourdomain.tld (you must use protocol http or https)
 
 #### Language
 
-Options: en | zh | pt | it
+Options: en | zh | zh_cn | es | pt | it
 
 .env file
 
@@ -200,16 +203,7 @@ Renato Marinho: [Facebook](https://www.facebook.com/renato.marinho) / [LinkedIn]
 
 ## Contributing
 
-Contributions are always welcome! Please read the contribution guidelines first.
-
-```
-    Create an issue and describe your idea
-    Fork it
-    Create your feature branch (git checkout -b my-new-feature)
-    Commit your changes (git commit -am 'Add some feature')
-    Publish the branch (git push origin my-new-feature)
-    Create a new Pull Request
-```
+Contributions are always welcome! https://github.com/renatomarinho/laravel-gitscrum/graphs/contributors
 
 
 ## License
@@ -218,6 +212,8 @@ Laravel GitScrum is licensed under the [MIT license](https://opensource.org/lice
 
 
 ## Thanks
+
+#### Translate Team : [@orionlu0916](https://github.com/orionlu0916) , [@Bebbolus](https://github.com/Bebbolus) , [@dongm2ez](https://github.com/dongm2ez) and Manuel Ortega
 
 - [Laravel PHP Framework](https://github.com/laravel/laravel)
 
