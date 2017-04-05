@@ -23,6 +23,8 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2abfe5173e0b4565a2b1e3e345160939)](https://www.codacy.com/app/renatomarinho/laravel-gitscrum?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renatomarinho/laravel-gitscrum&amp;utm_campaign=Badge_Grade)
 [![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-gitscrum/downloads)](https://packagist.org/packages/renatomarinho/laravel-gitscrum)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/renatomarinho/laravel-gitscrum/blob/master/LICENSE.md)
+[![OpenCollective](https://opencollective.com/laravel-gitscrum/backers/badge.svg)](#backers) 
+[![OpenCollective](https://opencollective.com/laravel-gitscrum/sponsors/badge.svg)](#sponsors)
 
 <hr>
 
@@ -222,3 +224,73 @@ Laravel GitScrum is licensed under the [MIT license](https://opensource.org/lice
 - [Chart.js](https://github.com/chartjs/Chart.js)
 
 - [Date Range Picker for Bootstrap](https://github.com/dangrossman/bootstrap-daterangepicker)
+
+### Backers
+
+Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/laravel-gitscrum#backer)]
+
+<a href="https://opencollective.com/laravel-gitscrum/backer/0/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/0/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/1/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/1/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/2/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/2/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/3/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/3/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/4/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/4/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/5/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/5/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/6/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/6/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/7/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/7/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/8/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/8/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/9/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/9/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/10/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/10/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/11/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/11/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/12/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/12/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/13/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/13/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/14/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/14/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/15/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/15/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/16/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/16/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/17/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/17/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/18/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/18/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/19/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/19/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/20/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/20/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/21/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/21/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/22/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/22/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/23/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/23/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/24/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/24/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/25/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/25/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/26/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/26/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/27/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/27/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/28/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/28/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/backer/29/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/backer/29/avatar.svg"></a>
+
+### Sponsors
+
+Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/laravel-gitscrum#sponsor)]
+
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/0/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/1/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/2/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/3/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/4/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/5/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/6/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/7/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/8/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/9/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/10/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/10/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/11/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/11/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/12/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/12/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/13/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/13/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/14/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/14/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/15/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/15/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/16/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/16/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/17/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/17/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/18/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/18/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/19/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/19/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/20/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/20/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/21/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/21/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/22/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/22/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/23/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/23/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/24/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/24/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/25/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/25/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/26/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/26/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/27/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/27/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/28/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/28/avatar.svg"></a>
+<a href="https://opencollective.com/laravel-gitscrum/sponsor/29/website" target="_blank"><img src="https://opencollective.com/laravel-gitscrum/sponsor/29/avatar.svg"></a>
