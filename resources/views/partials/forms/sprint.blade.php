@@ -1,7 +1,7 @@
 <form action="{{route($route, ['slug'=>@$sprint->slug])}}" method="post" class="form-horizontal">
     {{ csrf_field() }}
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Product Backlog')}}</label>
+        <label class="col-sm-12">{{trans('gitscrum.product-backlog')}}</label>
         <div class="col-sm-12">
             <select name="product_backlog_id" class="form-control m-b">
                 @foreach (Auth::user()->productBacklogs() as $productBacklog)
@@ -14,37 +14,37 @@
     </div>
     <div class="hr-line-dashed"></div>
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Timebox')}}</label>
+        <label class="col-sm-12">{{trans('gitscrum.timebox')}}</label>
         <div class="col-sm-12">
             <input class="form-control" type="text" name="daterange"
                 value="{{ @$sprint->date_start }}@if(@$sprint->date_start) - @endif{{ @$sprint->date_finish }}" required />
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Name')}}</label>
+        <label class="col-sm-12">{{trans('gitscrum.name')}}</label>
         <div class="col-sm-12">
             <input name="title" type="text" class="form-control" value="{{ @$sprint->title }}"
-                pattern=".{2,255}" title="{{trans('Title must be between 2 and 255 characters')}}"
+                pattern=".{2,255}" title="{{trans('gitscrum.title-must-be-between-2-and-255-characters')}}"
                 autocomplete="off" maxlength="255" required>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-12">{{trans('Description')}} ({{trans('optional')}})</label>
+        <label class="col-sm-12">{{trans('gitscrum.description')}} ({{trans('gitscrum.optional')}})</label>
         <div class="col-sm-12">
             <textarea name="description" type="text" class="form-control">{{ @$sprint->description }}</textarea>
             <span class="help-block m-b-none"></span>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3">{{trans('Version')}} ({{trans('optional')}})</label>
+        <label class="col-sm-3">{{trans('gitscrum.version')}} ({{trans('gitscrum.optional')}})</label>
         <div class="col-sm-2">
             <input name="version" type="text" placeholder="1.0.1" class="form-control m-b-none">
         </div>
-        <label class="col-sm-3">{{trans('Public')}} ({{trans('optional')}})</label>
+        <label class="col-sm-3">{{trans('gitscrum.public')}} ({{trans('gitscrum.optional')}})</label>
         <div class="col-sm-4">
             <select name="is_private" class="form-control m-b">
-                <option value="0">{{trans('Yes, publish for team')}}</option>
-                <option value="1">{{trans('No, Display only for me')}}</option>
+                <option value="0">{{trans('gitscrum.yes-publish-for-team')}}</option>
+                <option value="1">{{trans('gitscrum.no-display-only-for-me')}}</option>
             </select>
         </div>
     </div>

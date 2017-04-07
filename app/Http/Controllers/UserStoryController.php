@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
@@ -48,7 +48,7 @@ class UserStoryController extends Controller
         $userStory = UserStory::create($request->all());
 
         return redirect()->route('user_stories.show', ['slug' => $userStory->slug])
-            ->with('success', trans('Congratulations! The User Story has been created with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-user-story-has-been-created-with-successfully'));
     }
 
     public function show($slug)
@@ -56,7 +56,7 @@ class UserStoryController extends Controller
         $userStory = UserStory::slug($slug)
             ->with('labels')
             ->first();
-
+            
         return view('user_stories.show')
             ->with('userStory', $userStory);
     }
@@ -82,7 +82,7 @@ class UserStoryController extends Controller
         $userStory->update($request->all());
 
         return back()
-            ->with('success', trans('Congratulations! The User Story has been edited with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-user-story-has-been-updated-with-successfully'));
     }
 
     public function destroy(Request $request)

@@ -1,19 +1,21 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use GitScrum\Scopes\GlobalScope;
 
 class Attachment extends Model
 {
     use SoftDeletes;
+    use GlobalScope;
 
     /**
      * The database table used by the model.
@@ -51,11 +53,6 @@ class Attachment extends Model
      */
     protected $dates = ['deleted_at'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function attachmentable()
     {
         return $this->morphTo('attachmentable');
@@ -63,6 +60,6 @@ class Attachment extends Model
 
     public function user()
     {
-        return $this->belongsTo(\GitScrum\Models\User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

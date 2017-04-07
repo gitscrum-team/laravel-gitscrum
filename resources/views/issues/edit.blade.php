@@ -1,9 +1,9 @@
-@section('title',  trans('Edit Issue'))
+@section('title',  trans('gitscrum.edit-issue'))
 
 @extends('layouts.modal')
 
 @section('content')
 
-    @include('partials.forms.issue', ['route' => 'issues.update', 'issue_types' => $issue_types])
+    @include('partials.forms.issue', ['route' => 'issues.update'])
 
 @endsection

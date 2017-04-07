@@ -8,6 +8,6 @@
     {{$list->setPath('')->links()}}
     @endif
 @else
-    @include('errors.notification-message', ['notification' => ['message' => trans('You are have not user story'),
+    @include('errors.notification-message', ['notification' => ['message' => trans('gitscrum.you-are-have-not-user-story'),
         'alert' => 'warning', 'class' => 'padding-none list-user-story-empty']])
 @endif

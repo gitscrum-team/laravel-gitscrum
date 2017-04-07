@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Middleware;
@@ -24,7 +24,7 @@ class UserAuthenticated
     public function handle($request, Closure $next)
     {
         if (!Auth::user()) {
-            return redirect()->route('auth.login')->with('success', trans('GitScrum authentication is required'));
+            return redirect()->route('auth.login')->with('success', trans('gitscrum.GitScrum-authentication-is-required'));
         }
 
         return $next($request);

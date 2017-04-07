@@ -1,10 +1,10 @@
-@section('title',  trans('Sprints'))
+@section('title',  trans('gitscrum.labels'))
 
 @extends('layouts.master')
 
 @section('breadcrumb')
 <div class="col-lg-8">
-    <h3>{{trans('Label')}}: <span class="">{{$label->title}}</span></h3>
+    <h3>{{trans('gitscrum.label')}}: <span class="">{{$label->title}}</span></h3>
 </div>
 <div class="col-lg-4 text-right">
 

@@ -3,7 +3,7 @@
         <img alt="image" class="img-rounded avatar" src="{{$activity->user->avatar}}">
     </a>
     <div class="media-body">
-        <small class="pull-right">{{$activity->dateforhumans}}</small>
+        <small class="pull-right">{{$activity->dateforHumans}}</small>
         <strong>{{$activity->user->username}}</strong> {{$activity->configStatus->description}}
         <br>
         <small class="text-muted"></small>

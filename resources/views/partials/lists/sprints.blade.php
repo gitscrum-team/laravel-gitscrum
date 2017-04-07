@@ -1,7 +1,7 @@
 <tr>
 
     @if(!isset($list->column) || in_array('tbody_sprintFavorite', $list->column))
-    <td>@include('partials.lnk-favorite', ['favorite' => $list->favorite, 'type' => 'sprint',
+    <td>@include('partials.lnk-favorite', ['favorite' => $list->favorite, 'type' => 'sprints',
         'id' => $list->id, 'btnSize' => 'btn-xs'])</td>
     @endif
 
@@ -17,9 +17,12 @@
         <a href="{{route('sprints.show', ['slug'=>$list->slug])}}">{{$list->title}}</a>
         <div class="details">
             @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($list, 'issues')])
-            <span><strong>{{trans('Timebox')}}:</strong> {{$list->timebox}} ({{$list->weeks()}} {{str_plural('week', $list->weeks())}})</span>
-            <span><strong>{{trans('Issues')}}:</strong> {{$list->issues->where('closed_at', NULL)->count()}} {{trans('Open')}} /
-            {{$list->issues->where('closed_at', '!=', NULL)->count()}} {{trans('Closed')}}</span>
+            <span><strong>{{trans('gitscrum.timebox')}}:</strong> {{$list->timebox}} ({{$list->weeks()}} {{str_plural
+            ( trans('gitscrum.week') ,
+            $list->weeks())}})</span>
+            <span><strong>{{trans('gitscrum.issues')}}:</strong> {{$list->issues->where('closed_at', NULL)->count()}}
+                {{trans('gitscrum.open')}} /
+            {{$list->issues->where('closed_at', '!=', NULL)->count()}} {{trans('gitscrum.closed')}}</span>
         </div>
     </td>
     @endif

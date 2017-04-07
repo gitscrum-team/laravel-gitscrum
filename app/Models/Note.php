@@ -1,13 +1,14 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\NotePresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
@@ -16,6 +17,7 @@ class Note extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use NotePresenter;
 
     /**
      * The database table used by the model.
@@ -53,11 +55,6 @@ class Note extends Model
      */
     protected $dates = ['deleted_at'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function noteable()
     {
         return $this->morphTo('noteable');
@@ -65,22 +62,12 @@ class Note extends Model
 
     public function statuses()
     {
-        return $this->morphMany(\GitScrum\Models\Status::class, 'statusesable')
+        return $this->morphMany(Status::class, 'statusesable')
             ->orderby('created_at', 'DESC');
     }
 
     public function closedUser()
     {
-        return $this->belongsTo(\GitScrum\Models\User::class, 'closed_user_id', 'id');
-    }
-
-    public function setClosedUserIdAttribute($value)
-    {
-        $this->attributes['closed_user_id'] = is_null($this->closed_at) ? $value : null;
-    }
-
-    public function setClosedAtAttribute($value)
-    {
-        $this->attributes['closed_at'] = is_null($this->closed_at) ? $value : null;
+        return $this->belongsTo(User::class, 'closed_user_id', 'id');
     }
 }

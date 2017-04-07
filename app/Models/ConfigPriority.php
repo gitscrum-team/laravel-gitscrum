@@ -9,9 +9,11 @@
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use GitScrum\Scopes\GlobalScope;
 
 class ConfigPriority extends Model
 {
+    use GlobalScope;
     /**
      * The database table used by the model.
      *
@@ -42,6 +44,6 @@ class ConfigPriority extends Model
 
     public function users()
     {
-        return $this->belongsToMany(\GitScrum\Models\User::class);
+        return $this->belongsToMany(User::class);
     }
 }

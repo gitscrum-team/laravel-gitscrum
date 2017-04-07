@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Observers;
@@ -23,6 +23,6 @@ class LabelObserver
 
     public function created(Label $label)
     {
-        (new Status())->track('label', $label);
+        (new Status())->track('labels', $label);
     }
 }

@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
@@ -11,12 +11,13 @@ namespace GitScrum\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
-use Carbon\Carbon;
+use GitScrum\Scopes\StatusScope;
 
 class Status extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use StatusScope;
 
     /**
      * The database table used by the model.
@@ -48,53 +49,24 @@ class Status extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function setUpdatedAtAttribute($value)
     {
     }
 
     public function user()
     {
-        return $this->belongsTo(\GitScrum\Models\User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function configStatus()
     {
-        return $this->belongsTo(\GitScrum\Models\ConfigStatus::class, 'config_status_id', 'id');
+        return $this->belongsTo(ConfigStatus::class, 'config_status_id', 'id');
     }
 
     public function available()
     {
-        return $this->hasMany(\GitScrum\Models\ConfigStatus::class, 'type', 'statusesable_type')
+        return $this->hasMany(ConfigStatus::class, 'type', 'statusesable_type')
             ->orderby('position', 'ASC');
-    }
-
-    public function getDateforhumansAttribute()
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->diffForHumans();
-    }
-
-    public function track($alias, $model, $id = null)
-    {
-        if (!isset($model->config_status_id)) {
-            if (is_null($id)) {
-                $status = ConfigStatus::type($alias)->default();
-            } else {
-                $status = ConfigStatus::find($id);
-            }
-
-            $model->config_status_id = $status->first()->id;
-        }
-
-        $this->create([
-            'statusesable_type' => $alias,
-            'statusesable_id' => $model->id,
-            'config_status_id' => $model->config_status_id,
-            'user_id' => $model->user_id, ]);
     }
 
     public function statusesable()

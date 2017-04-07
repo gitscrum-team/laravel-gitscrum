@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
@@ -45,7 +45,7 @@ class LabelController extends Controller
             $result->labels()->attach([$label->id]);
         }
 
-        return back()->with('success', trans('Label added successfully'));
+        return back()->with('success', trans('gitscrum.label-added-successfully'));
     }
 
     public function update(Request $request, $id)

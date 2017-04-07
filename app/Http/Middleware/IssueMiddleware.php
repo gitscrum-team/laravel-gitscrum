@@ -1,15 +1,14 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Middleware;
 
 use Closure;
-use GitScrum\Models\Issue;
 
 class IssueMiddleware
 {
@@ -23,13 +22,14 @@ class IssueMiddleware
      */
     public function handle($request, Closure $next)
     {
+        /*
         try {
             if (isset($request->slug)) {
                 Issue::slug($request->slug)->firstOrFail();
             }
         } catch (\Exception $e) {
             return redirect()->route('user.dashboard');
-        }
+        }*/
 
         return $next($request);
     }

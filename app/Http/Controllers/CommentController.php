@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
@@ -22,7 +22,7 @@ class CommentController extends Controller
         ];
         Comment::create($data);
 
-        return back()->with('success', trans('Comment added successfully'));
+        return back()->with('success', trans('gitscrum.comment-added-successfully'));
     }
 
     public function edit($id)
@@ -42,7 +42,7 @@ class CommentController extends Controller
         $comment->comment = $request->comment;
         $comment->save();
 
-        return back()->with('success', trans('Comment updated successfully'));
+        return back()->with('success', trans('gitscrum.comment-updated-successfully'));
     }
 
     public function destroy($id)
@@ -51,6 +51,6 @@ class CommentController extends Controller
 
         $comment->delete();
 
-        return back()->with('success', trans('Comment deleted successfully'));
+        return back()->with('success', trans('gitscrum.comment-deleted-successfully'));
     }
 }

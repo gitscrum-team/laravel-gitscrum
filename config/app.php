@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LANG', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -185,12 +185,9 @@ return [
 
         SocialiteProviders\Manager\ServiceProvider::class,
 
-        GrahamCampbell\GitHub\GitHubServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
-        Talevskiigor\ComposerBump\ComposerBumpServiceProvider::class,
-        Way\Generators\GeneratorsServiceProvider::class,
-        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+        Talevskiigor\ComposerBump\ComposerBumpServiceProvider::class
 
     ],
 
@@ -214,6 +211,7 @@ return [
         'Bus' => Illuminate\Support\Facades\Bus::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
         'Config' => Illuminate\Support\Facades\Config::class,
+        'Carbon' => Carbon\Carbon::class,
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
         'DB' => Illuminate\Support\Facades\DB::class,

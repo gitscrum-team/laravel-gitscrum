@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
@@ -51,7 +51,7 @@ class ProductBacklogController extends Controller
         $productBacklog = ProductBacklog::create($request->all());
 
         return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
-            ->with('success', trans('Congratulations! The Product Backlog has been created with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-product-backlog-has-been-created-with-successfully'));
     }
 
     /**
@@ -122,7 +122,7 @@ class ProductBacklogController extends Controller
         $productBacklog->update($request->all());
 
         return back()
-            ->with('success', trans('Congratulations! The Product Backlog has been edited with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-product-backlog-has-been-updated-with-successfully'));
     }
 
     /**

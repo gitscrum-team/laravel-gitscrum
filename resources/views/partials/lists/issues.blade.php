@@ -1,6 +1,6 @@
 <tr>
     <td style="width:10px">
-        @include('partials.lnk-favorite', ['favorite' => $list->favorite, 'type' => 'issue',
+        @include('partials.lnk-favorite', ['favorite' => $list->favorite, 'type' => 'issues',
             'id' => $list->id, 'btnSize' => 'btn-xs' ])</td>
     <td style="width:10px">
         <div class="btn-group" role="group">

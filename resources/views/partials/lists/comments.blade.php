@@ -3,7 +3,7 @@
         <img alt="{{$comment->user->username}}" class="img-rounded avatar" src="{{$comment->user->avatar}}">
     </a>
     <div class="media-body">
-        <small class="pull-right dateforhumans">{{$comment->dateforhumans}}</small>
+        <small class="pull-right dateforhumans">{{$comment->dateforHumans}}</small>
         <a href="{{route('user.profile', ['username'=>$comment->user->username])}}"><strong>{{$comment->user->username}}</strong></a>
         <br>
         <small class="text-muted"></small>
@@ -13,11 +13,11 @@
                 <a href="{{route('comments.edit', ['id' => $comment->id])}}" class="font-bold"
                     data-toggle="modal" data-target="#modalLarge">
                     <span data-toggle="tooltip" title="Edit Comment">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('Edit')}}</span></a>
+                    <i class="fa fa-pencil" aria-hidden="true"></i> {{trans('gitscrum.edit')}}</span></a>
 
                 <a href="{{route('comments.destroy', ['id' => $comment->id, '#tab-comments'])}}" class="font-bold"
                     data-toggle="tooltip" title="Delete Comment">
-                    <i class="fa fa-trash" aria-hidden="true"></i> {{trans('Delete')}}</a>
+                    <i class="fa fa-trash" aria-hidden="true"></i> {{trans('gitscrum.delete')}}</a>
             @endif
         </div>
     </div>

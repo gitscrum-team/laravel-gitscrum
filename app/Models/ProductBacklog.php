@@ -1,13 +1,14 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\ProductBacklogPresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
@@ -16,6 +17,7 @@ class ProductBacklog extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use ProductBacklogPresenter;
 
     public static $tmp = null;
 
@@ -49,61 +51,51 @@ class ProductBacklog extends Model
      */
     protected $casts = ['private' => 'boolean', 'fork' => 'boolean'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function organization()
     {
-        return $this->hasOne(\GitScrum\Models\Organization::class, 'id', 'organization_id');
+        return $this->hasOne(Organization::class, 'id', 'organization_id');
     }
 
     public function sprints()
     {
-        return $this->hasMany(\GitScrum\Models\Sprint::class, 'product_backlog_id', 'id');
+        return $this->hasMany(Sprint::class, 'product_backlog_id', 'id');
     }
 
     public function branches()
     {
-        return $this->hasMany(\GitScrum\Models\Branch::class, 'product_backlog_id', 'id');
+        return $this->hasMany(Branch::class, 'product_backlog_id', 'id');
     }
 
     public function issues()
     {
-        return $this->hasMany(\GitScrum\Models\Issue::class, 'product_backlog_id', 'id')
+        return $this->hasMany(Issue::class, 'product_backlog_id', 'id')
             ->orderby('position', 'ASC');
     }
 
     public function userStories()
     {
-        return $this->hasMany(\GitScrum\Models\UserStory::class, 'product_backlog_id', 'id');
+        return $this->hasMany(UserStory::class, 'product_backlog_id', 'id');
     }
 
     public function attachments()
     {
-        return $this->morphMany(\GitScrum\Models\Attachment::class, 'attachmentable');
+        return $this->morphMany(Attachment::class, 'attachmentable');
     }
 
     public function notes()
     {
-        return $this->morphMany(\GitScrum\Models\Note::class, 'noteable')
+        return $this->morphMany(Note::class, 'noteable')
             ->orderby('position', 'ASC');
     }
 
     public function favorite()
     {
-        return $this->morphOne(\GitScrum\Models\Favorite::class, 'favoriteable');
+        return $this->morphOne(Favorite::class, 'favoriteable');
     }
 
     public function comments()
     {
-        return $this->morphMany(\GitScrum\Models\Comment::class, 'commentable')
+        return $this->morphMany(Comment::class, 'commentable')
             ->orderby('created_at', 'DESC');
-    }
-
-    public function getVisibilityAttribute()
-    {
-        return $this->attributes['is_private'] ? trans('Private') : trans('Public');
     }
 }

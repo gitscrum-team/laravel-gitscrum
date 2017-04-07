@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Middleware;
@@ -31,7 +31,7 @@ class SprintExpired
                 ->first();
 
             if ($sprint) {
-                $msg = trans('This Sprint has been expired at').' '.$sprint->date_finish;
+                $msg = trans('gitscrum.this-sprint-has-been-expired-at').' '.$sprint->date_finish;
                 view()->share('notification', ['alert' => 'danger', 'message' => $msg]);
             }
         }

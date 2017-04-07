@@ -1,10 +1,18 @@
 <?php
+/**
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
+ */
 
 namespace GitScrum\Classes;
 
 use Illuminate\Pagination\LengthAwarePaginator;
-use Carbon\Carbon;
+use GitScrum\Models\IssueType;
+use GitScrum\Models\ConfigIssueEffort;
 use Auth;
+use Carbon;
 
 class Helper
 {
@@ -66,6 +74,20 @@ class Helper
         }
 
         return $arr;
+    }
+
+    public static function issueTypes()
+    {
+        return IssueType::where('enabled', 1)
+            ->orderby('position', 'ASC')
+            ->get();
+    }
+
+    public static function issueEfforts()
+    {
+        return ConfigIssueEffort::where('enabled', 1)
+            ->orderby('position', 'ASC')
+            ->get();
     }
 
     public static function request($url, $auth = true, $customRequest = null, $postFields = null)

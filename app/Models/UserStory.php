@@ -11,11 +11,13 @@ namespace GitScrum\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Scopes\UserStoryScope;
 
 class UserStory extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use UserStoryScope;
     /**
      * The database table used by the model.
      *
@@ -44,80 +46,41 @@ class UserStory extends Model
      */
     protected $casts = [];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function productBacklog()
     {
-        return $this->belongsTo(\GitScrum\Models\ProductBacklog::class, 'product_backlog_id', 'id');
+        return $this->belongsTo(ProductBacklog::class, 'product_backlog_id', 'id');
     }
 
     public function issues()
     {
-        return $this->hasMany(\GitScrum\Models\Issue::class, 'user_story_id', 'id')
+        return $this->hasMany(Issue::class, 'user_story_id', 'id')
             ->orderby('position', 'ASC');
     }
 
     public function priority()
     {
-        return $this->hasOne(\GitScrum\Models\ConfigPriority::class, 'id', 'config_priority_id');
+        return $this->hasOne(ConfigPriority::class, 'id', 'config_priority_id');
     }
 
     public function favorite()
     {
-        return $this->morphOne(\GitScrum\Models\Favorite::class, 'favoriteable');
+        return $this->morphOne(Favorite::class, 'favoriteable');
     }
 
     public function comments()
     {
-        return $this->morphMany(\GitScrum\Models\Comment::class, 'commentable')
+        return $this->morphMany(Comment::class, 'commentable')
             ->orderby('created_at', 'DESC');
     }
 
     public function notes()
     {
-        return $this->morphMany(\GitScrum\Models\Note::class, 'noteable')
+        return $this->morphMany(Note::class, 'noteable')
             ->orderby('position', 'ASC');
     }
 
     public function labels()
     {
-        return $this->morphToMany(\GitScrum\Models\Label::class, 'labelable');
-    }
-
-    public function activities()
-    {
-        $activities = $this->issues()
-            ->with('statuses')->get()->map(function ($issue) {
-                return $issue->statuses;
-            })->flatten(1)->map(function ($statuses) {
-                return $statuses;
-            })->sortByDesc('created_at');
-
-        $activities->splice(15);
-
-        return $activities->all();
-    }
-
-    public function issuesHasUsers($total = 3)
-    {
-        $users = $this->issues->map(function ($issue) {
-            return $issue->users;
-        })->reject(function ($value) {
-            return $value == null;
-        })->flatten(1)->unique('id')->splice(0, $total);
-
-        return $users->all();
-    }
-
-    public function issueStatus()
-    {
-        $status = $this->issues->map(function ($issue) {
-            return $issue->status;
-        })->groupBy('slug')->all();
-
-        return $status;
+        return $this->morphToMany(Label::class, 'labelable');
     }
 }

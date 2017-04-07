@@ -1,9 +1,16 @@
 <?php
+/**
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
+ */
 
 namespace GitScrum\Http\Controllers;
 
-use Illuminate\Http\Request;
 use GitScrum\Models\ProductBacklog;
+use Illuminate\Http\Request;
+use Session;
 use Auth;
 
 class WizardController extends Controller
@@ -13,7 +20,7 @@ class WizardController extends Controller
         $repositories = (object) app(Auth::user()->provider)->readRepositories();
         $currentRepositories = ProductBacklog::all();
 
-        \Session::put('Repositories', $repositories);
+        Session::put('Repositories', $repositories);
 
         return view('wizard.step1')
             ->with('repositories', $repositories)
@@ -23,7 +30,7 @@ class WizardController extends Controller
 
     public function step2(Request $request)
     {
-        $repositories = \Session::get('Repositories')->whereIn('provider_id', $request->repos);
+        $repositories = Session::get('Repositories')->whereIn('provider_id', $request->repos);
         foreach ($repositories as $repository) {
             app(Auth::user()->provider)->readCollaborators($repository->organization_title, $repository->title, $repository->provider_id);
             $product_backlog = ProductBacklog::where('provider_id', $repository->provider_id)->first();
