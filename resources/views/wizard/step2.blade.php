@@ -38,7 +38,6 @@
             <strong>{{Auth::user()->provider}} {{trans('gitscrum.issues')}}</strong></a>
         <span>&nbsp;&nbsp;&nbsp;<strong>{{trans('gitscrum.or')}}</strong>&nbsp;&nbsp;&nbsp;</span>
         @endif
-
         <a href="{{route('product_backlogs.index')}}" class="btn btn-lg btn-default">{{trans('gitscrum.continue-using')}}
             <strong>{{trans('GitScrum')}}</strong></a>
     </div>
