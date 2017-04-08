@@ -32,8 +32,10 @@ class ProductBacklogObserver
     {
         if (isset($productBacklog->is_api)) {
             $template = app(Auth::user()->provider)->tplRepository($productBacklog::$tmp, $productBacklog->slug);
-            $obj = ProductBacklog::slug($template->slug)->first();
-            $obj->update(get_object_vars($template));
+            if (! is_null($template)) {
+                $obj = ProductBacklog::slug($template->slug)->first();
+                $obj->update(get_object_vars($template));
+            }
             $productBacklog::$tmp = null;
         }
     }
