@@ -105,9 +105,9 @@
 
         <h4>{{trans('gitscrum.date')}}: {{$sprint->date_start}} {{trans('gitscrum.to')}} {{$sprint->date_finish}}</h4>
 
-        <p>{{$sprint->workingDays(date('Y-m-d'))}} {{trans('gitscrum.missing-day')}} /
-            {{$sprint->workingDays()}} {{trans('gitscrum.workdays')}}
-            ( {{$sprint->weeks()}} {{trans('gitscrum.week')}} )</p>
+        <p>{{$sprint->scopeWorkingDays(date('Y-m-d'))}} {{trans('gitscrum.missing-day')}} /
+            {{$sprint->scopeWorkingDays(date('Y-m-d'))}} {{trans('gitscrum.workdays')}}
+            ( {{$sprint->scopeWeeks(date('Y-m-d'))}} {{trans('gitscrum.week')}} )</p>
 
         <p class="">
             {{trans('gitscrum.product-backlog')}}: <a href="{{route('product_backlogs.show', ['slug' =>
