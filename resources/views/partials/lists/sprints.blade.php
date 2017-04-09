@@ -18,38 +18,31 @@
     @endif
 
     @if(!isset($list->column) || in_array('tbody_sprintBacklog', $list->column))
-
-    <td>
-        <a href="{{route('sprints.show', ['slug'=>$list->slug])}}">
-            {{$list->title}}
-        </a>
-        <div class="details">
-
-            @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($list, 'issues')])
-
-            <span>
-                <strong>{{trans('gitscrum.timebox')}}:</strong>
-
-                {{$list->timebox}} ( {{ $list->weeks()->count() }} {{ str_plural(trans('gitscrum.week'), $list->weeks()->count()) }})
-
-            </span>
-
-            <span>
-                <strong>{{trans('gitscrum.issues')}}:</strong> {{$list->issues->where('closed_at', NULL)->count()}}
-                {{trans('gitscrum.open')}} /
-                {{$list->issues->where('closed_at', '!=', NULL)->count()}} {{trans('gitscrum.closed')}}
-            </span>
-        </div>
-    </td>
-
+        <td>
+            <a href="{{route('sprints.show', ['slug'=>$list->slug])}}">
+                {{$list->title}}
+            </a>
+            <div class="details">
+                @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($list, 'issues')])
+                <span>
+                    <strong>{{trans('gitscrum.timebox')}}:</strong>
+                    {{$list->timebox}} ( {{ $list->scopeWeeks(date('Y-m-d')) }} {{ str_plural(trans('gitscrum.week'), $list->scopeWeeks(date('Y-m-d'))) }})
+                </span>
+                <span>
+                    <strong>{{trans('gitscrum.issues')}}:</strong> {{$list->issues->where('closed_at', NULL)->count()}}
+                    {{trans('gitscrum.open')}} /
+                    {{$list->issues->where('closed_at', '!=', NULL)->count()}} {{trans('gitscrum.closed')}}
+                </span>
+            </div>
+        </td>
     @endif
 
     @if(!isset($list->column) || in_array('tbody_sprintProductBacklog', $list->column))
-    <td class="text-right">
-        <a href="{{route('product_backlogs.show', ['slug'=>$list->productBacklog->slug])}}" class="text-middle btn btn-link">
-            {{$list->productBacklog->title}}
-        </a>
-    </td>
+        <td class="text-right">
+            <a href="{{route('product_backlogs.show', ['slug'=>$list->productBacklog->slug])}}" class="text-middle btn btn-link">
+                {{$list->productBacklog->title}}
+            </a>
+        </td>
     @endif
 
 </tr>
