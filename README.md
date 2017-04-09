@@ -70,7 +70,7 @@ The requirements to Laravel GitScrum application is:
 ### Composer Package
 
 ```
-$ composer create-project renatomarinho/laravel-gitscrum --stability=dev --keep-vcs
+$ composer create-project renatomarinho/laravel-gitscrum --stability=stable --keep-vcs
 $ cd laravel-gitscrum
 ```
 **Important**: If you have not yet installed composer: [Installation - Linux / Unix / OSX](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
