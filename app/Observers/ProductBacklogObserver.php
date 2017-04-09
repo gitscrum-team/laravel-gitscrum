@@ -32,8 +32,10 @@ class ProductBacklogObserver
     {
         if (isset($productBacklog->is_api)) {
             $template = app(Auth::user()->provider)->tplRepository($productBacklog::$tmp, $productBacklog->slug);
-            $obj = ProductBacklog::slug($template->slug)->first();
-            $obj->update(get_object_vars($template));
+            if (! is_null($template)) {
+                $obj = ProductBacklog::slug($template->slug)->first();
+                $obj->update(get_object_vars($template));
+            }
             $productBacklog::$tmp = null;
         }
     }
@@ -43,9 +45,12 @@ class ProductBacklogObserver
         $oldRepos = ProductBacklog::find($productBacklog->id);
         $owner = Organization::find($productBacklog->organization_id);
         $repos = app(Auth::user()->provider)->createOrUpdateRepository($owner->username, $productBacklog, $oldRepos->title);
-        $productBacklog->html_url = $repos->html_url;
-        $productBacklog->ssh_url = $repos->ssh_url;
-        $productBacklog->clone_url = $repos->clone_url;
-        $productBacklog->url = $repos->url;
+        // skip update if repos object is null to prevent error
+        if (! is_null($repos)) {
+            $productBacklog->html_url = $repos->html_url;
+            $productBacklog->ssh_url = $repos->ssh_url;
+            $productBacklog->clone_url = $repos->clone_url;
+            $productBacklog->url = $repos->url;
+        }
     }
 }
