@@ -32,7 +32,7 @@
 
 Laravel GitScrum is a **free application** developed in Laravel 5.4. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
 
-Available in English, Chinese, Russian, Spanish, Portuguese, Italian and Indonesian.
+Available in English, Chinese, Russian, Spanish, Portuguese, Italian, Indonesian and hungarian.
 
 
 Laravel GitScrum in gitter.im : [https://gitter.im/laravel-gitscrum/Lobby](https://gitter.im/laravel-gitscrum/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
@@ -100,7 +100,7 @@ APP_URL=http://yourdomain.tld (you must use protocol http or https)
 
 #### Language
 
-Options: en | zh | zh_cn | ru | es | pt | it | id
+Options: en | zh | zh_cn | ru | es | pt | it | id | hu
 
 .env file
 
@@ -217,7 +217,7 @@ Laravel GitScrum is licensed under the [MIT license](https://opensource.org/lice
 
 ## Thanks
 
-#### Translate Team : [@orionlu0916](https://github.com/orionlu0916) , [@Bebbolus](https://github.com/Bebbolus) , [@dongm2ez](https://github.com/dongm2ez), [@rizalio](https://github.com/rizalio), [@Assada](https://github.com/Assada), [@edbizarro](https://github.com/edbizarro) and Manuel Ortega
+#### Translate Team : [@orionlu0916](https://github.com/orionlu0916) , [@Bebbolus](https://github.com/Bebbolus) , [@dongm2ez](https://github.com/dongm2ez), [@rizalio](https://github.com/rizalio), [@Assada](https://github.com/Assada), [@edbizarro](https://github.com/edbizarro), [@ngabor84](https://github.com/ngabor84) and Manuel Ortega
 
 - [Laravel PHP Framework](https://github.com/laravel/laravel)
 
