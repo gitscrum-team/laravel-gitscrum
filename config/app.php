@@ -187,7 +187,9 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
 
-        Talevskiigor\ComposerBump\ComposerBumpServiceProvider::class
+        Talevskiigor\ComposerBump\ComposerBumpServiceProvider::class,
+
+        RenatoMarinho\LaravelMultiLanguage\MultiLanguageServiceProvider::class
 
     ],
 
