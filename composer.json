@@ -30,7 +30,8 @@
         "socialiteproviders/gitlab": "^3.0",
         "nesbot/carbon": "^1.21",
         "doctrine/dbal": "~2.5",
-        "barryvdh/laravel-debugbar": "^2.2"
+        "barryvdh/laravel-debugbar": "^2.2",
+        "renatomarinho/laravel-multi-language": ">=1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
