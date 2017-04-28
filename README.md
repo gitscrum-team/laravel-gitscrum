@@ -190,7 +190,8 @@ PROXY_PASS=
 ![Screenshot 0](http://i.imgur.com/D954dbU.png)
 
 <br>
-### Database schema 
+
+## Database schema 
 
 ![Screenshot 1](http://i.imgur.com/zdrEkkf.png)
 
