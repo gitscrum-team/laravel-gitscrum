@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
  * Updated 2017-04-16 09:14:49 / 178 translations
@@ -6,7 +6,7 @@
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array(
+return array(
   'product-backlog' => 'Product Backlog',
   'timebox' => 'Timebox',
   'week' => 'Week',
@@ -52,7 +52,7 @@
   'search-by' => 'Search by',
   'burndown' => 'Burndown',
   'write-comment' => 'Write comment...',
-  'comment' => 'gitscrum.comment',
+  'comment' => 'Add comment',
   'user-story' => 'User Story',
   'create-a-sprint' => 'Create a Sprint',
   'type' => 'Type',
@@ -62,7 +62,7 @@
   'optional' => 'optional',
   'avg-effort' => 'Avg Effort',
   'assigned-to' => 'Assigned to',
-  'planning-pocker' => 'Planning Pocker',
+  'planning-pocker' => 'Planning Poker',
   'collaborative-estimation' => 'Collaborative Estimation',
   'name' => 'Name',
   'version' => 'Version',
@@ -112,8 +112,7 @@
   'my-planning' => 'My Planning',
   'drag-it' => 'Drag it',
   'this-issue-is-in-a
-        sprint-that-is' => 'gitscrum.this-issue-is-in-a
-        sprint-that-is',
+        sprint-that-is' => 'This issue is in a sprint that is',
   'change-sprint-status' => 'Change Sprint Status',
   'defect-detected' => 'Defect Detected',
   'add-member' => 'Add Member',
@@ -132,7 +131,7 @@
   'shortcuts' => 'Shortcuts',
   'quick-notes' => 'Quick Notes',
   'current-sprints-backlog' => 'Current Sprints Backlog',
-  'lastest-activities' => 'Lastest Activities',
+  'lastest-activities' => 'Latest Activities',
   'cooperation' => 'Cooperation',
   'issues-done' => 'Issues Done',
   'edit-comment' => 'Edit Comment',
@@ -150,7 +149,7 @@
   'or' => 'or',
   'continue-using' => 'Continue using',
   'auth.throttle' => 'gitscrum.auth.throttle',
-  'auth.failed' => 'gitscrum.auth.failed',
+  'auth.failed' => 'Authentication failed',
   'field-cannot-be-blank' => 'Field cannot be blank',
   'field-must-be-at-least-2-characters' => 'Field must be at least 2 characters',
   'comment-cannot-be-blank' => 'Comment cannot be blank',
@@ -169,22 +168,22 @@
   'added-successfully' => 'Added successfully',
   'updated-successfully' => 'Updated successfully',
   'deleted-successfully' => 'Deleted successfully',
-  'congratulations-the-product-backlog-has-been-created-with-successfully' => 'Congratulations! The Product Backlog has been created with successfully',
-  'congratulations-the-product-backlog-has-been-updated-with-successfully' => 'Congratulations! The Product Backlog has been updated with successfully',
-  'congratulations-the-sprint-has-been-created-with-successfully' => 'Congratulations! The Sprint has been created with successfully',
-  'congratulations-the-sprint-has-been-updated-with-successfully' => 'Congratulations! The Sprint has been updated with successfully',
-  'favorited-successfully' => 'Favorited successfully',
-  'unfavorited-successfully' => 'Unfavorited successfully',
-  'congratulations-the-issue-has-been-created-with-successfully' => 'Congratulations! The Issue has been created with successfully',
-  'congratulations-the-issue-has-been-edited-with-successfully' => 'Congratulations! The Issue has been edited with successfully',
+  'congratulations-the-product-backlog-has-been-created-with-successfully' => 'Congratulations! The Product Backlog has been successfully created',
+  'congratulations-the-product-backlog-has-been-updated-with-successfully' => 'Congratulations! The Product Backlog has been successfully updated',
+  'congratulations-the-sprint-has-been-created-with-successfully' => 'Congratulations! The Sprint has been successfully created',
+  'congratulations-the-sprint-has-been-updated-with-successfully' => 'Congratulations! The Sprint has been successfully updated',
+  'favorited-successfully' => 'Favorited',
+  'unfavorited-successfully' => 'Unfavorited',
+  'congratulations-the-issue-has-been-created-with-successfully' => 'Congratulations! The Issue has been successfully created',
+  'congratulations-the-issue-has-been-edited-with-successfully' => 'Congratulations! The Issue has been successfully edited',
   'provider-was-not-set' => 'Provider was not set',
-  'congratulations-the-user-story-has-been-created-with-successfully' => 'Congratulations! The User Story has been created with successfully',
-  'congratulations-the-user-story-has-been-updated-with-successfully' => 'Congratulations! The User Story has been updated with successfully',
-  'file-uploaded-successfully' => 'File uploaded successfully',
-  'comment-added-successfully' => 'Comment added successfully',
-  'comment-updated-successfully' => 'Comment updated successfully',
-  'comment-deleted-successfully' => 'Comment deleted successfully',
-  'label-added-successfully' => 'Label added successfully',
+  'congratulations-the-user-story-has-been-created-with-successfully' => 'Congratulations! The User Story has been successfully created',
+  'congratulations-the-user-story-has-been-updated-with-successfully' => 'Congratulations! The User Story has been successfully updated',
+  'file-uploaded-successfully' => 'File successfully uploaded',
+  'comment-added-successfully' => 'Comment added',
+  'comment-updated-successfully' => 'Comment updated',
+  'comment-deleted-successfully' => 'Comment deleted',
+  'label-added-successfully' => 'Label added',
   'this-sprint-has-been-expired-at' => 'This Sprint has been expired at',
   'GitScrum-authentication-is-required' => 'GitScrum authentication is required',
 );
