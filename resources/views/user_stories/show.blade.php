@@ -56,7 +56,7 @@
         'slug' => $userStory->slug, 'list' => $userStory->labels, 'type' => 'user_stories', 'id' => $userStory->id ])
 
     @include('partials.boxes.note', [ 'list' => $userStory,
-        'type'=> 'user_stories', 'title' => trans('gitscrum.gitscrum.definition-of-done-checklist'),
+        'type'=> 'user_stories', 'title' => trans('gitscrum.definition-of-done-checklist'),
         'percentage' => Helper::percentage($userStory, 'notes')])
 
     @include('partials.boxes.team', ['title' => 'Team Members', 'list' => $userStory->issuesHasUsers(12)])
