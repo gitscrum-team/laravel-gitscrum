@@ -5,7 +5,7 @@
 @section('breadcrumb')
     <div class="nav-wizard">
         <div class="col-lg-6">
-            <h3>{{trans('gitscrum.welcome-to')}} {{trans('GitScrum')}}</h3>
+            <h3>{{trans('gitscrum.welcome-to')}} {{config('app.name')}}</h3>
         </div>
         <div class="col-lg-6">
             <h3 class="ptn mtn mbn pbn pull-right">{{$repositories->count()}} {{trans('gitscrum.repositories')}}</h3>
@@ -17,7 +17,7 @@
 <p class="font-bold text-center">
     @if($repositories->count())
         {{trans('Congratulations')}}.
-        <span>{{trans('gitscrum.you-have-successfully-added-repositories-for')}} {{trans('GitScrum')}}</span>
+        <span>{{trans('gitscrum.you-have-successfully-added-repositories-for')}} {{config('app.name')}}</span>
     @else
         {{trans('gitscrum.choose-at-least-one-repository')}}.
         <span>{{trans('gitscrum.you-can-click')}} <a href="{{route('wizard.step1')}}">{{trans('gitscrum.here')}}</a>
@@ -39,7 +39,7 @@
         <span>&nbsp;&nbsp;&nbsp;<strong>{{trans('gitscrum.or')}}</strong>&nbsp;&nbsp;&nbsp;</span>
         @endif
         <a href="{{route('product_backlogs.index')}}" class="btn btn-lg btn-default">{{trans('gitscrum.continue-using')}}
-            <strong>{{trans('GitScrum')}}</strong></a>
+            <strong>{{config('app.name')}}</strong></a>
     </div>
 
 </div>
