@@ -5,7 +5,7 @@
 @section('breadcrumb')
 <div class="nav-wizard">
     <div class="col-lg-6">
-        <h3>{{trans('gitscrum.welcome-to')}} {{trans('GitScrum')}}</h3>
+        <h3>{{trans('gitscrum.welcome-to')}} {{config('app.name')}}</h3>
     </div>
     <div class="col-lg-6">
         <h3 class="ptn mtn mbn pbn pull-right">{{$repositories->count()}} {{trans('gitscrum.repositories')}}</h3>
@@ -26,7 +26,7 @@
         @include('partials.boxes.repositories', ['list'=>$repositories, 'columns'=>$columns])
 
         <div class="text-center">
-            <button class="btn btn-lg btn-success btn-loader">{{trans('gitscrum.confirm-to-add-repositories-into-the')}} <strong>{{trans('GitScrum')
+            <button class="btn btn-lg btn-success btn-loader">{{trans('gitscrum.confirm-to-add-repositories-into-the')}} <strong>{{config('app.name')
             }}</strong></button>
         </div>
 
