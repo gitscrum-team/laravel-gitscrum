@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
@@ -35,6 +35,7 @@ class UserIssueController extends Controller
             ->select('issues.*')->paginate(env('APP_PAGINATE'));
 
         $user = User::where('username', $username)
+            ->where('provider', Auth::user()->provider)
             ->first();
 
         return view('user_issues.index')
@@ -96,13 +97,13 @@ class UserIssueController extends Controller
     {
         $members = $request->input('members');
 
-        $issue = Issue::where('slug', '=', $slug)
+        $issue = Issue::slug($slug)
             ->firstOrFail();
 
         $issue->users()->sync($members);
 
         if (!$request->ajax()) {
-            return redirect()->back()->with('success', _('Updated successfully'));
+            return redirect()->back()->with('success', trans('gitscrum.updated-successfully'));
         }
     }
 

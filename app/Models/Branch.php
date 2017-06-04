@@ -1,17 +1,19 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use GitScrum\Scopes\GlobalScope;
 
 class Branch extends Model
 {
+    use GlobalScope;
     /**
      * The database table used by the model.
      *
@@ -49,36 +51,36 @@ class Branch extends Model
 
     public function ProductBacklog()
     {
-        return $this->belongsTo(\GitScrum\Models\ProductBacklog::class, 'product_backlog_id', 'id');
+        return $this->belongsTo(ProductBacklog::class, 'product_backlog_id', 'id');
     }
 
     public function sprint()
     {
-        return $this->belongsTo(\GitScrum\Models\Sprint::class, 'sprint_id', 'id');
+        return $this->belongsTo(Sprint::class, 'sprint_id', 'id');
     }
 
     public function user()
     {
-        return $this->belongsTo(\GitScrum\Models\User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function commits()
     {
-        return $this->hasMany(\GitScrum\Models\Commit::class, 'branch_id', 'id');
+        return $this->hasMany(Commit::class, 'branch_id', 'id');
     }
 
     public function issues()
     {
-        return $this->hasMany(\GitScrum\Models\Issue::class, 'branch_id', 'id');
+        return $this->hasMany(Issue::class, 'branch_id', 'id');
     }
 
     public function basePullRequests()
     {
-        return $this->hasMany(\GitScrum\Models\PullRequest::class, 'base_branch_id', 'id');
+        return $this->hasMany(PullRequest::class, 'base_branch_id', 'id');
     }
 
     public function headPullRequests()
     {
-        return $this->hasMany(\GitScrum\Models\PullRequest::class, 'head_branch_id', 'id');
+        return $this->hasMany(PullRequest::class, 'head_branch_id', 'id');
     }
 }

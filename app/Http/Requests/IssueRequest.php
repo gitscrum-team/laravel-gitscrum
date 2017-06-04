@@ -42,9 +42,9 @@ class IssueRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => _('Issue cannot be blank'),
-            'title.min' => _('Issue must be at least 2 characters'),
-            'title.max' => _('Issue must be between 2 and 255 characters'),
+            'title.required' => trans('gitscrum.issue-cannot-be-blank'),
+            'title.min' => trans('gitscrum.issue-must-be-at-least-2-characters'),
+            'title.max' => trans('gitscrum.issue-must-be-between-2-and-255-characters'),
         ];
     }
 
@@ -53,7 +53,7 @@ class IssueRequest extends FormRequest
         $data = $this->all();
 
         if (isset($data['slug_sprint']) && !empty($data['slug_sprint'])) {
-            $data['sprint_id'] = Sprint::where('slug', '=', $data['slug_sprint'])->first()->id;
+            $data['sprint_id'] = Sprint::slug($data['slug_sprint'])->first()->id;
             unset($data['slug_sprint']);
         }
 

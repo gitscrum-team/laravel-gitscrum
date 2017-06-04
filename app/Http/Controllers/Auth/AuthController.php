@@ -10,11 +10,10 @@ namespace GitScrum\Http\Controllers\Auth;
 
 use GitScrum\Http\Requests\AuthRequest;
 use GitScrum\Models\User;
-use GitScrum\Classes\UserClass;
 use GitScrum\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Socialite;
 use Auth;
+use SocialiteProviders\Manager\Exception\InvalidArgumentException;
 
 class AuthController extends Controller
 {
@@ -47,29 +46,33 @@ class AuthController extends Controller
     {
     }
 
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('github')->scopes(['repo', 'notifications', 'read:org'])->redirect();
+        switch ($provider) {
+            case 'gitlab':
+                return Socialite::with('gitlab')->redirect();
+                break;
+            case 'github':
+                return Socialite::driver('github')->scopes(['repo', 'notifications', 'read:org'])->redirect();
+                break;
+            default:
+                throw new InvalidArgumentException(trans('gitscrum.provider-was-not-set'));
+                break;
+        }
     }
 
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver('github')->user();
-        $data = [
-            'github_id' => $user->id,
-            'username' => $user->nickname,
-            'name' => $user->name,
-            'token' => $user->token,
-            'avatar' => $user->user['avatar_url'],
-            'html_url' => $user->user['html_url'],
-            'bio' => $user->user['bio'],
-            'since' => Carbon::parse($user->user['created_at'])->toDateTimeString(),
-            'location' => $user->user['location'],
-            'blog' => $user->user['blog'],
-            'email' => $user->email,
-        ];
-        $UserClass = new UserClass();
-        Auth::loginUsingId($UserClass->save($data)->id);
+        $providerUser = Socialite::driver($provider)->user();
+        $data = app(ucfirst($provider))->tplUser($providerUser);
+
+        $user = User::where('provider_id', '=', $data['provider_id'])->first();
+
+        if (!isset($user)) {
+            $user = User::create($data);
+        }
+
+        Auth::loginUsingId($user->id);
 
         return redirect()->route('user.dashboard');
     }

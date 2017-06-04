@@ -5,3 +5,4 @@
 .idea
 .DS_STORE
 .env
+.tags

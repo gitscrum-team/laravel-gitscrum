@@ -1,17 +1,19 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use GitScrum\Scopes\GlobalScope;
 
 class Label extends Model
 {
+    use GlobalScope;
     /**
      * The database table used by the model.
      *
@@ -47,11 +49,6 @@ class Label extends Model
      */
     protected $dates = [];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function labelable()
     {
         return $this->morphTo();
@@ -59,11 +56,11 @@ class Label extends Model
 
     public function issues()
     {
-        return $this->morphedByMany(\GitScrum\Models\Issue::class, 'labelable');
+        return $this->morphedByMany(Issue::class, 'labelable');
     }
 
     public function userStories()
     {
-        return $this->morphedByMany(\GitScrum\Models\UserStory::class, 'labelable');
+        return $this->morphedByMany(UserStory::class, 'labelable');
     }
 }

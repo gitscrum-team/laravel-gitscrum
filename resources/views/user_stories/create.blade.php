@@ -1,4 +1,4 @@
-@section('title',  _('Create User Story'))
+@section('title',  trans('gitscrum.create-user-story'))
 
 @extends('layouts.modal')
 

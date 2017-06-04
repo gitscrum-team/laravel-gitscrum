@@ -1,14 +1,15 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
 
 use GitScrum\Http\Requests\SprintRequest;
+use GitScrum\Models\ConfigStatus;
 use GitScrum\Models\ProductBacklog;
 use GitScrum\Models\Sprint;
 use Auth;
@@ -23,8 +24,7 @@ class SprintController extends Controller
      */
     public function index($mode = 'default', $slug_product_backlog = null)
     {
-        $sprints = Sprint::orderby('date_start', 'DESC')
-            ->orderby('date_finish', 'ASC');
+        $sprints = Sprint::order();
 
         if (!is_null($slug_product_backlog)) {
             $sprints = $sprints->join('product_backlogs', 'product_backlogs.id', 'sprints.product_backlog_id')
@@ -51,7 +51,7 @@ class SprintController extends Controller
         $productBacklog_id = null;
 
         if (!is_null($slug_product_backlog)) {
-            $productBacklog_id = ProductBacklog::where('slug', $slug_product_backlog)->first()->id;
+            $productBacklog_id = ProductBacklog::slug($slug_product_backlog)->first()->id;
         }
 
         return view('sprints.create')
@@ -72,7 +72,7 @@ class SprintController extends Controller
         $sprint = Sprint::create($request->all());
 
         return redirect()->route('sprints.show', ['slug' => $sprint->slug])
-            ->with('success', _('Congratulations! The Sprint has been created with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-sprint-has-been-created-with-successfully'));
     }
 
     /**
@@ -84,7 +84,7 @@ class SprintController extends Controller
      */
     public function show($slug)
     {
-        $sprint = Sprint::where('slug', $slug)
+        $sprint = Sprint::slug($slug)
             ->with('issues.user')
             ->with('issues.users')
             ->with('issues.commits')
@@ -103,22 +103,25 @@ class SprintController extends Controller
             return redirect()->route('sprints.index');
         }
 
-        //dd( $sprint->burdown() );
+        $configStatus = ConfigStatus::type('sprints')->get();
 
         return view('sprints.show')
-            ->with('sprint', $sprint);
+            ->with('sprint', $sprint)
+            ->with('configStatus', $configStatus);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param $slug
      *
      * @return \Illuminate\Http\Response
+     *
+     * @internal param int $id
      */
     public function edit($slug)
     {
-        $sprint = Sprint::where('slug', '=', $slug)->first();
+        $sprint = Sprint::slug($slug)->first();
 
         return view('sprints.edit')
             ->with('action', 'Edit')
@@ -128,30 +131,34 @@ class SprintController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param SprintRequest|Request $request
+     * @param $slug
      *
      * @return \Illuminate\Http\Response
+     *
+     * @internal param int $id
      */
     public function update(SprintRequest $request, $slug)
     {
-        $sprint = Sprint::where('slug', '=', $slug)->first();
+        $sprint = Sprint::slug($slug)->first();
         $sprint->update($request->all());
 
         return back()
-            ->with('success', _('Congratulations! The Sprint has been edited with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-sprint-has-been-updated-with-successfully'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param Request $request
      *
      * @return \Illuminate\Http\Response
+     *
+     * @internal param int $id
      */
     public function destroy(Request $request)
     {
-        $sprint = Sprint::where('slug', '=', $request->input('slug'))->first();
+        $sprint = Sprint::slug($request->input('slug'))->first();
 
         if (!count($sprint)) {
             return redirect()->route('sprints.index');
@@ -160,6 +167,16 @@ class SprintController extends Controller
         $sprint->delete();
 
         return redirect()->route('sprints.index')
-            ->with('success', _('Congratulations! The Sprint has been deleted successfully'));
+            ->with('success', trans('gitscrum.deleted-successfully'));
+    }
+
+    public function statusUpdate($slug, $status)
+    {
+        $sprint = Sprint::slug($slug)
+            ->firstOrFail();
+        $sprint->config_status_id = $status;
+        $sprint->save();
+
+        return back()->with('success', trans('gitscrum.updated-successfully'));
     }
 }

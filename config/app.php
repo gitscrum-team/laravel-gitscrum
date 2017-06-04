@@ -18,7 +18,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => env('APP_TITLE', 'GitScrum'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LANG', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -109,7 +109,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:W2ToyfW8zHqtWfcZb1hp2kZgccbuy3XtERDyZywtVkE='),
 
     'cipher' => 'AES-256-CBC',
 
@@ -183,13 +183,13 @@ return [
         GitScrum\Providers\EventServiceProvider::class,
         GitScrum\Providers\RouteServiceProvider::class,
 
-        Laravel\Socialite\SocialiteServiceProvider::class,
-        GrahamCampbell\GitHub\GitHubServiceProvider::class,
+        SocialiteProviders\Manager\ServiceProvider::class,
+
         Barryvdh\Debugbar\ServiceProvider::class,
 
         Talevskiigor\ComposerBump\ComposerBumpServiceProvider::class,
-        Way\Generators\GeneratorsServiceProvider::class,
-        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+
+        RenatoMarinho\LaravelMultiLanguage\MultiLanguageServiceProvider::class
 
     ],
 
@@ -213,6 +213,7 @@ return [
         'Bus' => Illuminate\Support\Facades\Bus::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
         'Config' => Illuminate\Support\Facades\Config::class,
+        'Carbon' => Carbon\Carbon::class,
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
         'DB' => Illuminate\Support\Facades\DB::class,
@@ -243,6 +244,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Helper' => GitScrum\Classes\Helper::class,
 
     ],
 

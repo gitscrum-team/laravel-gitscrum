@@ -1,0 +1,8 @@
+default:
+    suites:
+        web_features:
+            paths:    [ tests/features/web ]
+            contexts: [ WebContext ]
+        api_features:
+            paths:    [ tests/features/api ]
+            contexts: [ ApiContext ]

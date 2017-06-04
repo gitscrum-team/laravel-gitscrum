@@ -1,41 +1,36 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
 
+use Illuminate\Http\Request;
 use GitScrum\Http\Requests\UserStoryRequest;
 use GitScrum\Models\UserStory;
 use GitScrum\Models\ConfigPriority;
 use GitScrum\Models\ProductBacklog;
+use GitScrum\Classes\Helper;
 use Auth;
 
 class UserStoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
+        $userStories = Helper::lengthAwarePaginator(Auth::user()->userStories(), $request->page);
+        return view('user_stories.index')
+            ->with('userStories', $userStories);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($slug_product_backlog = null)
     {
         $productBacklog_id = null;
 
         if (!is_null($slug_product_backlog)) {
-            $productBacklog_id = ProductBacklog::where('slug', $slug_product_backlog)->first()->id;
+            $productBacklog_id = ProductBacklog::slug($slug_product_backlog)->first()->id;
         }
 
         $priorities = ConfigPriority::where('enabled', 1)
@@ -48,48 +43,27 @@ class UserStoryController extends Controller
             ->with('action', 'Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(UserStoryRequest $request)
     {
         $userStory = UserStory::create($request->all());
 
         return redirect()->route('user_stories.show', ['slug' => $userStory->slug])
-            ->with('success', _('Congratulations! The User Story has been created with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-user-story-has-been-created-with-successfully'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show($slug)
     {
-        $userStory = UserStory::where('slug', $slug)
+        $userStory = UserStory::slug($slug)
             ->with('labels')
             ->first();
-
+            
         return view('user_stories.show')
             ->with('userStory', $userStory);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($slug)
     {
-        $userStory = UserStory::where('slug', '=', $slug)->first();
+        $userStory = UserStory::slug($slug)->first();
 
         $priorities = ConfigPriority::where('enabled', 1)
             ->orderby('position', 'ASC')->get();
@@ -102,31 +76,20 @@ class UserStoryController extends Controller
             ->with('action', 'Edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function update(UserStoryRequest $request, $slug)
     {
-        $userStory = UserStory::where('slug', '=', $slug)->first();
+        $userStory = UserStory::slug($slug)->first();
         $userStory->update($request->all());
 
         return back()
-            ->with('success', _('Congratulations! The User Story has been edited with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-user-story-has-been-updated-with-successfully'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $userStory = UserStory::slug($request->slug)->firstOrFail();
+        $userStory->delete();
+
+        return redirect()->route('product_backlogs.index');
     }
 }

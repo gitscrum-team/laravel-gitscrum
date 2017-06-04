@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
@@ -23,9 +23,19 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $sprints = $user->sprints()->take(2);
+        $sprintColumns = ['tbody_sprintFavorite',
+            'tbody_sprintBacklog',
+            'tbody_sprintProductBacklog', ];
+
+        $sprints = $sprints->get()->map(function ($sprint) use ($sprintColumns) {
+            $sprint['column'] = $sprintColumns;
+
+            return $sprint;
+        });
 
         return view('users.dashboard')
             ->with('sprints', $sprints)
+            ->with('sprintColumns', $sprintColumns)
             ->with('user', $user);
     }
 
@@ -68,6 +78,7 @@ class UserController extends Controller
     public function show($username)
     {
         $user = User::where('username', $username)
+            ->where('provider', Auth::user()->provider)
             ->first();
 
         $activities = $user->activities($user->id);

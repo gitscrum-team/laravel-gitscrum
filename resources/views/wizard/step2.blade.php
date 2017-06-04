@@ -1,25 +1,29 @@
-@section('title',  _('Welcome to GitScrum - Step 1'))
+@section('title',  trans('gitscrum.welcome-to-gitScrum-step-2'))
 
 @extends('layouts.master')
 
 @section('breadcrumb')
-<div class="nav-wizard">
-    <div class="col-lg-12">
-        <h3>
-
-            @if($repositories->count())
-                {{_('Congratulations.')}}
-                <p class="small">
-                {{_('You have successfully added repositories for')}} {{_('GitScrum')}}
-                </p>
-            @else
-                {{_(':( Choose at least one repository')}}
-                <p class="small">{{_('You can click')}} <a href="{{route('wizard.step1')}}">{{_('here')}}</a> {{_('and try again')}}</p>
-            @endif
-
-        </h3>
+    <div class="nav-wizard">
+        <div class="col-lg-6">
+            <h3>{{trans('gitscrum.welcome-to')}} {{config('app.name')}}</h3>
+        </div>
+        <div class="col-lg-6">
+            <h3 class="ptn mtn mbn pbn pull-right">{{$repositories->count()}} {{trans('gitscrum.repositories')}}</h3>
+        </div>
     </div>
-</div>
+@endsection
+
+@section('main-title')
+<p class="font-bold text-center">
+    @if($repositories->count())
+        {{trans('Congratulations')}}.
+        <span>{{trans('gitscrum.you-have-successfully-added-repositories-for')}} {{config('app.name')}}</span>
+    @else
+        {{trans('gitscrum.choose-at-least-one-repository')}}.
+        <span>{{trans('gitscrum.you-can-click')}} <a href="{{route('wizard.step1')}}">{{trans('gitscrum.here')}}</a>
+            {{trans('gitscrum.to-try-again')}}</span>
+    @endif
+</p>
 @endsection
 
 @section('content')
@@ -28,7 +32,14 @@
     @include('partials.boxes.repositories', ['list'=>$repositories, 'columns'=>$columns])
 
     <div class="text-center">
-        <a href="{{route('product_backlogs.index')}}" class="btn btn-lg btn-success">{{_('Continue using')}} <strong>{{_('GitScrum')}}</strong></a>
+
+        @if(count($repositories))
+        <a href="{{route('wizard.step3')}}" class="btn btn-lg btn-success btn-loader">{{trans('gitscrum.import-my')}}
+            <strong>{{Auth::user()->provider}} {{trans('gitscrum.issues')}}</strong></a>
+        <span>&nbsp;&nbsp;&nbsp;<strong>{{trans('gitscrum.or')}}</strong>&nbsp;&nbsp;&nbsp;</span>
+        @endif
+        <a href="{{route('product_backlogs.index')}}" class="btn btn-lg btn-default">{{trans('gitscrum.continue-using')}}
+            <strong>{{config('app.name')}}</strong></a>
     </div>
 
 </div>

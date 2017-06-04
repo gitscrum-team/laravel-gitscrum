@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Observers;
@@ -20,28 +20,49 @@ class IssueObserver
 {
     public function creating(Issue $issue)
     {
-        try {
-            $product_backlog_id = UserStory::find($issue->user_story_id)->product_backlog_id;
-        } catch (\Exception $e) {
-            $product_backlog_id = $issue->sprint()->first()->product_backlog_id;
+        if (!isset($issue->product_backlog_id)) {
+            try {
+                $issue->product_backlog_id = UserStory::find($issue->user_story_id)->product_backlog_id;
+            } catch (\Exception $e) {
+                $issue->product_backlog_id = Sprint::find($issue->sprint_id)->product_backlog_id;
+            }
         }
 
         $issue->slug = Helper::slug($issue->title);
-        $issue->user_id = Auth::user()->id;
-        $issue->config_status_id = ConfigStatus::where('default', '=', 1)->first()->id;
-        $issue->product_backlog_id = $product_backlog_id;
+
+        if (!isset($issue->user_id)) {
+            $issue->user_id = Auth::user()->id;
+        }
+
+        if (!isset($issue->config_status_id)) {
+            $issue->config_status_id = ConfigStatus::where('default', '=', 1)->first()->id;
+        }
+
+        $issue->sprint_id = intval($issue->sprint_id)?$issue->sprint_id:null;
+
+        $tmp = app(Auth::user()->provider)->createOrUpdateIssue($issue);
+        if (isset($tmp->id)) {
+            $issue->provider_id = $tmp->id;
+            $issue->number = $tmp->number;
+        }
+
+        $issue->provider = strtolower(Auth::user()->provider);
+
         // TODO Create a branch in GitHub
         //$model->branch->sync([['sprint_id' => true]]);
     }
 
     public function created($issue)
     {
-        (new Status())->track('issue', $issue);
+        (new Status())->track('issues', $issue);
     }
 
     public function updating($issue)
     {
-        (new Status())->track('issue', $issue);
+        if (isset($issue->number)) {
+            app(Auth::user()->provider)->createOrUpdateIssue($issue);
+        }
+        (new Status())->track('issues', $issue);
     }
 
     public function deleting(Issue $issue)

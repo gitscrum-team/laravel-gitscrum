@@ -1,15 +1,14 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
 
 use GitScrum\Models\Favorite;
-use Auth;
 
 class FavoriteController extends Controller
 {
@@ -21,17 +20,16 @@ class FavoriteController extends Controller
         ];
         Favorite::create($data);
 
-        return back()->with('success', _('Favorited successfully'));
+        return back()->with('success', trans('gitscrum.favorited-successfully'));
     }
 
     public function destroy($type, $id)
     {
         $favorite = Favorite::where('favoriteable_id', $id)
-            ->where('favoriteable_type', $type)
-            ->where('user_id', Auth::user()->id)->first();
+            ->where('favoriteable_type', $type)->userActive()->first();
 
         $favorite->delete();
 
-        return back()->with('success', _('Unfavorited successfully'));
+        return back()->with('success', trans('gitscrum.unfavorited-successfully'));
     }
 }

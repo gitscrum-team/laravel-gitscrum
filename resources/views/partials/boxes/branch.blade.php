@@ -2,7 +2,7 @@
     <thead>
     <tr>
         <th width="10"></th>
-        <th>{{_('Branch')}}</th>
+        <th>{{trans('gitscrum.branch')}}</th>
         <th></th>
     </tr>
     </thead>

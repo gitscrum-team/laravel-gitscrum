@@ -1,7 +1,9 @@
-<div class="ibox-content">
-    <h6>{{ $title or _('Members')}}</h6>
+@if(!empty($list[0]))
+<div class="team">
+    <h4>{{ $title or trans('gitscrum.members')}}</h4>
     <p class="small">{{ $subtitle or '' }}</p>
-    <div class="user-friends">
+    <div class="users">
         @each('partials.lists.users-min', $list, 'user', 'partials.lists.no-items')
     </div>
 </div>
+@endif

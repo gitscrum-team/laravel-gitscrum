@@ -1,4 +1,4 @@
-@section('title',  _('Edit Sprint'))
+@section('title',  trans('gitscrum.edit-sprint'))
 
 @extends('layouts.modal')
 

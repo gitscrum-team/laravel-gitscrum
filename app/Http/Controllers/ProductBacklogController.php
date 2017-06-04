@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
@@ -11,6 +11,7 @@ namespace GitScrum\Http\Controllers;
 use Illuminate\Http\Request;
 use GitScrum\Http\Requests\ProductBacklogRequest;
 use GitScrum\Models\ProductBacklog;
+use GitScrum\Classes\Helper;
 use Auth;
 
 class ProductBacklogController extends Controller
@@ -20,10 +21,11 @@ class ProductBacklogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($mode = 'default')
+    public function index(Request $request, $mode = 'default')
     {
+        $backlogs = Helper::lengthAwarePaginator(Auth::user()->productBacklogs(), $request->page);
         return view('product_backlogs.index-'.$mode)
-            ->with('backlogs', Auth::user()->productBacklogs());
+            ->with('backlogs', $backlogs);
     }
 
     /**
@@ -49,7 +51,7 @@ class ProductBacklogController extends Controller
         $productBacklog = ProductBacklog::create($request->all());
 
         return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
-            ->with('success', _('Congratulations! The Product Backlog has been created with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-product-backlog-has-been-created-with-successfully'));
     }
 
     /**
@@ -61,7 +63,7 @@ class ProductBacklogController extends Controller
      */
     public function show(Request $request, $slug)
     {
-        $productBacklog = ProductBacklog::where('slug', $slug)
+        $productBacklog = ProductBacklog::slug($slug)
             ->with('sprints')
             ->with('userStories')
             ->first();
@@ -99,7 +101,7 @@ class ProductBacklogController extends Controller
      */
     public function edit($slug)
     {
-        $productBacklog = ProductBacklog::where('slug', '=', $slug)->first();
+        $productBacklog = ProductBacklog::slug($slug)->first();
 
         return view('product_backlogs.edit')
             ->with('productBacklog', $productBacklog)
@@ -116,11 +118,11 @@ class ProductBacklogController extends Controller
      */
     public function update(ProductBacklogRequest $request, $slug)
     {
-        $productBacklog = ProductBacklog::where('slug', '=', $slug)->first();
+        $productBacklog = ProductBacklog::slug($slug)->first();
         $productBacklog->update($request->all());
 
         return back()
-            ->with('success', _('Congratulations! The Product Backlog has been edited with successfully'));
+            ->with('success', trans('gitscrum.congratulations-the-product-backlog-has-been-updated-with-successfully'));
     }
 
     /**

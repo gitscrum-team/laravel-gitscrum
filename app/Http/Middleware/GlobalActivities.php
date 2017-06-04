@@ -1,9 +1,9 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Middleware;
@@ -23,7 +23,7 @@ class GlobalActivities
      */
     public function handle($request, Closure $next)
     {
-        $sprint = Sprint::where('slug', $request->slug)
+        $sprint = Sprint::slug($request->slug)
             ->with('issues.statuses')
             ->first();
 

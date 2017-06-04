@@ -1,4 +1,4 @@
-@section('title',  _('Create Sprint'))
+@section('title',  trans('gitscrum.create-sprint'))
 
 @extends('layouts.modal')
 

@@ -1,16 +1,15 @@
 <?php
 /**
- * GitScrum v0.1.
+ * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
  *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * The MIT License (MIT)
+ * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
 namespace GitScrum\Http\Controllers;
 
 use GitScrum\Http\Requests\CommentRequest;
 use GitScrum\Models\Comment;
-use Auth;
 
 class CommentController extends Controller
 {
@@ -23,7 +22,7 @@ class CommentController extends Controller
         ];
         Comment::create($data);
 
-        return back()->with('success', _('Comment added successfully'));
+        return back()->with('success', trans('gitscrum.comment-added-successfully'));
     }
 
     public function edit($id)
@@ -39,21 +38,19 @@ class CommentController extends Controller
 
     public function update(CommentRequest $request, $id)
     {
-        $comment = Comment::where('id', $id)
-            ->where('user_id', Auth::user()->id)->firstOrFail();
+        $comment = Comment::find($id)->userActive()->firstOrFail();
         $comment->comment = $request->comment;
         $comment->save();
 
-        return back()->with('success', _('Comment updated successfully'));
+        return back()->with('success', trans('gitscrum.comment-updated-successfully'));
     }
 
     public function destroy($id)
     {
-        $comment = Comment::where('id', $id)
-            ->where('user_id', Auth::user()->id)->firstOrFail();
+        $comment = Comment::find($id)->userActive()->firstOrFail();
 
         $comment->delete();
 
-        return back()->with('success', _('Comment deleted successfully'));
+        return back()->with('success', trans('gitscrum.comment-deleted-successfully'));
     }
 }

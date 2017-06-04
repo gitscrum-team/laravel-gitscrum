@@ -23,7 +23,14 @@ return [
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        'redirect' => 'http://'.env('APP_URL').'/auth/github/callback',
+        'redirect' => env('APP_URL').'/auth/provider/github/callback',
+    ],
+
+    'gitlab' => [
+        'client_id' => env('GITLAB_KEY'),
+        'client_secret' => env('GITLAB_SECRET'),
+        'redirect' => env('APP_URL').'/auth/provider/gitlab/callback',
+        'instance_uri' => env('GITLAB_INSTANCE_URI'),
     ],
 
 ];

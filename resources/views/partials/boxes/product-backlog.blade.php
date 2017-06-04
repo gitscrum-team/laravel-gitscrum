@@ -3,8 +3,8 @@
     <tr>
         <th></th>
         <th></th>
-        <th>{{_('Product Backlog')}}</th>
-        <th>{{_('Organization')}} </th>
+        <th>{{trans('gitscrum.product-backlog')}}</th>
+        <th>{{trans('gitscrum.organization')}} </th>
         <th></th>
     </tr>
     </thead>

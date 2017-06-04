@@ -12,7 +12,7 @@ class CreateOrganizationsTable extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('github_id')->unsigned()->nullable()->unique('github_id_UNIQUE');
+            $table->bigInteger('github_id')->unsigned()->nullable()->unique();
             $table->string('username')->nullable()->index('login');
             $table->string('url')->nullable();
             $table->string('repos_url')->nullable();

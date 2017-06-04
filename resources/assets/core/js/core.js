@@ -6,11 +6,9 @@ $(function () {
         }
     });
 
-    if ($('[data-toggle="switch"]').length) {
-      $('[data-toggle="switch"]').bootstrapSwitch();
-    }
-
     $('[data-toggle="tooltip"]').tooltip();
+
+    $('[data-provide="markdown"]').markdown({autofocus:false,savable:false})
 
     main.init();
     attachment.init();
@@ -24,6 +22,7 @@ var main = {
         main.modalRemoveData();
         main.modalSwal();
         main.activateTab();
+        main.loading();
     },
 
     activateTab: function(){
@@ -41,7 +40,8 @@ var main = {
 
     modalSwal: function(){
 
-        $('.form-delete .btn-submit-form').on('click', function (event) {
+        $('.form-delete button').on('click', function (event) {
+
             event.preventDefault();
             var button = $(this);
 
@@ -62,5 +62,12 @@ var main = {
 
         });
     },
+
+    loading: function(){
+        var div = $("<div>", {"class": "loader"});
+        $('.btn-loader').on('click', function(){
+            $('.loader-area').append(div);
+        });
+    }
 
 }
