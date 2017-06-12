@@ -19,6 +19,13 @@
 
 @section('content')
 
+<div class="col-lg-12 graph-main">
+    <h4>
+        <i class="fa fa-thermometer-full" aria-hidden="true"></i>
+        {{trans('gitscrum.my-performance')}}</h4>
+    @include('partials.boxes.burndown', ['list' => Helper::burndown($user, 5), 'height' => 220])
+</div>
+
 <div class="col-lg-3">
 
     <div class="shortcuts">
@@ -36,9 +43,6 @@
 
 
 <div class="col-lg-7">
-
-    @include('partials.boxes.burndown', ['list' => Helper::burndown($user, 5), 'height' => 220])
-
     <h4>{{trans('gitscrum.current-sprints-backlog')}} <a href="{{route('sprints.create')}}"
          class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#modalLarge"
          role="button">{{trans('gitscrum.create-sprint-backlog')}}</a></h4>

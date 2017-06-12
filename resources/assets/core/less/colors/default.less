@@ -1,5 +1,6 @@
 body{
-	color:#434A54;
+  color:#434A54;
+  background:#fff;
 }
 
 .loader-area{
@@ -11,7 +12,7 @@ body{
 
 header{
 	.navbar-fixed-top{
-		background:#434A54;
+		background:#473368;
 		border-color:#656D78;
 		.navbar-brand{
 			color:#fff;
@@ -26,10 +27,10 @@ header{
 		.navbar-right{
 			a{
 				background:transparent;
-				color:#AAB2BD;
+				color:#fff;
 				&:hover,
 				&:focus{
-					background:#656D78;
+					background:#785DA5;
 					color:#fff;
 					box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.7);
 					.avatar{
@@ -54,6 +55,10 @@ header{
 			}
 		}
 	}
+}
+
+.content-area div[class^="col-"] {
+  background:#fff;
 }
 
 .card-detail {
@@ -102,8 +107,16 @@ header{
 }
 
 .breadcrumb-area{
-	background:#E6E9EE;
-	border-bottom: 1px solid #CCD0D9;
+  background:#c9d6d4;
+  border-bottom: 1px solid #CCD0D9;
+  .btn-primary{
+	background-color: #EF6D3B;
+	border-color: #FA8B60;
+    font-weight:bold;
+    &:hover{
+
+    }
+  }
 }
 
 .progress-title{
@@ -143,9 +156,6 @@ header{
 
 
 .main-title{
-	background: -moz-linear-gradient(top, rgba(164,164,164, 0.4) 0%, rgba(0,0,0,0) 45%);
-	background: -webkit-linear-gradient(top, rgba(164,164,164, 0.4) 0%,rgba(0,0,0,0) 45%);
-	background: linear-gradient(to bottom, rgba(164,164,164, 0.4) 0%,rgba(0,0,0,0) 45%);
 	border-color: rgba(164,164,164, 0.7);
 	.label{
 		border-color:#fff;
@@ -170,4 +180,18 @@ header{
 			color:#fff;
 		}
 	}
+}
+
+.graph-main{
+  margin-bottom:15px;
+
+  h4{
+    font-size:12pt;
+    padding:6px 15px 8px;
+    background:#e6e9ee;
+    margin:0 0 5px;
+    i{
+      margin-right:8px;
+    }
+  }
 }

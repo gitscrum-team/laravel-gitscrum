@@ -186,4 +186,5 @@ return array(
   'label-added-successfully' => 'Label added',
   'this-sprint-has-been-expired-at' => 'This Sprint has been expired at',
   'GitScrum-authentication-is-required' => 'GitScrum authentication is required',
+  'my-performance' => 'My Performance',
 );

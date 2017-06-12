@@ -22,8 +22,7 @@
                         {{trans('gitscrum.sprint-backlog')}}</a></li>
                     <li>
                         <a aria-expanded="false" role="button" href="#" data-toggle="dropdown">
-                            <img src="{{Auth::user()->avatar}}"
-                                class="avatar" />{{Auth::user()->username}}
+                            <img src="{{Auth::user()->avatar}}" class="avatar" />
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{route('user.profile',['slug' => Auth::user()->username])}}">
