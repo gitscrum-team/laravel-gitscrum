@@ -1,4 +1,5 @@
-![Laravel GitScrum](http://i.imgur.com/fJLrnxu.png)
+![Laravel GitScrum](http://gitscrum.com/fullpage_gitscrum.png)
+Visit: http://www.gitscrum.com
 
 <p align="center">
 <b><a href="#overview">Overview</a></b>
