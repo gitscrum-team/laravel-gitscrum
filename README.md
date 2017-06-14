@@ -1,6 +1,11 @@
 ![Laravel GitScrum](http://gitscrum.com/fullpage_gitscrum.png)
-Visit: http://www.gitscrum.com
 
+<hr>
+
+Site: http://www.gitscrum.com | 
+Community and Issues : http://www.gitscrum.com/community
+
+<hr>
 <p align="center">
 <b><a href="#overview">Overview</a></b>
 |
