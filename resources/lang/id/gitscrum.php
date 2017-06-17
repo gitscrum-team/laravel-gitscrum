@@ -53,7 +53,7 @@ return array(
   'search-by' => 'Cari berdasarkan',
   'burndown' => 'Burndown',
   'write-comment' => 'Tulis Komentar...',
-  'comment' => 'gitscrum.comment',
+  'comment' => 'Tambah komentar',
   'user-story' => 'Cerita Pengguna',
   'create-a-sprint' => 'Buat Sprint',
   'type' => 'Tipe',
@@ -113,8 +113,7 @@ return array(
   'my-planning' => 'Perencanaan Saya',
   'drag-it' => 'Tarik',
   'this-issue-is-in-a
-        sprint-that-is' => 'gitscrum.this-issue-is-in-a
-        sprint-that-is',
+        sprint-that-is' => 'Issue ini ada di dalam sprint yaitu',
   'change-sprint-status' => 'Sunting Status Sprint',
   'defect-detected' => 'Kerusakan Terdeteksi',
   'add-member' => 'Tambah Pengguna',
@@ -151,7 +150,7 @@ return array(
   'or' => 'atau',
   'continue-using' => 'Lanjutkan menggunakan',
   'auth.throttle' => 'gitscrum.auth.throttle',
-  'auth.failed' => 'gitscrum.auth.failed',
+  'auth.failed' => 'Autentikasi gagal',
   'field-cannot-be-blank' => 'Bidang tidak boleh kosong',
   'field-must-be-at-least-2-characters' => 'Bidang setidaknya harus memiliki 2 karakter',
   'comment-cannot-be-blank' => 'Komentar tidak boleh kosong',
