@@ -24,7 +24,7 @@
 @section('content')
 <div class="col-lg-4">
 
-    <a href="{{route('user_stories.create')}}"
+    <a href="{{route('user_stories.create', ['slug_product_backlog' => $productBacklog->slug])}}"
         class="btn btn-block btn-primary"
         data-toggle="modal" data-target="#modalLarge">{{trans('gitscrum.create-user-story')}}</a>
     <a href="{{route('sprints.create', ['slug_product_backlog' => $productBacklog->slug])}}"
