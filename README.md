@@ -1,10 +1,10 @@
-![Laravel GitScrum](http://gitscrum.com/fullpage.jpg)
+![Laravel GitScrum](https://gitscrum.com/facebook.jpg)
 
 <hr>
-
-Site: http://www.gitscrum.com | 
-Community and Issues : http://www.gitscrum.com/community
-
+<p align="center">
+Site: <b>https://www.gitscrum.com</b> | 
+Community and Issues : <b>https://www.gitscrum.com/community</b>
+</p>
 <hr>
 <p align="center">
 <b><a href="#overview">Overview</a></b>
