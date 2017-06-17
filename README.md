@@ -1,4 +1,4 @@
-![Laravel GitScrum](http://gitscrum.com/fullpage_gitscrum.png)
+![Laravel GitScrum](http://gitscrum.com/fullpage.jpg)
 
 <hr>
 
