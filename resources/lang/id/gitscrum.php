@@ -6,7 +6,8 @@
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array (
+
+return array (
   'product-backlog' => 'Backlog Produk',
   'timebox' => 'Timebox',
   'week' => 'Minggu',
@@ -76,17 +77,17 @@
   'priority' => 'Prioritas',
   'acceptance-criteria' => 'Kriteria Penerimaan',
   'confirmation-of-requirement-understanding-and-decide-about-acceptance-of-iteration-deliverable' => 'Konfirmasi pemahaman kebutuhan dan memutuskan tentang penerimaan penyampaian iterasi',
-  'title-configuration-config-status-' => 'gitscrum.title-configuration-config-status-',
+  'title-configuration-config-status-' => 'Status pengesetan pengaturan',
   'configuration' => 'Konfigurasi',
   'user-story-list' => 'List Cerita Pengguna',
   'create-user-story' => 'Buat Cerita Pengguna',
   'edit-user-story' => 'Sunting Cerita Pengguna',
   'favorite' => 'Favorit',
   'create-issue' => 'Buat Issue',
-  'definition-of-done-checklist' => 'Definisi Checklist Selesai',
+  'definition-of-done-checklist' => 'Daftar Definisi Selesai',
   'title-login' => 'Masuk GitScrum',
   'welcome-to' => 'Selamat Datang di',
-  'authentication' => 'gitscrum.authentication',
+  'authentication' => 'Autentikasi',
   'edit-sprint' => 'Sunting Sprint',
   'sprint-backlog-calendar' => 'Backlog Sprint - Kalender',
   'mode-list' => 'Mode List',
@@ -129,7 +130,7 @@
   'label' => 'Lebel',
   'dashboard' => 'Dashboard',
   'update-repositories' => 'Perbarui Repository',
-  'my-performance' => 'gitscrum.my-performance',
+  'my-performance' => 'Performaku',
   'shortcuts' => 'Shortcuts',
   'quick-notes' => 'Catatan Cepat',
   'current-sprints-backlog' => 'Backlog Sprint Saat Ini',
