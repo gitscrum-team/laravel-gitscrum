@@ -1,13 +1,12 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-04-16 09:14:49 / 178 translations
+ * Updated 2017-06-18 01:11:16 / 178 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-
-return array(
+return array (
   'product-backlog' => 'Backlog Produk',
   'timebox' => 'Timebox',
   'week' => 'Minggu',
@@ -87,6 +86,7 @@ return array(
   'definition-of-done-checklist' => 'Definisi Checklist Selesai',
   'title-login' => 'Masuk GitScrum',
   'welcome-to' => 'Selamat Datang di',
+  'authentication' => 'gitscrum.authentication',
   'edit-sprint' => 'Sunting Sprint',
   'sprint-backlog-calendar' => 'Backlog Sprint - Kalender',
   'mode-list' => 'Mode List',
@@ -129,6 +129,7 @@ return array(
   'label' => 'Lebel',
   'dashboard' => 'Dashboard',
   'update-repositories' => 'Perbarui Repository',
+  'my-performance' => 'gitscrum.my-performance',
   'shortcuts' => 'Shortcuts',
   'quick-notes' => 'Catatan Cepat',
   'current-sprints-backlog' => 'Backlog Sprint Saat Ini',
@@ -149,8 +150,6 @@ return array(
   'import-my' => 'Impor',
   'or' => 'atau',
   'continue-using' => 'Lanjutkan menggunakan',
-  'auth.throttle' => 'gitscrum.auth.throttle',
-  'auth.failed' => 'Autentikasi gagal',
   'field-cannot-be-blank' => 'Bidang tidak boleh kosong',
   'field-must-be-at-least-2-characters' => 'Bidang setidaknya harus memiliki 2 karakter',
   'comment-cannot-be-blank' => 'Komentar tidak boleh kosong',

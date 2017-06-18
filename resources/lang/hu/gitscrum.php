@@ -1,12 +1,12 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-04-16 09:14:49 / 178 translations
+ * Updated 2017-06-18 01:11:16 / 178 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array(
+return array (
   'product-backlog' => 'Product Backlog',
   'timebox' => 'Timebox',
   'week' => 'Hét',
@@ -86,6 +86,7 @@
   'definition-of-done-checklist' => 'DC pontok',
   'title-login' => 'GitScrum Bejelentkezés',
   'welcome-to' => 'Üdvözöllek',
+  'authentication' => 'gitscrum.authentication',
   'edit-sprint' => 'Sprint szerkesztése',
   'sprint-backlog-calendar' => 'Sprint Backlog - Naptár',
   'mode-list' => 'Módok listázása',
@@ -129,6 +130,7 @@
   'label' => 'Címke',
   'dashboard' => 'Dashboard',
   'update-repositories' => 'Repó frissítése',
+  'my-performance' => 'gitscrum.my-performance',
   'shortcuts' => 'Gyorbillentyűk',
   'quick-notes' => 'Jegyzetek',
   'current-sprints-backlog' => 'Aktuális sprint backlog',
@@ -149,8 +151,6 @@
   'import-my' => 'Importálás',
   'or' => 'vagy',
   'continue-using' => 'Használat folytatása',
-  'auth.throttle' => 'gitscrum.auth.throttle',
-  'auth.failed' => 'gitscrum.auth.failed',
   'field-cannot-be-blank' => 'A mező nem lehet üres',
   'field-must-be-at-least-2-characters' => 'A mező legalább 2 karakter hosszú kell hogy legyen',
   'comment-cannot-be-blank' => 'A megjegyzés nem lehet üres',

@@ -1,13 +1,12 @@
-<?php
+<?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-04-16 09:14:49 / 178 translations
+ * Updated 2017-06-18 01:11:16 / 178 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-
-return array(
+return array (
   'product-backlog' => 'مهام المشروع',
   'timebox' => 'الوقت المتاح',
   'week' => 'اسبوع',
@@ -87,6 +86,7 @@ return array(
   'definition-of-done-checklist' => 'قائمه ال definition of done',
   'title-login' => 'GitScrum الدخول إلى',
   'welcome-to' => 'مرحبا بكم',
+  'authentication' => 'gitscrum.authentication',
   'edit-sprint' => 'عدل السبرنت',
   'sprint-backlog-calendar' => 'مهام السبرنت - التقويم',
   'mode-list' => 'طريقة عرض على شكل قائمة',
@@ -129,6 +129,7 @@ return array(
   'label' => 'التسميه',
   'dashboard' => 'لوحه التحكم',
   'update-repositories' => 'حدث المستودعات',
+  'my-performance' => 'gitscrum.my-performance',
   'shortcuts' => '`ختصارات`',
   'quick-notes' => 'ملاحظات سريعه',
   'current-sprints-backlog' => 'مهام السبرنتز الحاليه',
@@ -149,8 +150,6 @@ return array(
   'import-my' => 'أستورد',
   'or' => 'او',
   'continue-using' => 'أستكمل إستخدام',
-  'auth.throttle' => 'خنق فى الدخول',
-  'auth.failed' => 'لقد فشل الدخول',
   'field-cannot-be-blank' => 'لا يمكن ترك الحقل فارغ',
   'field-must-be-at-least-2-characters' => 'يجب أن يتكون الحقل من حرفين على الأقل',
   'comment-cannot-be-blank' => 'لا يمكن ترك حقل التعليق فارغ',

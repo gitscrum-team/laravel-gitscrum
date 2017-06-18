@@ -28,7 +28,7 @@ Community and Issues : <b>https://www.gitscrum.com/community</b>
 [![Build Status](https://travis-ci.org/renatomarinho/laravel-gitscrum.svg?branch=master)](https://travis-ci.org/renatomarinho/laravel-gitscrum)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2abfe5173e0b4565a2b1e3e345160939)](https://www.codacy.com/app/renatomarinho/laravel-gitscrum?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renatomarinho/laravel-gitscrum&amp;utm_campaign=Badge_Grade)
 [![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-gitscrum/downloads)](https://packagist.org/packages/renatomarinho/laravel-gitscrum)
-[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/renatomarinho/laravel-gitscrum/blob/master/LICENSE.md)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md)
 
 <hr>
 
@@ -111,7 +111,7 @@ Options: en | zh | zh_cn | ru | de | es | pt | it | id | fr | hu
 ```
 APP_LANG=en
 ```
-Can you help us translate a few phrases into different languages? See: https://github.com/renatomarinho/laravel-gitscrum/tree/feature/language-pack/resources/lang
+Can you help us translate a few phrases into different languages? See: https://github.com/GitScrum-Community/laravel-gitscrum/tree/feature/language-pack/resources/lang
 
 
 #### Database
@@ -203,7 +203,7 @@ PROXY_PASS=
 
 ## Questions and issues
 
-The [github issue tracker](https://github.com/renatomarinho/laravel-gitscrum/issues) is **_only_** for bug reports and feature requests. Anything else, such as questions for help in using the Laravel Gitscrum, should be posted in [StackOverflow](http://stackoverflow.com/questions/tagged/gitscrum) under tag `gitscrum`.
+The [github issue tracker](https://github.com/GitScrum-Community/laravel-gitscrum/issues) is **_only_** for bug reports and feature requests. Anything else, such as questions for help in using the Laravel Gitscrum, should be posted in [StackOverflow](http://stackoverflow.com/questions/tagged/gitscrum) under tag `gitscrum`.
 
 ### Do you need help?
 
@@ -212,7 +212,7 @@ Renato Marinho: [Facebook](https://www.facebook.com/renato.marinho) / [LinkedIn]
 
 ## Contributing
 
-Contributions are always welcome! https://github.com/renatomarinho/laravel-gitscrum/graphs/contributors
+Contributions are always welcome! https://github.com/GitScrum-Community/laravel-gitscrum/graphs/contributors
 
 
 ## License

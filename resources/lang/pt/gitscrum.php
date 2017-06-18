@@ -1,12 +1,12 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-04-16 09:14:49 / 178 translations
+ * Updated 2017-06-18 01:11:16 / 178 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array(
+return array (
   'product-backlog' => 'Product Backlog',
   'timebox' => 'Tempo',
   'week' => 'Semana',
@@ -86,6 +86,7 @@
   'definition-of-done-checklist' => 'Lista para Definição de Pronto',
   'title-login' => 'Acessar o GitScrum',
   'welcome-to' => 'Bem vindo ao',
+  'authentication' => 'gitscrum.authentication',
   'edit-sprint' => 'Editar Sprint',
   'sprint-backlog-calendar' => 'Sprint Backlog - Calendário',
   'mode-list' => 'Modo Lista',
@@ -129,6 +130,7 @@
   'label' => 'Etiqueta',
   'dashboard' => 'Painel de Controle',
   'update-repositories' => 'Atualizar Repositórios',
+  'my-performance' => 'gitscrum.my-performance',
   'shortcuts' => 'Atalhos',
   'quick-notes' => 'Notas Rápidas',
   'current-sprints-backlog' => 'Sprints Backlog Atuais',
@@ -149,8 +151,6 @@
   'import-my' => 'Importar meu',
   'or' => 'ou',
   'continue-using' => 'Continuar usando',
-  'auth.throttle' => 'gitscrum.auth.throttle',
-  'auth.failed' => 'gitscrum.auth.failed',
   'field-cannot-be-blank' => 'O campo não pode ser vazio',
   'field-must-be-at-least-2-characters' => 'O campo deve ter no mínimo 2 caracteres',
   'comment-cannot-be-blank' => 'Comentário não pode ser vazio',

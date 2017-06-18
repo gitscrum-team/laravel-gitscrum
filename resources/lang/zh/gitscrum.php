@@ -1,12 +1,12 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-04-16 09:14:49 / 178 translations
+ * Updated 2017-06-18 01:11:16 / 178 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array(
+return array (
   'product-backlog' => 'Product Backlog',
   'timebox' => '時間區間',
   'week' => 'Week',
@@ -86,6 +86,7 @@
   'definition-of-done-checklist' => '已完成清單的定義',
   'title-login' => 'GitScrum 登入',
   'welcome-to' => 'Welcome to',
+  'authentication' => 'gitscrum.authentication',
   'edit-sprint' => '編輯 Sprint',
   'sprint-backlog-calendar' => 'Sprint Backlog - 行事曆',
   'mode-list' => 'Mode List',
@@ -129,6 +130,7 @@
   'label' => 'label',
   'dashboard' => '控制台',
   'update-repositories' => '更新 Repositories',
+  'my-performance' => 'gitscrum.my-performance',
   'shortcuts' => 'Shortcuts',
   'quick-notes' => '隨手筆記',
   'current-sprints-backlog' => '目前的Sprints Backlog',
@@ -149,8 +151,6 @@
   'import-my' => '匯入我的',
   'or' => 'or',
   'continue-using' => '繼續使用',
-  'auth.throttle' => 'gitscrum.auth.throttle',
-  'auth.failed' => 'gitscrum.auth.failed',
   'field-cannot-be-blank' => '欄位不可為空',
   'field-must-be-at-least-2-characters' => '欄位必須至少是2個字元',
   'comment-cannot-be-blank' => 'Comment不可為空',

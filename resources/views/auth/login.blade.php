@@ -10,22 +10,20 @@
 <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
         <div class="middle-box text-center loginscreen">
-                <h5 class="lead">{{trans('gitscrum.welcome-to')}} <strong>GitScrum</strong></h5>
+            <h5 class="lead">{{trans('gitscrum.welcome-to')}} <strong>GitScrum</strong></h5>
 
-                <a href="{{route('auth.provider', ['provider' => 'github'])}}" class="btn btn-hg btn-info btn-loader">
-                        <i class="fa fa-github" aria-hidden="true"></i>&nbsp;&nbsp;Login with <strong>GitHub</strong>
-                </a>
+            <h5>{{trans('gitscrum.authentication')}}</h5>
+            <a href="{{route('auth.provider', ['provider' => 'github'])}}" class="btn btn-lg btn-default btn-loader">
+                    <i class="fa fa-github" aria-hidden="true"></i>&nbsp;&nbsp;<strong>GitHub</strong>
+            </a>
 
-                <a href="{{route('auth.provider', ['provider' => 'gitlab'])}}" class="btn btn-hg btn-danger btn-loader">
-                        <i class="fa fa-gitlab" aria-hidden="true"></i>&nbsp;&nbsp;Login with <strong>GitLab</strong>
-                </a>
+            <a href="{{route('auth.provider', ['provider' => 'gitlab'])}}" class="btn btn-lg btn-default btn-loader">
+                    <i class="fa fa-gitlab" aria-hidden="true"></i>&nbsp; <strong>GitLab</strong>
+            </a>
 
-                <div class="text-center">
-                    <a class="github-button" href="https://github.com/GitScrum-Community/laravel-gitscrum" data-icon="octicon-star" data-style="mega" data-count-href="/renatomarinho/laravel-gitscrum/stargazers" data-count-api="/repos/renatomarinho/laravel-gitscrum#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star renatomarinho/laravel-gitscrum on GitHub">Star</a>
-                </div>
-
-                <p class="small">The GitScrum is licensed under the
-                    <a href="https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md" target="_blank">MIT license</a></p>
+            <p><a href="https://gitscrum.com/community" target="_blank"><strong>GitScrum</strong> Community</a></p>
+            <p class="small">The GitScrum Community is licensed under the
+            <a href="https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md" target="_blank">MIT license</a></p>
         </div>
     </div>
 </div>

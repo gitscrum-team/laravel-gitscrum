@@ -1,12 +1,12 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-04-16 09:14:49 / 178 translations
+ * Updated 2017-06-18 01:11:16 / 178 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array(
+return array (
   'product-backlog' => 'Backlog продукта',
   'timebox' => 'Timebox',
   'week' => 'Неделя',
@@ -86,6 +86,7 @@
   'definition-of-done-checklist' => 'Definition of Done Checklist',
   'title-login' => 'GitScrum вход',
   'welcome-to' => 'Добро пожаловать в',
+  'authentication' => 'gitscrum.authentication',
   'edit-sprint' => 'Изменить спринт',
   'sprint-backlog-calendar' => 'Sprint Backlog - Calendar',
   'mode-list' => 'Mode List',
@@ -129,6 +130,7 @@
   'label' => 'Метка',
   'dashboard' => 'Dashboard',
   'update-repositories' => 'Обновить репозитории',
+  'my-performance' => 'gitscrum.my-performance',
   'shortcuts' => 'Shortcuts',
   'quick-notes' => 'Быстрые заметки',
   'current-sprints-backlog' => 'Current Sprints Backlog',
@@ -149,8 +151,6 @@
   'import-my' => 'Импортировать мои',
   'or' => 'или',
   'continue-using' => 'Continue using',
-  'auth.throttle' => 'gitscrum.auth.throttle',
-  'auth.failed' => 'gitscrum.auth.failed',
   'field-cannot-be-blank' => 'Field cannot be blank',
   'field-must-be-at-least-2-characters' => 'Field must be at least 2 characters',
   'comment-cannot-be-blank' => 'Comment cannot be blank',
