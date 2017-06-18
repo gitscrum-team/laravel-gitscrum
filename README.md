@@ -83,7 +83,7 @@ $ cd laravel-gitscrum
 ### Git Clone
 
 ```
-$ git clone git@github.com:renatomarinho/laravel-gitscrum.git
+$ git clone git@github.com:GitScrum-Community/laravel-gitscrum.git
 $ cd laravel-gitscrum
 $ composer update
 $ composer run-script post-root-package-install
