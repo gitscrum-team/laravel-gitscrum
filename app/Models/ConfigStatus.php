@@ -11,6 +11,7 @@ namespace GitScrum\Models;
 use Illuminate\Database\Eloquent\Model;
 use GitScrum\Scopes\ConfigStatusScope;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Presenters\GlobalPresenter;
 
 class ConfigStatus extends Model
 {

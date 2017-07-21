@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
 use GitScrum\Scopes\StatusScope;
+use GitScrum\Presenters\GlobalPresenter;
 
 class Status extends Model
 {

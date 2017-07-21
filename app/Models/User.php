@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use GitScrum\Scopes\GlobalScope;
 use GitScrum\Scopes\UserScope;
+use GitScrum\Presenters\GlobalPresenter;
 
 class User extends Authenticatable
 {

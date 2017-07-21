@@ -8,6 +8,6 @@
             {{$activity->statusesable->title}}
         </a>--}}
         <small class="text-default">{{$activity->configStatus->description}}</small>
-        <small class="date-for-humans text-muted">{{$activity->dateforHumans}}</small>
+        <small class="date-for-humans text-muted">{{$activity->dateforHumans()}}</small>
     </div>
 </div>
