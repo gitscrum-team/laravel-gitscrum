@@ -6,39 +6,12 @@
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
-namespace GitScrum\Http\Controllers;
+namespace GitScrum\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
-use GitScrum\Models\User;
-use Auth;
 
-class UserController extends Controller
+class CommitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function dashboard()
-    {
-        $user = Auth::user();
-        $sprints = $user->sprints()->take(2);
-        $sprintColumns = ['tbody_sprintFavorite',
-            'tbody_sprintBacklog',
-            'tbody_sprintProductBacklog', ];
-
-        $sprints = $sprints->get()->map(function ($sprint) use ($sprintColumns) {
-            $sprint['column'] = $sprintColumns;
-
-            return $sprint;
-        });
-
-        return view('users.dashboard')
-            ->with('sprints', $sprints)
-            ->with('sprintColumns', $sprintColumns)
-            ->with('user', $user);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -75,17 +48,8 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($username)
+    public function show($id)
     {
-        $user = User::where('username', $username)
-            ->where('provider', Auth::user()->provider)
-            ->first();
-
-        $activities = $user->activities($user->id);
-
-        return view('users.show')
-                ->with('user', $user)
-                ->with('activities', $activities);
     }
 
     /**

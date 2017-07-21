@@ -6,11 +6,11 @@
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
 
-namespace GitScrum\Http\Controllers;
+namespace GitScrum\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 
-class CommitController extends Controller
+class BranchController extends Controller
 {
     /**
      * Display a listing of the resource.
