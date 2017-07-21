@@ -14,6 +14,8 @@ use GitScrum\Scopes\GlobalScope;
 class CommitFilePhpc extends Model
 {
     use GlobalScope;
+    use GlobalPresenter;
+
     /**
      * The database table used by the model.
      *

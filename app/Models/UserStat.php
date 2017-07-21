@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserStat extends Model
 {
+    use GlobalPresenter;
+
     /**
      * The database table used by the model.
      *

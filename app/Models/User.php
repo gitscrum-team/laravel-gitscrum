@@ -18,6 +18,7 @@ class User extends Authenticatable
 {
     use GlobalScope;
     use UserScope;
+    use GlobalPresenter;
     use UserPresenter;
     /**
      * The database table used by the model.

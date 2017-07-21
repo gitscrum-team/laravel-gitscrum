@@ -17,6 +17,7 @@ class Note extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use GlobalPresenter;
     use NotePresenter;
 
     /**

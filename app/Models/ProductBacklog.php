@@ -17,6 +17,7 @@ class ProductBacklog extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use GlobalPresenter;
     use ProductBacklogPresenter;
 
     public static $tmp = null;

@@ -14,6 +14,8 @@ use GitScrum\Scopes\GlobalScope;
 class PullRequest extends Model
 {
     use GlobalScope;
+    use GlobalPresenter;
+
     /**
      * The database table used by the model.
      *

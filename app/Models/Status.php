@@ -17,6 +17,7 @@ class Status extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use GlobalPresenter;
     use StatusScope;
 
     /**

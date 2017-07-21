@@ -20,6 +20,7 @@ class Sprint extends Model
     use SoftDeletes;
     use GlobalScope;
     use SprintScope;
+    use GlobalPresenter;
     use SprintPresenter;
     /**
      * The database table used by the model.

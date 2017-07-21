@@ -16,6 +16,7 @@ class ConfigStatus extends Model
 {
     use ConfigStatusScope;
     use GlobalScope;
+    use GlobalPresenter;
 
     /**
      * The database table used by the model.

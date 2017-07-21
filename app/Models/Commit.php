@@ -16,6 +16,8 @@ class Commit extends Model
 {
     use GlobalScope;
     use CommitScope;
+    use GlobalPresenter;
+
     /**
      * The database table used by the model.
      *

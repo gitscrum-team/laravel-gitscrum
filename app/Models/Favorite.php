@@ -14,6 +14,8 @@ use GitScrum\Scopes\GlobalScope;
 class Favorite extends Model
 {
     use GlobalScope;
+    use GlobalPresenter;
+
     /**
      * The database table used by the model.
      *

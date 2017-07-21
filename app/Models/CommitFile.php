@@ -18,6 +18,8 @@ class CommitFile extends Model
     use CommitFileScope;
     use GlobalScope;
     use CommitFilePresenter;
+    use GlobalPresenter;
+
     /**
      * The database table used by the model.
      *

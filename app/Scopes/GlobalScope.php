@@ -34,9 +34,4 @@ trait GlobalScope
             return collect($status);
         }
     }
-
-    public function scopeDateforHumans($query, $attributes = 'created_at')
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$attributes])->diffForHumans();
-    }
 }
