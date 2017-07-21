@@ -23,7 +23,7 @@ class ProductBacklogController extends Controller
      */
     public function index(Request $request, $mode = 'default')
     {
-        $backlogs = Helper::lengthAwarePaginator(Auth::user()->productBacklogs(), $request->page);
+        $backlogs = ProductBacklog::paginate($request->page);
         return view('product_backlogs.index-'.$mode)
             ->with('backlogs', $backlogs);
     }

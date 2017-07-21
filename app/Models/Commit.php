@@ -9,15 +9,14 @@
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use GitScrum\Scopes\CommitScope;
-use GitScrum\Scopes\GlobalScope;
-use GitScrum\Presenters\GlobalPresenter;
+use GitScrum\Scopes\{CommitScope,GlobalScope};
+use GitScrum\Presenters\{GlobalPresenter,CommitPresenter};
 
 class Commit extends Model
 {
     use GlobalScope;
     use CommitScope;
-    use GlobalPresenter;
+    use GlobalPresenter, CommitPresenter;
 
     /**
      * The database table used by the model.
