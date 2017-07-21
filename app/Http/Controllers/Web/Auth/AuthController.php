@@ -10,7 +10,7 @@ namespace GitScrum\Http\Controllers\Auth;
 
 use GitScrum\Http\Requests\AuthRequest;
 use GitScrum\Models\User;
-use GitScrum\Http\Controllers\Controller;
+use GitScrum\Http\Controllers\Web\Controller;
 use Socialite;
 use Auth;
 use SocialiteProviders\Manager\Exception\InvalidArgumentException;
