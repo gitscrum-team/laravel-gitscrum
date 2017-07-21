@@ -10,6 +10,7 @@ namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Presenters\GlobalPresenter;
 
 class IssueType extends Model
 {

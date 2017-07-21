@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
 use GitScrum\Scopes\SprintScope;
-use Carbon\Carbon;
+use GitScrum\Presenters\GlobalPresenter;
 
 class Sprint extends Model
 {

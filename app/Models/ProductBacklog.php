@@ -12,6 +12,7 @@ use GitScrum\Presenters\ProductBacklogPresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Presenters\GlobalPresenter;
 
 class ProductBacklog extends Model
 {

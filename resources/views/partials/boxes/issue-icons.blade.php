@@ -25,8 +25,7 @@
 
 @if($issue->closed_at)
 <small title="{{trans('gitscrum.closed')}}" class="small-issue-closed">{{trans('gitscrum.closed')}}
-    {{$issue->dateforHumans
-('closed_at')}}</small>
+    {{$issue->dateforHumans('closed_at')}}</small>
 &nbsp;&nbsp;
 @endif
 </span>

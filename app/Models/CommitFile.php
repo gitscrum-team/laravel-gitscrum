@@ -12,6 +12,7 @@ use GitScrum\Presenters\CommitFilePresenter;
 use Illuminate\Database\Eloquent\Model;
 use GitScrum\Scopes\CommitFileScope;
 use GitScrum\Scopes\GlobalScope;
+use GitScrum\Presenters\GlobalPresenter;
 
 class CommitFile extends Model
 {

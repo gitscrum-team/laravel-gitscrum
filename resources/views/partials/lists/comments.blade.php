@@ -3,7 +3,7 @@
         <img alt="{{$comment->user->username}}" class="img-rounded avatar" src="{{$comment->user->avatar}}">
     </a>
     <div class="media-body">
-        <small class="pull-right dateforhumans">{{$comment->dateforHumans}}</small>
+        <small class="pull-right dateforhumans">{{$comment->dateforHumans()}}</small>
         <a href="{{route('user.profile', ['username'=>$comment->user->username])}}"><strong>{{$comment->user->username}}</strong></a>
         <br>
         <small class="text-muted"></small>

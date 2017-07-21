@@ -8,6 +8,7 @@
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\GlobalPresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
