@@ -23,7 +23,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1.*",
+        "php": ">=7.1",
         "laravel/framework": "5.4.*",
         "phploc/phploc": "*",
         "intervention/image": "^2.3",
