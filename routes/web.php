@@ -18,12 +18,12 @@ Route::get('/dashboard', 'Web\UserController@dashboard')->name('user.dashboard')
 Route::get('/profile/{username}', 'Web\UserController@show')->name('user.profile')->middleware('user.authenticated');
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::get('/register', 'Web\Auth\AuthController@register')->name('auth.register');
-    Route::get('/login', 'Web\Auth\AuthController@login')->name('auth.login');
-    Route::get('/dologin', 'Web\Auth\AuthController@dologin')->name('auth.dologin');
-    Route::get('/provider/{provider}', 'Web\Auth\AuthController@redirectToProvider')->name('auth.provider');
-    Route::get('/provider/{provider}/callback', 'Web\Auth\AuthController@handleProviderCallback');
-    Route::get('/logout', 'Web\Auth\AuthController@logout')->name('auth.logout');
+    Route::get('/register', 'Web\AuthController@register')->name('auth.register');
+    Route::get('/login', 'Web\AuthController@login')->name('auth.login');
+    Route::get('/dologin', 'Web\AuthController@dologin')->name('auth.dologin');
+    Route::get('/provider/{provider}', 'Web\AuthController@redirectToProvider')->name('auth.provider');
+    Route::get('/provider/{provider}/callback', 'Web\AuthController@handleProviderCallback');
+    Route::get('/logout', 'Web\AuthController@logout')->name('auth.logout');
 });
 
 Route::group(['prefix' => 'product-backlogs', 'middleware' => ['user.authenticated']], function () {

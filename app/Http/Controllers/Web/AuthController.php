@@ -6,11 +6,10 @@
  * @license http://opensource.org/licenses/GPL-3.0 GPLv3
  */
 
-namespace GitScrum\Http\Controllers\Web\Auth;
+namespace GitScrum\Http\Controllers\Web;
 
 use GitScrum\Http\Requests\AuthRequest;
 use GitScrum\Models\User;
-use GitScrum\Http\Controllers\Web\Controller;
 use Socialite;
 use Auth;
 use SocialiteProviders\Manager\Exception\InvalidArgumentException;
