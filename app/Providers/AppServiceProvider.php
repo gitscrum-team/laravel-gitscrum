@@ -29,6 +29,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        foreach (Config::get('app.services') as $service) {
+            $this->app->singleton($service, function () use ($service) {
+                $namespace = 'App\\Services\\' . $service;
+                return new $namespace();
+            });
+        }
+
         $this->app->singleton('Github', function () {
             return new Github();
         });

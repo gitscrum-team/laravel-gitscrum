@@ -15,20 +15,11 @@ class AttachmentController extends Controller
 {
     public function store(AttachmentRequest $request)
     {
-        $imageName = time().'.'.$request->attachment->getClientOriginalExtension();
+        $response = resolve('AttachmentService')->update($request);
 
-        $data = [
-            'attachmentable_id' => $request->attachmentable_id,
-            'attachmentable_type' => $request->attachmentable_type,
-            'filename_original' => $request->attachment->getClientOriginalName(),
-            'filename_new' => $imageName,
-            'mimetype' => $request->attachment->getMimeType(),
-            'size' => $request->attachment->getSize(),
-        ];
-
-        $request->attachment->move(public_path('attachments'), $imageName);
-
-        Attachment::create($data);
+        if ( empty($response) ) {
+            return back()->with('warning', trans('gitscrum.error'));
+        }
 
         return back()->with('success', trans('gitscrum.file-uploaded-successfully'));
     }
