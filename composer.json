@@ -77,5 +77,5 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "version": "0.17.0"
+    "version": "0.19.0"
 }
