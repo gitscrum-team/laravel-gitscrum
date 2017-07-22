@@ -138,7 +138,8 @@ return [
 
     'services' => [
         'AttachmentService',
-        'CommentService'
+        'CommentService',
+        'ConfigStatusService'
     ],
 
     /*
