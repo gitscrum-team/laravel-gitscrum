@@ -137,7 +137,8 @@ return [
     */
 
     'services' => [
-        'AttachmentService'
+        'AttachmentService',
+        'CommentService'
     ],
 
     /*

@@ -15,12 +15,7 @@ class AttachmentController extends Controller
 {
     public function store(AttachmentRequest $request)
     {
-        $response = resolve('AttachmentService')->upload($request);
-
-        if ( empty($response) ) {
-            return back()->with('warning', trans('gitscrum.error'));
-        }
-
+        resolve('AttachmentService')->upload($request);
         return back()->with('success', trans('gitscrum.file-uploaded-successfully'));
     }
 }
