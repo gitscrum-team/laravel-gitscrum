@@ -13,5 +13,5 @@
 */
 
 Route::group(['prefix' => 'config-status'], function () {
-    Route::post('/update-position', 'ConfigStatusController@updatePosition')->name('api.configStatus.position.update');
+    Route::post('/update-position', 'Web\ConfigStatusController@updatePosition')->name('api.configStatus.position.update');
 });
