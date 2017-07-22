@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
     {
         foreach (Config::get('app.services') as $service) {
             $this->app->singleton($service, function () use ($service) {
-                $namespace = 'App\\Services\\' . $service;
+                $namespace = 'GitScrum\\Services\\' . $service;
                 return new $namespace();
             });
         }
