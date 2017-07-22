@@ -33,18 +33,6 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 
-    public function doLogin(AuthRequest $request)
-    {
-    }
-
-    public function register()
-    {
-    }
-
-    public function doRegister()
-    {
-    }
-
     public function redirectToProvider($provider)
     {
         switch ($provider) {
