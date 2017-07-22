@@ -51,10 +51,9 @@ class IssueController extends Controller
                 ->with('productBacklog')
                 ->with('sprint')
                 ->with('configEffort')
-                ->get();
+                ->get()
+                ->sortBy('position')->groupBy('config_status_id');
         }
-
-        $issues = $issues->sortBy('position')->groupBy('config_status_id');
 
         $configStatus = ConfigStatus::type('issues')->get();
 
@@ -85,13 +84,9 @@ class IssueController extends Controller
 
     public function store(IssueRequest $request)
     {
-        $issue = Issue::create($request->all());
+        $response = resolve('IssueService')->create($request);
 
-        if (is_array($request->members)) {
-            $issue->users()->sync($request->members);
-        }
-
-        return redirect()->route('issues.show', ['slug' => $issue->slug])
+        return redirect()->route('issues.show', ['slug' => $response->slug])
             ->with('success', trans('gitscrum.congratulations-the-issue-has-been-created-with-successfully'));
     }
 
@@ -128,12 +123,7 @@ class IssueController extends Controller
 
     public function update(IssueRequest $request, $slug)
     {
-        $issue = Issue::slug($slug)->first();
-        $issue->update($request->all());
-
-        if (is_array($request->members)) {
-            $issue->users()->sync($request->members);
-        }
+        resolve('IssueService')->update($request);
 
         return back()
             ->with('success', trans('gitscrum.congratulations-the-issue-has-been-edited-with-successfully'));
@@ -144,46 +134,23 @@ class IssueController extends Controller
         if (!isset($request->status_id)) {
             $request->status_id = $status;
         }
-        $status = ConfigStatus::find($request->status_id);
-        $save = function ($issue, $position = null) use ($request, $status) {
-            $issue->config_status_id = $request->status_id;
-
-            if (!is_null($status->is_closed) && is_null($issue->closed_at)) {
-                $issue->closed_user_id = Auth::id();
-                $issue->closed_at = Carbon::now();
-            } elseif (is_null($status->is_closed)) {
-                $issue->closed_user_id = null;
-                $issue->closed_at = null;
-            }
-
-            if ($position) {
-                $issue->position = $position;
-            }
-
-            return $issue->save();
-        };
 
         if ($request->ajax()) {
-            $position = 1;
-            try {
-                foreach (json_decode($request->json) as $id) {
-                    $issue = Issue::find($id);
-                    $save($issue, $position);
-                    ++$position;
-                }
+            $response = resolve('IssueService')->setRequest($request)
+                ->updateStatusByJson();
 
+            if ($response) {
                 return response()->json([
                     'success' => true,
                 ]);
-            } catch (\Exception $e) {
-                return response()->json([
-                    'success' => false,
-                ]);
             }
+
+            return response()->json([
+                'success' => false,
+            ]);
         } else {
-            $issue = Issue::slug($slug)
-                ->firstOrFail();
-            $save($issue);
+            $request->slug = $slug;
+            resolve('IssueService')->setRequest($request)->updateStatus();
 
             return back()->with('success', trans('gitscrum.updated-successfully'));
         }
