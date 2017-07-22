@@ -140,7 +140,8 @@ return [
         'AttachmentService',
         'CommentService',
         'ConfigStatusService',
-        'FavoriteService'
+        'FavoriteService',
+        'IssueService'
     ],
 
     /*
