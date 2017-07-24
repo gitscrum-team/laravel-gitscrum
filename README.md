@@ -23,6 +23,10 @@ Community and Issues : <b>https://www.gitscrum.com/community</b>
 </p>
 
 <hr>
+<p align="center">
+<b>Facebook Group: https://www.facebook.com/groups/gitscrum/ </b>
+</p>
+<hr>
 
 [![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2abfe5173e0b4565a2b1e3e345160939)](https://www.codacy.com/app/renatomarinho/laravel-gitscrum?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renatomarinho/laravel-gitscrum&amp;utm_campaign=Badge_Grade)
