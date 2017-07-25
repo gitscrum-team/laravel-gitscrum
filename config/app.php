@@ -202,7 +202,7 @@ return [
         SocialiteProviders\Manager\ServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        Spatie\Fractal\FractalServiceProvider::class,
         RenatoMarinho\LaravelMultiLanguage\MultiLanguageServiceProvider::class
 
     ],
@@ -258,7 +258,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Fractal' => Spatie\Fractal\FractalFacade::class,
         'Helper' => GitScrum\Classes\Helper::class,
 
     ],
