@@ -25,25 +25,7 @@ class LabelController extends Controller
 
     public function store(LabelRequest $request)
     {
-        $data = [
-            'labelable_id' => $request->labelable_id,
-            'labelable_type' => $request->labelable_type,
-            'title' => $request->title,
-        ];
-
-        try {
-            $label = Label::create($data);
-        } catch (\Exception $e) {
-            $label = Label::where('title', $request->title)->first();
-        }
-
-        $relation = \Config::get('database.relation');
-
-        $result = $relation[$request->labelable_type]::where('id', $request->labelable_id)->first();
-
-        if (!$result->labels()->where('label_id', $label->id)->first()) {
-            $result->labels()->attach([$label->id]);
-        }
+        resolve('LabelService')->create($request);
 
         return back()->with('success', trans('gitscrum.label-added-successfully'));
     }
