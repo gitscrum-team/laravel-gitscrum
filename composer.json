@@ -31,13 +31,13 @@
         "nesbot/carbon": "^1.21",
         "doctrine/dbal": "~2.5",
         "barryvdh/laravel-debugbar": "^2.2",
-        "renatomarinho/laravel-multi-language": ">=1.0.0"
+        "renatomarinho/laravel-multi-language": ">=1.0.0",
+        "spatie/laravel-fractal": "^4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7",
-        "talevskiigor/composer-bump": "^1.0",
+        "phpunit/phpunit": "~6.2",
         "squizlabs/php_codesniffer": "^2.7",
         "symfony/css-selector": "~2.8|~3.0",
         "symfony/dom-crawler": "3.2.3"
