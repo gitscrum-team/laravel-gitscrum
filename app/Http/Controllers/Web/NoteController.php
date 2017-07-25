@@ -18,24 +18,18 @@ class NoteController extends Controller
 {
     public function store(NoteRequest $request)
     {
-        $data = [
-            'noteable_id' => $request->noteable_id,
-            'noteable_type' => $request->noteable_type,
-            'title' => $request->title,
-        ];
-
-        Note::create($data);
+        resolve('NoteService')->create($request);
 
         return back()->with('success', trans('gitscrum.added-successfully'));
     }
 
     public function update(Request $request, $slug)
     {
-        $note = Note::slug($slug)->first();
-
-        $note->closed_user_id = Auth::id();
-        $note->closed_at = Carbon::now();
-        $note->save();
+        $request->request->add([
+            'slug' => $slug
+        ]);
+        
+        resolve('NoteService')->update($request);
 
         return back()->with('success', trans('gitscrum.updated-successfully'));
     }
@@ -43,7 +37,7 @@ class NoteController extends Controller
     public function destroy($id)
     {
         $note = Note::find($id);
-            //->where('user_id', Auth::user()->id)->firstOrFail();
+        //->where('user_id', Auth::user()->id)->firstOrFail();
         $note->delete();
 
         return back()->with('success', trans('gitscrum.deleted-successfully'));
