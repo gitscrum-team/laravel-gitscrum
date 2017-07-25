@@ -131,43 +131,42 @@ class IssueController extends Controller
 
     public function statusUpdate(Request $request, $slug = null, $status = 0)
     {
-        if (!isset($request->status_id)) {
-            $request->status_id = $status;
-        }
+        $request->status_id = $request->status_id ?? $status;
 
         if ($request->ajax()) {
-            $response = resolve('IssueService')->setRequest($request)
-                ->updateStatusByJson();
+            $status = false;
 
-            if ($response) {
-                return response()->json([
-                    'success' => true,
-                ]);
+            if ($response = resolve('IssueService')->setRequest($request)
+                ->updateStatusByJson()) {
+                $status = true;
             }
 
             return response()->json([
-                'success' => false,
+                'success' => $status,
             ]);
-        } else {
-            $request->slug = $slug;
-            resolve('IssueService')->setRequest($request)->updateStatus();
-
-            return back()->with('success', trans('gitscrum.updated-successfully'));
         }
+
+        $request->slug = $slug;
+        
+        resolve('IssueService')->setRequest($request)->updateStatus();
+
+        return back()->with('success', trans('gitscrum.updated-successfully'));
     }
 
     public function destroy(Request $request)
     {
         $issue = Issue::slug($request->slug)->firstOrFail();
 
+        [$route, $params] = ['sprints.show',
+                            ['slug' => $issue->sprint->slug]];
+
         if (isset($issue->userStory)) {
-            $redirect = redirect()->route('user_stories.show', ['slug' => $issue->userStory->slug]);
-        } else {
-            $redirect = redirect()->route('sprints.show', ['slug' => $issue->sprint->slug]);
+            [$route, $params] = ['user_stories.show',
+                                ['slug' => $issue->userStory->slug]];
         }
 
         $issue->delete();
 
-        return $redirect;
+        return redirect()->route($route, $params);
     }
 }
