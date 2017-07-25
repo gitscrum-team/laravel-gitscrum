@@ -142,7 +142,8 @@ return [
         'ConfigStatusService',
         'FavoriteService',
         'IssueService',
-        'LabelService'
+        'LabelService',
+        'NoteService'
     ],
 
     /*
