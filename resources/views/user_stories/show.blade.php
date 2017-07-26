@@ -33,8 +33,8 @@
 
 @section('main-title')
 <span class="label label-danger"
-     style="background-color:#{{$userStory->priority->color}}">
-        {{$userStory->priority->title}}</span>
+     style="background-color:#{{@$userStory->priority->color}}">
+        {{@$userStory->priority->title}}</span>
 <span>{{$userStory->title}}</span>
 @endsection
 
