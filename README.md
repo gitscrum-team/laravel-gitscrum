@@ -56,7 +56,7 @@ GitScrum can be integrated with **Github** or **Gitlab**.
 
 - **Sprint Backlog** is the property of the development team and all included estimates are provided by development team. Often an accompanying sprint planning is the board used to see and change state of the issues.
 
-	**Features**: Sprint planning using Kanban board, burndown chart, definition done checklist, effort, attachments, activities, comments and issues.
+	**Features**: Sprint planning using Kanban board, burndown chart, definition of done checklist, effort, attachments, activities, comments and issues.
 
 - **Issue** is added in user story to one sprint backlog, or directly in sprint backlog. Generally, each issue should be small enough to be easily completed within a single day.
 
@@ -68,7 +68,7 @@ GitScrum can be integrated with **Github** or **Gitlab**.
 
 The requirements to Laravel GitScrum application is:
 
-- **PHP - Supported Versions**: >= 7.x
+- **PHP - Supported Versions**: >= 7.1
 - **Webserver**: Nginx or Apache
 - **Database**: MySQL, or Maria DB
 
