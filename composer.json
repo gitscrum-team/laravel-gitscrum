@@ -25,6 +25,7 @@
     "require": {
         "php": ">=7.1",
         "laravel/framework": "5.4.*",
+        "tymon/jwt-auth": "0.5.*",
         "phploc/phploc": "*",
         "intervention/image": "^2.3",
         "socialiteproviders/gitlab": "^3.0",
@@ -47,8 +48,7 @@
             "database"
         ],
         "psr-4": {
-            "GitScrum\\": "app/",
-            "App\\": "app/"
+            "GitScrum\\": "app/"
         }
     },
     "autoload-dev": {
