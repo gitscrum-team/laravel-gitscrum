@@ -7,30 +7,22 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false">
-    <testsuites>
-        <testsuite name="Application Test Suite">
-            <directory suffix="Test.php">./tests</directory>
-        </testsuite>
-        <testsuite name="default">
-            <file>./tests/integration/DashboardTest.php</file>
-            <file>./tests/unit/UserTest.php</file>
-            <file>./tests/unit/SprintTest.php</file>
-            <file>./tests/unit/ProductBacklogTest.php</file>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./app</directory>
-        </whitelist>
-    </filter>
-    <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_DRIVER" value="sync"/>
-        <env name="DB_CONNECTION" value="testing"/>
-        <env name="DB_DATABASE" value="testing"/>
-        <env name="APP_PAGINATE" value="10"/>
-    </php>
+         stopOnFailure="false"
+         syntaxCheck="false">
+<testsuites>
+    <testsuite name="Feature Tests">
+        <directory suffix="Test.php">./tests/Feature</directory>
+    </testsuite>
+</testsuites>
+<filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">./app</directory>
+    </whitelist>
+</filter>
+<php>
+    <env name="APP_ENV" value="testing"/>
+    <env name="CACHE_DRIVER" value="array"/>
+    <env name="SESSION_DRIVER" value="array"/>
+    <env name="QUEUE_DRIVER" value="sync"/>
+</php>
 </phpunit>
