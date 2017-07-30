@@ -9,5 +9,6 @@ class JwtAuthenticateTest extends TestCase
 {
     public function testJwtAuthTest_Login()
     {
+        $this->assertTrue(true);
     }
 }
