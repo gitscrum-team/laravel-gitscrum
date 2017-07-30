@@ -213,7 +213,20 @@ PROXY_PASS=
 
 ## Questions and issues
 
-The [github issue tracker](https://github.com/GitScrum-Community/laravel-gitscrum/issues) is **_only_** for bug reports and feature requests. Anything else, such as questions for help in using the Laravel Gitscrum, should be posted in [StackOverflow](http://stackoverflow.com/questions/tagged/gitscrum) under tag `gitscrum`.
+#### Learn how Laravel GitScrum has helped thousands of developers
+
+<table>
+<tr>
+<td><a href="https://gitscrum.com/community/viewforum.php?f=3"><img src="https://gitscrum.com/community/images/gitscrum/card-ideaexchange.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
+<td><a href="https://gitscrum.com/community/viewforum.php?f=4"><img src="https://gitscrum.com/community/images/gitscrum/card-thecafe.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
+<td><a href="https://gitscrum.com/community/viewforum.php?f=7"><img src="https://gitscrum.com/community/images/gitscrum/card-feedback_help.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
+</tr>
+<tr>
+<td><a href="https://gitscrum.com/community/viewforum.php?f=6"><img src="https://gitscrum.com/community/images/gitscrum/card-announcements.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
+<td><a href="https://gitscrum.com/community/viewforum.php?f=5"><img src="https://gitscrum.com/community/images/gitscrum/card-market.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
+<td><a href="https://gitscrum.com/community/viewforum.php?f=8"><img src="https://gitscrum.com/community/images/gitscrum/card-themes.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
+</tr>
+</table>
 
 ### Do you need help?
 
