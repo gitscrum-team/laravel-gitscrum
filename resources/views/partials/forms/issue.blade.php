@@ -24,8 +24,8 @@
             <select name="sprint_id" class="form-control">
                 @foreach ($obj->productBacklog->sprints()->get() as $sprint)
                     <option 
-                    	@if(isset($issue->sprint_id) && $issue->sprint_id = $sprint->id) selected="selected" 
-                    	@elseif(isset($obj->id) && $obj->id = $sprint->id) selected = "selected"
+                    	@if(isset($issue->sprint_id) && $issue->sprint_id == $sprint->id) selected="selected" 
+                    	@elseif(isset($obj->id) && $obj->id == $sprint->id) selected = "selected"
                     	@endif
                         value="{{$sprint->id}}">{{$sprint->title}} - {{$sprint->timebox}}</option>
                 @endforeach
