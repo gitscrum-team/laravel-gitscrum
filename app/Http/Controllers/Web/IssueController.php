@@ -35,8 +35,16 @@ class IssueController extends Controller
                 ->with('issues.sprint')
                 ->with('issues.configEffort')
                 ->first();
-
-            $issues = $sprint->issues;
+            
+            //when viewing from sprint planning, issues need to be passed in an array indexed by their status, so they can be put in the appropriate kanban columns
+            $is = $sprint->issues;
+            $issues = array();
+            foreach($is as $i) {
+                $issues[$i->config_status_id] = array();
+            }
+            foreach($is as $i) {
+                $issues[$i->config_status_id][] = $i;
+            }
         } else {
             $sprint = null;
             $issues = Auth::user()->issues()
