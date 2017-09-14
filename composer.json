@@ -30,8 +30,8 @@
         "laravel/framework": "5.4.*",
         "nesbot/carbon": "^1.21",
         "phploc/phploc": "*",
-        "renatomarinho/laravel-blade-minify": "^1.0",
         "renatomarinho/laravel-multi-language": ">=1.0.0",
+        "renatomarinho/laravel-page-speed": ">=1.1.0",
         "socialiteproviders/gitlab": "^3.0",
         "spatie/laravel-fractal": "^4.0",
         "tymon/jwt-auth": "0.5.*"
