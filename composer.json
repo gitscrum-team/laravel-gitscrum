@@ -24,16 +24,17 @@
     ],
     "require": {
         "php": ">=7.1",
-        "laravel/framework": "5.4.*",
-        "tymon/jwt-auth": "0.5.*",
-        "phploc/phploc": "*",
-        "intervention/image": "^2.3",
-        "socialiteproviders/gitlab": "^3.0",
-        "nesbot/carbon": "^1.21",
-        "doctrine/dbal": "~2.5",
         "barryvdh/laravel-debugbar": "^2.2",
+        "doctrine/dbal": "~2.5",
+        "intervention/image": "^2.3",
+        "laravel/framework": "5.4.*",
+        "nesbot/carbon": "^1.21",
+        "phploc/phploc": "*",
+        "renatomarinho/laravel-blade-minify": "^1.0",
         "renatomarinho/laravel-multi-language": ">=1.0.0",
-        "spatie/laravel-fractal": "^4.0"
+        "socialiteproviders/gitlab": "^3.0",
+        "spatie/laravel-fractal": "^4.0",
+        "tymon/jwt-auth": "0.5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
