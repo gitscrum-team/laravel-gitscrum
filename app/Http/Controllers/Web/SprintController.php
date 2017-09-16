@@ -103,6 +103,11 @@ class SprintController extends Controller
             return redirect()->route('sprints.index');
         }
 
+        if ($sprint->user_id !== Auth()->user()->id && $sprint->is_private) {
+            return redirect()->route('sprints.index')
+                ->with('error', trans('gitscrum.private-sprint'));
+        }
+
         $configStatus = ConfigStatus::type('sprints')->get();
 
         return view('sprints.show')

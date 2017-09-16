@@ -6,7 +6,7 @@
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array (
+return array (
   'sprints' => 'Sprints',
   'issue-type' => 'Tipo de issue',
   'search-issue-type-by-name...' => 'Buscar un issue por su nombre...',
@@ -188,4 +188,5 @@
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => '¡Felicidades! El product backlog ha sido actualizado correctamente',
   'favorited-successfully' => 'Añadido a favoritos correctamente',
   'unfavorited-successfully' => 'Eliminado de favoritos correctamente',
+  'private-sprint' => 'Este sprint es privado, sólo el propietario puede accesarlo',
 );
