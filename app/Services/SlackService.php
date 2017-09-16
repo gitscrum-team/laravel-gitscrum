@@ -17,9 +17,6 @@ class SlackService implements SlackInterface
 
     public function __construct()
     {
-        $channel = env('SLACK_CHANNEL', '');
-        $username = env('SLACK_BOT_NAME', '');
-        $webhook = env('SLACK_WEBHOOK', '');
         $this->settings = [
             'channel' => env('SLACK_CHANNEL', ''),
             'username' => env('SLACK_BOT_NAME', ''),
@@ -71,7 +68,9 @@ class SlackService implements SlackInterface
                 $usersAssigned = [];
                 
                 foreach ($content['assigned_to'] as $username) {
-                    $usersAssigned[] = "@{$username}";
+                    if (! empty($username)) {
+                        $usersAssigned[] = "@{$username}";
+                    }
                 }
 
                 $usersAssigned = implode(' ', $usersAssigned);
