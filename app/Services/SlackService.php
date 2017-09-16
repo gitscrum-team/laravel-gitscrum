@@ -3,6 +3,7 @@
 namespace GitScrum\Services;
 
 use GitScrum\Contracts\SlackInterface;
+use Log;
 use Maknz\Slack\Client;
 
 
@@ -16,6 +17,9 @@ class SlackService implements SlackInterface
 
     public function __construct()
     {
+        $channel = env('SLACK_CHANNEL', '');
+        $username = env('SLACK_BOT_NAME', '');
+        $webhook = env('SLACK_WEBHOOK', '');
         $this->settings = [
             'channel' => env('SLACK_CHANNEL', ''),
             'username' => env('SLACK_BOT_NAME', ''),
@@ -36,6 +40,13 @@ class SlackService implements SlackInterface
      */
     public function send($content, $type = 0)
     {
+        if (empty($this->client->getEndpoint()) || empty($this->client->getDefaultChannel()) 
+            || empty($this->client->getDefaultUsername())) {
+            Log::info('One or more settings are missing, Slack notifications are not availables');
+
+            return;
+        }
+
         $message = $this->buildMessage($content, $type);
         $this->client->attach([
             'title' => $content['title'],
