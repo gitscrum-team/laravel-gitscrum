@@ -6,7 +6,7 @@
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array (
+return array (
   'sprints' => 'Sprints',
   'issue-type' => 'Issue Type',
   'search-issue-type-by-name...' => 'Search issue type by name...',
@@ -187,4 +187,7 @@
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => 'Congratulations! The Product Backlog has been successfully updated',
   'favorited-successfully' => 'Favorited',
   'unfavorited-successfully' => 'Unfavorited',
+  'save' => 'Save',
+  'issue-status-updated' => '@:username updated the issue to: *:status*',
+  'issue-assigned' => '@:assignedBy assigned an issue to: :assignedTo',
 );

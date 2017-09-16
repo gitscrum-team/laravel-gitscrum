@@ -121,3 +121,5 @@ Route::group(['prefix' => 'wizard', 'middleware' => ['user.authenticated']], fun
     Route::post('/step2', 'Web\WizardController@step2')->name('wizard.step2');
     Route::get('/step3', 'Web\WizardController@step3')->name('wizard.step3');
 });
+
+Route::put('/slack', 'Web\SlackUserController@update')->name('slack.update')->middleware('user.authenticated');

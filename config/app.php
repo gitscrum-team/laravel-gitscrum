@@ -198,6 +198,7 @@ return [
         GitScrum\Providers\ModelObserverProvider::class,
         GitScrum\Providers\EventServiceProvider::class,
         GitScrum\Providers\RouteServiceProvider::class,
+        GitScrum\Providers\SlackServiceProvider::class,
 
         SocialiteProviders\Manager\ServiceProvider::class,
 
