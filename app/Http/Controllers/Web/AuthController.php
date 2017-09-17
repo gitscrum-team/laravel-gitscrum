@@ -42,6 +42,10 @@ class AuthController extends Controller
             case 'github':
                 return Socialite::driver('github')->scopes(['repo', 'notifications', 'read:org'])->redirect();
                 break;
+            case 'bitbucket':
+                return Socialite::driver('bitbucket')->redirect();
+                break;
+
             default:
                 throw new InvalidArgumentException(trans('gitscrum.provider-was-not-set'));
                 break;
@@ -51,13 +55,10 @@ class AuthController extends Controller
     public function handleProviderCallback($provider)
     {
         $providerUser = Socialite::driver($provider)->user();
+
         $data = app(ucfirst($provider))->tplUser($providerUser);
 
-        $user = User::where('provider_id', '=', $data['provider_id'])->first();
-
-        if (!isset($user)) {
-            $user = User::create($data);
-        }
+        $user = User::updateOrCreate(['provider_id' => $data['provider_id']],$data);
 
         Auth::loginUsingId($user->id);
 

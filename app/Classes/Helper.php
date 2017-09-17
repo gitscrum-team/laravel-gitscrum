@@ -119,13 +119,16 @@ class Helper
                 'Content-Length: '.strlen($postFields), ]);
         }
 
-        //curl_setopt($ch, CURLOPT_HTTPHEADER,  ['Authorization: Bearer OAUTH-TOKEN']);
+        if (strtolower($user->provider) == 'bitbucket')
+        {
+            curl_setopt($ch, CURLOPT_HTTPHEADER,  ['Authorization: Bearer '.$user->token]);
+        }
 
         if (!is_null($customRequest)) {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $customRequest); //'PATCH'
         }
 
-        if ($auth && isset($user->username)) {
+        if ($auth && isset($user->username) && strtolower($user->provider) != 'bitbucket') {
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
             curl_setopt($ch, CURLOPT_USERPWD, $user->username.':'.$user->token);
         }

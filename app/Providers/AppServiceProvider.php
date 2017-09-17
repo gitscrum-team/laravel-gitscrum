@@ -12,6 +12,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use GitScrum\Classes\Github;
 use GitScrum\Classes\Gitlab;
+use GitScrum\Classes\Bitbucket;
 use Config;
 
 class AppServiceProvider extends ServiceProvider
@@ -42,6 +43,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton('Gitlab', function () {
             return new Gitlab();
+        });
+
+        $this->app->singleton('Bitbucket', function () {
+            return new Bitbucket();
         });
     }
 

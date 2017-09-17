@@ -53,7 +53,7 @@ Laravel GitScrum in gitter.im : [https://gitter.im/laravel-gitscrum/Lobby](https
 
 ### Features
 
-GitScrum can be integrated with **Github** or **Gitlab**.
+GitScrum can be integrated with **Github** or **Gitlab** or **Bitbucket**.
 
 - **Product Backlog** contains the Product Owner's assessment of business value
 
@@ -193,6 +193,25 @@ Scopes: api and read_user
 GITLAB_KEY=XXXXX -> Application Id
 GITLAB_SECRET=XXXXXXXXXXXXXXXXXX
 GITLAB_INSTANCE_URI=https://gitlab.com/
+```
+
+#### Bitbucket
+
+You must create a new Bitbucket OAuth Consumer, visit [Bitbucket new consumer guide](https://confluence.atlassian.com/bitbucket/integrate-another-application-through-oauth-372605388.html), and make sure you give write permissions when creating the consumer specially on (repositories , issues)
+
+```
+name: gitscrum
+Callback URL: http://{URL is the SAME APP_URL}/auth/provider/bitbucket/callback
+URL: http://{URL is the SAME APP_URL}
+Uncheck (This is a private consumer)
+```
+
+.env file
+
+```
+BITBUCKET_CLIENT_ID=XXXXX -> Bitbucket Key
+BITBUCKET_CLIENT_SECRET=XXXXXXXXXXXXXXXXXX Bitbucket Secret
+BITBUCKET_INSTANCE_URI=https://api.bitbucket.org
 ```
 
 #### Proxy
