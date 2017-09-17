@@ -207,9 +207,7 @@ class Bitbucket implements ProviderInterface
         $organization = Organization::where('username', $owner)
             ->where('provider', 'bitbucket')->first()->users();
 
-        if (!$organization->userActive()->count()) {
-            $organization->attach($userId);
-        }
+        $organization->syncWithoutDetaching($userId);
     }
 
     public function createBranches($owner, $product_backlog_id, $repo, $providerId = null)
