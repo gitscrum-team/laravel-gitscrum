@@ -53,7 +53,7 @@
                     {{$status->title}}
                     (
                     @if(isset($issues[$status->id]))
-                        <span>{{count($issues[$status->id])}}</span>
+                        <span>{{$issues[$status->id]->count()}}</span>
                     @else
                         <span>0</span>
                     @endif
