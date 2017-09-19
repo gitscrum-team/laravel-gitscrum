@@ -48,8 +48,8 @@ class IssueController extends Controller
     private function eagerLoad($query , $relation = '')
     {
         $eagerLoaders = collect(['user','users','commits','statuses',
-            'comments','attachments','type',
-            'productBacklog','sprint','configEffort']);
+                                 'comments','attachments','type',
+                                 'productBacklog','sprint','configEffort']);
 
         $eagerLoaders->each(function($loader) use (&$query,$relation){
             $query = $query->with($relation . $loader);
