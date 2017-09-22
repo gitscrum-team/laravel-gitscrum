@@ -8,10 +8,10 @@ class Store
 {
     public function response($request,$issue)
     {
-        return $request->ajax() ? $this->toAjax($request,$issue) : $this->toHtml($request,$issue);
+        return $request->ajax() ? $this->toAjax($request,$issue) : $this->toHtml($issue);
     }
 
-    private function toHtml($request,$issue)
+    private function toHtml($issue)
     {
         return redirect()->route('issues.show', ['slug' => $issue->slug])
                          ->with('success', trans('gitscrum.congratulations-the-issue-has-been-created-with-successfully'));
