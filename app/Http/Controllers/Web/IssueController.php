@@ -16,6 +16,7 @@ use GitScrum\Models\Organization;
 use GitScrum\Models\ConfigStatus;
 use Carbon\Carbon;
 use Auth;
+use GitScrum\Http\Responses\Issue\Store as IssueStoreResponse;
 
 class IssueController extends Controller
 {
@@ -92,10 +93,9 @@ class IssueController extends Controller
 
     public function store(IssueRequest $request)
     {
-        $response = resolve('IssueService')->create($request);
+        $issue = resolve('IssueService')->create($request);
 
-        return redirect()->route('issues.show', ['slug' => $response->slug])
-            ->with('success', trans('gitscrum.congratulations-the-issue-has-been-created-with-successfully'));
+        return (new IssueStoreResponse())->response($request,$issue);
     }
 
     public function show($slug)

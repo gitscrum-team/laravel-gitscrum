@@ -1,4 +1,4 @@
-<form action="{{route($route, ['slug'=>@$issue->slug])}}" method="post" class="form-horizontal">
+<form id="storeIssueForm" action="{{route($route, ['slug'=>@$issue->slug])}}" method="post" class="form-horizontal">
     {{ csrf_field() }}
     <input type="hidden" name="product_backlog_id" value="{{$obj->productBacklog->id or $issue->productBacklog->id}}">
 
@@ -86,18 +86,65 @@
     </div>
     <div class="hr-line-dashed"></div>
     <div class="form-group">
-        <label class="col-sm-3 control-label">{{trans('gitscrum.planning-pocker')}}</label>
-        <div class="col-sm-9">
+        <label class="col-sm-2">{{trans('gitscrum.planning-pocker')}}</label>
+        <div class="col-sm-3">
             <div class="i-checks"><input type="checkbox" value="" checked=""> <i></i></div>
             <span class="help-block m-b-none">{{trans('gitscrum.collaborative-estimation')}}</span>
         </div>
+        <div class="col-sm-3"></div>
+        <label class="col-sm-2">{{trans('gitscrum.keep-adding')}}</label>
+        <div class="col-sm-2">
+            <div class="i-checks"><input id="keepAddingIssue" type="checkbox" value="" checked=""> <i></i></div>
+        </div>
     </div>
     <div class="hr-line-dashed"></div>
+    <div id="issueModalMessage" style="display: none;"  class="alert alert-success">
+
+    </div>
     @include('partials.includes.form-btn-submit', ['action' => @$action])
 </form>
 
 <script>
 $(function(){
-    $('[data-provide="markdown"]').markdown({autofocus:false,savable:false})
-})
+    $('[data-provide="markdown"]').markdown({autofocus:false,savable:false});
+
+    $( "#storeIssueForm" ).on('submit',function( event ) {
+
+        if (!$('#keepAddingIssue').is(':checked'))
+        {
+            $(this).submit();
+        }
+
+        event.preventDefault();
+
+        $.ajax({
+            'url' : $(this).attr('action'),
+            'method' : 'POST',
+            'data' : $(this).serialize(),
+            'success' : function (response) {
+
+                for(classSelector in response.data)
+                {
+                    $('.'+classSelector).html(response.data[classSelector]);
+                }
+
+                $('#storeIssueForm').find("input[type=text], textarea").val("");
+
+                $('#issueModalMessage').show().text('').attr('class','alert alert-success').text(response.message);
+            },
+            'error' : function(response){
+
+                errorMessages = [];
+
+                for (errorKey in response.responseJSON)
+                {
+                    errorMessages.push(response.responseJSON[errorKey]);
+                }
+
+                $('#issueModalMessage').show().text('').attr('class','alert alert-danger').text(errorMessages.join(' , '));
+            }
+        });
+
+    });
+});
 </script>

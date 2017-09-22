@@ -6,7 +6,8 @@
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array (
+
+return array (
   'sprints' => 'السبرنتز',
   'issue-type' => 'نوع المسئله',
   'search-issue-type-by-name...' => 'ابحث عن نوع المسئله بالأسم ...',
@@ -187,4 +188,5 @@
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => 'تهانينا ! لقد تم تعديل مهام المشروع بنجاح',
   'favorited-successfully' => 'تم الاضافة الى المفضلة بنجاح',
   'unfavorited-successfully' => 'تم الحذف من المفضلة بنجاح',
+  'keep-adding' => 'أستمر بالإضافه'
 );
