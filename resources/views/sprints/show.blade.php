@@ -62,7 +62,7 @@
         class="btn btn-block btn-primary"
         data-toggle="modal" data-target="#modalLarge"><strong>{{trans('gitscrum.create-issue')}}</strong></a>
 
-    @include('partials.boxes.chart-donut', ['list' => $sprint->issueStatus()])
+    <div class="issueStatusChart">@include('partials.boxes.chart-donut', ['list' => $sprint->issueStatus()])</div>
 
     <div class="">
         @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($sprint, 'issues')])
@@ -80,14 +80,14 @@
         </tr>
         <tr>
             <td width="50%">
-                <h6>{{$sprint->issues->count()}} {{trans('gitscrum.issues')}}</h6>
+                <h6><div class="issuesCount">{{$sprint->issues->count()}}</div> {{trans('gitscrum.issues')}}</h6>
             </td>
             <td width="50%"></td>
         </tr>
         </tbody>
     </table>
 
-    @include('partials.boxes.issue-type', ['list' => $sprint->issueTypes()])
+    <div class="issueTypes">@include('partials.boxes.issue-type', ['list' => $sprint->issueTypes()])</div>
 
     @include('partials.boxes.note', [ 'list' => $sprint,
         'type'=> 'sprints', 'title' => trans('gitscrum.definition-of-done-checklist'),
@@ -124,7 +124,7 @@
     </p>
     @endif
 
-    @include('partials.boxes.burndown', ['title' => ('Burndown Chart'), 'list' => Helper::burndown($sprint)])
+    <div class="issueBurndownChart">@include('partials.boxes.burndown', ['title' => ('Burndown Chart'), 'list' => Helper::burndown($sprint)])</div>
 
     <div class="clearfix"></div>
 
@@ -133,7 +133,7 @@
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab-issues">
                 <i class="fa fa-list-alt" aria-hidden="true"></i>
-                {{trans('gitscrum.issues')}} ({{$sprint->issues->count()}})</a></li>
+                    {{trans('gitscrum.issues')}} (<div class="issuesCount">{{$sprint->issues->count()}}</div>)</a></li>
             <li class=""><a data-toggle="tab" href="#tab-comments">
                 <i class="fa fa-comments" aria-hidden="true"></i>
                 {{trans('gitscrum.comments')}} ({{$sprint->comments->count()}})</a></li>
@@ -146,7 +146,7 @@
             <div id="tab-issues" class="tab-pane active">
                 <div class="panel-body">
                     @include('partials.boxes.search-min')
-                    @include('partials.boxes.issue', ['list' => $sprint->issues, 'messageEmpty' => trans('gitscrum.this-does-not-have-any-issue-yet')])
+                    <div class="issuesBox">@include('partials.boxes.issue', ['list' => $sprint->issues, 'messageEmpty' => trans('gitscrum.this-does-not-have-any-issue-yet')])</div>
                 </div>
             </div>
             <div id="tab-comments" class="tab-pane">
