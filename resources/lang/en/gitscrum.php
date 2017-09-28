@@ -188,4 +188,8 @@ return array (
   'favorited-successfully' => 'Favorited',
   'unfavorited-successfully' => 'Unfavorited',
   'private-sprint' => 'This sprint is private, only owner can access it',
+  'save' => 'Save',
+  'issue-status-updated' => '@:username updated the issue to: *:status*',
+  'issue-assigned' => '@:assignedBy assigned an issue to: :assignedTo',
+  'sprint-cannot-be-blank' => 'Sprint can not be blank',
 );

@@ -9,6 +9,7 @@
 namespace GitScrum\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
+use GitScrum\Contracts\SlackInterface as Slack;
 use GitScrum\Http\Requests\IssueRequest;
 use GitScrum\Models\Sprint;
 use GitScrum\Models\Issue;
@@ -137,7 +138,7 @@ class IssueController extends Controller
             ->with('success', trans('gitscrum.congratulations-the-issue-has-been-edited-with-successfully'));
     }
 
-    public function statusUpdate(Request $request, $slug = null, $status = 0)
+    public function statusUpdate(Request $request, Slack $slack, $slug = null, $status = 0)
     {
         $request->status_id = $request->status_id ?? $status;
 
@@ -157,6 +158,17 @@ class IssueController extends Controller
         $request->slug = $slug;
         
         resolve('IssueService')->setRequest($request)->updateStatus();
+
+        $issue = Issue::slug($slug)->firstOrFail();
+
+        $content = [
+            'title' => "{$issue->title}",
+            'url' => url("issues/status-update/{$slug}"),
+            'updated_by' => Auth::user()->slack_username,
+            'status' => $status,
+        ];
+
+        $slack->send($content, 2);
 
         return back()->with('success', trans('gitscrum.updated-successfully'));
     }

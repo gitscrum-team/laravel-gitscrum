@@ -28,6 +28,7 @@
         "doctrine/dbal": "~2.5",
         "intervention/image": "^2.3",
         "laravel/framework": "5.4.*",
+        "maknz/slack": "^1.7",
         "nesbot/carbon": "^1.21",
         "phploc/phploc": "*",
         "renatomarinho/laravel-multi-language": ">=1.0.0",

@@ -27,6 +27,10 @@
 
             <div class="clearfix"></div>
 
+            @include('partials.forms.slack')
+            
+            <div class="clearfix"></div>
+
             @each('partials.lists.activities-complete', $activities, 'activity', 'partials.lists.no-items')
 
         </div>

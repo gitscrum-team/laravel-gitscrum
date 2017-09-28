@@ -156,7 +156,8 @@ DB_PASSWORD=XXXXX
 **Remember**: Create the database for GitScrum before run artisan command.
 
 ```
-php artisan migrate --seed
+php artisan migrate
+php artisan db:seed --class=SettingSeeder
 ```
 
 #### Github
