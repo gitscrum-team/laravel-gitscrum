@@ -6,7 +6,6 @@
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-
 return array (
   'sprints' => 'Sprints',
   'issue-type' => 'Issue Type',
@@ -189,4 +188,9 @@ return array (
   'favorited-successfully' => 'Favorited',
   'unfavorited-successfully' => 'Unfavorited',
   'keep-adding' => 'Keep Adding'
+  'private-sprint' => 'This sprint is private, only owner can access it',
+  'save' => 'Save',
+  'issue-status-updated' => '@:username updated the issue to: *:status*',
+  'issue-assigned' => '@:assignedBy assigned an issue to: :assignedTo',
+  'sprint-cannot-be-blank' => 'Sprint can not be blank',
 );

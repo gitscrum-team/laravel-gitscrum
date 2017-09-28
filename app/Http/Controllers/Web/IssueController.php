@@ -9,6 +9,7 @@
 namespace GitScrum\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
+use GitScrum\Contracts\SlackInterface as Slack;
 use GitScrum\Http\Requests\IssueRequest;
 use GitScrum\Models\Sprint;
 use GitScrum\Models\Issue;
@@ -22,49 +23,7 @@ class IssueController extends Controller
 {
     public function index($slug)
     {
-        if ($slug) {
-            $sprint = Sprint::slug($slug)
-                ->with('issues.user')
-                ->with('issues.users')
-                ->with('issues.commits')
-                ->with('issues.statuses')
-                ->with('issues.status')
-                ->with('issues.comments')
-                ->with('issues.attachments')
-                ->with('issues.type')
-                ->with('issues.productBacklog')
-                ->with('issues.sprint')
-                ->with('issues.configEffort')
-                ->first();
-            
-            //when viewing from sprint planning, issues need to be passed in an array indexed by their status, so they can be put in the appropriate kanban columns
-            $is = $sprint->issues;
-            $issues = array();
-            foreach($is as $i) {
-                $issues[$i->config_status_id] = array();
-            }
-            foreach($is as $i) {
-                $issues[$i->config_status_id][] = $i;
-            }
-        } else {
-            $sprint = null;
-            $issues = Auth::user()->issues()
-                ->with('user')
-                ->with('users')
-                ->with('commits')
-                ->with('statuses')
-                ->with('status')
-                ->with('comments')
-                ->with('attachments')
-                ->with('type')
-                ->with('productBacklog')
-                ->with('sprint')
-                ->with('configEffort')
-                ->get()
-                ->sortBy('position')->groupBy('config_status_id');
-        }
-
-        $configStatus = ConfigStatus::type('issues')->get();
+        [$sprint,$issues] = $this->sprintWithIssues($slug);
 
         if (!is_null($sprint) && !count($sprint)) {
             return redirect()->route('sprints.index');
@@ -72,8 +31,33 @@ class IssueController extends Controller
 
         return view('issues.index')
             ->with('sprint', $sprint)
-            ->with('issues', $issues)
-            ->with('configStatus', $configStatus);
+            ->with('issues', $issues->sortBy('position')->groupBy('config_issue_effort_id'))
+            ->with('configStatus', ConfigStatus::type('issues')->get());
+    }
+
+    private function sprintWithIssues($slug)
+    {
+        if ($slug)
+        {
+            $sprint = $this->eagerLoad(Sprint::slug($slug),'issues.')->first();
+
+            return [$sprint , $sprint->issues];
+        }
+
+        return [ null , $this->eagerLoad(Auth::user()->issues())->get()];
+    }
+
+    private function eagerLoad($query , $relation = '')
+    {
+        $eagerLoaders = collect(['user','users','commits','statuses',
+                                 'comments','attachments','type',
+                                 'productBacklog','sprint','configEffort']);
+
+        $eagerLoaders->each(function($loader) use (&$query,$relation){
+            $query = $query->with($relation . $loader);
+        });
+
+        return $query;
     }
 
     public function create($scope, $slug, $parent_id = null)
@@ -137,7 +121,7 @@ class IssueController extends Controller
             ->with('success', trans('gitscrum.congratulations-the-issue-has-been-edited-with-successfully'));
     }
 
-    public function statusUpdate(Request $request, $slug = null, $status = 0)
+    public function statusUpdate(Request $request, Slack $slack, $slug = null, $status = 0)
     {
         $request->status_id = $request->status_id ?? $status;
 
@@ -157,6 +141,17 @@ class IssueController extends Controller
         $request->slug = $slug;
         
         resolve('IssueService')->setRequest($request)->updateStatus();
+
+        $issue = Issue::slug($slug)->firstOrFail();
+
+        $content = [
+            'title' => "{$issue->title}",
+            'url' => url("issues/status-update/{$slug}"),
+            'updated_by' => Auth::user()->slack_username,
+            'status' => $status,
+        ];
+
+        $slack->send($content, 2);
 
         return back()->with('success', trans('gitscrum.updated-successfully'));
     }

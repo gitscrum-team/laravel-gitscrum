@@ -13,6 +13,7 @@ use GitScrum\Models\User;
 use Socialite;
 use Auth;
 use SocialiteProviders\Manager\Exception\InvalidArgumentException;
+use Session;
 
 class AuthController extends Controller
 {
