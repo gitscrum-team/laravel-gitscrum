@@ -17,7 +17,7 @@ return array (
   'labels' => 'Etiquetas',
   'label' => 'Etiqueta',
   'profile' => 'Perfil',
-  'cooperation' => 'Coopración',
+  'cooperation' => 'Cooperación',
   'issues-done' => 'Issues completados',
   'commits' => 'Commits',
   'dashboard' => 'Panel de control',
@@ -191,4 +191,5 @@ return array (
   'save' => 'Guardar',
   'issue-status-updated' => '@:username actualizó el estado del issue a: *:status*',
   'issue-assigned' => '@:assignedBy asignó un issue a: :assignedTo',
+  'sprint-cannot-be-blank' => 'El sprint no puede quedar vacío',
 );

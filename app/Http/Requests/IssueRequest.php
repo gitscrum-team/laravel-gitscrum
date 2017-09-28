@@ -32,6 +32,7 @@ class IssueRequest extends FormRequest
     {
         return [
             'title' => 'required|min:2|max:255',
+            'sprint_id' => 'required|integer',
         ];
     }
     /**
@@ -45,6 +46,7 @@ class IssueRequest extends FormRequest
             'title.required' => trans('gitscrum.issue-cannot-be-blank'),
             'title.min' => trans('gitscrum.issue-must-be-at-least-2-characters'),
             'title.max' => trans('gitscrum.issue-must-be-between-2-and-255-characters'),
+            'sprint_id.required' => trans('gitscrum.sprint-cannot-be-blank'),
         ];
     }
 
