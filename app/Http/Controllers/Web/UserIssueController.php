@@ -8,9 +8,11 @@
 
 namespace GitScrum\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
+use Auth;
+use GitScrum\Contracts\SlackInterface as Slack;
 use GitScrum\Models\Issue;
 use GitScrum\Models\User;
+use Illuminate\Http\Request;
 
 class UserIssueController extends Controller
 {
@@ -93,7 +95,7 @@ class UserIssueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, $slug, Slack $slack)
     {
         $members = $request->input('members');
 
@@ -103,6 +105,21 @@ class UserIssueController extends Controller
         $issue->users()->sync($members);
 
         if (!$request->ajax()) {
+            $users = User::whereIn('id', $members)->select('slack_username')->get();
+            $slackUsers = [];
+
+            foreach ($users as $user) {
+                $slackUsers[] = $user->slack_username;
+            }
+
+            $content = [
+                'title' => $issue->title,
+                'assigned_to' => $slackUsers,
+                'url' => route('issues.show', $issue->slug),
+                'assigned_by' => Auth::user()->slack_username,
+            ];
+            $slack->send($content, 1);
+
             return redirect()->back()->with('success', trans('gitscrum.updated-successfully'));
         }
     }

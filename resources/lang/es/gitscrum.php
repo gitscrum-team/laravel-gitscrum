@@ -188,5 +188,8 @@ return array (
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => '¡Felicidades! El product backlog ha sido actualizado correctamente',
   'favorited-successfully' => 'Añadido a favoritos correctamente',
   'unfavorited-successfully' => 'Eliminado de favoritos correctamente',
+  'save' => 'Guardar',
+  'issue-status-updated' => '@:username actualizó el estado del issue a: *:status*',
+  'issue-assigned' => '@:assignedBy asignó un issue a: :assignedTo',
   'sprint-cannot-be-blank' => 'El sprint no puede quedar vacío',
 );
