@@ -33,4 +33,10 @@ return [
         'instance_uri' => env('GITLAB_INSTANCE_URI'),
     ],
 
+    'bitbucket' => [
+        'client_id' => env('BITBUCKET_CLIENT_ID'),
+        'client_secret' => env('BITBUCKET_CLIENT_SECRET'),
+        'redirect' => env('APP_URL').'/auth/provider/bitbucket/callback',
+    ],
+
 ];

@@ -21,6 +21,10 @@
                     <i class="fa fa-gitlab" aria-hidden="true"></i>&nbsp; <strong>GitLab</strong>
             </a>
 
+            <a href="{{route('auth.provider', ['provider' => 'bitbucket'])}}" class="btn btn-lg btn-default btn-loader">
+                <i class="fa fa-bitbucket" aria-hidden="true"></i>&nbsp; <strong>Bitbucket</strong>
+            </a>
+
             <p><a href="https://gitscrum.com/community" target="_blank"><strong>GitScrum</strong> Community</a></p>
             <p class="small">The GitScrum Community is licensed under the
             <a href="https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md" target="_blank">MIT license</a></p>
