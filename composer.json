@@ -74,9 +74,7 @@
             "php artisan optimize"
         ]
     },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "version": "1.1.0"
 }
