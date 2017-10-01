@@ -30,7 +30,7 @@
             <div class="table-responsive">
                 <table class="table table-hover issue-tracker">
                     <tbody>
-                    @each('partials.lists.issues', $list, 'list', 'partials.lists.no-items')
+                    @each('partials.lists.'.$listPartial, $list, 'list', 'partials.lists.no-items')
                     </tbody>
                 </table>
             </div>
