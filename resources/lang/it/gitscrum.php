@@ -6,7 +6,8 @@
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array (
+
+return array (
   'sprints' => 'Sprint',
   'issue-type' => 'Tipo Issue',
   'search-issue-type-by-name...' => 'Cerca tipo issue per nome...',
@@ -187,5 +188,5 @@
   'congratulations-the-product-backlog-has-been-created-with-successfully' => 'Congratulazioni! Il Product Backlog è stato creato con successo',
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => 'Congratulazioni! Il Product Backlog è stato aggiornato con successo',
   'favorited-successfully' => 'Aggiunto con successo ai favoriti',
-  'unfavorited-successfully' => 'Rimosso con successo ai favoriti',
+  'unfavorited-successfully' => 'Rimosso con successo dai favoriti',
 );
