@@ -34,6 +34,7 @@ class SprintRequest extends FormRequest
             'title' => 'required|min:2|max:255',
             'date_start' => 'required',
             'date_finish' => 'required',
+            'product_backlog_id' => 'required|exists:product_backlogs,id',
         ];
     }
 
@@ -50,6 +51,8 @@ class SprintRequest extends FormRequest
             'title.max' => trans('gitscrum.title-must-be-between-2-and-255-characters'),
             'date_start.required' => trans('gitscrum.date-to-start-cannot-be-blank'),
             'date_finish.required' => trans('gitscrum.date-to-finish-cannot-be-blank'),
+            'product_backlog_id.required' => trans('gitscrum.product-backlog-id-required'),
+            'product_backlog_id.exists' => trans('gitscrum.product-backlog-id-exists'),
         ];
     }
 

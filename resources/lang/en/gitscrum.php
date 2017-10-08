@@ -193,4 +193,6 @@ return array (
   'issue-status-updated' => '@:username updated the issue to: *:status*',
   'issue-assigned' => '@:assignedBy assigned an issue to: :assignedTo',
   'sprint-cannot-be-blank' => 'Sprint can not be blank',
+  'product-backlog-id-required' => 'Product backlog id is required',
+  'product-backlog-id-exists' => 'Product backlog must exist in product_backlogs table',
 );
