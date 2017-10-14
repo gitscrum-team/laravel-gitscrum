@@ -1,5 +1,5 @@
 {
-    "name": "renatomarinho/laravel-gitscrum",
+    "name": "GitScrum-Community/laravel-gitscrum",
     "description": "GitScrum is a project to help developer team. Git + Scrum = Team More Productive ",
     "keywords": [
         "git",
@@ -75,6 +75,5 @@
         ]
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "version": "1.1.0"
+    "prefer-stable": true
 }
