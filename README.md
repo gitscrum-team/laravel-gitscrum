@@ -31,8 +31,7 @@ Community and Issues : <b>https://www.gitscrum.com/community</b>
 <hr>
 
 [![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2abfe5173e0b4565a2b1e3e345160939)](https://www.codacy.com/app/renatomarinho/laravel-gitscrum?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renatomarinho/laravel-gitscrum&amp;utm_campaign=Badge_Grade)
-[![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-gitscrum/downloads)](https://packagist.org/packages/renatomarinho/laravel-gitscrum)
+[![Total Downloads](https://poser.pugx.org/gitscrum-community/laravel-gitscrum/downloads)](https://packagist.org/packages/gitscrum-community/laravel-gitscrum)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md)
 
 <hr>
@@ -99,7 +98,7 @@ The requirements to Laravel GitScrum application is:
 ### Composer Package
 
 ```
-$ composer create-project renatomarinho/laravel-gitscrum --stability=stable --keep-vcs
+$ composer create-project gitscrum-community/laravel-gitscrum --stability=stable --keep-vcs
 $ cd laravel-gitscrum
 ```
 **Important**: If you have not yet installed composer: [Installation - Linux / Unix / OSX](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
