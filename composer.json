@@ -13,7 +13,6 @@
         "gitscrum"
     ],
     "license": "MIT",
-    "minimum-stability": "stable",
     "type": "application",
     "authors": [
         {
