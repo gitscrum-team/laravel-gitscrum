@@ -10,31 +10,29 @@
         "backlog",
         "issue",
         "laravel",
-        "gitscrum"
+        "gitscrum",
+        "gitscrum community edition"
     ],
     "license": "MIT",
     "type": "application",
     "authors": [
         {
             "name": "Renato Marinho",
-            "email": "renato.marinho@s2move.com",
-            "homepage": "http://renatomarinho.com"
+            "email": "renato.marinho@gitscrum.com",
+            "homepage": "https://gitscrum.com"
         }
     ],
     "require": {
         "php": ">=7.1",
-        "barryvdh/laravel-debugbar": "^2.2",
-        "doctrine/dbal": "~2.5",
-        "intervention/image": "^2.3",
-        "laravel/framework": "5.4.*",
+        "laravel/framework": "5.5.*",
         "maknz/slack": "^1.7",
         "nesbot/carbon": "^1.21",
         "phploc/phploc": "*",
         "renatomarinho/laravel-multi-language": ">=1.0.0",
-        "renatomarinho/laravel-page-speed": ">=1.1.0",
+        "renatomarinho/laravel-page-speed": "^1.8",
         "socialiteproviders/gitlab": "^3.0",
-        "spatie/laravel-fractal": "^4.0",
-        "tymon/jwt-auth": "0.5.*"
+        "tymon/jwt-auth": "0.5.*",
+        "spatie/laravel-fractal": "^5.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -46,7 +44,8 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database/seeds",
+            "database/factories"
         ],
         "psr-4": {
             "GitScrum\\": "app/"
@@ -57,22 +56,27 @@
             "Tests\\": "tests/"
         }
     },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
     "scripts": {
         "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "php artisan key:generate"
+            "@php artisan key:generate"
         ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
-        ],
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ]
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
 }
