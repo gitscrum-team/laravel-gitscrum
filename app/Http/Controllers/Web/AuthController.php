@@ -53,7 +53,7 @@ class AuthController extends Controller
 
         $data = app(ucfirst($provider))->tplUser($providerUser);
 
-        $user = User::updateOrCreate(['provider_id' => $data['provider_id']],$data);
+        $user = User::updateOrCreate(['provider_id' => $data['provider_id']], $data);
 
         Auth::loginUsingId($user->id);
 

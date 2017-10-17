@@ -113,9 +113,8 @@ class Helper
                 'Content-Length: '.strlen($postFields), ]);
         }
 
-        if (strtolower($user->provider) == 'bitbucket')
-        {
-            curl_setopt($ch, CURLOPT_HTTPHEADER,  ['Authorization: Bearer '.$user->token]);
+        if (strtolower($user->provider) == 'bitbucket') {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer '.$user->token]);
         }
 
         if (!is_null($customRequest)) {
@@ -137,7 +136,10 @@ class Helper
     public static function lengthAwarePaginator($collection, $page = 1)
     {
         $page = intval($page)?intval($page):1;
-        return new LengthAwarePaginator($collection->forPage($page, env('APP_PAGINATE')),
-            $collection->count(), env('APP_PAGINATE'));
+        return new LengthAwarePaginator(
+            $collection->forPage($page, env('APP_PAGINATE')),
+            $collection->count(),
+            env('APP_PAGINATE')
+        );
     }
 }

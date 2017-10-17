@@ -15,14 +15,14 @@ class ProductbacklogMiddleware
       *
       * @return mixed
       */
-     public function handle($request, Closure $next)
-     {
-         $total = Auth::user()->organizations()->count();
+    public function handle($request, Closure $next)
+    {
+        $total = Auth::user()->organizations()->count();
 
-         if (!$total) {
-             return redirect()->route('wizard.step1');
-         }
+        if (!$total) {
+            return redirect()->route('wizard.step1');
+        }
 
-         return $next($request);
-     }
+        return $next($request);
+    }
 }

@@ -8,8 +8,7 @@ class ConfigStatusController extends Controller
 {
     public function updatePosition(Request $request)
     {
-        if ( resolve('ConfigStatusService')->updatePosition($request) ) {
-
+        if (resolve('ConfigStatusService')->updatePosition($request)) {
             return response()->json([
                 'success' => true,
             ]);
@@ -18,6 +17,5 @@ class ConfigStatusController extends Controller
         return response()->json([
                 'success' => false,
         ]);
-
     }
 }

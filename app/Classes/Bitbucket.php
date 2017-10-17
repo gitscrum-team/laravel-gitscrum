@@ -117,7 +117,7 @@ class Bitbucket implements ProviderInterface
     {
         $url = env('BITBUCKET_INSTANCE_URI').'/2.0/repositories?token='.Auth::user()->token.'&role=contributor&pagelen=20';
 
-        $repos = $this->assertTokenNotExpired(Helper::request($url),$url);
+        $repos = $this->assertTokenNotExpired(Helper::request($url), $url);
 
         $response = collect($repos->values)->map(function ($repo) {
             return $this->tplRepository($repo);
@@ -140,11 +140,11 @@ class Bitbucket implements ProviderInterface
 
         $url = env('BITBUCKET_INSTANCE_URI').'/2.0/'.$endPoint.'/' .$obj->owner->username ;
 
-        $response = (object) $this->assertTokenNotExpired(Helper::request($url),$url);
+        $response = (object) $this->assertTokenNotExpired(Helper::request($url), $url);
 
         $data = $this->tplOrganization($response);
 
-        $organization = Organization::updateOrCreate(['provider_id' => $data['provider_id']],$data);
+        $organization = Organization::updateOrCreate(['provider_id' => $data['provider_id']], $data);
 
         $organization->users()->sync([Auth::id()]);
 
@@ -163,22 +163,19 @@ class Bitbucket implements ProviderInterface
     {
         $url = env('BITBUCKET_INSTANCE_URI').'/1.0/privileges/'.$owner .'/'.$repo ;
 
-        $collaborators =  $this->assertTokenNotExpired(Helper::request($url),$url);
+        $collaborators =  $this->assertTokenNotExpired(Helper::request($url), $url);
 
-        if (is_null($collaborators))
-        {
+        if (is_null($collaborators)) {
             return ;
         }
 
-        foreach ($collaborators as $collaborator)
-        {
-            $user = User::where('provider','bitbucket')->where('username',$collaborator->user->username)->first();
+        foreach ($collaborators as $collaborator) {
+            $user = User::where('provider', 'bitbucket')->where('username', $collaborator->user->username)->first();
 
-            if (is_null($user))
-            {
+            if (is_null($user)) {
                 $url = env('BITBUCKET_INSTANCE_URI').'/2.0/users/' .$collaborator->user->username;
 
-                $user = $this->assertTokenNotExpired(Helper::request($url),$url);
+                $user = $this->assertTokenNotExpired(Helper::request($url), $url);
 
                 $data = [
                     'provider_id' => $user->uuid,
@@ -210,7 +207,6 @@ class Bitbucket implements ProviderInterface
 
         $branchesData = [];
         foreach ($branches as $branchName => $branchData) {
-
             $branchesData[] = [
                 'product_backlog_id' => $product_backlog_id,
                 'title' => $branchName,
@@ -229,23 +225,19 @@ class Bitbucket implements ProviderInterface
     {
         $repos = ProductBacklog::with('organization')->get();
 
-        foreach ($repos as $repo)
-        {
+        foreach ($repos as $repo) {
             $url = env('BITBUCKET_INSTANCE_URI').'/2.0/repositories/'.$repo->organization->username.'/' . $repo->title .'/issues' ;
 
-            $issues = $this->assertTokenNotExpired(Helper::request($url),$url);
+            $issues = $this->assertTokenNotExpired(Helper::request($url), $url);
 
-            foreach ($issues->values as $issue)
-            {
+            foreach ($issues->values as $issue) {
                 $data = $this->tplIssue($issue, $repo->id);
 
-                if (!Issue::where('provider_id', $data['provider_id'])->where('number',$data['number'])->where('provider', 'bitbucket')->first())
-                {
+                if (!Issue::where('provider_id', $data['provider_id'])->where('number', $data['number'])->where('provider', 'bitbucket')->first()) {
                      Issue::create($data)->users()->sync([$data['user_id']]);
                 }
             }
         }
-
     }
 
 
@@ -267,10 +259,9 @@ class Bitbucket implements ProviderInterface
      * @param $url
      * @return mixed
      */
-    private function assertTokenNotExpired($obj,$url)
+    private function assertTokenNotExpired($obj, $url)
     {
-        if (isset($obj->type) && $obj->type == 'error')
-        {
+        if (isset($obj->type) && $obj->type == 'error') {
             return $this->refreshToken($url);
         }
 
@@ -282,7 +273,7 @@ class Bitbucket implements ProviderInterface
      * @param $failedUrlRequest
      * @return mixed
      */
-    private function refreshToken ($failedUrlRequest)
+    private function refreshToken($failedUrlRequest)
     {
         $options = [
             'auth' => [config('services.bitbucket.client_id'), config('services.bitbucket.client_secret')],

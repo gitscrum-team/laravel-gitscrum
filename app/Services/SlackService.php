@@ -6,7 +6,6 @@ use GitScrum\Contracts\SlackInterface;
 use Log;
 use Maknz\Slack\Client;
 
-
 class SlackService implements SlackInterface
 {
     const ISSUE_ASSIGNATION = 1;
@@ -32,12 +31,12 @@ class SlackService implements SlackInterface
      * Send an Slack notification
      * @param  array  $content  This array can contains custom attributes to send different notifications
      * @param  integer $type    Type of notification
-     * 
+     *
      * @return void
      */
     public function send($content, $type = 0)
     {
-        if (empty($this->client->getEndpoint()) || empty($this->client->getDefaultChannel()) 
+        if (empty($this->client->getEndpoint()) || empty($this->client->getDefaultChannel())
             || empty($this->client->getDefaultUsername())) {
             Log::info('One or more settings are missing, Slack notifications are not availables');
 
@@ -56,7 +55,7 @@ class SlackService implements SlackInterface
      * Build the final output of message
      * @param  array  $content  This array can contains custom attributes to send different notifications
      * @param  integer $type    Type of notification
-     * 
+     *
      * @return string   Message ready to send
      */
     private function buildMessage($content, $type)

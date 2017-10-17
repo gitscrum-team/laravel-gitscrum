@@ -31,9 +31,8 @@ class IssueController extends Controller
 
     private function sprintWithIssues($slug)
     {
-        if ($slug)
-        {
-            $sprint = $this->eagerLoad(Sprint::slug($slug),'issues.')->first();
+        if ($slug) {
+            $sprint = $this->eagerLoad(Sprint::slug($slug), 'issues.')->first();
 
             return [$sprint , $sprint->issues];
         }
@@ -41,13 +40,13 @@ class IssueController extends Controller
         return [ null , $this->eagerLoad(Auth::user()->issues())->get()];
     }
 
-    private function eagerLoad($query , $relation = '')
+    private function eagerLoad($query, $relation = '')
     {
         $eagerLoaders = collect(['user','users','commits','statuses',
                                  'comments','attachments','type',
                                  'productBacklog','sprint','configEffort']);
 
-        $eagerLoaders->each(function($loader) use (&$query,$relation){
+        $eagerLoaders->each(function ($loader) use (&$query, $relation) {
             $query = $query->with($relation . $loader);
         });
 
@@ -73,7 +72,7 @@ class IssueController extends Controller
     {
         $issue = resolve('IssueService')->create($request);
 
-        return (new IssueStoreResponse())->response($request,$issue);
+        return (new IssueStoreResponse())->response($request, $issue);
     }
 
     public function show($slug)

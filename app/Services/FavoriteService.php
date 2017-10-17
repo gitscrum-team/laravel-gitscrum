@@ -2,7 +2,6 @@
 
 namespace GitScrum\Services;
 
-
 use GitScrum\Models\Favorite;
 
 class FavoriteService

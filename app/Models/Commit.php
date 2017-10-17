@@ -3,8 +3,10 @@
 namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use GitScrum\Scopes\{CommitScope,GlobalScope};
-use GitScrum\Presenters\{GlobalPresenter,CommitPresenter};
+use GitScrum\Scopes\CommitScope;
+use GitScrum\Scopes\GlobalScope;
+use GitScrum\Presenters\GlobalPresenter;
+use GitScrum\Presenters\CommitPresenter;
 
 class Commit extends Model
 {

@@ -15,10 +15,10 @@ class SlackUserController extends Controller
      */
     public function update(Request $request)
     {
-    	$user = Auth::user();
-    	$user->slack_username = $request->slack_username;
-    	$user->save();
+        $user = Auth::user();
+        $user->slack_username = $request->slack_username;
+        $user->save();
 
-    	return back()->with('success', trans('gitscrum.updated-successfully'));
+        return back()->with('success', trans('gitscrum.updated-successfully'));
     }
 }

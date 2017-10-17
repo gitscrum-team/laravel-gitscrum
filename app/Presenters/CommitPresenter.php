@@ -2,7 +2,6 @@
 
 namespace GitScrum\Presenters;
 
-
 trait CommitPresenter
 {
     public function getTotalLinesAttribute()

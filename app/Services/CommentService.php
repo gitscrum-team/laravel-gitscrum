@@ -15,7 +15,7 @@ class CommentService
             'comment' => $request->comment,
         ];
 
-        if ( ! $comment = Comment::create($data) ) {
+        if (! $comment = Comment::create($data)) {
             return ;
         }
 

@@ -14,7 +14,7 @@ class LabelController extends Controller
 
         return view('labels.index')
             ->with('label', $label)
-            ->with('listPartial',kebab_case($model))
+            ->with('listPartial', kebab_case($model))
             ->with('list', $label->$model()->paginate(env('APP_PAGINATE')));
     }
 

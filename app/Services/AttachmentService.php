@@ -29,7 +29,7 @@ class AttachmentService
 
         $request->attachment->move($this->getAttachmentFolder(), $attachmentName);
 
-        if ( ! $attachment = Attachment::create($data) ) {
+        if (! $attachment = Attachment::create($data)) {
             return ;
         }
 
