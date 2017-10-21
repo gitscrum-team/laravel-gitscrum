@@ -32,7 +32,8 @@
         "renatomarinho/laravel-page-speed": "^1.8",
         "socialiteproviders/gitlab": "^3.0",
         "tymon/jwt-auth": "0.5.*",
-        "spatie/laravel-fractal": "^5.2"
+        "spatie/laravel-fractal": "^5.2",
+        "doctrine/dbal": "^2.6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
