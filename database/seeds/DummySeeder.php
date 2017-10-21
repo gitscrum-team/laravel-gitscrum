@@ -14,5 +14,6 @@ class DummySeeder extends Seeder
 
     private function delete()
     {
+        //
     }
 }

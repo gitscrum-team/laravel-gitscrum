@@ -18,6 +18,6 @@ class SettingSeeder extends Seeder
 
     private function delete()
     {
-
+        //
     }
 }
