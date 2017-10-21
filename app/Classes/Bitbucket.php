@@ -165,6 +165,8 @@ class Bitbucket implements ProviderInterface
 
         $collaborators =  $this->assertTokenNotExpired(Helper::request($url), $url);
 
+        $userId = null;
+
         if (is_null($collaborators)) {
             return ;
         }
