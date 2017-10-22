@@ -12,10 +12,6 @@ use GitScrum\Models\Branch;
 use GitScrum\Contracts\ProviderInterface;
 use GuzzleHttp\Client as GuzzleClient;
 
-
-use Illuminate\Support\Facades\Log;
-
-
 class Bitbucket implements ProviderInterface
 {
 
