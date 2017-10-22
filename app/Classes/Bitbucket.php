@@ -165,6 +165,8 @@ class Bitbucket implements ProviderInterface
 
         $collaborators =  $this->assertTokenNotExpired(Helper::request($url), $url);
 
+        $userId = null;
+
         if (is_null($collaborators)) {
             return ;
         }
@@ -230,13 +232,16 @@ class Bitbucket implements ProviderInterface
 
             $issues = $this->assertTokenNotExpired(Helper::request($url), $url);
 
-            foreach ($issues->values as $issue) {
-                $data = $this->tplIssue($issue, $repo->id);
+            if (!empty($issues->values)) {
+                foreach ($issues->values as $issue) {
+                    $data = $this->tplIssue($issue, $repo->id);
 
-                if (!Issue::where('provider_id', $data['provider_id'])->where('number', $data['number'])->where('provider', 'bitbucket')->first()) {
-                     Issue::create($data)->users()->sync([$data['user_id']]);
+                    if (!Issue::where('provider_id', $data['provider_id'])->where('number', $data['number'])->where('provider', 'bitbucket')->first()) {
+                         Issue::create($data)->users()->sync([$data['user_id']]);
+                    }
                 }
             }
+
         }
     }
 
