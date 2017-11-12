@@ -1,12 +1,13 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-07-22 11:03:53 / 179 translations
+ * Updated 2017-11-12 03:05:15 / 186 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array (
+
+return array (
   'sprints' => 'Sprintek',
   'issue-type' => 'Feladat típusa',
   'search-issue-type-by-name...' => 'Feladat típus kereése név alapján...',
@@ -22,7 +23,7 @@
   'commits' => 'Commit-ok',
   'dashboard' => 'Dashboard',
   'update-repositories' => 'Repó frissítése',
-  'my-performance' => 'gitscrum.my-performance',
+  'my-performance' => 'My Performance',
   'shortcuts' => 'Gyorbillentyűk',
   'my-planning' => 'Saját tervezet',
   'sync-repos-issues' => 'Repók/feladatok szinkronizálása',
@@ -32,7 +33,7 @@
   'lastest-activities' => 'Legutóbbi tevékenységek',
   'title-login' => 'GitScrum Bejelentkezés',
   'welcome-to' => 'Üdvözöllek',
-  'authentication' => 'gitscrum.authentication',
+  'slogan' => 'Powerful Virtual Assistant that lets you control your issues, user stories and sprints',
   'sprint-backlog' => 'Sprint Backlog',
   'product-backlog' => 'Product Backlog',
   'favorite' => 'Kedvencek',
@@ -108,8 +109,10 @@
   'assigned-to' => 'Hozzárendelve',
   'planning-pocker' => 'Tervező póker',
   'collaborative-estimation' => 'Közös becslés',
+  'keep-adding' => 'gitscrum.keep-adding',
   'write-comment' => 'Megjegyzés írása...',
   'comment' => 'gitscrum.comment',
+  'save' => 'gitscrum.save',
   'edit' => 'Szekesztés',
   'delete' => 'Törlés',
   'open' => 'Nyitott',
@@ -151,24 +154,29 @@
   'confirm-to-add-repositories-into-the' => 'Tárolók importálásank jóváhagyása',
   'edit-user-story' => 'Sztori szerkesztése',
   'user-story-list' => 'Sztorik listázása',
+  'issue-assigned' => 'gitscrum.issue-assigned',
+  'issue-status-updated' => 'gitscrum.issue-status-updated',
   'title-for-sprint-cannot-be-blank' => 'A sprint címe nem lehet üres',
   'title-must-be-at-least-2-characters' => 'A cím legalább 2 karakter hosszú kell hogy legyen',
   'date-to-start-cannot-be-blank' => 'A kezdő dátum nem lehet üres',
   'date-to-finish-cannot-be-blank' => 'A végző dátum nem lehet üres',
+  'product-backlog-id-required' => 'gitscrum.product-backlog-id-required',
+  'product-backlog-id-exists' => 'gitscrum.product-backlog-id-exists',
   'attachment-cannot-be-blank' => 'A csatolmány nem lehet üres',
   'user-Story-cannot-be-blank' => 'A sztori nem lehet üres',
   'user-story-must-be-at-least-2-characters' => 'A sztori legalább 2 karakter hosszú kell hogy legyen',
   'issue-cannot-be-blank' => 'A feladat nem lehet üres',
   'issue-must-be-at-least-2-characters' => 'A feladata legalább 2 karakter hosszú kell hogy legyen',
   'issue-must-be-between-2-and-255-characters' => 'A feladat 2 és 255 karakter közötti kell hogy legyen',
+  'sprint-cannot-be-blank' => 'gitscrum.sprint-cannot-be-blank',
   'title-for-backlog-product-cannot-be-blank' => 'A backlog nem lehet üres',
   'comment-cannot-be-blank' => 'A megjegyzés nem lehet üres',
   'comment-must-be-at-least-2-characters' => 'A megjegyzés legalább 2 karakter hosszú kell hogy legyen',
   'field-cannot-be-blank' => 'A mező nem lehet üres',
   'field-must-be-at-least-2-characters' => 'A mező legalább 2 karakter hosszú kell hogy legyen',
+  'congratulations-the-issue-has-been-created-with-successfully' => 'Gratulálok! A feladat sikeresen létre lett hozva',
   'this-sprint-has-been-expired-at' => 'A sprint határideje már lejárt',
   'GitScrum-authentication-is-required' => 'GitScrum azonosítás szükséges',
-  'error' => 'gitscrum.error',
   'file-uploaded-successfully' => 'Sikeres fájl feltöltés',
   'congratulations-the-user-story-has-been-created-with-successfully' => 'Gratulálok! A sztori sikeresen létre lett hozva',
   'congratulations-the-user-story-has-been-updated-with-successfully' => 'Gratulálok! A sztori sikeresen frissítve lett',
@@ -179,9 +187,9 @@
   'comment-updated-successfully' => 'Sikeres megjegyzés frissítés',
   'comment-deleted-successfully' => 'Sikeres megjegyzés törlés',
   'label-added-successfully' => 'Sikeres címke hozzáadás',
-  'congratulations-the-issue-has-been-created-with-successfully' => 'Gratulálok! A feladat sikeresen létre lett hozva',
   'congratulations-the-issue-has-been-edited-with-successfully' => 'Gratulálok! A feladat sikeresen frissítve lett',
   'congratulations-the-sprint-has-been-created-with-successfully' => 'Gratulálok! A sprint sikeresen létre lett hozva',
+  'private-sprint' => 'gitscrum.private-sprint',
   'congratulations-the-sprint-has-been-updated-with-successfully' => 'Gratulálok! A sprint sikeresen frissítve lett',
   'provider-was-not-set' => 'A provider nincs beállítva',
   'congratulations-the-product-backlog-has-been-created-with-successfully' => 'Gratulálok! A product backlog sikeresen létre lett hozva',

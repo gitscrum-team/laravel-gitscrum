@@ -1,12 +1,13 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-07-22 11:03:53 / 179 translations
+ * Updated 2017-11-12 03:05:15 / 186 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array (
+
+return array (
   'sprints' => 'Sprint',
   'issue-type' => 'Tipe Issue',
   'search-issue-type-by-name...' => 'Cari Issue berdasarkan nama...',
@@ -32,7 +33,7 @@
   'lastest-activities' => 'Aktivitas Terakhir',
   'title-login' => 'Masuk GitScrum',
   'welcome-to' => 'Selamat Datang di',
-  'authentication' => 'Autentikasi',
+  'slogan' => 'Powerful Virtual Assistant that lets you control your issues, user stories and sprints',
   'sprint-backlog' => 'Sprint Backlog',
   'product-backlog' => 'Backlog Produk',
   'favorite' => 'Favorit',
@@ -108,8 +109,10 @@
   'assigned-to' => 'Ditetapkan kepada',
   'planning-pocker' => 'Perencanaan Pocker',
   'collaborative-estimation' => 'Estimasi Kolaboratif',
+  'keep-adding' => 'gitscrum.keep-adding',
   'write-comment' => 'Tulis Komentar...',
   'comment' => 'Tambah komentar',
+  'save' => 'gitscrum.save',
   'edit' => 'Sunting',
   'delete' => 'Hapus',
   'open' => 'Buka',
@@ -150,24 +153,29 @@
   'confirm-to-add-repositories-into-the' => 'Konfirmasi untuk menambah repository ke',
   'edit-user-story' => 'Sunting Cerita Pengguna',
   'user-story-list' => 'List Cerita Pengguna',
+  'issue-assigned' => 'gitscrum.issue-assigned',
+  'issue-status-updated' => 'gitscrum.issue-status-updated',
   'title-for-sprint-cannot-be-blank' => 'Judul untuk sprint tidak boleh kosong',
   'title-must-be-at-least-2-characters' => 'Judul setidaknya harus memiliki 2 karakter',
   'date-to-start-cannot-be-blank' => 'Hari untuk mulai tidak boleh kosong',
   'date-to-finish-cannot-be-blank' => 'Hari untuk selesai tidak boleh kosong',
+  'product-backlog-id-required' => 'gitscrum.product-backlog-id-required',
+  'product-backlog-id-exists' => 'gitscrum.product-backlog-id-exists',
   'attachment-cannot-be-blank' => 'Lampiran tidak boleh kosong',
   'user-Story-cannot-be-blank' => 'Cerita pengguna tidak boleh kosong',
   'user-story-must-be-at-least-2-characters' => 'Cerita pengguna setidaknya harus memiliki 2 karakter',
   'issue-cannot-be-blank' => 'Issue tidak boleh kosong',
   'issue-must-be-at-least-2-characters' => 'Issue setidaknya memiliki 2 karakter',
   'issue-must-be-between-2-and-255-characters' => 'Issue setidaknya memiliki 2 sampai 255 karakter',
+  'sprint-cannot-be-blank' => 'gitscrum.sprint-cannot-be-blank',
   'title-for-backlog-product-cannot-be-blank' => 'Judul untuk Backlog produk tidak boleh kosong',
   'comment-cannot-be-blank' => 'Komentar tidak boleh kosong',
   'comment-must-be-at-least-2-characters' => 'Komentar paling tidak memiliki 2 karakter',
   'field-cannot-be-blank' => 'Bidang tidak boleh kosong',
   'field-must-be-at-least-2-characters' => 'Bidang setidaknya harus memiliki 2 karakter',
+  'congratulations-the-issue-has-been-created-with-successfully' => 'Selamat! Issue berhasil dibuat',
   'this-sprint-has-been-expired-at' => 'Sprint telah berakhir pada',
   'GitScrum-authentication-is-required' => 'Autentikasi GitScrum dibutuhkan',
-  'error' => 'gitscrum.error',
   'file-uploaded-successfully' => 'Sukses mengunggah berkas',
   'congratulations-the-user-story-has-been-created-with-successfully' => 'Selamat! Cerita pengguna berhasil dibuat',
   'congratulations-the-user-story-has-been-updated-with-successfully' => 'Selamat! Cerita pengguna berhasil diperbarui',
@@ -178,9 +186,9 @@
   'comment-updated-successfully' => 'Sukses menyunting komentar',
   'comment-deleted-successfully' => 'Sukses menghapus komentar',
   'label-added-successfully' => 'Sukses menambah lebel',
-  'congratulations-the-issue-has-been-created-with-successfully' => 'Selamat! Issue berhasil dibuat',
   'congratulations-the-issue-has-been-edited-with-successfully' => 'Selamat! Issue berhasil di sunting',
   'congratulations-the-sprint-has-been-created-with-successfully' => 'Selamat! sprint berhasil dibuat',
+  'private-sprint' => 'gitscrum.private-sprint',
   'congratulations-the-sprint-has-been-updated-with-successfully' => 'Selamat! sprint berhasil diperbarui',
   'provider-was-not-set' => 'Provider tidak mengirim',
   'congratulations-the-product-backlog-has-been-created-with-successfully' => 'Selamat! Backlog produk berhasil dibuat',

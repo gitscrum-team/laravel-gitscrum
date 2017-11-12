@@ -1,12 +1,13 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-07-22 11:03:53 / 179 translations
+ * Updated 2017-11-12 03:05:15 / 186 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array (
+
+return array (
   'sprints' => 'Sprints',
   'issue-type' => 'Issue 类型',
   'search-issue-type-by-name...' => '由名称搜索 issue...',
@@ -22,7 +23,7 @@
   'commits' => '提交',
   'dashboard' => '控制台',
   'update-repositories' => '更新 Repositories',
-  'my-performance' => 'gitscrum.my-performance',
+  'my-performance' => 'My Perfomance',
   'shortcuts' => 'Shortcuts',
   'my-planning' => '我的计划',
   'sync-repos-issues' => '同步 Repos/Issues',
@@ -32,7 +33,7 @@
   'lastest-activities' => '最新活动',
   'title-login' => 'GitScrum 登录',
   'welcome-to' => '欢迎来到',
-  'authentication' => 'gitscrum.authentication',
+  'slogan' => 'Powerful Virtual Assistant that lets you control your issues, user stories and sprints',
   'sprint-backlog' => 'Sprint Backlog',
   'product-backlog' => 'Product Backlog',
   'favorite' => '最爱',
@@ -108,8 +109,10 @@
   'assigned-to' => '分配给',
   'planning-pocker' => 'Planning Pocker',
   'collaborative-estimation' => 'Collaborative Estimation',
+  'keep-adding' => 'gitscrum.keep-adding',
   'write-comment' => '撰写 Comment...',
   'comment' => 'gitscrum.comment',
+  'save' => 'gitscrum.save',
   'edit' => '编辑',
   'delete' => '删除',
   'open' => 'Open',
@@ -151,24 +154,29 @@
   'confirm-to-add-repositories-into-the' => '确认加入 Repositories 至',
   'edit-user-story' => '编辑 User Story',
   'user-story-list' => 'User Story 列表',
+  'issue-assigned' => 'gitscrum.issue-assigned',
+  'issue-status-updated' => 'gitscrum.issue-status-updated',
   'title-for-sprint-cannot-be-blank' => 'Sprint 的标题必能为空',
   'title-must-be-at-least-2-characters' => '标题必须至少 2 个字符',
   'date-to-start-cannot-be-blank' => '开始日期不能为空',
   'date-to-finish-cannot-be-blank' => '结束日期不能为空',
+  'product-backlog-id-required' => 'gitscrum.product-backlog-id-required',
+  'product-backlog-id-exists' => 'gitscrum.product-backlog-id-exists',
   'attachment-cannot-be-blank' => '附件不能为空',
   'user-Story-cannot-be-blank' => 'User Story 不能为空',
   'user-story-must-be-at-least-2-characters' => 'User Story 必须至少 2 个字符',
   'issue-cannot-be-blank' => 'Issue 不能为空',
   'issue-must-be-at-least-2-characters' => 'Issue 必须至少 2 个字符',
   'issue-must-be-between-2-and-255-characters' => 'Issue 必须是 2 到 255 个字符',
+  'sprint-cannot-be-blank' => 'gitscrum.sprint-cannot-be-blank',
   'title-for-backlog-product-cannot-be-blank' => 'Backlog Product 的标题不能为空',
   'comment-cannot-be-blank' => 'Comment 不能为空',
   'comment-must-be-at-least-2-characters' => 'Comment 必须至少是 2 个字符',
   'field-cannot-be-blank' => '字段不可为空',
   'field-must-be-at-least-2-characters' => '字段必须至少2个字符',
+  'congratulations-the-issue-has-been-created-with-successfully' => '恭喜! 这个 Issue 新增成功',
   'this-sprint-has-been-expired-at' => '这个 Sprint 已经过期',
   'GitScrum-authentication-is-required' => 'GitScrum 验证为必须',
-  'error' => 'gitscrum.error',
   'file-uploaded-successfully' => '文件上传成功',
   'congratulations-the-user-story-has-been-created-with-successfully' => '恭喜! User Storyu 新增成功',
   'congratulations-the-user-story-has-been-updated-with-successfully' => '恭喜! User Story 更新成功',
@@ -179,9 +187,9 @@
   'comment-updated-successfully' => 'Comment 更新成功',
   'comment-deleted-successfully' => 'Comment 刪除成功',
   'label-added-successfully' => '标签添加成功',
-  'congratulations-the-issue-has-been-created-with-successfully' => '恭喜! 这个 Issue 新增成功',
   'congratulations-the-issue-has-been-edited-with-successfully' => '恭喜! 这个 Issue 更新成功',
   'congratulations-the-sprint-has-been-created-with-successfully' => '恭喜! Sprint 新增成功',
+  'private-sprint' => 'gitscrum.private-sprint',
   'congratulations-the-sprint-has-been-updated-with-successfully' => '恭喜! Sprint 更新成功',
   'provider-was-not-set' => '尚未设置 provider',
   'congratulations-the-product-backlog-has-been-created-with-successfully' => '恭喜! Product Backlog 新增成功',

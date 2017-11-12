@@ -1,11 +1,12 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-07-22 11:03:53 / 179 translations
+ * Updated 2017-11-12 03:05:15 / 186 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
+
 return array (
   'sprints' => 'Sprints',
   'issue-type' => 'Tipo de issue',
@@ -22,7 +23,7 @@ return array (
   'commits' => 'Commits',
   'dashboard' => 'Panel de control',
   'update-repositories' => 'Actualizar repositorios',
-  'my-performance' => 'gitscrum.my-performance',
+  'my-performance' => 'My Performance',
   'shortcuts' => 'Atajos',
   'my-planning' => 'Mi planificación',
   'sync-repos-issues' => 'Sincronizar Repos/Issues',
@@ -32,7 +33,7 @@ return array (
   'lastest-activities' => 'Últimas actividades',
   'title-login' => 'Acceder a GitScrum',
   'welcome-to' => 'Bienvenido a',
-  'authentication' => 'gitscrum.authentication',
+  'slogan' => 'Powerful Virtual Assistant that lets you control your issues, user stories and sprints',
   'sprint-backlog' => 'Sprint Backlog',
   'product-backlog' => 'Product Backlog',
   'favorite' => 'Marcar como favorito',
@@ -108,8 +109,10 @@ return array (
   'assigned-to' => 'Asignado a',
   'planning-pocker' => 'Planificación Pocker',
   'collaborative-estimation' => 'Estimación colaborativa',
+  'keep-adding' => 'gitscrum.keep-adding',
   'write-comment' => 'Escribir un comentario...',
   'comment' => 'gitscrum.comment',
+  'save' => 'Guardar',
   'edit' => 'Editar',
   'delete' => 'Eliminar',
   'open' => 'Abrir',
@@ -151,24 +154,29 @@ return array (
   'confirm-to-add-repositories-into-the' => 'Confirmar para añadir los repositorios en el',
   'edit-user-story' => 'Editar historia de usuario',
   'user-story-list' => 'Lista de historia de usuario',
+  'issue-assigned' => '@:assignedBy asignó un issue a: :assignedTo',
+  'issue-status-updated' => '@:username actualizó el estado del issue a: *:status*',
   'title-for-sprint-cannot-be-blank' => 'El título para del sprint no puede quedar vacío',
   'title-must-be-at-least-2-characters' => 'El título tiene que tener al menos 2 caracteres',
   'date-to-start-cannot-be-blank' => 'Fecha de comienzo no puede quedar vacía',
   'date-to-finish-cannot-be-blank' => 'Fecha de fin no puede quedar vacía',
+  'product-backlog-id-required' => 'gitscrum.product-backlog-id-required',
+  'product-backlog-id-exists' => 'gitscrum.product-backlog-id-exists',
   'attachment-cannot-be-blank' => 'El adjunto no puede quedar vacío ',
   'user-Story-cannot-be-blank' => 'Historia de usuario no puede quedar vacía',
   'user-story-must-be-at-least-2-characters' => 'La historia de usuario tiene que tener al menos 2 caracteres',
   'issue-cannot-be-blank' => 'El issue no puede quedar vacío',
   'issue-must-be-at-least-2-characters' => 'El issue tiene que tener al menos 2 caracteres',
   'issue-must-be-between-2-and-255-characters' => 'El issue tiene que tener entre 2 y 255 caracteres',
+  'sprint-cannot-be-blank' => 'El sprint no puede quedar vacío',
   'title-for-backlog-product-cannot-be-blank' => 'El título del Backlog Product no pude quedar vacío',
   'comment-cannot-be-blank' => 'El comentario no puede quedar vacío',
   'comment-must-be-at-least-2-characters' => 'El comentario tiene que tener al menos 2 caracteres',
   'field-cannot-be-blank' => 'El campo no puede quedar vacío',
   'field-must-be-at-least-2-characters' => 'El campo tiene que tener al menos 2 caracteres',
+  'congratulations-the-issue-has-been-created-with-successfully' => '¡Felicidades! El issue ha sido creado correctamente',
   'this-sprint-has-been-expired-at' => 'Este sprint expiró el',
   'GitScrum-authentication-is-required' => 'Autenticación en GitScrum es requerida',
-  'error' => 'gitscrum.error',
   'file-uploaded-successfully' => 'Archivo subido correctamente',
   'congratulations-the-user-story-has-been-created-with-successfully' => '¡Felicidades! La historia de usuario ha sido creada correctamente',
   'congratulations-the-user-story-has-been-updated-with-successfully' => '¡Felicidades! La historia de usuario ha sido actualizada correctamente',
@@ -179,18 +187,13 @@ return array (
   'comment-updated-successfully' => 'Comentario actualizado correctamente',
   'comment-deleted-successfully' => 'Comentario eliminado correctamente',
   'label-added-successfully' => 'Etiqueta añadida correctamente',
-  'congratulations-the-issue-has-been-created-with-successfully' => '¡Felicidades! El issue ha sido creado correctamente',
   'congratulations-the-issue-has-been-edited-with-successfully' => '¡Felicidades! El issue ha sido editado correctamente',
   'congratulations-the-sprint-has-been-created-with-successfully' => '¡Felicidades! El sprint ha sido creado correctamente',
+  'private-sprint' => 'Este sprint es privado, sólo el propietario puede accesarlo',
   'congratulations-the-sprint-has-been-updated-with-successfully' => '¡Felicidadades! El sprint ha sido actualizado correctamente',
   'provider-was-not-set' => 'El provider no fue configurado',
   'congratulations-the-product-backlog-has-been-created-with-successfully' => '¡Felicidades! El product backlog ha sido creado correctamente',
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => '¡Felicidades! El product backlog ha sido actualizado correctamente',
   'favorited-successfully' => 'Añadido a favoritos correctamente',
   'unfavorited-successfully' => 'Eliminado de favoritos correctamente',
-  'private-sprint' => 'Este sprint es privado, sólo el propietario puede accesarlo',
-  'save' => 'Guardar',
-  'issue-status-updated' => '@:username actualizó el estado del issue a: *:status*',
-  'issue-assigned' => '@:assignedBy asignó un issue a: :assignedTo',
-  'sprint-cannot-be-blank' => 'El sprint no puede quedar vacío',
 );

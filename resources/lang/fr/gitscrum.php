@@ -1,12 +1,13 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-07-22 11:03:53 / 179 translations
+ * Updated 2017-11-12 03:05:15 / 186 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
-return array (
+
+return array (
   'sprints' => 'Sprints',
   'issue-type' => 'Type de demande',
   'search-issue-type-by-name...' => 'Rechercher les types de demandes par nom...',
@@ -22,7 +23,7 @@
   'commits' => 'Commits',
   'dashboard' => 'Tableau de bord',
   'update-repositories' => 'Mettre à jour les dépôts',
-  'my-performance' => 'gitscrum.my-performance',
+  'my-performance' => 'My Performance',
   'shortcuts' => 'Raccourcis',
   'my-planning' => 'Mon Planning',
   'sync-repos-issues' => 'Synchro Dépôt/Demandes',
@@ -32,7 +33,7 @@
   'lastest-activities' => 'Dernières Activités',
   'title-login' => 'GitScrum Login',
   'welcome-to' => 'Bienvenue',
-  'authentication' => 'gitscrum.authentication',
+  'slogan' => 'Powerful Virtual Assistant that lets you control your issues, user stories and sprints',
   'sprint-backlog' => 'Sprint Backlog',
   'product-backlog' => 'Product Backlog',
   'favorite' => 'Favoris',
@@ -108,8 +109,10 @@
   'assigned-to' => 'Assigné à',
   'planning-pocker' => 'Poker planning',
   'collaborative-estimation' => 'Estimation Collaborative ',
+  'keep-adding' => 'gitscrum.keep-adding',
   'write-comment' => 'Ecrire un commentaire...',
   'comment' => 'commentaire',
+  'save' => 'gitscrum.save',
   'edit' => 'Editer',
   'delete' => 'Supprimer',
   'open' => 'Ouvrir',
@@ -151,24 +154,29 @@
   'confirm-to-add-repositories-into-the' => 'Confirmer l\'ajout des dépôt dans',
   'edit-user-story' => 'Editer une User Story',
   'user-story-list' => 'Liste des User Story',
+  'issue-assigned' => 'gitscrum.issue-assigned',
+  'issue-status-updated' => 'gitscrum.issue-status-updated',
   'title-for-sprint-cannot-be-blank' => 'Le Titre du Sprint est obligatoire',
   'title-must-be-at-least-2-characters' => 'Le Titre doit comporter au moins 2 caractères',
   'date-to-start-cannot-be-blank' => 'La date de début ne peut pas être vide',
   'date-to-finish-cannot-be-blank' => 'La date de fin ne peut pas être vide',
+  'product-backlog-id-required' => 'gitscrum.product-backlog-id-required',
+  'product-backlog-id-exists' => 'gitscrum.product-backlog-id-exists',
   'attachment-cannot-be-blank' => 'La pièce jointe ne peux pas être vide',
   'user-Story-cannot-be-blank' => 'gitscrum.user-Story-cannot-be-blank',
   'user-story-must-be-at-least-2-characters' => 'L\'User Story doit comporter au moins 2 caractères',
   'issue-cannot-be-blank' => 'La demande est obligatoire',
   'issue-must-be-at-least-2-characters' => 'La demande doit comporter au moins 2 caractères',
   'issue-must-be-between-2-and-255-characters' => 'La demande doit contenir entre 2 et 255 caractères',
+  'sprint-cannot-be-blank' => 'gitscrum.sprint-cannot-be-blank',
   'title-for-backlog-product-cannot-be-blank' => 'Le Titre du Product Backlog est obligatoire',
   'comment-cannot-be-blank' => 'Le commentaire est obligatoire',
   'comment-must-be-at-least-2-characters' => 'Le commentaire doit comporter au moins 2 caractères',
   'field-cannot-be-blank' => 'ce champ ne peut pas être vide',
   'field-must-be-at-least-2-characters' => 'Ce champ doit comporter au moins 2 caractères',
+  'congratulations-the-issue-has-been-created-with-successfully' => 'La création de la demande à été réalisée avec succès',
   'this-sprint-has-been-expired-at' => 'Ce Sprint s\\est terminé le',
   'GitScrum-authentication-is-required' => 'L\'authentification GitScrum est requise',
-  'error' => 'gitscrum.error',
   'file-uploaded-successfully' => 'Fichier chargé avec succès',
   'congratulations-the-user-story-has-been-created-with-successfully' => 'La création de l\'User Story à été réalisée avec succès',
   'congratulations-the-user-story-has-been-updated-with-successfully' => 'La mise à jour de l\'User Story à été réalisée avec succès',
@@ -179,9 +187,9 @@
   'comment-updated-successfully' => 'Commentaire mis à jour',
   'comment-deleted-successfully' => 'Commentaire effacé',
   'label-added-successfully' => 'Libellé ajouté',
-  'congratulations-the-issue-has-been-created-with-successfully' => 'La création de la demande à été réalisée avec succès',
   'congratulations-the-issue-has-been-edited-with-successfully' => 'La mise à jour de la demande à été réalisée avec succès',
   'congratulations-the-sprint-has-been-created-with-successfully' => 'La création du Sprint à été réalisée avec succès',
+  'private-sprint' => 'gitscrum.private-sprint',
   'congratulations-the-sprint-has-been-updated-with-successfully' => 'La mise à jour du Sprint à été réalisée avec succès',
   'provider-was-not-set' => 'Le fournisseur de service n\\a pas été configuré',
   'congratulations-the-product-backlog-has-been-created-with-successfully' => 'La création du Product Backlog à été réalisée avec succès',

@@ -1,11 +1,12 @@
 <?php 
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
- * Updated 2017-07-22 11:03:53 / 179 translations
+ * Updated 2017-11-12 03:05:15 / 186 translations
  *
  * The MIT License (MIT)
  * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
  */
+
 return array (
   'sprints' => 'Sprints',
   'issue-type' => 'Issue Type',
@@ -32,7 +33,7 @@ return array (
   'lastest-activities' => 'Latest Activities',
   'title-login' => 'GitScrum Login',
   'welcome-to' => 'Welcome to',
-  'authentication' => 'Authentication',
+  'slogan' => 'Powerful Virtual Assistant that lets you control your issues, user stories and sprints',
   'sprint-backlog' => 'Sprint Backlog',
   'product-backlog' => 'Product Backlog',
   'favorite' => 'Favorite',
@@ -108,8 +109,10 @@ return array (
   'assigned-to' => 'Assigned to',
   'planning-pocker' => 'Planning Poker',
   'collaborative-estimation' => 'Collaborative Estimation',
+  'keep-adding' => 'Keep Adding',
   'write-comment' => 'Write comment...',
   'comment' => 'Add comment',
+  'save' => 'Save',
   'edit' => 'Edit',
   'delete' => 'Delete',
   'open' => 'Open',
@@ -150,24 +153,29 @@ return array (
   'confirm-to-add-repositories-into-the' => 'Confirm to add repositories into the',
   'edit-user-story' => 'Edit User Story',
   'user-story-list' => 'User Story List',
+  'issue-assigned' => '@:assignedBy assigned an issue to: :assignedTo',
+  'issue-status-updated' => '@:username updated the issue to: *:status*',
   'title-for-sprint-cannot-be-blank' => 'Title for Sprint cannot be blank',
   'title-must-be-at-least-2-characters' => 'Title must be at least 2 characters',
   'date-to-start-cannot-be-blank' => 'Date to start cannot be blank',
   'date-to-finish-cannot-be-blank' => 'Date to finish cannot be blank',
+  'product-backlog-id-required' => 'Product backlog id is required',
+  'product-backlog-id-exists' => 'Product backlog must exist in product_backlogs table',
   'attachment-cannot-be-blank' => 'Attachment cannot be blank',
   'user-Story-cannot-be-blank' => 'User Story cannot be blank',
   'user-story-must-be-at-least-2-characters' => 'User Story must be at least 2 characters',
   'issue-cannot-be-blank' => 'Issue cannot be blank',
   'issue-must-be-at-least-2-characters' => 'Issue must be at least 2 characters',
   'issue-must-be-between-2-and-255-characters' => 'Issue must be between 2 and 255 characters',
+  'sprint-cannot-be-blank' => 'Sprint can not be blank',
   'title-for-backlog-product-cannot-be-blank' => 'Title for Backlog Product cannot be blank',
   'comment-cannot-be-blank' => 'Comment cannot be blank',
   'comment-must-be-at-least-2-characters' => 'Comment must be at least 2 characters',
   'field-cannot-be-blank' => 'Field cannot be blank',
   'field-must-be-at-least-2-characters' => 'Field must be at least 2 characters',
+  'congratulations-the-issue-has-been-created-with-successfully' => 'Congratulations! The Issue has been successfully created',
   'this-sprint-has-been-expired-at' => 'This Sprint has been expired at',
   'GitScrum-authentication-is-required' => 'GitScrum authentication is required',
-  'error' => 'gitscrum.error',
   'file-uploaded-successfully' => 'File successfully uploaded',
   'congratulations-the-user-story-has-been-created-with-successfully' => 'Congratulations! The User Story has been successfully created',
   'congratulations-the-user-story-has-been-updated-with-successfully' => 'Congratulations! The User Story has been successfully updated',
@@ -178,21 +186,13 @@ return array (
   'comment-updated-successfully' => 'Comment updated',
   'comment-deleted-successfully' => 'Comment deleted',
   'label-added-successfully' => 'Label added',
-  'congratulations-the-issue-has-been-created-with-successfully' => 'Congratulations! The Issue has been successfully created',
   'congratulations-the-issue-has-been-edited-with-successfully' => 'Congratulations! The Issue has been successfully edited',
   'congratulations-the-sprint-has-been-created-with-successfully' => 'Congratulations! The Sprint has been successfully created',
+  'private-sprint' => 'This sprint is private, only owner can access it',
   'congratulations-the-sprint-has-been-updated-with-successfully' => 'Congratulations! The Sprint has been successfully updated',
   'provider-was-not-set' => 'Provider was not set',
   'congratulations-the-product-backlog-has-been-created-with-successfully' => 'Congratulations! The Product Backlog has been successfully created',
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => 'Congratulations! The Product Backlog has been successfully updated',
   'favorited-successfully' => 'Favorited',
   'unfavorited-successfully' => 'Unfavorited',
-  'keep-adding' => 'Keep Adding',
-  'private-sprint' => 'This sprint is private, only owner can access it',
-  'save' => 'Save',
-  'issue-status-updated' => '@:username updated the issue to: *:status*',
-  'issue-assigned' => '@:assignedBy assigned an issue to: :assignedTo',
-  'sprint-cannot-be-blank' => 'Sprint can not be blank',
-  'product-backlog-id-required' => 'Product backlog id is required',
-  'product-backlog-id-exists' => 'Product backlog must exist in product_backlogs table',
 );
