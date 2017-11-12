@@ -69,22 +69,6 @@ GitScrum can be integrated with **Github** or **Gitlab** or **Bitbucket**.
 	**Features**: Progress state (e.g. to do, in progress, done or archived), issue type (e.g. Improvement, Support Request, Feedback, Customer Problem, UX, Infrastructure, Testing Task, etc...), definition of done checklist, assign labels, effort, attachments, comments, activities, team members.
 
 
-#### Learn how Laravel GitScrum has helped thousands of developers
-
-<table>
-<tr>
-<td><a href="https://gitscrum.com/community/viewforum.php?f=3" target="_blank"><img src="https://gitscrum.com/community/images/gitscrum/card-ideaexchange.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
-<td><a href="https://gitscrum.com/community/viewforum.php?f=4" target="_blank"><img src="https://gitscrum.com/community/images/gitscrum/card-thecafe.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
-<td><a href="https://gitscrum.com/community/viewforum.php?f=7" target="_blank"><img src="https://gitscrum.com/community/images/gitscrum/card-feedback_help.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
-</tr>
-<tr>
-<td><a href="https://gitscrum.com/community/viewforum.php?f=6" target="_blank"><img src="https://gitscrum.com/community/images/gitscrum/card-announcements.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
-<td><a href="https://gitscrum.com/community/viewforum.php?f=5" target="_blank"><img src="https://gitscrum.com/community/images/gitscrum/card-market.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
-<td><a href="https://gitscrum.com/community/viewforum.php?f=8" target="_blank"><img src="https://gitscrum.com/community/images/gitscrum/card-themes.png" style="border-radius: 8px;border:1px solid #999;" class="img-fluid d-block"></a></td>
-</tr>
-</table>
-
-
 ## Installation
 
 The requirements to Laravel GitScrum application is:
