@@ -1,15 +1,48 @@
+html, body{
+	height: 100%;
+}
+
 body{
 	font-family: 'Open Sans', sans-serif;
-	font-size:12px;
-    padding-bottom: 30px;
+	font-size:14px;
+}
+
+.content-area-fluid,
+.row{
+	height: 100%;
+}
+
+.aligner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.aligner-item {
+	max-width: 50%;
+}
+
+.aligner-item--top {
+	align-self: flex-start;
+}
+
+.aligner-item--bottom {
+	align-self: flex-end;
 }
 
 a{
+  color:rgb(23,165,225);
   -o-transition:color .1s ease-out, background .2s ease-in;
   -ms-transition:color .1s ease-out, background .2s ease-in;
   -moz-transition:color .1s ease-out, background .2s ease-in;
   -webkit-transition:color .1s ease-out, background .2s ease-in;
   transition:color .1s ease-out, background .2s ease-in;
+
+  &:hover{
+    color:#19739c;
+    text-decoration: none;
+  }
 }
 
 ul{
@@ -495,22 +528,7 @@ header{
 }
 
 .body-login{
-    background:#E0E4E7;
-    .loginscreen{
-        background:#fff;
-    	margin:60px auto;
-    	padding:60px;
-    	-webkit-box-shadow: inset 0px 0px 5px 0px rgba(43,43,43,1);
-    	-moz-box-shadow: inset 0px 0px 5px 0px rgba(43,43,43,1);
-    	box-shadow: inset 0px 0px 5px 0px rgba(43,43,43,1);
-
-    	a{
-    		margin:10px 0 40px;
-    	}
-    	p{
-    		color:#888;
-    	}
-    }
+    background:#e9e9e9;
 }
 
 .table-product-backlog,
