@@ -95,7 +95,7 @@
 
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab-issues"> {{trans('gitscrum.issues')}}
-                    (<div class="issuesCount">{{$userStory->issues->count()}}</div>) </a></li>
+                    (<span class="issuesCount">{{$userStory->issues->count()}}</span>) </a></li>
             <li class=""><a data-toggle="tab" href="#tab-comments"> {{trans('gitscrum.comments')}}
                     ({{$userStory->comments->count()}}) </a></li>
             <li class=""><a data-toggle="tab" href="#tab-activities"> {{trans('gitscrum.activities')}} </a></li>

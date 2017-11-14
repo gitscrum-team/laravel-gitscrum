@@ -3,6 +3,7 @@
 namespace GitScrum\Scopes;
 
 use GitScrum\Models\Sprint;
+use GitScrum\Models\UserStory;
 
 trait UserScope
 {

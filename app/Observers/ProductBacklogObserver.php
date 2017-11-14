@@ -15,6 +15,7 @@ class ProductBacklogObserver
             $productBacklog->user_id = Auth::user()->id;
         }
 
+        $productBacklog->provider_id = mt_rand(0,9999999);
         $productBacklog->slug = Helper::slug($productBacklog->title);
         if (isset($productBacklog->is_api)) {
             $owner = Organization::find($productBacklog->organization_id);

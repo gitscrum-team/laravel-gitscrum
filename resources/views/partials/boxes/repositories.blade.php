@@ -1,27 +1,34 @@
-<table class="table table-repository table-striped table-hover">
+<table class="table table-repository">
     <tbody>
         @foreach ($list as $value)
         <tr>
 
             @if(in_array('checkbox', $columns))
-            <td width="30px">
-                  <input type="checkbox" name="repos[]" value="{{$value->provider_id}}" id="{{$value->provider_id}}"
-                    @if( $currentRepositories->where('provider_id', $value->provider_id)->first() ) checked disabled @endif />
+            <td class="checkbox-switch">
+                @if( !$currentRepositories->where('provider_id', $value->provider_id)->first() )
+                <div class="material-switch">
+                    <input type="checkbox" name="repos[]" value="{{$value->provider_id}}" id="{{$value->provider_id}}" />
+                    <label for="{{$value->provider_id}}" class="label-info"></label>
+                </div>
+                @else
+                <i class="fa fa-check text-success"></i>
+                @endif
             </td>
             @endif
 
             @if(in_array('repository', $columns))
-            <td>
+            <td class="information">
                 <p>
-                <a href="{{$value->html_url}}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-                <strong>{{$value->title}}</strong></p>
+                <a href="{{$value->html_url}}" target="_blank">
+                <strong>{{$value->title}}</strong></a></p>
+                @if(in_array('organization', $columns))
+                    <p> <small>{{trans('gitscrum.organization')}}: {{$value->organization_title}}</small></p>
+                @endif
                 <small>{{str_limit($value->description, 120)}}</small>
             </td>
             @endif
 
-            @if(in_array('organization', $columns))
-            <td align="right"><p>{{$value->organization_title}}</p></td>
-            @endif
+
 
         </tr>
         @endforeach

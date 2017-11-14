@@ -26,7 +26,7 @@ class IssueRequest extends FormRequest
     {
         return [
             'title' => 'required|min:2|max:255',
-            'sprint_id' => 'required|integer',
+            'sprint_id' => 'integer',
         ];
     }
     /**

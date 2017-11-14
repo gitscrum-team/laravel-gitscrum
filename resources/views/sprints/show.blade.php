@@ -55,85 +55,120 @@
 @section('content')
 <div class="col-lg-4">
 
-    <a href="{{route('issues.index', ['slug'=>$sprint->slug])}}"
-        class="btn btn-lg btn-block btn-warning"><strong>{{trans('gitscrum.sprint-planning')}}</strong></a>
+    <div class="gs-card">
 
-    <a href="{{route('issues.create', ['scope' => 'Sprint', 'slug' => $sprint->slug])}}"
-        class="btn btn-block btn-primary"
-        data-toggle="modal" data-target="#modalLarge"><strong>{{trans('gitscrum.create-issue')}}</strong></a>
+        <div class="gs-card-content">
+            <a href="{{route('issues.index', ['slug'=>$sprint->slug])}}"
+                class="btn btn-lg btn-block btn-warning"><strong>{{trans('gitscrum.sprint-planning')}}</strong></a>
 
-    <div class="issueStatusChart">@include('partials.boxes.chart-donut', ['list' => $sprint->issueStatus()])</div>
+            <a href="{{route('issues.create', ['scope' => 'Sprint', 'slug' => $sprint->slug])}}"
+                class="btn btn-block btn-primary"
+                data-toggle="modal" data-target="#modalLarge"><strong>{{trans('gitscrum.create-issue')}}</strong></a>
+        </div>
 
-    <div class="">
-        @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($sprint, 'issues')])
     </div>
 
-    <table class="table small m-b-xs">
-        <tbody>
-        <tr>
-            <td width="50%">
-                <h6>{{$sprint->effort()->sum('effort')}} {{trans('gitscrum.effort')}}</h6>
-            </td>
-            <td width="50%">
-                <h6>{{$sprint->effort()->avg('effort')}} {{trans('gitscrum.effort-avg')}}</h6>
-            </td>
-        </tr>
-        <tr>
-            <td width="50%">
-                <h6><div class="issuesCount">{{$sprint->issues->count()}}</div> {{trans('gitscrum.issues')}}</h6>
-            </td>
-            <td width="50%"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="gs-card">
 
-    <div class="issueTypes">@include('partials.boxes.issue-type', ['list' => $sprint->issueTypes()])</div>
+        <h4 class="gs-card-title mb10">Progress</h4>
 
-    @include('partials.boxes.note', [ 'list' => $sprint,
-        'type'=> 'sprints', 'title' => trans('gitscrum.definition-of-done-checklist'),
-        'percentage' => Helper::percentage($sprint, 'notes')])
+        <div class="issueStatusChart">@include('partials.boxes.chart-donut', ['list' => $sprint->issueStatus()])</div>
 
-    @include('partials.boxes.attachment', ['id' => $sprint->id, 'type' => 'sprints', 'list' => $sprint->attachments])
+        <div class="gs-card-content">
+            @include('partials.boxes.progress-bar', [ 'percentage' => Helper::percentage($sprint, 'issues')])
+        </div>
 
-    @include('partials.boxes.team', ['title' => 'Team Members', 'list' => $sprint->issuesHasUsers()])
+        <table class="table small m-b-xs">
+            <tbody>
+            <tr>
+                <td width="50%">
+                    <h6>{{$sprint->effort()->sum('effort')}} {{trans('gitscrum.effort')}}</h6>
+                </td>
+                <td width="50%">
+                    <h6>{{$sprint->effort()->avg('effort')}} {{trans('gitscrum.effort-avg')}}</h6>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%">
+                    <h6><div class="issuesCount">{{$sprint->issues->count()}}</div> {{trans('gitscrum.issues')}}</h6>
+                </td>
+                <td width="50%"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="gs-card issueTypes">
+        @include('partials.boxes.issue-type', ['list' => $sprint->issueTypes()])
+    </div>
+
+    <div class="gs-card">
+
+        @include('partials.boxes.note', [ 'list' => $sprint,
+            'type'=> 'sprints', 'title' => trans('gitscrum.definition-of-done-checklist'),
+            'percentage' => Helper::percentage($sprint, 'notes')])
+
+    </div>
+
+    <div class="gs-card">
+
+        @include('partials.boxes.attachment', ['id' => $sprint->id, 'type' => 'sprints', 'list' => $sprint->attachments])
+
+    </div>
+
+    <div class="gs-card">
+
+        @include('partials.boxes.team', ['title' => 'Team Members', 'list' => $sprint->issuesHasUsers()])
+
+    </div>
 
 </div>
 
 <div class="col-lg-8">
 
-    <div class="well">
+    <div class="gs-card">
 
-        <h4>{{trans('gitscrum.date')}}: {{$sprint->date_start}} {{trans('gitscrum.to')}} {{$sprint->date_finish}}</h4>
+        <h4 class="gs-card-title">{{trans('gitscrum.date')}}: {{$sprint->date_start}} {{trans('gitscrum.to')}} {{$sprint->date_finish}}</h4>
 
-        <p>{{$sprint->scopeWorkingDays(date('Y-m-d'))}} {{trans('gitscrum.missing-day')}} /
-            {{$sprint->scopeWorkingDays(date('Y-m-d'))}} {{trans('gitscrum.workdays')}}
-            ( {{$sprint->scopeWeeks(date('Y-m-d'))}} {{trans('gitscrum.week')}} )</p>
+        <div class="gs-card-content">
+            <p>{{$sprint->scopeWorkingDays(date('Y-m-d'))}} {{trans('gitscrum.missing-day')}} /
+                {{$sprint->scopeWorkingDays(date('Y-m-d'))}} {{trans('gitscrum.workdays')}}
+                ( {{$sprint->scopeWeeks(date('Y-m-d'))}} {{trans('gitscrum.week')}} )</p>
 
-        <p class="">
-            {{trans('gitscrum.product-backlog')}}: <a href="{{route('product_backlogs.show', ['slug' =>
-            $sprint->productBacklog->slug])}}">
-            <strong>{{$sprint->productBacklog->title}}</strong></a>
-        </p>
+            <p class="">
+                {{trans('gitscrum.product-backlog')}}: <a href="{{route('product_backlogs.show', ['slug' =>
+                $sprint->productBacklog->slug])}}">
+                <strong>{{$sprint->productBacklog->title}}</strong></a>
+            </p>
+
+        </div>
 
     </div>
 
-    @if(!empty($sprint->description))
-    <p class="description">
-        <small>{{trans('gitscrum.description')}}</small>
-        <span>{!! nl2br(e($sprint->description)) !!}</span>
-    </p>
-    @endif
-
-    <div class="issueBurndownChart">@include('partials.boxes.burndown', ['title' => ('Burndown Chart'), 'list' => Helper::burndown($sprint)])</div>
+    <div class="gs-card issueBurndownChart">
+        @include('partials.boxes.burndown', ['title' => ('Burndown Chart'), 'list' => Helper::burndown($sprint)])
+    </div>
 
     <div class="clearfix"></div>
 
-    <div class="tabs-container mtl">
+    @if(!empty($sprint->description))
+    <div class="gs-card">
+        <h4 class="gs-card-title">{{trans('gitscrum.description')}}</h4>
+        <div class="gs-card-content">
+            <p class="description">
+                <span>{!! nl2br(e($sprint->description)) !!}</span>
+            </p>
+        </div>
+    </div>
+    @endif
+
+    <div class="tabs-container mt20">
 
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab-issues">
                 <i class="fa fa-list-alt" aria-hidden="true"></i>
-                    {{trans('gitscrum.issues')}} (<div class="issuesCount">{{$sprint->issues->count()}}</div>)</a></li>
+                    {{trans('gitscrum.issues')}} (<span class="issuesCount">{{$sprint->issues->count()}}</span>)</a></li>
             <li class=""><a data-toggle="tab" href="#tab-comments">
                 <i class="fa fa-comments" aria-hidden="true"></i>
                 {{trans('gitscrum.comments')}} ({{$sprint->comments->count()}})</a></li>

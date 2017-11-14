@@ -69,7 +69,7 @@ return array (
   'completed' => 'Completed',
   'you-are-not-a-member-of-any-sprint' => 'You are not a member of any sprint',
   'list-sprint-backlog' => 'List Sprint Backlog',
-  'organization' => 'Organization',
+  'organization' => 'OrganizationRequest',
   'attachments' => 'Attachments',
   'closed' => 'Closed',
   'members' => 'Members',

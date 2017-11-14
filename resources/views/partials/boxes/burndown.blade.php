@@ -1,9 +1,11 @@
 <div class="burndown">
     @if(isset($title))
-    <h4>{{$title or trans('gitscrum.burndown')}}</h4>
+    <h4 class="gs-card-title">{{$title or trans('gitscrum.burndown')}}</h4>
     @endif
-    <div class="row">
-        <canvas id="burndown" height="{{$height or '320'}}" class="col-md-12"></canvas>
+    <div class="gs-card-content">
+        <div class="row">
+            <canvas id="burndown" height="{{$height or '320'}}" class="col-md-12"></canvas>
+        </div>
     </div>
 </div>
 

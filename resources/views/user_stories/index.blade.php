@@ -15,6 +15,17 @@
 
 @section('content')
 <div class="col-lg-12">
-    @include('partials.boxes.user-story', [ 'list' => $userStories])
+    <div class="gs-card">
+        <h4 class="gs-card-title">
+            {{trans('gitscrum.user-story-list')}}
+
+            <a href="{{route('user_stories.create')}}" class="btn btn-default btn-sm pull-right"
+               data-toggle="modal" data-target="#modalLarge" role="button">{{trans('gitscrum.create-user-story')}}</a>
+        </h4>
+
+        <div class="gs-card-content">
+            @include('partials.boxes.user-story', [ 'list' => $userStories])
+        </div>
+    </div>
 </div>
 @endsection

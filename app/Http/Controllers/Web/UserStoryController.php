@@ -15,6 +15,7 @@ class UserStoryController extends Controller
     public function index(Request $request)
     {
         $userStories = Helper::lengthAwarePaginator(Auth::user()->userStories(), $request->page);
+
         return view('user_stories.index')
             ->with('userStories', $userStories);
     }

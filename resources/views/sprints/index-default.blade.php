@@ -20,8 +20,16 @@
 @section('content')
 
 <div class="col-lg-12">
-    <div class="ibox">
-        <div class="ibox-content">
+    <div class="gs-card">
+
+        <h4 class="gs-card-title">
+            {{trans('gitscrum.sprint-backlog-list')}}
+
+            <a href="{{route('sprints.create')}}" class="btn btn-default btn-sm pull-right"
+               data-toggle="modal" data-target="#modalLarge" role="button">{{trans('gitscrum.create-sprint-backlog')}}</a>
+        </h4>
+
+        <div class="gs-card-content">
             @include('partials.boxes.sprint', [ 'list' => $sprints ])
         </div>
     </div>
