@@ -202,7 +202,7 @@ class Github implements ProviderInterface
 
     public function createBranches($owner, $productBacklogId, $repo, $providerId = null, $page = 1)
     {
-        $branches = collect(Helper::request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/branches?page='.$page));
+        $branches = collect(Helper::request('https://api.github.com/repos/'.$owner.'/'.$repo.'/branches?page='.$page));
 
         $branches->map(function ($branch) use ($productBacklogId) {
             $data = [
