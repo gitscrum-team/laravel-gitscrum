@@ -88,26 +88,32 @@ class Bitbucket implements ProviderInterface
 
     public function tplOrganization($obj)
     {
+        $propertyRepositoriesHref = property_exists($obj->links, "repositories") ? $obj->links->repositories->href : '';
+        $propertyHooksHref = property_exists($obj->links, "hooks") ? $obj->links->hooks->href : '';
+        $propertyWebsite = property_exists($obj, "website") ? $obj->website : '';
+        $propertyLocation = property_exists($obj, "location") ? $obj->location : '';
+        $propertyCreatedOn = property_exists($obj, "created_on") ? $obj->created_on : date('Y-m-d H:i:s');
+
         return [
             'provider_id' => $obj->uuid,
             'username' => $obj->username,
             'url' => $obj->links->self->href ,
-            'repos_url' => $obj->links->repositories->href,
+            'repos_url' => $propertyRepositoriesHref,
             'events_url' => null,
-            'hooks_url' => $obj->links->hooks->href,
+            'hooks_url' => $propertyHooksHref,
             'issues_url' => null,
             'members_url' => null,
             'public_members_url' => null,
             'avatar_url' => $obj->links->avatar->href,
             'description' => null,
             'title' => $obj->display_name,
-            'blog' => $obj->website,
-            'location' => $obj->location,
+            'blog' => $propertyWebsite,
+            'location' => $propertyLocation,
             'email' => null,
             'public_repos' => null,
             'html_url' => $obj->links->html->href,
             'total_private_repos' => null,
-            'since' => Carbon::parse($obj->created_on)->toDateTimeString(),
+            'since' => Carbon::parse($propertyCreatedOn)->toDateTimeString(),
             'disk_usage' => null,
             'provider' => 'bitbucket'
         ];
