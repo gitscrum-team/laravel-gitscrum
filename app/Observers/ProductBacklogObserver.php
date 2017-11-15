@@ -15,7 +15,9 @@ class ProductBacklogObserver
             $productBacklog->user_id = Auth::user()->id;
         }
 
-        $productBacklog->provider_id = mt_rand(0,9999999);
+        if (isset($productBacklog->is_api)) {
+            $productBacklog->provider_id = mt_rand(0,9999999);
+        }
         $productBacklog->slug = Helper::slug($productBacklog->title);
         if (isset($productBacklog->is_api)) {
             $owner = Organization::find($productBacklog->organization_id);
@@ -29,10 +31,12 @@ class ProductBacklogObserver
             $template = app(Auth::user()->provider)->tplRepository($productBacklog::$tmp, $productBacklog->slug);
             if (! is_null($template)) {
                 $obj = ProductBacklog::slug($template->slug)->first();
+                unset($template->organization_title);
                 $obj->update(get_object_vars($template));
             }
             $productBacklog::$tmp = null;
         }
+
     }
 
     public function updating(ProductBacklog $productBacklog)
