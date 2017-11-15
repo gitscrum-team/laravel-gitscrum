@@ -39,6 +39,9 @@ Community and Issues : <b>https://www.gitscrum.com/community</b>
 How can you help? https://gitscrum.com/community/viewtopic.php?f=7&t=33&p=47#p47
 </h4>
 
+![Login GitScrum](https://i.imgur.com/eANowE2.png)
+
+
 <hr>
 
 ## Overview
@@ -68,6 +71,11 @@ GitScrum can be integrated with **Github** or **Gitlab** or **Bitbucket**.
 
 	**Features**: Progress state (e.g. to do, in progress, done or archived), issue type (e.g. Improvement, Support Request, Feedback, Customer Problem, UX, Infrastructure, Testing Task, etc...), definition of done checklist, assign labels, effort, attachments, comments, activities, team members.
 
+![GitScrum Dashboard](https://i.imgur.com/xFFSha7.png)
+
+![GitScrum Board](https://i.imgur.com/ppiYPMK.png)
+
+![GitScrum Sprint](https://i.imgur.com/ZHrhKPy.png)
 
 ## Installation
 
