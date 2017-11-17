@@ -24,6 +24,7 @@ class ProductBacklogRequest extends FormRequest
     public function rules()
     {
         return [
+            'organization_id' => 'required|exists:organizations,id',
             'title' => 'required|min:2|max:255',
         ];
     }
@@ -39,6 +40,8 @@ class ProductBacklogRequest extends FormRequest
             'title.required' => trans('gitscrum.title-for-backlog-product-cannot-be-blank'),
             'title.min' => trans('gitscrum.title-must-be-at-least-2-characters'),
             'title.max' => trans('gitscrum.title-must-be-between-2-and-255-characters'),
+            'organization_id.required' => trans('gitscrum.organization-id-required'),
+            'organization_id.exists' => trans('gitscrum.organization-id-exists'),
         ];
     }
 }

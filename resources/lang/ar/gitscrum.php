@@ -195,4 +195,6 @@ return array (
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => 'تهانينا ! لقد تم تعديل مهام المشروع بنجاح',
   'favorited-successfully' => 'تم الاضافة الى المفضلة بنجاح',
   'unfavorited-successfully' => 'تم الحذف من المفضلة بنجاح',
+  'organization-id-required' => 'يجب أن تختار مؤسسه',
+  'organization-id-exists' => 'ال organization_id يجب ان يكون فى جدول ال organizations',
 );

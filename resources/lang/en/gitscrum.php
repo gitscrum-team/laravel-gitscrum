@@ -195,4 +195,6 @@ return array (
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => 'Congratulations! The Product Backlog has been successfully updated',
   'favorited-successfully' => 'Favorited',
   'unfavorited-successfully' => 'Unfavorited',
+  'organization-id-required' => 'you must choose an organization',
+  'organization-id-exists' => 'organization_id must exist in organizations table',
 );
