@@ -118,7 +118,7 @@ Route::group(['prefix' => 'teams', 'middleware' => ['user.authenticated']], func
 Route::group(['prefix' => 'wizard', 'middleware' => ['user.authenticated']], function () {
     Route::get('/install', 'Web\WizardController@install')->name('wizard.install');
     Route::get('/step1', 'Web\WizardController@step1')->name('wizard.step1');
-    Route::post('/step2', 'Web\WizardController@step2')->name('wizard.step2');
+    Route::any('/step2', 'Web\WizardController@step2')->name('wizard.step2');
     Route::get('/step3', 'Web\WizardController@step3')->name('wizard.step3');
 });
 
