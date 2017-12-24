@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
  * Updated 2017-11-12 03:05:15 / 186 translations
@@ -196,4 +196,5 @@ return array (
   'congratulations-the-product-backlog-has-been-updated-with-successfully' => 'Parabéns! O Product Backlog foi atualizado com sucesso',
   'favorited-successfully' => 'Adicionado aos favoritos com sucesso',
   'unfavorited-successfully' => 'Removido dos favoritos com sucesso',
+  'you-have' => 'Você tem',
 );
