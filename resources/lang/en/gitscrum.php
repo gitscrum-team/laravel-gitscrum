@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Laravel Multi-Language <https://github.com/renatomarinho/laravel-multi-language>
  * Updated 2017-11-12 03:05:15 / 186 translations
@@ -197,4 +197,5 @@ return array (
   'unfavorited-successfully' => 'Unfavorited',
   'organization-id-required' => 'you must choose an organization',
   'organization-id-exists' => 'organization_id must exist in organizations table',
+  'you-have' => 'You have',
 );
