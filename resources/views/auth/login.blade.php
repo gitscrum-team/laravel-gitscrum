@@ -14,7 +14,7 @@
             <div class="text-center">
 
                 <div class="authentication__logo">
-                    <img src="/img/gitscrum-circle.png">
+                    <img src="{{ asset('img/gitscrum-circle.png') }}">
                 </div>
 
                 <h3 class="">
