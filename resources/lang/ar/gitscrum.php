@@ -116,7 +116,9 @@ return array (
   'edit' => 'تعديل',
   'delete' => 'حذف',
   'open' => 'مفتوحة',
-  'go-to-gitHub' => 'إذهب إلى GitHub',
+  'go-to-github' => 'إذهب إلى GitHub',
+  'go-to-bitbucket' => 'إذهب إلى BitBucket',
+  'go-to-gitlab' => 'إذهب إلى GitLab',
   'edit-issue' => 'تعديل المسئله',
   'this-issue-is-in-a
         sprint-that-is' => 'هذة المسئله فى سبرنت',

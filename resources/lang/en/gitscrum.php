@@ -116,7 +116,9 @@ return array (
   'edit' => 'Edit',
   'delete' => 'Delete',
   'open' => 'Open',
-  'go-to-gitHub' => 'Go to GitHub',
+  'go-to-github' => 'Go to GitHub',
+  'go-to-bitbucket' => 'Go to BitBucket',
+  'go-to-gitlab'=> 'Go to GitLab',
   'edit-issue' => 'Edit Issue',
   'this-issue-is-in-a
         sprint-that-is' => 'This issue is in a sprint that is',
