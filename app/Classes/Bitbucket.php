@@ -121,7 +121,7 @@ class Bitbucket implements ProviderInterface
 
     public function readRepositories($page = 1, &$repos = null)
     {
-        $url = env('BITBUCKET_INSTANCE_URI').'/2.0/repositories?token='.Auth::user()->token.'&role=contributor&pagelen=20';
+        $url = env('BITBUCKET_INSTANCE_URI').'/2.0/repositories?token='.Auth::user()->token.'&role=member&page='.$page.'&pagelen=100';
 
         $repos = $this->assertTokenNotExpired(Helper::request($url), $url);
 
