@@ -17,7 +17,7 @@ Community and Issues : <b>https://www.gitscrum.com/community</b>
 |
 <b><a href="#questions-and-issues">Questions and Issues</a></b>
 |
-<b><a href="#contributing">Contributing</a></b>
+<b><a href="#contributing-">Contributing</a></b>
 |
 <b><a href="#license">License</a></b>
 </p>
@@ -242,10 +242,11 @@ PROXY_PASS=
 Renato Marinho: [Facebook](https://www.facebook.com/renato.marinho) / [LinkedIn](https://pt.linkedin.com/in/renatomarinho13) / Skype: renatomarinho13
 
 
-## Contributing
+## Contributing [![Open Source Helpers](https://www.codetriage.com/renatomarinho/laravel-gitscrum/badges/users.svg)](https://www.codetriage.com/renatomarinho/laravel-gitscrum)
 
 Contributions are always welcome! https://github.com/GitScrum-Community/laravel-gitscrum/graphs/contributors
 
+In addition to contributing code, you can help to triage issues. This can include reproducing bug reports, or asking for vital information such as version numbers or reproduction instructions. If you would like to start triaging issues, one easy way to get started is to [subscribe to laravel-gitscrum on CodeTriage](https://www.codetriage.com/renatomarinho/laravel-gitscrum).
 
 ## License
 
