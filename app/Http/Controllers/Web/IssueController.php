@@ -25,7 +25,7 @@ class IssueController extends Controller
 
         return view('issues.index')
             ->with('sprint', $sprint)
-            ->with('issues', $issues->sortBy('position')->groupBy('config_issue_effort_id'))
+            ->with('issues', $issues->sortBy('position')->groupBy('config_status_id'))
             ->with('configStatus', ConfigStatus::type('issues')->get());
     }
 
