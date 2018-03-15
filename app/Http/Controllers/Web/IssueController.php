@@ -19,7 +19,7 @@ class IssueController extends Controller
     {
         [$sprint,$issues] = $this->sprintWithIssues($slug);
 
-        if (!is_null($sprint) && !count($sprint)) {
+        if (!is_null($sprint) && ! $sprint) {
             return redirect()->route('sprints.index');
         }
 
