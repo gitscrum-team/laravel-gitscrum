@@ -24,7 +24,10 @@ Community and Issues : <b>https://www.gitscrum.com/community</b>
 
 <hr>
 
-<p align="center">
+<p align="center"> GitScrum's goal is to "Turn your IT Team into Instant Rock Stars" !!!</p>
+<br>
+<b>Telegram Group: https://t.me/joinchat/IBdvmBKNudOzLLswXGxqZQ </b>
+<br/>
 <b>Facebook Group: https://www.facebook.com/groups/gitscrum/ </b>
 </p>
 
@@ -35,9 +38,6 @@ Community and Issues : <b>https://www.gitscrum.com/community</b>
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md)
 
 <hr>
-<h4 align="center">
-How can you help? https://gitscrum.com/community/viewtopic.php?f=7&t=33&p=47#p47
-</h4>
 
 ![Login GitScrum](https://i.imgur.com/eANowE2.png)
 
