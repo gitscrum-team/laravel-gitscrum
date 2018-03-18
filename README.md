@@ -1,9 +1,15 @@
+[![Project on GitScrum](https://gitscrum.com/badges/project.svg)](https://gitscrum.com)
+[![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
+[![Total Downloads](https://poser.pugx.org/gitscrum-community/laravel-gitscrum/downloads)](https://packagist.org/packages/gitscrum-community/laravel-gitscrum)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md)
+
+<hr>
+
 ![Laravel GitScrum](https://gitscrum.com/facebook.jpg)
 
 <hr>
 <p align="center">
-Site: <b>https://www.gitscrum.com</b> | 
-Community and Issues : <b>https://www.gitscrum.com/community</b>
+Site: <b>https://www.gitscrum.com</b>
 </p>
 <hr>
 <p align="center">
@@ -30,13 +36,6 @@ Community and Issues : <b>https://www.gitscrum.com/community</b>
 <br/>
 <b>Facebook Group: https://www.facebook.com/groups/gitscrum/ </b>
 </p>
-
-<hr>
-
-[![Project on GitScrum](https://gitscrum.com/badges/project.svg)](https://gitscrum.com)
-[![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Total Downloads](https://poser.pugx.org/gitscrum-community/laravel-gitscrum/downloads)](https://packagist.org/packages/gitscrum-community/laravel-gitscrum)
-[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md)
 
 <hr>
 
