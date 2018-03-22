@@ -5,7 +5,7 @@
 
 <hr>
 
-![Laravel GitScrum](https://gitscrum.com/facebook.jpg)
+![Laravel GitScrum](https://site.gitscrum.com/wp-content/uploads/2018/03/facebook.png)
 
 <hr>
 <p align="center">
