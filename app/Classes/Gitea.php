@@ -81,7 +81,7 @@ class Gitea implements ProviderInterface
             'provider' => 'gitea',
             'username' => $obj->username,
             'name' => isset($obj->full_name) ? $obj->full_name : $obj->username,
-            'token' => $obj->token,
+            'token' => isset($obj->token) ? $obj->token : null,
             'avatar' => $obj->avatar_url,
             'email' => $obj->email,
         ];
@@ -94,7 +94,7 @@ class Gitea implements ProviderInterface
             'organization_id' => $this->organization($repo->owner->username),
             'organization_title' => $repo->owner->username,
             'slug' => $slug ? $slug : Helper::slug($repo->full_name),
-            'title' => $repo->full_name,
+            'title' => $repo->name,
             'fullname' => $repo->full_name,
             'is_private' => $repo->private,
             'html_url' => $repo->html_url,
@@ -273,6 +273,7 @@ class Gitea implements ProviderInterface
 
         $repos = $productBacklog->map(function ($repo) {
             $issues = collect(self::request(env('GITEA_INSTANCE_URI').'api/v1/repos/'.
+                $repo->organization->username.
                 DIRECTORY_SEPARATOR.$repo->title.'/issues?token='.Auth::user()->token))->map(function ($issue) use ($repo) {
                     if (isset($issue->id)) {
                         $data = $this->tplIssue($issue, $repo->id);
@@ -294,9 +295,10 @@ class Gitea implements ProviderInterface
 
         $response = self::request(
             env('GITEA_INSTANCE_URI').'api/v1/repos/'.
+            $obj->productBacklog->organization->username.DIRECTORY_SEPARATOR.
             $obj->productBacklog->title.'/issues'.(isset($obj->number) ? DIRECTORY_SEPARATOR.$obj->number : '').'?token='.Auth::user()->token,
             true,
-            'POST',
+            isset($obj->number) ? 'PATCH' : 'POST',
             $params
         );
 
@@ -310,9 +312,19 @@ class Gitea implements ProviderInterface
             'body' => $obj->comment,
         ];
 
+        if($verb == 'POST' && $obj->provider_id) {
+            $verb = 'PATCH';
+        }
+
         $response = self::request(
             env('GITEA_INSTANCE_URI').'api/v1/repos/'.
-            $obj->issue->productBacklog->title.'/issues/'.($obj->issue->number).'/comments?token='.Auth::user()->token,
+            $obj->issue->productBacklog->organization->username.DIRECTORY_SEPARATOR.(
+                $verb == 'POST' 
+                ?
+                $obj->issue->productBacklog->title.'/issues/'.($obj->issue->number).'/comments?token='.Auth::user()->token
+                :
+                $obj->issue->productBacklog->title.'/issues/comments/'.($obj->provider_id).'?token='.Auth::user()->token
+            ),
             true,
             $verb,
             $params
