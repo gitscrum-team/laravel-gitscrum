@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use GitScrum\Classes\Github;
 use GitScrum\Classes\Gitlab;
 use GitScrum\Classes\Bitbucket;
+use GitScrum\Classes\Gitea;
 use Config;
 
 class AppServiceProvider extends ServiceProvider
@@ -42,10 +43,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('Bitbucket', function () {
             return new Bitbucket();
         });
+
+        $this->app->singleton('Gitea', function () {
+            return new Gitea();
+        });
     }
 
     public function provides()
     {
-        return ['Github', 'Gitlab'];
+        return ['Github', 'Gitlab', 'Gitea'];
     }
 }

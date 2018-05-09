@@ -23,6 +23,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('/dologin', 'Web\AuthController@dologin')->name('auth.dologin');
     Route::get('/provider/{provider}', 'Web\AuthController@redirectToProvider')->name('auth.provider');
     Route::get('/provider/{provider}/callback', 'Web\AuthController@handleProviderCallback');
+    Route::post('/provider/gitea/token', 'Web\AuthGiteaController@handleProviderCallback')->name('auth.gitea');
     Route::get('/logout', 'Web\AuthController@logout')->name('auth.logout');
 });
 

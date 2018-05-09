@@ -41,6 +41,11 @@ class AuthController extends Controller
                 return Socialite::driver('bitbucket')->redirect();
                 break;
 
+            // case 'gogs':  someday, maybe
+            case 'gitea':
+               return view('gitea.login');
+        
+
             default:
                 throw new InvalidArgumentException(trans('gitscrum.provider-was-not-set'));
                 break;

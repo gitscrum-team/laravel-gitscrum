@@ -22,21 +22,17 @@
                     <a href="https://github.com/gitscrum-community-edition" target="_blank"><strong>GitScrum</strong></a>
                 </h3>
 
-                <a href="{{route('auth.provider', ['provider' => 'github'])}}" class="btn btn-lg btn-default btn-loader">
-                    <i class="fa fa-github" aria-hidden="true"></i>&nbsp;&nbsp;<strong>GitHub</strong>
-                </a>
+                <form action="{{route('auth.gitea')}}" method="post">
+                   <p>
+                   Gitea login: <input type="text" name="username"/>
+                   </p>
+                   <p>
+                   Gitea passwd: <input type="password" name="passwd"/>
+                   </p>
+                   <input type="submit"/>
+                </form>
 
-                <a href="{{route('auth.provider', ['provider' => 'gitlab'])}}" class="btn btn-lg btn-default btn-loader">
-                    <i class="fa fa-gitlab" aria-hidden="true"></i>&nbsp; <strong>GitLab</strong>
-                </a>
 
-                <a href="{{route('auth.provider', ['provider' => 'bitbucket'])}}" class="btn btn-lg btn-default btn-loader">
-                    <i class="fa fa-bitbucket" aria-hidden="true"></i>&nbsp; <strong>Bitbucket</strong>
-                </a>
-
-                <a href="{{route('auth.provider', ['provider' => 'gitea'])}}" class="btn btn-lg btn-default btn-loader">
-                    <i class="fa" aria-hidden="true"></i>&nbsp; <strong>Gitea</strong>
-                </a>
                 <p class="small">The GitScrum Community is licensed under the
                     <a href="https://github.com/gitscrum-community-edition/laravel-gitscrum/blob/master/LICENSE.md" target="_blank">MIT license</a></p>
 
