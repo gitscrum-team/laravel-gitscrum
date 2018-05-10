@@ -197,12 +197,13 @@ class Gitea implements ProviderInterface
             }
 
             $response = self::request($endpoint, true, 'POST', $params);
+            return (object) $response;
         } else {
             // gitea has no update repo api
-            return collect();
+            return null;
         }
 
-        return $response;
+        return null;
     }
 
     public function organization($login)
