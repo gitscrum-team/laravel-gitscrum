@@ -169,7 +169,7 @@ class Bitbucket implements ProviderInterface
      */
     public function readCollaborators($owner, $repo, $providerId = null)
     {
-        $url = self::API_URL . '/1.0/privileges/' . $owner . '/' . $repo;
+        $url = self::API_URL . '1.0/privileges/' . $owner . '/' . $repo;
 
         $collaborators = $this->assertTokenNotExpired(Helper::request($url), $url);
 
@@ -213,7 +213,7 @@ class Bitbucket implements ProviderInterface
 
     public function createBranches($owner, $product_backlog_id, $repo, $providerId = null)
     {
-        $branches = collect(Helper::request(self::API_URL . '/1.0/repositories/' . $owner . '/' . $repo . '/branches'));
+        $branches = collect(Helper::request(self::API_URL . '1.0/repositories/' . $owner . '/' . $repo . '/branches'));
 
         $branchesData = [];
         foreach ($branches as $branchName => $branchData) {
