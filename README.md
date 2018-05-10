@@ -203,7 +203,6 @@ Uncheck (This is a private consumer)
 ```
 BITBUCKET_CLIENT_ID=XXXXX -> Bitbucket Key
 BITBUCKET_CLIENT_SECRET=XXXXXXXXXXXXXXXXXX Bitbucket Secret
-BITBUCKET_INSTANCE_URI=https://api.bitbucket.org
 ```
 
 #### Proxy
