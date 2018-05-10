@@ -14,8 +14,8 @@ use GuzzleHttp\Client as GuzzleClient;
 
 class Bitbucket implements ProviderInterface
 {
-    private const BITBUCKET_API_URL = 'https://api.bitbucket.org/';
-    private const BITBUCKET_API_VER = '2.0/';
+    private const API_URL = 'https://api.bitbucket.org/';
+    private const API_VER = '2.0/';
 
     public function tplUser($obj)
     {
@@ -123,7 +123,7 @@ class Bitbucket implements ProviderInterface
 
     public function readRepositories($page = 1, &$repos = null)
     {
-        $url = self::BITBUCKET_API_URL . self::BITBUCKET_API_VER . 'repositories?token=' . Auth::user()->token . '&role=member&page=' . $page . '&pagelen=100';
+        $url = self::API_URL . self::API_VER . 'repositories?token=' . Auth::user()->token . '&role=member&page=' . $page . '&pagelen=100';
 
         $repos = $this->assertTokenNotExpired(Helper::request($url), $url);
 
@@ -146,7 +146,7 @@ class Bitbucket implements ProviderInterface
 
         $endPoint = strtolower($obj->owner->type) == 'user' ? 'users' : 'teams';
 
-        $url = self::BITBUCKET_API_URL . self::BITBUCKET_API_VER . $endPoint . '/' . $obj->owner->username;
+        $url = self::API_URL . self::API_VER . $endPoint . '/' . $obj->owner->username;
 
         $response = (object)$this->assertTokenNotExpired(Helper::request($url), $url);
 
@@ -169,7 +169,7 @@ class Bitbucket implements ProviderInterface
      */
     public function readCollaborators($owner, $repo, $providerId = null)
     {
-        $url = self::BITBUCKET_API_URL . '/1.0/privileges/' . $owner . '/' . $repo;
+        $url = self::API_URL . '/1.0/privileges/' . $owner . '/' . $repo;
 
         $collaborators = $this->assertTokenNotExpired(Helper::request($url), $url);
 
@@ -183,7 +183,7 @@ class Bitbucket implements ProviderInterface
             $user = User::where('provider', 'bitbucket')->where('username', $collaborator->user->username)->first();
 
             if (is_null($user)) {
-                $url = self::BITBUCKET_API_URL . self::BITBUCKET_API_VER . 'users/' . $collaborator->user->username;
+                $url = self::API_URL . self::API_VER . 'users/' . $collaborator->user->username;
 
                 $user = $this->assertTokenNotExpired(Helper::request($url), $url);
 
@@ -213,7 +213,7 @@ class Bitbucket implements ProviderInterface
 
     public function createBranches($owner, $product_backlog_id, $repo, $providerId = null)
     {
-        $branches = collect(Helper::request(self::BITBUCKET_API_URL . '/1.0/repositories/' . $owner . '/' . $repo . '/branches'));
+        $branches = collect(Helper::request(self::API_URL . '/1.0/repositories/' . $owner . '/' . $repo . '/branches'));
 
         $branchesData = [];
         foreach ($branches as $branchName => $branchData) {
@@ -236,7 +236,7 @@ class Bitbucket implements ProviderInterface
         $repos = ProductBacklog::with('organization')->get();
 
         foreach ($repos as $repo) {
-            $url = self::BITBUCKET_API_URL . self::BITBUCKET_API_VER . 'repositories/' . $repo->organization->username . '/' . $repo->title . '/issues';
+            $url = self::API_URL . self::API_VER . 'repositories/' . $repo->organization->username . '/' . $repo->title . '/issues';
 
             $issues = $this->assertTokenNotExpired(Helper::request($url), $url);
 
