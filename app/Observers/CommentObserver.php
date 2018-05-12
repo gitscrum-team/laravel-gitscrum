@@ -25,7 +25,7 @@ class CommentObserver
 
     public function updated(Comment $comment)
     {
-        if ($comment->commentable_type == 'issue') {
+        if ($comment->commentable_type == 'issues') {
             app(Auth::user()->provider)->createOrUpdateIssueComment($comment);
         }
     }
@@ -35,7 +35,7 @@ class CommentObserver
         $statuses = $comment->statuses->first();
         Status::destroy($statuses->id);
 
-        if ($comment->commentable_type == 'issue') {
+        if ($comment->commentable_type == 'issues') {
             app(Auth::user()->provider)->deleteIssueComment($comment);
         }
     }
