@@ -102,7 +102,7 @@ class Helper
         }
 
         if (env('PROXY_USER')) {
-            curl_setopt($ch, CURLOPT_PROXYUSERPWD, env('PROXY_USER').':'.env('PROXY_USER'));
+            curl_setopt($ch, CURLOPT_PROXYUSERPWD, env('PROXY_USER').':'.env('PROXY_PASS'));
         }
 
         if (!is_null($postFields)) {
