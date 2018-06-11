@@ -3,12 +3,12 @@
 [![Total Downloads](https://poser.pugx.org/gitscrum-community/laravel-gitscrum/downloads)](https://packagist.org/packages/gitscrum-community/laravel-gitscrum)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md)
 
-<hr>
-
-<center>
+<p align="center">
+    <img src="https://site.gitscrum.com/assets/gitscrum_b.png" />
+    <br><br>
     <img src="https://site.gitscrum.com/wp-content/uploads/2018/06/kanban-rabbit.png" />
-</center>
-<hr>
+</p>
+
 <p align="center">
 Site: <b>https://www.gitscrum.com</b>
 </p>
@@ -37,7 +37,7 @@ Site: <b>https://www.gitscrum.com</b>
 </p>
 
 
-**GitScrum wants to transform your IT team into instant Rock Stars **
+<b>GitScrum wants to transform your IT team into instant Rock Stars</b>
 
 GitScrum collaborates to overcome the objectives with implementation of management model based on meritocracy. GitScrum transforms your project into a game and allows to measure in a transparent way team achievements and individual. You can reward those who have the best results.
 
