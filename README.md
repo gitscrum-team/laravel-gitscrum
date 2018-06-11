@@ -5,8 +5,9 @@
 
 <hr>
 
-![Laravel GitScrum](https://site.gitscrum.com/wp-content/uploads/2018/03/facebook.png)
-
+<center>
+    <img src="https://site.gitscrum.com/wp-content/uploads/2018/06/kanban-rabbit.png" />
+</center>
 <hr>
 <p align="center">
 Site: <b>https://www.gitscrum.com</b>
@@ -30,23 +31,21 @@ Site: <b>https://www.gitscrum.com</b>
 
 <hr>
 
-<p align="center"> GitScrum's goal is to "Turn your IT Team into Instant Rock Stars" !!!</p>
-<br>
-<b>Telegram Group: https://t.me/joinchat/IBdvmBKNudOzLLswXGxqZQ </b>
+<p align="center"> GitScrum's goal is to "Transform your IT Team into Instant Rock Stars" !!!</p>
 <br/>
 <b>Facebook Group: https://www.facebook.com/groups/gitscrum/ </b>
 </p>
 
-<hr>
 
-![Login GitScrum](https://i.imgur.com/eANowE2.png)
+**GitScrum wants to transform your IT team into instant Rock Stars **
 
+GitScrum collaborates to overcome the objectives with implementation of management model based on meritocracy. GitScrum transforms your project into a game and allows to measure in a transparent way team achievements and individual. You can reward those who have the best results.
 
 <hr>
 
 ## Overview
 
-Laravel GitScrum is a **free application** developed in Laravel 5.4. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
+Laravel GitScrum is a **free application** developed on Laravel. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
 
 Available in English, Chinese, Russian, German, Arabic, Spanish, Portuguese, Italian, French, Indonesian, Serbian, Hungarian and Vietnamese.
 
