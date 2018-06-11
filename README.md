@@ -45,7 +45,7 @@ GitScrum collaborates to overcome the objectives with implementation of manageme
 
 ## Overview
 
-Laravel GitScrum is a **free application** developed on Laravel. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
+Laravel GitScrum is a **free application** developed specifically for agile teams to be more agile!. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
 
 Available in English, Chinese, Russian, German, Arabic, Spanish, Portuguese, Italian, French, Indonesian, Serbian, Hungarian and Vietnamese.
 
