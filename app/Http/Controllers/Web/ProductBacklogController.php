@@ -16,7 +16,8 @@ class ProductBacklogController extends Controller
      */
     public function index(Request $request, $mode = 'default')
     {
-        $backlogs = ProductBacklog::paginate(env('APP_PAGINATE'));
+
+        $backlogs = ProductBacklog::where('user_id',Auth::user()->id)->paginate(env('APP_PAGINATE'));
         return view('product_backlogs.index-'.$mode)
             ->with('backlogs', $backlogs);
     }
