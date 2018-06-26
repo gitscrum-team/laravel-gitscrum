@@ -36,7 +36,6 @@ class Gitlab implements ProviderInterface
     public function tplRepository($repo, $slug = false)
     {
         $organization = $this->organization($repo);
-
         if (!$organization) {
             return;
         }
@@ -117,6 +116,7 @@ class Gitlab implements ProviderInterface
         $repos = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v4/projects?access_token='.Auth::user()->token));
 
         $response = $repos->map(function ($repo) {
+
             return $this->tplRepository($repo);
         });
 
