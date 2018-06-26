@@ -14,7 +14,7 @@
             <div class="text-center">
 
                 <div class="authentication__logo">
-                    <img src="{{ asset('img/gitscrum-circle.png') }}">
+	                 <img src="{{ asset('img/gitscrum-circle.png') }}"> 
                 </div>
 
                 <h3 class="">
@@ -33,7 +33,6 @@
                 <a href="{{route('auth.provider', ['provider' => 'bitbucket'])}}" class="btn btn-lg btn-default btn-loader">
                     <i class="fa fa-bitbucket" aria-hidden="true"></i>&nbsp; <strong>Bitbucket</strong>
                 </a>
-
                 <a href="{{route('auth.provider', ['provider' => 'gitea'])}}" class="btn btn-lg btn-default btn-loader">
                     <i class="fa" aria-hidden="true"></i>&nbsp; <strong>Gitea</strong>
                 </a>
