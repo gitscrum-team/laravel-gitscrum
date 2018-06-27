@@ -13,6 +13,16 @@
             <div class="text-center">
                 <h4>{{trans('gitscrum.you-can-import-the-repositories-to-GitScrum')}}</h4>
                 <h5>{{trans('gitscrum.you-have')}} {{$repositories->count()}} {{trans('gitscrum.repositories')}}</h5>
+
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Filter" id="liveSearch" onkeyup="filterFunction()">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+
             </div>
 
             <form action="{{route('wizard.step2')}}" method="post">

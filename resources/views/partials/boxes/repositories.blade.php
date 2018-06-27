@@ -1,4 +1,4 @@
-<table class="table table-repository">
+<table class="table table-repository" id="repoTable">
     <tbody>
         @foreach ($list as $value)
         <tr>
@@ -34,3 +34,22 @@
         @endforeach
     </tbody>
 </table>
+<script type="application/javascript">
+    function filterFunction () {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("liveSearch");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("repoTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
