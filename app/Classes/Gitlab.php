@@ -48,7 +48,7 @@ class Gitlab implements ProviderInterface
             'slug' => $slug ? $slug : Helper::slug($repo->path),
             'title' => $repo->path,
             'fullname' => $repo->name,
-            'is_private' => $repo->public == true,
+            'is_private' => $repo->visibility,
             'html_url' => $repo->http_url_to_repo,
             'description' => $repo->description,
             'fork' => null,
