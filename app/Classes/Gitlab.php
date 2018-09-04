@@ -35,6 +35,8 @@ class Gitlab implements ProviderInterface
 
     public function tplRepository($repo, $slug = false)
     {
+
+        dd($repo);
         $organization = $this->organization($repo);
 
         if (!$organization) {
