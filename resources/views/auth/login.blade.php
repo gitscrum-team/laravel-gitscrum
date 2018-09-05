@@ -49,8 +49,8 @@
 
         <div class="aligner">
             <div class="content">
-                <h1>{{ config('app.name') }}</h1>
-                <h2>Gitscrum</h2>
+                <h1>GitScrum</h1>
+                <h2>be faster</h2>
 
                 <p>{{trans('gitscrum.slogan')}}</p>
             </div>
