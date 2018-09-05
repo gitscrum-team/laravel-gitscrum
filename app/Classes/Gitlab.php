@@ -35,6 +35,7 @@ class Gitlab implements ProviderInterface
 
     public function tplRepository($repo, $slug = false)
     {
+
         $organization = $this->organization($repo);
 
         if (!$organization) {
@@ -48,7 +49,7 @@ class Gitlab implements ProviderInterface
             'slug' => $slug ? $slug : Helper::slug($repo->path),
             'title' => $repo->path,
             'fullname' => $repo->name,
-            'is_private' => $repo->visibility === 'public',
+            'is_private' => $repo->public_jobs == true,
             'html_url' => $repo->http_url_to_repo,
             'description' => $repo->description,
             'fork' => null,
@@ -132,6 +133,8 @@ class Gitlab implements ProviderInterface
         if (!isset($obj->owner) && !isset($obj->namespace)) {
             return false;
         }
+
+
 
         if (!isset($obj->owner) && isset($obj->namespace)) {
             // To avoid to make unnecessary calls to the api to get the groups info saving the fetched groups into a private variable
