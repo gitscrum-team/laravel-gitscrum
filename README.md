@@ -9,9 +9,17 @@
     <img src="https://site.gitscrum.com/wp-content/uploads/2018/06/kanban-rabbit.png" />
 </p>
 
-<p align="center">
+More than 4.500 business use GitScrum to manage their agile projects
+
+**Where do we come in?**
+
+When running a business or handling large amounts of data, our agile project management software can be a helpful tool in making sure that all runs well and getting your team in operating mode.
+
+GitScrum’s agile approach to project management has proven itself to be a time and money saving strategy with the flexibility to keep up with rapid changes
+
+
 Site: <b>https://www.gitscrum.com</b>
-</p>
+
 <hr>
 <p align="center">
 <b><a href="#overview">Overview</a></b>
