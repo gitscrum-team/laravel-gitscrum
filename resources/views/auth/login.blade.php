@@ -19,7 +19,7 @@
 
                 <h3 class="">
                     {{trans('gitscrum.welcome-to')}}
-                    <a href="https://github.com/gitscrum-community-edition" target="_blank"><strong>GitScrum</strong></a>
+                    <a href="https://github.com/gitscrum-community" target="_blank"><strong>GitScrum</strong></a>
                 </h3>
 
                 <a href="{{route('auth.provider', ['provider' => 'github'])}}" class="btn btn-lg btn-default btn-loader">
