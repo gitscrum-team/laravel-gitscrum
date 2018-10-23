@@ -4,12 +4,12 @@
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md)
 
 <p align="center">
-    <img src="https://site.gitscrum.com/assets/gitscrum_b.png" />
+    <img src="https://site.gitscrum.com/wp-content/uploads/2017/09/logo_gitscrum.png" />
     <br><br>
-    <img src="https://site.gitscrum.com/wp-content/uploads/2018/06/kanban-rabbit.png" />
+    <img src="https://site.gitscrum.com/wp-content/uploads/2018/09/comp-gitscrum.jpg" />
 </p>
 
-More than 4.500 business use GitScrum to manage their agile projects
+More than 6.600 business use GitScrum to manage their agile projects
 
 **Where do we come in?**
 
