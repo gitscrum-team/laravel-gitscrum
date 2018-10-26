@@ -11,7 +11,7 @@ var phpcs = require('gulp-phpcs');
 var shell = require('gulp-shell');
 
 gulp.task('less-core', function () {
-    return gulp.src(['./resources/assets/core/less/*','./resources/assets/vendors/css/*'])
+    return gulp.src(['./resources/assets/core/less/*','./resources/assets/core/less/**/*','./resources/assets/vendors/css/*'])
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(concat('core.css'))

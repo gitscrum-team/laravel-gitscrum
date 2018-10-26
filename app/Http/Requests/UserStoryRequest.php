@@ -25,6 +25,7 @@ class UserStoryRequest extends FormRequest
     {
         return [
             'title' => 'required|min:2',
+            'product_backlog_id' => 'required|exists:product_backlogs,id',
         ];
     }
 
@@ -38,6 +39,8 @@ class UserStoryRequest extends FormRequest
         return [
             'title.required' => trans('gitscrum.user-Story-cannot-be-blank'),
             'title.min' => trans('gitscrum.user-story-must-be-at-least-2-characters'),
+            'product_backlog_id.required' => trans('gitscrum.product-backlog-id-required'),
+            'product_backlog_id.exists' => trans('gitscrum.product-backlog-id-exists'),
         ];
     }
 }

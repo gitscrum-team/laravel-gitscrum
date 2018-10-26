@@ -1,10 +1,4 @@
 <?php
-/**
- * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
- *
- * The MIT License (MIT)
- * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
- */
 
 namespace GitScrum\Models;
 
@@ -13,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
 use GitScrum\Scopes\SprintScope;
-use Carbon\Carbon;
+use GitScrum\Presenters\GlobalPresenter;
 
 class Sprint extends Model
 {
     use SoftDeletes;
     use GlobalScope;
     use SprintScope;
+    use GlobalPresenter;
     use SprintPresenter;
     /**
      * The database table used by the model.

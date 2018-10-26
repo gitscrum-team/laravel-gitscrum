@@ -1,10 +1,4 @@
 <?php
-/**
- * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
- *
- * The MIT License (MIT)
- * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
- */
 
 namespace GitScrum\Models;
 
@@ -13,11 +7,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use GitScrum\Scopes\GlobalScope;
 use GitScrum\Scopes\UserScope;
+use GitScrum\Presenters\GlobalPresenter;
 
 class User extends Authenticatable
 {
     use GlobalScope;
     use UserScope;
+    use GlobalPresenter;
     use UserPresenter;
     /**
      * The database table used by the model.
@@ -32,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = ['provider_id', 'provider', 'username', 'name', 'avatar', 'html_url', 'email',
-        'bio', 'location', 'blog', 'since', 'token', 'main_repository', 'position_held', ];
+        'bio', 'location', 'blog', 'since', 'token', 'main_repository', 'position_held', 'refresh_token', ];
 
     /**
      * The attributes excluded from the model's JSON form.

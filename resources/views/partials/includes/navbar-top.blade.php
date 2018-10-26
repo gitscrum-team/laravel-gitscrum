@@ -1,29 +1,28 @@
 <header>
     <div class="navbar navbar-fixed-top" role="navigation">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" role="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                 </button>
-                <a href="{{route('user.dashboard')}}" class="navbar-brand">
-                    <i class="fa fa-{{strtolower(Auth::user()->provider)}}" aria-hidden="true" data-toggle="tooltip"
-                       title="{{trans('gitscrum.you-are-you-connected-using')}} {{Auth::user()->provider}}"
-                       data-placement="bottom"></i>Git<strong>Scrum</strong></a>
+                <a href="{{route('user.dashboard')}}" class="navbar-brand" title="{{trans('gitscrum.you-are-you-connected-using')}} {{Auth::user()->provider}}">
+                    <strong>GitScrum</strong></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a href="{{route('user_stories.index')}}">
-                        {{trans('gitscrum.user-stories')}}</a></li>
+                    <li><a href="{{route('issues.index',['slug' => 0])}}">
+                            {{trans('gitscrum.my-planning')}}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{route('product_backlogs.index')}}">
                         {{trans('gitscrum.product-backlog')}}</a></li>
                     <li><a href="{{route('sprints.index')}}">
                         {{trans('gitscrum.sprint-backlog')}}</a></li>
+                    <li><a href="{{route('user_stories.index')}}">
+                            {{trans('gitscrum.user-stories')}}</a></li>
                     <li>
                         <a aria-expanded="false" role="button" href="#" data-toggle="dropdown">
-                            <img src="{{Auth::user()->avatar}}"
-                                class="avatar" />{{Auth::user()->username}}
+                            <img src="{{Auth::user()->avatar}}" class="avatar" />
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{route('user.profile',['slug' => Auth::user()->username])}}">

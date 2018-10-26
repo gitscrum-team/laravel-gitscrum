@@ -1,5 +1,5 @@
 @if(!empty($list[0]))
-    <table class="table-sprint-backlog table table-striped table-hover">
+    <table class="table table-sprint-backlog">
         <thead>
         <tr>
             @if(isset($column['thead_sprintFavorite']))

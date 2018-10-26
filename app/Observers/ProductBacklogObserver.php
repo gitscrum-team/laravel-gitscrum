@@ -1,10 +1,4 @@
 <?php
-/**
- * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
- *
- * The MIT License (MIT)
- * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
- */
 
 namespace GitScrum\Observers;
 
@@ -21,6 +15,9 @@ class ProductBacklogObserver
             $productBacklog->user_id = Auth::user()->id;
         }
 
+        if (isset($productBacklog->is_api)) {
+            $productBacklog->provider_id = mt_rand(0,9999999);
+        }
         $productBacklog->slug = Helper::slug($productBacklog->title);
         if (isset($productBacklog->is_api)) {
             $owner = Organization::find($productBacklog->organization_id);
@@ -32,10 +29,14 @@ class ProductBacklogObserver
     {
         if (isset($productBacklog->is_api)) {
             $template = app(Auth::user()->provider)->tplRepository($productBacklog::$tmp, $productBacklog->slug);
-            $obj = ProductBacklog::slug($template->slug)->first();
-            $obj->update(get_object_vars($template));
+            if (! is_null($template)) {
+                $obj = ProductBacklog::slug($template->slug)->first();
+                unset($template->organization_title);
+                $obj->update(get_object_vars($template));
+            }
             $productBacklog::$tmp = null;
         }
+
     }
 
     public function updating(ProductBacklog $productBacklog)
@@ -43,9 +44,12 @@ class ProductBacklogObserver
         $oldRepos = ProductBacklog::find($productBacklog->id);
         $owner = Organization::find($productBacklog->organization_id);
         $repos = app(Auth::user()->provider)->createOrUpdateRepository($owner->username, $productBacklog, $oldRepos->title);
-        $productBacklog->html_url = $repos->html_url;
-        $productBacklog->ssh_url = $repos->ssh_url;
-        $productBacklog->clone_url = $repos->clone_url;
-        $productBacklog->url = $repos->url;
+        // skip update if repos object is null to prevent error
+        if (! is_null($repos)) {
+            $productBacklog->html_url = $repos->html_url;
+            $productBacklog->ssh_url = $repos->ssh_url;
+            $productBacklog->clone_url = $repos->clone_url;
+            $productBacklog->url = $repos->url;
+        }
     }
 }

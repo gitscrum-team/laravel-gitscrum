@@ -1,10 +1,4 @@
 <?php
-/**
- * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
- *
- * The MIT License (MIT)
- * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
- */
 
 namespace GitScrum\Observers;
 
@@ -31,7 +25,7 @@ class CommentObserver
 
     public function updated(Comment $comment)
     {
-        if ($comment->commentable_type == 'issue') {
+        if ($comment->commentable_type == 'issues') {
             app(Auth::user()->provider)->createOrUpdateIssueComment($comment);
         }
     }
@@ -41,7 +35,7 @@ class CommentObserver
         $statuses = $comment->statuses->first();
         Status::destroy($statuses->id);
 
-        if ($comment->commentable_type == 'issue') {
+        if ($comment->commentable_type == 'issues') {
             app(Auth::user()->provider)->deleteIssueComment($comment);
         }
     }

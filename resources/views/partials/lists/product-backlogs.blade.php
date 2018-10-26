@@ -20,8 +20,8 @@
     <td><span class="text-middle">{{$list->organization->title}}</span></td>
     <td class="text-right" width="60">
         <a href="{{$list->html_url}}" target="_blank" class="text-middle icon-github"
-            data-toggle="tooltip" data-placement="left"
-            title="{{trans('gitscrum.go-to-gitHub')}}" alt="{{trans('gitscrum.go-to-gitHub')}}">
-            <i class="fa fa-github" aria-hidden="true"></i></a>
+           data-toggle="tooltip" data-placement="left"
+           title="{{trans('gitscrum.go-to-'.$list->organization->provider)}}" alt="{{trans('gitscrum.go-to-'.$list->organization->provider)}}">
+            <i class="fa fa-{{$list->organization->provider}}" aria-hidden="true"></i></a>
     </td>
 </tr>

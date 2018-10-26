@@ -1,5 +1,5 @@
 {
-    "name": "renatomarinho/laravel-gitscrum",
+    "name": "gitscrum-community-edition/laravel-gitscrum",
     "description": "GitScrum is a project to help developer team. Git + Scrum = Team More Productive ",
     "keywords": [
         "git",
@@ -10,71 +10,78 @@
         "backlog",
         "issue",
         "laravel",
-        "gitscrum"
+        "gitscrum",
+        "gitscrum community edition"
     ],
-    "license": "GPL-3.0",
-    "minimum-stability": "dev",
+    "license": "MIT",
     "type": "application",
     "authors": [
         {
             "name": "Renato Marinho",
-            "email": "renato.marinho@s2move.com",
-            "homepage": "http://renatomarinho.com"
+            "email": "renato.marinho@gitscrum.com",
+            "homepage": "https://gitscrum.com"
         }
     ],
     "require": {
-        "php": ">=5.6.4",
-        "laravel/framework": "5.4.*",
-        "phploc/phploc": "*",
-        "intervention/image": "^2.3",
-        "socialiteproviders/gitlab": "^3.0",
+        "php": ">=7.1",
+        "laravel/framework": "5.5.*",
+        "maknz/slack": "^1.7",
         "nesbot/carbon": "^1.21",
-        "doctrine/dbal": "~2.5",
-        "barryvdh/laravel-debugbar": "^2.2"
+        "phploc/phploc": "*",
+        "renatomarinho/laravel-multi-language": ">=1.0.0",
+        "renatomarinho/laravel-page-speed": "^1.8",
+        "socialiteproviders/gitlab": "^3.0",
+        "tymon/jwt-auth": "0.5.*",
+        "spatie/laravel-fractal": "^5.2",
+        "doctrine/dbal": "^2.6"
     },
     "require-dev": {
+        "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7",
-        "talevskiigor/composer-bump": "^1.0",
+        "mockery/mockery": "~1.0",
+        "phpunit/phpunit": "~6.2",
         "squizlabs/php_codesniffer": "^2.7",
         "symfony/css-selector": "~2.8|~3.0",
         "symfony/dom-crawler": "3.2.3"
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database/seeds",
+            "database/factories"
         ],
         "psr-4": {
-            "GitScrum\\": "app/",
-            "App\\": "app/"
+            "GitScrum\\": "app/"
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php",
-            "tests/support/DatabaseMigrations.php"
-        ]
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
     },
     "scripts": {
         "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "php artisan key:generate"
+            "@php artisan key:generate"
         ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ],
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
-        ]
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 app tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 app tests"
     },
     "config": {
         "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "version": "0.13.0"
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
 }

@@ -15,7 +15,11 @@
     @if (trim($__env->yieldContent('main-title')))
       <div class="main-title">
           <div class="container">
-          @yield('main-title')
+              <div class="gs-card">
+                  <div class="gs-card-content">
+                      @yield('main-title')
+                  </div>
+              </div>
           </div>
       </div>
    @endif

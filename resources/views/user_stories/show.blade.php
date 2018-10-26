@@ -33,8 +33,8 @@
 
 @section('main-title')
 <span class="label label-danger"
-     style="background-color:#{{$userStory->priority->color}}">
-        {{$userStory->priority->title}}</span>
+     style="background-color:#{{@$userStory->priority->color}}">
+        {{@$userStory->priority->title}}</span>
 <span>{{$userStory->title}}</span>
 @endsection
 
@@ -48,7 +48,7 @@
             {{trans('gitscrum.create-issue')}}</a>
     </div>
 
-    <div class="">
+    <div class="issueStatusChart">
         @include('partials.boxes.chart-donut', ['list'=>$userStory->issueStatus()])
     </div>
 
@@ -56,7 +56,7 @@
         'slug' => $userStory->slug, 'list' => $userStory->labels, 'type' => 'user_stories', 'id' => $userStory->id ])
 
     @include('partials.boxes.note', [ 'list' => $userStory,
-        'type'=> 'user_stories', 'title' => trans('gitscrum.gitscrum.definition-of-done-checklist'),
+        'type'=> 'user_stories', 'title' => trans('gitscrum.definition-of-done-checklist'),
         'percentage' => Helper::percentage($userStory, 'notes')])
 
     @include('partials.boxes.team', ['title' => 'Team Members', 'list' => $userStory->issuesHasUsers(12)])
@@ -95,7 +95,7 @@
 
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab-issues"> {{trans('gitscrum.issues')}}
-                    ({{$userStory->issues->count()}}) </a></li>
+                    (<span class="issuesCount">{{$userStory->issues->count()}}</span>) </a></li>
             <li class=""><a data-toggle="tab" href="#tab-comments"> {{trans('gitscrum.comments')}}
                     ({{$userStory->comments->count()}}) </a></li>
             <li class=""><a data-toggle="tab" href="#tab-activities"> {{trans('gitscrum.activities')}} </a></li>
@@ -104,8 +104,8 @@
         <div class="tab-content">
             <div id="tab-issues" class="tab-pane active">
                 <div class="panel-body">
-                    @include('partials.boxes.issue', ['list' => $userStory->issues, 'messageEmpty' => trans('gitscrum
-                    .gitscrum.this-does-not-have-any-issue-yet')])
+                    <div class="issuesBox">@include('partials.boxes.issue', ['list' => $userStory->issues, 'messageEmpty' => trans('gitscrum
+                    .gitscrum.this-does-not-have-any-issue-yet')])</div>
                 </div>
             </div>
             <div id="tab-comments" class="tab-pane">

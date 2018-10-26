@@ -1,16 +1,10 @@
 <?php
-/**
- * GitScrum v0.1.
- *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
- */
 
 return [
 
     /*
      |--------------------------------------------------------------------------
-     | Debugbar Settings
+     | Debugbar Setting
      |--------------------------------------------------------------------------
      |
      | Debugbar is enabled by default, when debug is set to true in app.php.

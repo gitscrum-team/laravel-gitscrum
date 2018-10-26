@@ -315,15 +315,16 @@ class Parsedown
 
     protected function blockCodeComplete($Block)
     {
-        $text = $Block['element']['text']['text'];
+        if (!empty($Block['element']['text']['text'])) {
+            $text = $Block['element']['text']['text'];
+            $text = htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8');
+            $Block['element']['text']['text'] = $text;
 
-        $text = htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8');
+            return $Block;
+        }
 
-        $Block['element']['text']['text'] = $text;
-
-        return $Block;
+        return '';
     }
-
     #
     # Comment
 
@@ -421,13 +422,15 @@ class Parsedown
 
     protected function blockFencedCodeComplete($Block)
     {
-        $text = $Block['element']['text']['text'];
+        if (!empty($Block['element']['text']['text'])) {
+            $text = $Block['element']['text']['text'];
+            $text = htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8');
+            $Block['element']['text']['text'] = $text;
 
-        $text = htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8');
+            return $Block;
+        }
 
-        $Block['element']['text']['text'] = $text;
-
-        return $Block;
+        return '';
     }
 
     #
@@ -985,7 +988,7 @@ class Parsedown
         $marker = $Excerpt['text'][0];
 
         if (preg_match('/^('.$marker.'+)[ ]*(.+?)[ ]*(?<!'.$marker.')\1(?!'.$marker.')/s', $Excerpt['text'], $matches)) {
-            $text = $matches[2];
+            $text = $matches[2] ?? '';
             $text = htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8');
             $text = preg_replace("/[ ]*\n/", ' ', $text);
 

@@ -13,6 +13,7 @@
     "gulp-concat": "*",
     "gulp-uglify": "*",
     "gulp-phpcs": "*",
-    "gulp-shell": "*"
+    "gulp-shell": "*",
+    "gulp-minify": "*"
   }
 }

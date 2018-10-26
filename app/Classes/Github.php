@@ -1,10 +1,4 @@
 <?php
-/**
- * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
- *
- * The MIT License (MIT)
- * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
- */
 
 namespace GitScrum\Classes;
 
@@ -253,10 +247,14 @@ class Github implements ProviderInterface
             'body' => $obj->description,
         ];
 
-        $response = Helper::request('https://api.github.com/repos/'.
+        $response = Helper::request(
+            'https://api.github.com/repos/'.
             $obj->productBacklog->organization->username.DIRECTORY_SEPARATOR.
             $obj->productBacklog->title.'/issues'.(isset($obj->number) ? DIRECTORY_SEPARATOR.$obj->number : ''),
-            true, 'POST', $params);
+            true,
+            'POST',
+            $params
+        );
 
         return (object) $response;
     }
@@ -267,11 +265,15 @@ class Github implements ProviderInterface
             'body' => $obj->comment,
         ];
 
-        $response = Helper::request('https://api.github.com/repos/'.
+        $response = Helper::request(
+            'https://api.github.com/repos/'.
             $obj->issue->productBacklog->organization->username.DIRECTORY_SEPARATOR.
             $obj->issue->productBacklog->title.'/issues'.(isset($obj->provider_id) ? '' : DIRECTORY_SEPARATOR.$obj->issue->number).'/comments'.
             (isset($obj->provider_id) ? DIRECTORY_SEPARATOR.$obj->provider_id : ''),
-            true, $verb, $params);
+            true,
+            $verb,
+            $params
+        );
 
         return (object) $response;
     }

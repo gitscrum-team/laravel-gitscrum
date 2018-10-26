@@ -1,10 +1,4 @@
 <?php
-/**
- * GitScrum v0.1.
- *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
- */
 
 return [
 
@@ -18,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_TITLE', 'GitScrum'),
+    'name' => env('APP_TITLE', 'GitScrum Community'),
 
     /*
     |--------------------------------------------------------------------------
@@ -122,13 +116,29 @@ return [
     | the box, Laravel uses the Monolog PHP logging library. This gives
     | you a variety of powerful log handlers / formatters to utilize.
     |
-    | Available Settings: "single", "daily", "syslog", "errorlog"
+    | Available Setting: "single", "daily", "syslog", "errorlog"
     |
     */
 
     'log' => env('APP_LOG', 'single'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Services
+    |--------------------------------------------------------------------------
+    */
+
+    'services' => [
+        'AttachmentService',
+        'CommentService',
+        'ConfigStatusService',
+        'FavoriteService',
+        'IssueService',
+        'LabelService',
+        'NoteService'
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -182,12 +192,12 @@ return [
         GitScrum\Providers\ModelObserverProvider::class,
         GitScrum\Providers\EventServiceProvider::class,
         GitScrum\Providers\RouteServiceProvider::class,
+        GitScrum\Providers\SlackServiceProvider::class,
 
         SocialiteProviders\Manager\ServiceProvider::class,
-
-        Barryvdh\Debugbar\ServiceProvider::class,
-
-        Talevskiigor\ComposerBump\ComposerBumpServiceProvider::class
+        Spatie\Fractal\FractalServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        RenatoMarinho\LaravelMultiLanguage\MultiLanguageServiceProvider::class
 
     ],
 
@@ -215,14 +225,11 @@ return [
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
         'DB' => Illuminate\Support\Facades\DB::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
-        'GitHub' => GrahamCampbell\GitHub\Facades\GitHub::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
-        'Image' => Intervention\Image\Facades\Image::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
@@ -242,7 +249,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Fractal' => Spatie\Fractal\FractalFacade::class,
         'Helper' => GitScrum\Classes\Helper::class,
 
     ],

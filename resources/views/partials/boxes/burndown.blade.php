@@ -1,9 +1,11 @@
 <div class="burndown">
     @if(isset($title))
-    <h4>{{$title or trans('gitscrum.burndown')}}</h4>
+    <h4 class="gs-card-title">{{$title or trans('gitscrum.burndown')}}</h4>
     @endif
-    <div class="row">
-        <canvas id="burndown" height="{{$height or '320'}}" class="col-md-12"></canvas>
+    <div class="gs-card-content">
+        <div class="row">
+            <canvas id="burndown" height="{{$height or '320'}}" class="col-md-12"></canvas>
+        </div>
     </div>
 </div>
 
@@ -20,10 +22,10 @@ $(function() {
             label: "Issues",
             fill: true,
             lineTension: 0,
-            backgroundColor: "rgba(219,68,83,0.4)",
-            borderColor: "rgba(219,68,83,1)",
-            pointBorderColor: "rgba(219,68,83,1)",
-            pointBackgroundColor: "rgba(219,68,83,1)",
+            backgroundColor: "rgba(161,163,166,0.2)",
+            borderColor: "rgba(161,163,166,0.6)",
+            pointBorderColor: "rgba(161,163,166,1)",
+            pointBackgroundColor: "rgba(161,163,166,0.5)",
             pointBorderWidth: 1,
             pointHoverRadius: 6,
             pointRadius: 6,

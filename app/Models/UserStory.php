@@ -1,13 +1,8 @@
 <?php
-/**
- * GitScrum v0.1.
- *
- * @author  Renato Marinho <renato.marinho>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
- */
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\GlobalPresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use GitScrum\Scopes\GlobalScope;
@@ -17,6 +12,7 @@ class UserStory extends Model
 {
     use SoftDeletes;
     use GlobalScope;
+    use GlobalPresenter;
     use UserStoryScope;
     /**
      * The database table used by the model.

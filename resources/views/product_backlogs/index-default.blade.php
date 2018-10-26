@@ -14,7 +14,20 @@
 
 @section('content')
 <div class="col-lg-12">
-    @include('partials.boxes.product-backlog', [ 'list' => $backlogs->sortByDesc('favorite') ])
+    <div class="gs-card">
+
+        <h4 class="gs-card-title">
+            {{trans('gitscrum.product-backlog-list')}}
+
+            <a href="{{route('product_backlogs.create')}}" class="btn btn-default btn-sm pull-right"
+               data-toggle="modal" data-target="#modalLarge" role="button">{{trans('gitscrum.create-product-backlog')}}</a>
+        </h4>
+
+        <div class="gs-card-content">
+            @include('partials.boxes.product-backlog', [ 'list' => $backlogs->sortByDesc('favorite') ])
+        </div>
+
+    </div>
 </div>
 
 {{$backlogs->setPath('')->links()}}

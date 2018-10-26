@@ -1,10 +1,4 @@
 <?php
-/**
- * Laravel GitScrum <https://github.com/renatomarinho/laravel-gitscrum>
- *
- * The MIT License (MIT)
- * Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
- */
 
 namespace GitScrum\Classes;
 
@@ -41,6 +35,7 @@ class Gitlab implements ProviderInterface
 
     public function tplRepository($repo, $slug = false)
     {
+
         $organization = $this->organization($repo);
 
         if (!$organization) {
@@ -54,7 +49,7 @@ class Gitlab implements ProviderInterface
             'slug' => $slug ? $slug : Helper::slug($repo->path),
             'title' => $repo->path,
             'fullname' => $repo->name,
-            'is_private' => $repo->public == true,
+            'is_private' => $repo->public_jobs == true,
             'html_url' => $repo->http_url_to_repo,
             'description' => $repo->description,
             'fork' => null,
@@ -120,7 +115,7 @@ class Gitlab implements ProviderInterface
 
     public function readRepositories($page = 1, &$repos = null)
     {
-        $repos = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects?access_token='.Auth::user()->token));
+        $repos = collect(Helper::request(env('GITLAB_INSTANCE_URI', 'https://gitlab.com/').'api/v4/projects?owned=true&access_token='.Auth::user()->token));
 
         $response = $repos->map(function ($repo) {
             return $this->tplRepository($repo);
@@ -139,10 +134,12 @@ class Gitlab implements ProviderInterface
             return false;
         }
 
+
+
         if (!isset($obj->owner) && isset($obj->namespace)) {
             // To avoid to make unnecessary calls to the api to get the groups info saving the fetched groups into a private variable
             if (!isset($this->gitlabGroups[$obj->namespace->id])) {
-                $group = current(collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/groups/'.$obj->namespace->id.'?access_token='.Auth::user()->token)));
+                $group = current(collect(Helper::request(env('GITLAB_INSTANCE_URI', 'https://gitlab.com/').'api/v4/groups/'.$obj->namespace->id.'?access_token='.Auth::user()->token)));
 
                 $this->gitlabGroups[$obj->namespace->id] = $group;
             }
@@ -179,7 +176,7 @@ class Gitlab implements ProviderInterface
      */
     private function getGroupsMembers($group)
     {
-        $members = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/groups/'.$group.'/members?access_token='.Auth::user()->token));
+        $members = collect(Helper::request(env('GITLAB_INSTANCE_URI', 'https://gitlab.com/').'api/v4/groups/'.$group.'/members?access_token='.Auth::user()->token));
 
         return $members;
     }
@@ -193,7 +190,7 @@ class Gitlab implements ProviderInterface
      */
     private function getProjectMembers($projectId)
     {
-        $members = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects/'.$projectId.'/members?access_token='.Auth::user()->token));
+        $members = collect(Helper::request(env('GITLAB_INSTANCE_URI', 'https://gitlab.com/').'api/v4/projects/'.$projectId.'/members?access_token='.Auth::user()->token));
 
         return $members;
     }
@@ -208,7 +205,7 @@ class Gitlab implements ProviderInterface
      */
     private function getProjectSharedGroupsMembers($projectId)
     {
-        $project = Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects/'.$projectId.'?access_token='.Auth::user()->token);
+        $project = Helper::request(env('GITLAB_INSTANCE_URI', 'https://gitlab.com/').'api/v4/projects/'.$projectId.'?access_token='.Auth::user()->token);
 
         $members = new \Illuminate\Support\Collection();
 
@@ -285,7 +282,7 @@ class Gitlab implements ProviderInterface
 
     public function createBranches($owner, $product_backlog_id, $repo, $providerId = null)
     {
-        $branches = collect(Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects/'.$providerId.'/repository/branches?access_token='.Auth::user()->token));
+        $branches = collect(Helper::request(env('GITLAB_INSTANCE_URI', 'https://gitlab.com/').'api/v4/projects/'.$providerId.'/repository/branches?access_token='.Auth::user()->token));
 
         $branchesData = [];
         foreach ($branches as $branch) {
@@ -308,7 +305,7 @@ class Gitlab implements ProviderInterface
         $repos = ProductBacklog::all();
 
         foreach ($repos as $repo) {
-            $issues = Helper::request(env('GITLAB_INSTANCE_URI').'api/v3/projects/'.$repo->provider_id.
+            $issues = Helper::request(env('GITLAB_INSTANCE_URI', 'https://gitlab.com/').'api/v4/projects/'.$repo->provider_id.
                 '/issues?access_token='.Auth::user()->token);
 
             $issues = is_array($issues) ? $issues : [$issues];

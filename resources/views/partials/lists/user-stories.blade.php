@@ -5,8 +5,8 @@
     </td>
     <td class="project-title">
         <a href="{{route('user_stories.show', ['slug'=>$list->slug])}}">
-            <span class="label label-danger m-l-xs pull-right" style="background-color:#{{$list->priority->color}}">
-                {{$list->priority->title}}</span> <span class="text-info">{{$list->title}}</span></a>
+            <span class="label label-danger m-l-xs pull-right" style="background-color:#{{@$list->priority->color}}">
+                {{@$list->priority->title}}</span> <strong class="text-info">{{$list->title}}</strong></a>
             <p>{{ trans('gitscrum.product-backlog') }}: <a href="{{route('product_backlogs.show', ['slug' =>
             $list->productBacklog->slug])}}">
                 {{$list->productBacklog->title}}</a></p>

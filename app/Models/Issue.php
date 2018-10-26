@@ -1,13 +1,8 @@
 <?php
-/**
- * GitScrum v0.1.
- *
- * @author  Renato Marinho <renato.marinho@s2move.com>
- * @license http://opensource.org/licenses/GPL-3.0 GPLv3
- */
 
 namespace GitScrum\Models;
 
+use GitScrum\Presenters\GlobalPresenter;
 use GitScrum\Presenters\IssuePresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,6 +14,7 @@ class Issue extends Model
     use SoftDeletes;
     use GlobalScope;
     use IssueScope;
+    use GlobalPresenter;
     use IssuePresenter;
     /**
      * The database table used by the model.

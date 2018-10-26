@@ -1,10 +1,10 @@
 @if(!empty($list[0]))
-    <table class="table table-hover">
+    <table class="table table-user-story">
         <tbody>
         @each('partials.lists.user-stories', $list->sortByDesc('favorite') , 'list', 'partials.lists.no-items')
         </tbody>
     </table>
-    @if(!empty($list->links))
+    @if(!empty($list->setPath('')->links()))
     {{$list->setPath('')->links()}}
     @endif
 @else
