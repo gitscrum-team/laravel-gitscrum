@@ -20,6 +20,8 @@ GitScrum’s agile approach to project management has proven itself to be a time
 
 Site: <b>https://www.gitscrum.com</b>
 
+Product Hunt: <b>https://www.producthunt.com/posts/gitscrum</b>
+
 <hr>
 <p align="center">
 <b><a href="#overview">Overview</a></b>
