@@ -1,5 +1,6 @@
 <table class="table table-repository" id="repoTable">
     <tbody>
+        @if(!empty($list))
         @foreach ($list as $value)
         <tr>
 
@@ -32,6 +33,8 @@
 
         </tr>
         @endforeach
+
+        @endif
     </tbody>
 </table>
 <script type="application/javascript">

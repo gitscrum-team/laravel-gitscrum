@@ -14,6 +14,8 @@ class SettingSeeder extends Seeder
         $this->call(ConfigPrioritiesTableSeeder::class);
         $this->call(IssueTypesTableSeeder::class);
         $this->call(ConfigStatusesTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
+        $this->call(UserTableSeeder::class);
     }
 
     private function delete()

@@ -18,8 +18,9 @@ class ProductbacklogMiddleware
     public function handle($request, Closure $next)
     {
         $total = Auth::user()->organizations()->count();
+        $tipo_provider = in_array(Auth::user()->provider, ['gitlab', 'github', 'gitbucket' ]); 
 
-        if (!$total) {
+        if (!$total && $tipo_provider == TRUE) {
             return redirect()->route('wizard.step1');
         }
 

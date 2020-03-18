@@ -12,7 +12,7 @@
 
             <div class="text-center">
                 <h4>{{trans('gitscrum.you-can-import-the-repositories-to-GitScrum')}}</h4>
-                <h5>{{trans('gitscrum.you-have')}} {{$repositories->count()}} {{trans('gitscrum.repositories')}}</h5>
+                <h5>{{trans('gitscrum.you-have')}} {{empty($repositories)? 0: $repositories->count()}} {{trans('gitscrum.repositories')}}</h5>
 
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Filter" id="liveSearch" onkeyup="filterFunction()">

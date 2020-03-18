@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.master-fluid', ['hideNavbar' => true, 'bodyClass' => 'body-login'])
 @section('content')
 <div class="container">
     <div class="row">

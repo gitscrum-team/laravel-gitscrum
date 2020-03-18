@@ -20,11 +20,16 @@ Route::get('/profile/{username}', 'Web\UserController@show')->name('user.profile
 Route::group(['prefix' => 'auth'], function () {
     Route::get('/register', 'Web\AuthController@register')->name('auth.register');
     Route::get('/login', 'Web\AuthController@login')->name('auth.login');
+
     Route::get('/dologin', 'Web\AuthController@dologin')->name('auth.dologin');
     Route::get('/provider/{provider}', 'Web\AuthController@redirectToProvider')->name('auth.provider');
     Route::get('/provider/{provider}/callback', 'Web\AuthController@handleProviderCallback');
     Route::post('/provider/gitea/token', 'Web\AuthGiteaController@handleProviderCallback')->name('auth.gitea');
     Route::get('/logout', 'Web\AuthController@logout')->name('auth.logout');
+
+
+
+    Route::post('/login', 'Web\AuthController@authenticate')->name('auth.login');
 });
 
 Route::group(['prefix' => 'product-backlogs', 'middleware' => ['user.authenticated']], function () {
@@ -124,3 +129,21 @@ Route::group(['prefix' => 'wizard', 'middleware' => ['user.authenticated']], fun
 });
 
 Route::put('/slack', 'Web\SlackUserController@update')->name('slack.update')->middleware('user.authenticated');
+
+Route::post('login', 'Auth\LoginController@login')->name('auth.login');
+Route::post('logout','Auth\LoginController@logout')->name('logout');
+Route::post('password/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name(' password.email');
+Route::post('register','Auth\RegisterController@register');
+Route::post('password/reset','Auth\ResetPasswordController@reset');
+
+Route::get('login','Auth\LoginController@showLoginForm')->name('login');
+
+Route::get('password/reset','Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::get('password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register');
+
+
+Route::group(['prefix' => 'gestao', 'middleware' => ['user.authenticated']], function () {
+    Route::get('usuarios', 'Auth\WizardController@install')->name('admin.users');
+    Route::get('organization', 'Auth\WizardController@step1')->name('admin.organization');
+});

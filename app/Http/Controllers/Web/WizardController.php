@@ -11,7 +11,11 @@ class WizardController extends Controller
 {
     public function step1()
     {
-        $repositories = (object) app(Auth::user()->provider)->readRepositories();
+
+$tipo_provider = in_array(Auth::user()->provider, ['gitlab', 'github', 'gitbucket' ]); 
+
+
+        $repositories = $tipo_provider ? (object) app(Auth::user()->provider)->readRepositories(): null;
         $currentRepositories = ProductBacklog::all();
 
         Session::put('Repositories', $repositories);
@@ -24,7 +28,11 @@ class WizardController extends Controller
 
     public function step2(Request $request)
     {
+
+        $tipo_provider = in_array(Auth::user()->provider, ['gitlab', 'github', 'gitbucket' ]); 
+        if($tipo_provider){
         $repositories = Session::get('Repositories')->whereIn('provider_id', $request->repos);
+
         foreach ($repositories as $repository) {
             app(Auth::user()->provider)->readCollaborators($repository->organization_title, $repository->title, $repository->provider_id);
             $product_backlog = ProductBacklog::where('provider_id', $repository->provider_id)->first();
@@ -33,6 +41,9 @@ class WizardController extends Controller
             }
             app(Auth::user()->provider)->createBranches($repository->organization_title, $product_backlog->id, $repository->title, $repository->provider_id);
         }
+    }else{
+        $repositories = null;
+    }
 
         return view('wizard.step2')
             ->with('repositories', $repositories)

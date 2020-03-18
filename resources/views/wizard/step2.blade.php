@@ -10,8 +10,9 @@
         <div class="aligner">
 
             <div class="content-area">
-
+                @if( !empty($repositories) )
                 <div class="text-center">
+             
                     @if($repositories->count())
                         <h4>{{trans('Congratulations')}}</h4>
                         <h5>{{trans('gitscrum.you-have-successfully-added-repositories-for')}} {{config('app.name')}}</h5>
@@ -22,7 +23,7 @@
                     @endif
                 </div>
 
-                @if( count($repositories) )
+                @if(count($repositories) )
 
                     <div class="content-middle gs-card">
 
@@ -39,9 +40,10 @@
                     <hr>
 
                 @endif
+        
 
                 <div class="text-center">
-
+            
                     @if(count($repositories))
                         <a href="{{route('product_backlogs.index')}}" class="btn btn-lg btn-default">{{trans('gitscrum.continue-using')}}
                             <strong>{{config('app.name')}}</strong></a>
@@ -58,9 +60,16 @@
                         </div>
 
                     @endif
+          
 
                 </div>
 
+            @else
+            <div class="text-center">
+                <p> Não existem Repositórios para importar</p>
+<a href="/dashboard" class="btn btn-lg btn-success btn-loader">Ir para o Dashboard</a>
+            </div>
+            @endif
             </div>
 
         </div>
