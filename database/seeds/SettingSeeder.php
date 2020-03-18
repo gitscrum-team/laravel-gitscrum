@@ -15,6 +15,7 @@ class SettingSeeder extends Seeder
         $this->call(IssueTypesTableSeeder::class);
         $this->call(ConfigStatusesTableSeeder::class);
         $this->call(RoleTableSeeder::class);
+        $this->call(OrganizationTableSeeder::class);
         $this->call(UserTableSeeder::class);
     }
 
