@@ -25,6 +25,7 @@ class NoteRequest extends FormRequest
     {
         return [
             'frm_notes_title' => 'required|min:2',
+            'frm_notes_hours' => 'required|integer|min:1|max:8',
         ];
     }
 
@@ -44,7 +45,10 @@ class NoteRequest extends FormRequest
     protected function getValidatorInstance()
     {
         $data = $this->all();
+
         $data['title'] = $data['frm_notes_title'];
+        $data['hours'] = $data['frm_notes_hours'];
+
         $this->getInputSource()->replace($data);
 
         return parent::getValidatorInstance();

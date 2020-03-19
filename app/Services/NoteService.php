@@ -2,11 +2,11 @@
 
 namespace GitScrum\Services;
 
-use Auth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use GitScrum\Http\Requests\NoteRequest;
 use GitScrum\Models\Note;
+use GitScrum\Http\Requests\NoteRequest;
+use Illuminate\Support\Facades\Auth;
 
 class NoteService extends Service
 {
@@ -16,6 +16,7 @@ class NoteService extends Service
             'noteable_id' => $request->noteable_id,
             'noteable_type' => $request->noteable_type,
             'title' => $request->title,
+            'hours' => $request->hours,
         ];
 
         $note = Note::create($data);

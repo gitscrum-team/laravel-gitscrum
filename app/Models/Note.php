@@ -27,8 +27,16 @@ class Note extends Model
      *
      * @var array
      */
-    protected $fillable = ['noteable_type', 'noteable_id', 'user_id',
-        'slug', 'title', 'position', 'closed_at', ];
+    protected $fillable = [
+        'noteable_type',
+        'noteable_id',
+        'user_id',
+        'slug',
+        'title',
+        'position',
+        'hours',
+        'closed_at',
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.

@@ -200,4 +200,6 @@ return array (
   'organization-id-required' => 'you must choose an organization',
   'organization-id-exists' => 'organization_id must exist in organizations table',
   'you-have' => 'You have',
+  'title' => 'Title',
+  'hours' => 'Hours',
 );

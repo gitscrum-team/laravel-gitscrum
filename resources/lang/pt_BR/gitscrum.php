@@ -195,4 +195,6 @@ return array (
   'favorited-successfully' => 'Adicionado aos favoritos com sucesso',
   'unfavorited-successfully' => 'Removido dos favoritos com sucesso',
   'you-have' => 'Você tem',
+  'title' => 'Título',
+  'hours' => 'Horas',
 );
