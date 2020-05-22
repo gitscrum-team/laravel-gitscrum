@@ -1,3 +1,10 @@
+# Project moved to GitScrum Frontend
+[https://github.com/gitscrum-team/GitScrum-Frontend](https://github.com/gitscrum-team/GitScrum-Frontend)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+
 [![Project on GitScrum](https://gitscrum.com/badges/project.svg)](https://gitscrum.com)
 [![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
 [![Total Downloads](https://poser.pugx.org/gitscrum-community/laravel-gitscrum/downloads)](https://packagist.org/packages/gitscrum-community/laravel-gitscrum)
