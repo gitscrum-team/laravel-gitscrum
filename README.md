@@ -1,4 +1,4 @@
-# Project moved to GitScrum Frontend
+# Project moved to GitScrum CE
 [https://github.com/gitscrum-team/GitScrum-Frontend](https://github.com/gitscrum-team/GitScrum-Frontend)
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
