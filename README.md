@@ -1,33 +1,38 @@
-# Project moved to GitScrum CE
-[https://github.com/gitscrum-team/GitScrum-Frontend](https://github.com/gitscrum-team/GitScrum-Frontend)
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-
-
-[![Project on GitScrum](https://gitscrum.com/badges/project.svg)](https://gitscrum.com)
-[![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Total Downloads](https://poser.pugx.org/gitscrum-community/laravel-gitscrum/downloads)](https://packagist.org/packages/gitscrum-community/laravel-gitscrum)
-[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md)
-
 <p align="center">
-    <img src="https://site.gitscrum.com/wp-content/uploads/2017/09/logo_gitscrum.png" />
+    <img src="https://site.gitscrum.com/wp-content/uploads/2021/05/gs-pop-black.png" />
     <br><br>
-    <img src="https://site.gitscrum.com/wp-content/uploads/2018/09/comp-gitscrum.jpg" />
+    <img src="https://site.gitscrum.com/wp-content/uploads/2021/09/Board-with-arrows.png" />
 </p>
 
-More than 6.600 business use GitScrum to manage their agile projects
+# What is GitScrum?
 
-**Where do we come in?**
+**GitScrum is a Project Management Tool**, developed to help entrepreneurs, freelancers, managers, and teams Skyrocket their Productivity with the Agile methodology and Gamification.
 
-When running a business or handling large amounts of data, our agile project management software can be a helpful tool in making sure that all runs well and getting your team in operating mode.
+It’s a powerful and functional tool you can use to organize your projects and manage your team's tasks within workspaces.
 
-GitScrum’s agile approach to project management has proven itself to be a time and money saving strategy with the flexibility to keep up with rapid changes
+GitScrum brings all important features for you to establish high standard objectives and lead your team to reach them, working in an interactive and collaborative way. It facilitates tasks delegation and monitoring, with visual resources that help you guide your team throughout all projects execution, from start to finish.
+
+Get rid of the outdated confusing methods that mixed dozens of isolated apps, files, emails and physical sticky notes and switch communication madness by an effective working project management tool that’s “all in one” with everything you need - GitScrum Board with dynamic Kanban boards, GitScrum Sprints to associate your tasks to milestones, GitScrum Gantt Charts for an agenda view, slick integrations and many more interactive features.
+
+GitScrum is a way better option to manage your tasks, because not only will you take notes on your pending actions, but you’ll turn them into objectives and accomplish them.
+
+Promote collaboration among team members, partners, clients and stakeholders working together in all project stages to develop innovative solutions. Create discussions, comment on each other's actions, recall attention by mentioning each other’s names.
+
+Improve your products and services with GitScrum User Stories - small reports on end-users’ needs and wishes, applying the agile principles of welcoming changes and delivering value constantly.
+
+Make GitScrum yours, choosing your preference among 23 languages, dozens of project templates and, the best: with the possibility to showcase YOUR BRAND and domain with the GitScrum White Label feature.
+
+Is that all? No! GitScrum helps you turn your team members into Superstars, with the power of gamification. Meet the GitScrum Rock Star Team feature to add joy and healthy competitiveness to your work environment.
+
+Our team of Scrum and Agile specialists have developed the ultimate tool for you to create amazing projects, manage your tasks smartly, lead your team to enthusiasm and reach unprecedented results.
+
+**Skyrocket your productivity with GitScrum!**
 
 
-Site: <b>https://www.gitscrum.com</b>
 
-Product Hunt: <b>https://www.producthunt.com/posts/gitscrum</b>
+Site: <b>https://site.gitscrum.com</b>
+
+Learm more about GitScrum and Agile Methodologies : <b>https://magazine.gitscrum.com</b>
 
 <hr>
 <p align="center">
@@ -46,6 +51,10 @@ Product Hunt: <b>https://www.producthunt.com/posts/gitscrum</b>
 <b><a href="#license">License</a></b>
 </p>
 
+[![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
+[![Total Downloads](http://poser.pugx.org/gitscrum-ce/laravel-gitscrum/downloads)](https://packagist.org/packages/gitscrum-ce/laravel-gitscrum)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/GitScrum-Community/laravel-gitscrum/blob/master/LICENSE.md)
+
 <hr>
 
 <p align="center"> GitScrum's goal is to "Transform your IT Team into Instant Rock Stars" !!!</p>
@@ -53,23 +62,15 @@ Product Hunt: <b>https://www.producthunt.com/posts/gitscrum</b>
 <b>Facebook Group: https://www.facebook.com/groups/gitscrum/ </b>
 </p>
 
-
-<b>GitScrum wants to transform your IT team into instant Rock Stars</b>
-
-GitScrum collaborates to overcome the objectives with implementation of management model based on meritocracy. GitScrum transforms your project into a game and allows to measure in a transparent way team achievements and individual. You can reward those who have the best results.
-
 <hr>
 
 ## Overview
 
-Laravel GitScrum is a **free application** developed specifically for agile teams to be more agile!. The aim is help the developer teams to use **Git** and **Scrum** on task management of the day-to-day.
+This version available here is the first code of the GitScrum application developed in 2016 and supported until 2017.
 
-Available in English, Chinese, Russian, German, Arabic, Spanish, Portuguese, Italian, French, Indonesian, Serbian, Hungarian and Vietnamese.
+It's a free and open source version, if you want to know the current GitScrum, go to our website [ https://site.gitscrum.com ]
 
-
-Laravel GitScrum in gitter.im : [https://gitter.im/laravel-gitscrum/Lobby](https://gitter.im/laravel-gitscrum/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
-
-### Features
+### GitScrum Open Source - Features
 
 GitScrum can be integrated with **Github** or **Gitlab** or **Bitbucket**.
 
@@ -93,7 +94,7 @@ GitScrum can be integrated with **Github** or **Gitlab** or **Bitbucket**.
 
 ![GitScrum Sprint](https://i.imgur.com/ZHrhKPy.png)
 
-## Installation
+## GitScrum Open Source - Installation
 
 The requirements to Laravel GitScrum application is:
 
