@@ -60,6 +60,8 @@ Learm more about GitScrum and Agile Methodologies : <b>https://magazine.gitscrum
 <p align="center"> GitScrum's goal is to "Transform your IT Team into Instant Rock Stars" !!!</p>
 <br/>
 <b>Facebook Group: https://www.facebook.com/groups/gitscrum/ </b>
+<br />
+<b>Follow us on Twitter: https://twitter.com/gitscrum </b>
 </p>
 
 <hr>
