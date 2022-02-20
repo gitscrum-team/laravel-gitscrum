@@ -1,7 +1,5 @@
 <p align="center">
-    <img src="https://site.gitscrum.com/wp-content/uploads/2021/05/gs-pop-black.png" />
-    <br><br>
-    <img src="https://site.gitscrum.com/wp-content/uploads/2021/09/Board-with-arrows.png" />
+    <img src="https://site.gitscrum.com/img/gitscrum-mockup-whitelabel-3.png" />
 </p>
 
 # What is GitScrum?
