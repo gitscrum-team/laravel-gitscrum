@@ -142,7 +142,8 @@ class Github implements ProviderInterface
             $response = Helper::request($endpoint, true, 'POST', $params);
         } else {
             $oldTitle = str_slug($oldTitle, '-');
-            $response = Helper::request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$oldTitle, true, 'POST', $params);
+            
+            $response = Helper::request('https://api.github.com/repos/'.$owner.'/'.$oldTitle, true, 'POST', $params);
         }
 
         return (object) $response;
@@ -202,7 +203,7 @@ class Github implements ProviderInterface
 
     public function createBranches($owner, $productBacklogId, $repo, $providerId = null, $page = 1)
     {
-        $branches = collect(Helper::request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$repo.'/branches?page='.$page));
+        $branches = collect(Helper::request('https://api.github.com/repos/'.$owner.'/'.$repo.'/branches?page='.$page));
 
         $branches->map(function ($branch) use ($productBacklogId) {
             $data = [
