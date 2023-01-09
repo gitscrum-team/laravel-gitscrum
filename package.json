@@ -5,7 +5,7 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
-    "clean-css": "^3.4.19",
+    "clean-css": "^4.2.3",
     "gulp": "^3.9.1",
     "gulp-less": "^3.0.3",
     "gulp-sourcemaps": "^1.6.0",
